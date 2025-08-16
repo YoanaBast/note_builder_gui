@@ -7,7 +7,7 @@ it only takes my input - category name and content.
 My goal here is to encounter real project issues, as well as come back and optimize or recreate stuff as I learn and grow. 
 
 Web page: https://yoanabast.github.io/note_builder_gui/
-The GUI app runs when staring the gui_main.py file. 
+\nThe GUI app runs when staring the gui_main.py file. 
 
 How it works:
     The thinker app adds categories and content using the methods in the AddContentToPage class. 
