@@ -18,4 +18,4 @@ How it works:
     The addition of contect in a category happens via the placeholder below, using similar logic:
         f"<!--CONTENT-{category_name}-->"
 
-    The css is magic and I'm just happy it works.  
+    The css is magic and I'm just happy it works.   
