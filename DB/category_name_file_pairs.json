@@ -1,0 +1,14 @@
+{
+    "Test1": {
+        "location": "contents\\Test1.html",
+        "content": "<p>Adding some text. </p>\n<p>And some more. </p>\n"
+    },
+    "Test2": {
+        "location": "contents\\Test2.html",
+        "content": "<p>Hello from cat2!</p>\n<p>Hi!</p>\n"
+    },
+    "reji": {
+        "location": "contents\\reji.html",
+        "content": "<p>hiii</p>\n<p><3</p>\n"
+    }
+}

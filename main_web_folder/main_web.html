@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python and CS topics</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+  <h1>Explore Python and CS topics here:</h1>
+
+  <div id="grid">
+      
+
+
+<!-- Test1 -->
+<div class="grid-item">
+    <button id="openBtn-Test1">Test1</button>
+    <div id="myModal-Test1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Test1</h2>
+            <p><p>Adding some text. </p>
+<p>And some more. </p>
+<!--CONTENT-Test1--></p>
+        </div>
+    </div>
+    <script>
+        const modalTest1 = document.getElementById("myModal-Test1");
+        const btnTest1 = document.getElementById("openBtn-Test1");
+        const spanTest1 = modalTest1.querySelector(".close");
+
+        btnTest1.onclick = () => modalTest1.style.display = "block";
+        spanTest1.onclick = () => modalTest1.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalTest1) modalTest1.style.display = "none";
+        }
+    </script>
+</div>
+<!-- ENF OF Test1 -->
+
+<!-- Test2 -->
+<div class="grid-item">
+    <button id="openBtn-Test2">Test2</button>
+    <div id="myModal-Test2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Test2</h2>
+            <p><p>Hello from cat2!</p>
+<p>Hi!</p>
+<!--CONTENT-Test2--></p>
+        </div>
+    </div>
+    <script>
+        const modalTest2 = document.getElementById("myModal-Test2");
+        const btnTest2 = document.getElementById("openBtn-Test2");
+        const spanTest2 = modalTest2.querySelector(".close");
+
+        btnTest2.onclick = () => modalTest2.style.display = "block";
+        spanTest2.onclick = () => modalTest2.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalTest2) modalTest2.style.display = "none";
+        }
+    </script>
+</div>
+<!-- ENF OF Test2 -->
+
+<!-- reji -->
+<div class="grid-item">
+    <button id="openBtn-reji">reji</button>
+    <div id="myModal-reji" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>reji</h2>
+            <p><p>hiii</p>
+<p><3</p>
+<!--CONTENT-reji--></p>
+        </div>
+    </div>
+    <script>
+        const modalreji = document.getElementById("myModal-reji");
+        const btnreji = document.getElementById("openBtn-reji");
+        const spanreji = modalreji.querySelector(".close");
+
+        btnreji.onclick = () => modalreji.style.display = "block";
+        spanreji.onclick = () => modalreji.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalreji) modalreji.style.display = "none";
+        }
+    </script>
+</div>
+<!-- ENF OF reji -->
+
+<!-- INSERT_CATEGORIES_HERE -->
+  </div>
+</body>
+
+</html>
