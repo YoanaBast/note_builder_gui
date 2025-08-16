@@ -1,5 +1,5 @@
 These are my python + CS notes, sorted as pop-up buttons on an HTML page. 
-They are focused on things I have struggled with or found amusing and may not bee entirely useful to a new learner. 
+They are focused on things I have struggled with or found amusing and may not be entirely useful to a new learner. 
 
 As I don't want to type new code for each section, I have created a basic tkinter app to do it for me, 
 it only takes my input - category name and content. 
