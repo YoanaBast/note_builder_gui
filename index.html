@@ -93,6 +93,30 @@
 </div>
 <!-- ENF OF reji -->
 
+<!-- test1111 -->
+<div class="grid-item">
+    <button id="openBtn-test1111">test1111</button>
+    <div id="myModal-test1111" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>test1111</h2>
+            <p><!--CONTENT-test1111--></p>
+        </div>
+    </div>
+    <script>
+        const modaltest1111 = document.getElementById("myModal-test1111");
+        const btntest1111 = document.getElementById("openBtn-test1111");
+        const spantest1111 = modaltest1111.querySelector(".close");
+
+        btntest1111.onclick = () => modaltest1111.style.display = "block";
+        spantest1111.onclick = () => modaltest1111.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modaltest1111) modaltest1111.style.display = "none";
+        }
+    </script>
+</div>
+<!-- ENF OF test1111 -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
