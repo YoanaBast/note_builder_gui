@@ -58,7 +58,7 @@ class AddContentToPage:
         }
         self.save_pairs()
 
-        main_web = os.path.join('..', 'main_web_folder', 'main_web.html')
+        main_web = os.path.join('..', 'main_web_folder', 'index.html')
 
         with open(main_web, 'r') as page:
             html_content = page.read()
@@ -80,7 +80,7 @@ class AddContentToPage:
         self.category_name_content_pairs[category_name]["content"] += f"<p>{content}</p>\n"
         self.save_pairs()
 
-        file_path = os.path.join('..', 'main_web_folder', 'main_web.html')
+        file_path = os.path.join('..', 'main_web_folder', 'index.html')
 
         with open(file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
