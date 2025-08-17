@@ -22,5 +22,13 @@
     "for + else": {
         "location": "contents\\for + else.html",
         "content": "<div class=\"category-content\">for item in iterable:<br>    if condition:<br>        break  # If this runs, 'else' is skipped<br>else:<br>    print(\"No break occurred\")   # Runs only if the loop wasn't broken</div>"
+    },
+    "break vs continue": {
+        "location": "contents\\break vs continue.html",
+        "content": "<div class=\"category-content\"> for i in range(10):<br>    if i == 5:<br>        break  # stop loop when i == 5<br>    print(i)<br><br> # breaks the loop<br>______________<br><br>for line in file:<br>    if line.strip() == '':<br>        continue  # skip empty lines<br>    process(line)<br><br>#used to skip things, does not reset the loop</div>"
+    },
+    "Printing } in f-string": {
+        "location": "contents\\Printing } in f-string.html",
+        "content": "<div class=\"category-content\">\"{{\"  \u2192 prints \"{\"<br><br>\"}}\"  \u2192 prints \"}\"</div>"
     }
 }

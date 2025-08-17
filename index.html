@@ -145,7 +145,6 @@
         const modalfor___else = document.getElementById("myModal-for___else");
         const btnfor___else = document.getElementById("openBtn-for___else");
         const spanfor___else = modalfor___else.querySelector(".close");
-
         btnfor___else.onclick = () => modalfor___else.style.display = "block";
         spanfor___else.onclick = () => modalfor___else.style.display = "none";
         window.onclick = (event) => {
@@ -154,7 +153,54 @@
     </script>
 </div>
 <!-- END OF for + else -->
-
+<!-- break vs continue -->
+<div class="grid-item">
+    <button id="openBtn-break_vs_continue">break vs continue</button>
+    <div id="myModal-break_vs_continue" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>break vs continue</h2>
+            <p><!--START-CONTENT-break_vs_continue--></p>
+            <p><div class="category-content"> for i in range(10):<br>    if i == 5:<br>        break  # stop loop when i == 5<br>    print(i)<br><br> # breaks the loop<br>______________<br><br>for line in file:<br>    if line.strip() == '':<br>        continue  # skip empty lines<br>    process(line)<br><br>#used to skip things, does not reset the loop</div>
+<!--CONTENT-break_vs_continue--></p>
+        </div>
+    </div>
+    <script>
+        const modalbreak_vs_continue = document.getElementById("myModal-break_vs_continue");
+        const btnbreak_vs_continue = document.getElementById("openBtn-break_vs_continue");
+        const spanbreak_vs_continue = modalbreak_vs_continue.querySelector(".close");
+        btnbreak_vs_continue.onclick = () => modalbreak_vs_continue.style.display = "block";
+        spanbreak_vs_continue.onclick = () => modalbreak_vs_continue.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalbreak_vs_continue) modalbreak_vs_continue.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF break vs continue -->
+<!-- Printing } in f-string -->
+<div class="grid-item">
+    <button id="openBtn-Printing___in_f_string">Printing } in f-string</button>
+    <div id="myModal-Printing___in_f_string" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Printing } in f-string</h2>
+            <p><!--START-CONTENT-Printing___in_f_string--></p>
+            <p><div class="category-content">"{{"  → prints "{"<br><br>"}}"  → prints "}"</div>
+<!--CONTENT-Printing___in_f_string--></p>
+        </div>
+    </div>
+    <script>
+        const modalPrinting___in_f_string = document.getElementById("myModal-Printing___in_f_string");
+        const btnPrinting___in_f_string = document.getElementById("openBtn-Printing___in_f_string");
+        const spanPrinting___in_f_string = modalPrinting___in_f_string.querySelector(".close");
+        btnPrinting___in_f_string.onclick = () => modalPrinting___in_f_string.style.display = "block";
+        spanPrinting___in_f_string.onclick = () => modalPrinting___in_f_string.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalPrinting___in_f_string) modalPrinting___in_f_string.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Printing } in f-string -->
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
