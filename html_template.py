@@ -8,6 +8,7 @@ content_template = textwrap.dedent("""\
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>TITLE</h2>
+                    <p><!--START-CONTENT-TITLE--></p>
                     <p><!--CONTENT-TITLE--></p>
                 </div>
             </div>
@@ -23,5 +24,5 @@ content_template = textwrap.dedent("""\
                 }
             </script>
         </div>
-        <!-- ENF OF TITLE -->
+        <!-- END OF TITLE -->
     """)

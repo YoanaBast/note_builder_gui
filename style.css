@@ -74,3 +74,8 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border-radius: 5px;          /* Optional: rounded corners */
     overflow-x: auto;            /* Horizontal scroll if content is wide */
 }
+.category-content {
+    font-family: monospace;
+    white-space: pre-wrap;
+    text-align: left;
+}

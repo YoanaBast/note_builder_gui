@@ -1,22 +1,19 @@
 import tkinter as tk
-import textwrap
-
 from helpers import clean_screen, add_background
 from canvas import app
 from content_adder import AddContentToPage
 
 content_manager = AddContentToPage()
 
+
 def enter_back(enter_com, *args):
     frame = tk.Frame(app)
     frame.pack(anchor='w', pady=10, padx=20)
 
-
     enter_button = tk.Button(frame, text="Enter", font=("Arial", 14, "bold"),
                              padx=9, pady=5, bg="blue", fg="white",
                              command=lambda: enter_com(*args))
-
-    enter_button.pack(side="left", padx=(0, 10))  # right padding
+    enter_button.pack(side="left", padx=(0, 10))
 
     back_button = tk.Button(frame, text="Back", font=("Arial", 14, "bold"),
                             padx=9, pady=5, bg="black", fg="white",
@@ -35,7 +32,6 @@ def check_cat(cat_name, frame):
 
     if cat_name.get() not in content_manager.category_name_content_pairs.keys():
         content_manager.add_category(cat_name.get())
-        # show success message
         frame.success_label = tk.Label(
             frame,
             text='Category added successfully!',
@@ -58,14 +54,11 @@ def check_cat(cat_name, frame):
 
 
 def render_no_category(frame):
-    # Make sure frame fills horizontally and aligns left
     frame.pack(fill='x', anchor='w', pady=10, padx=15)
 
-    # Left-aligned label
     tk.Label(frame, text="Please add categories first!",
              font=("Arial", 18), anchor="w").pack(side='left')
 
-    # Back button in its own frame
     back_frame = tk.Frame(app)
     back_frame.pack(anchor='w', pady=10, padx=20)
 
@@ -80,13 +73,11 @@ def cat_dropdown():
     cat_con_name_frame = tk.Frame(app)
     cat_con_name_frame.success_label = None
     cat_con_name_frame.pack(fill='x', pady=10, padx=15)
-    no_cat = False
 
     if len(content_manager.category_name_content_pairs.keys()) < 1:
         render_no_category(cat_con_name_frame)
 
     else:
-        # Frame for dropdown
         dropdown_frame = tk.Frame(app)
         dropdown_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
@@ -99,6 +90,8 @@ def cat_dropdown():
         dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
         dropdown.pack(anchor="w")  # align left
         return selected, cat_con_name_frame
+
+
 
 
 def render_back_to_main():
@@ -121,7 +114,6 @@ def render_add_category():
     enter_back(lambda: check_cat(cat_name, cat_name_frame))
 
 
-
 def render_add_content():
     dropdown = cat_dropdown()[0]
 
@@ -140,7 +132,6 @@ def render_add_content():
     enter_back(add_content)
 
 
-
 def render_remove_cat():
     clean_screen()
 
@@ -156,7 +147,6 @@ def render_remove_cat():
 
     tk.Label(frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
 
-    # Create dropdown
     dropdown_var = tk.StringVar(value="Choose a category")
     dropdown = tk.OptionMenu(frame, dropdown_var, *content_manager.category_name_content_pairs.keys())
     dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
@@ -175,7 +165,6 @@ def render_remove_cat():
         if cat in content_manager.category_name_content_pairs:
             content_manager.remove_category(cat)
 
-            # Show success label
             if frame.success_label:
                 frame.success_label.destroy()
             frame.success_label = tk.Label(
@@ -200,7 +189,6 @@ def render_remove_cat():
                 dropdown.config(state="disabled")
                 enter_button.pack_forget()
 
-    # Enter button
     enter_button = tk.Button(frame, text="Enter", font=("Arial", 14, "bold"),
                              padx=9, pady=5, bg="blue", fg="white",
                              command=remove_category)
@@ -210,13 +198,50 @@ def render_remove_cat():
                             command=render_back_to_main)
     back_button.pack(side="left")
 
+def render_remove_content():
+    clean_screen()
+    if not content_manager.category_name_content_pairs:
+        temp_frame = tk.Frame(app)
+        temp_frame.pack(pady=10, padx=15)
+        render_no_category(temp_frame)
+        return
+
+    frame = tk.Frame(app)
+    frame.pack(fill='x', pady=10, padx=15, anchor='w')
+    frame.success_label = None
+
+    tk.Label(frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
+
+    dropdown_var = tk.StringVar(value="Choose a category")
+    dropdown = tk.OptionMenu(frame, dropdown_var, *content_manager.category_name_content_pairs.keys())
+    dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
+    dropdown.pack(anchor="w")
+
+    def remove_content():
+        cat = dropdown_var.get()
+        if cat in content_manager.category_name_content_pairs:
+            content_manager.remove_content_from_cat(cat)
+
+            if frame.success_label:
+                frame.success_label.destroy()
+            frame.success_label = tk.Label(
+                frame,
+                text='Content removed successfully!',
+                font=("Arial", 18),
+                width=25,
+                anchor="w",
+                fg="green"
+            )
+            frame.success_label.pack(side='left', pady=5)
+
+    enter_back(remove_content)
 
 def render_main_enter_screen():
     clean_screen()
     add_background()
-    tk.Label(app, text="Welcome to the Web Content Creator!", font=("Arial", 20, "bold")) \
-        .pack(anchor="w", padx=5, pady=10)  # anchor left with padding
 
+    tk.Label(app, text="Welcome to the Web Content Creator!", font=("Arial", 20, "bold")) \
+        .pack(anchor="w", padx=5, pady=10)
     tk.Label(app, text="Please choose an option:", font=("Arial", 15, "italic")) \
         .pack(anchor="w", padx=5, pady=(0, 20))
 
@@ -228,10 +253,12 @@ def render_main_enter_screen():
                                     command=render_add_category)
     add_category_button.pack(side="left", padx=(10, 5))
 
+
     add_content_to_cat_button = tk.Button(frame, text="Add Content", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="black", fg="white",
                                 command=render_add_content)
     add_content_to_cat_button.pack(side="left", padx=(5, 10))
+
 
     remove_cat_button = tk.Button(frame, text="Remove Category", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="blue", fg="white",
@@ -241,7 +268,7 @@ def render_main_enter_screen():
 
     remove_content_to_cat_button = tk.Button(frame, text="Remove Content", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="black", fg="white",
-                                command=render_add_content)
+                                command=render_remove_content)
     remove_content_to_cat_button.pack(side="left", padx=(5, 10))
 
 

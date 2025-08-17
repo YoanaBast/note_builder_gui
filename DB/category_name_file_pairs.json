@@ -1,6 +1,6 @@
 {
-    "for_loop": {
-        "location": "contents\\for_loop.html",
-        "content": "<div style=\"font-family: monospace; white-space: pre-wrap; text-align: left;\">for item in iterable:<br>    if condition:<br>        break  # If this runs, 'else' is skipped<br>else:<br>    print(\"No break occurred\")   # Runs only if the loop wasn't broken</div>"
+    "test_category": {
+        "location": "contents\\test_category.html",
+        "content": "<div class=\"category-content\">test input<br>&nbsp;&nbsp;&nbsp;&nbsp;indented</div>"
     }
 }

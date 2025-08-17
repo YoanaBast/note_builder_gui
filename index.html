@@ -5,41 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python and CS topics</title>
     <link rel="stylesheet" href="style.css">
-
-
 </head>
 <body>
   <h1>Explore Python and CS topics here:</h1>
-
   <div id="grid">
-
-<!-- for_loop -->
+<!-- test_category -->
 <div class="grid-item">
-    <button id="openBtn-for_loop">for_loop</button>
-    <div id="myModal-for_loop" class="modal">
+    <button id="openBtn-test_category">test_category</button>
+    <div id="myModal-test_category" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>for_loop</h2>
-            <p><div style="font-family: monospace; white-space: pre-wrap; text-align: left;">for item in iterable:<br>    if condition:<br>        break  # If this runs, 'else' is skipped<br>else:<br>    print("No break occurred")   # Runs only if the loop wasn't broken</div>
-<!--CONTENT-for_loop--></p>
+            <h2>test_category</h2>
+            <p><!--START-CONTENT-test_category--></p>
+            <p><div class="category-content">test input<br>&nbsp;&nbsp;&nbsp;&nbsp;indented</div>
+<!--CONTENT-test_category--></p>
         </div>
     </div>
     <script>
-        const modalfor_loop = document.getElementById("myModal-for_loop");
-        const btnfor_loop = document.getElementById("openBtn-for_loop");
-        const spanfor_loop = modalfor_loop.querySelector(".close");
-
-        btnfor_loop.onclick = () => modalfor_loop.style.display = "block";
-        spanfor_loop.onclick = () => modalfor_loop.style.display = "none";
+        const modaltest_category = document.getElementById("myModal-test_category");
+        const btntest_category = document.getElementById("openBtn-test_category");
+        const spantest_category = modaltest_category.querySelector(".close");
+        btntest_category.onclick = () => modaltest_category.style.display = "block";
+        spantest_category.onclick = () => modaltest_category.style.display = "none";
         window.onclick = (event) => {
-            if(event.target === modalfor_loop) modalfor_loop.style.display = "none";
+            if(event.target === modaltest_category) modaltest_category.style.display = "none";
         }
     </script>
 </div>
-<!-- ENF OF for_loop -->
-
+<!-- END OF test_category -->
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
-
 </html>
