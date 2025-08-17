@@ -1,0 +1,34 @@
+Structure:
+DB: a json file to hold my data
+GUI: the tkinter app is implemented
+content_adder.py: the ContentManager class that handles the backend ops
+html_template.py: my template for adding a category (with empty content by default) with all related placeholders
+index.html: this is the page that is published in https://yoanabast.github.io/note_builder_gui/
+style.css: I don't go there much :)
+
+
+Logic:
+- Adding and removing categories in the HTML files happens by finding a placeholder and replacing it with the related HTML block (templated and dynamically added).
+- Adding and removing blocks of code in HTML is done by replacing the placeholders and re-adding them to allow further modifications.
+
+
+Issues encountered and resolved:
+- The add content option was removing indents and newlines from the original input. Resolved by formatting in the related ContentManager's methods.
+- The Remove Content option was implemented with regex to match and remove everything between 2 placeholders, so new content can be added to the same category. (re.DOTALL Makes the '. ' special character match any character at all, including a newline;)
+- I didn't want to publish multiple pages and created many pop-ups instead.
+- Created a grid so each new category will stack on a row-col style (id="grid")
+- Used textwrap to keep the indents in my template.
+- category_name_file_pairs Lost all data each time I restarted the program - created the save_pairs method to dump in the json upon each update.
+- Had some bad visuals until I figured out I need to create new frames and stack them.
+- In the Add Content option, I wanted to add a big text box that wraps, not just an Entry - used Text widget.
+- I wanted to make the app open on full screen - a few attempts left me without the app menu at the top (min/res/close) - root.state("zoomed") seems to be the best in this case, root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}") is not exact; This one leaves me without a menu - root.attributes('-fullscreen', True)
+- Was not sure how to get whatever was selected at dropdown - .get() can be used on the var that was set as tk.StringVar. But then it turns out I cannot use .get on tk.Text like in Entry, so I used text_content = content.get("1.0", "end-1c") - start to end minus the last newline automatically added by Tkinter.
+- I published the readme as a page because my main HTML was not named index and was not in the root - moved, renamed, updated paths within the project.
+- 'Category already exists' and 'Category added successfully!' were stacking and not going away - created check_cat to delete all labels at the start and apply where needed.
+- Made some helper functions like one to hold the Enter and Back buttons (it only takes a func reference as an arg) to be reused and obey DRY.
+- The dropdown for options that needed to select an existing category was not refreshing upon entering - helper functions used in render_remove_cat, implemented success_label as a flag.
+
+
+To do:
+- Implement category name validation - no empty strings, allow spaces, SQL injection protection - The pop-up isn’t opening if I use spaces in variable names.
+- Start adding real categories and content
