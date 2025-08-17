@@ -15,5 +15,6 @@ It works by replacing placeholders in the HTML file using the ContentManager cla
 
 
 License
-This CV is open source and available under the MIT License.
+
+This project is open source and available under the MIT License.
 Feel free to use or adapt it — just give credit. 🙂
