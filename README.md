@@ -12,3 +12,8 @@ The GUI app runs when starting the gui_main.py file.
 
 
 It works by replacing placeholders in the HTML file using the ContentManager class. 
+
+
+License
+This CV is open source and available under the MIT License.
+Feel free to use or adapt it — just give credit. 🙂
