@@ -10,16 +10,5 @@ Web page: https://yoanabast.github.io/note_builder_gui/
 
 The GUI app runs when starting the gui_main.py file. 
 
-How it works:
-    The tkinter app adds categories and content using the methods in the AddContentToPage class. 
-    They add templated HTML code as strings, replacing the category name and content.
 
-    The addition of categories happens by replacing the placeholder below:
-        "<!-- INSERT_CATEGORIES_HERE -->",
-
-    The placeholder is replaced by content and added below it to allow adding new categories to the HTML file.
-    
-    The addition of contect in a category happens via the placeholder below, using similar logic:
-        f"<!--CONTENT-{category_name}-->"
-
-    The css is magic and I'm just happy it works.   
+It works by replacing placeholders in the HTML file using the ContentManager class. 

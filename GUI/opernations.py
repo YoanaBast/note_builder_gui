@@ -1,9 +1,9 @@
 import tkinter as tk
 from helpers import clean_screen, add_background
 from canvas import app
-from content_adder import AddContentToPage
+from content_adder import ContentManager
 
-content_manager = AddContentToPage()
+content_manager = ContentManager()
 
 
 def enter_back(enter_com, *args):

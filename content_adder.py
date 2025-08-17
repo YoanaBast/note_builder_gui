@@ -4,7 +4,7 @@ import json
 from html_template import content_template
 
 
-class AddContentToPage:
+class ContentManager:
     DICT_FILE = os.path.join('..', 'DB', 'category_name_file_pairs.json')
     file_path = os.path.join('..', 'index.html')
 
