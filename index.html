@@ -9,30 +9,152 @@
 <body>
   <h1>Explore Python and CS topics here:</h1>
   <div id="grid">
-<!-- test_category -->
+<!-- GitHub -->
 <div class="grid-item">
-    <button id="openBtn-test_category">test_category</button>
-    <div id="myModal-test_category" class="modal">
+    <button id="openBtn-GitHub">GitHub</button>
+    <div id="myModal-GitHub" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>test_category</h2>
-            <p><!--START-CONTENT-test_category--></p>
-            <p><div class="category-content">test input<br>&nbsp;&nbsp;&nbsp;&nbsp;indented</div>
-<!--CONTENT-test_category--></p>
+            <h2>GitHub</h2>
+            <p><!--START-CONTENT-GitHub-->
+<div class="category-content">>> Upload a folder to an empty GitHub repo:<br><br>    cd path/to/your/folder<br>    git init<br>    git remote add origin https://github.com/your-username/your-repo-name.git<br>    git add .<br>    git commit -m "Initial commit"<br>    git branch -M main<br>    git push -u origin main<br>    <br><br>>> Clone a repo into an empty folder:<br><br>    cd path/to/your/empty-folder<br>    git clone https://github.com/your-username/your-repo.git <br><br><br>>> Remove folder after added by mistake (ex.: .idea):<br><br>    git rm -r --cached .idea<br>    git commit -m "Stop tracking .idea"<br>    git push<br><br>>> Publish a page:<br><br>    The main HTML file should be in root named index.html<br><br>    1. Go to your repository on GitHub.<br>    2. Click Settings → Pages (or scroll to the “GitHub Pages” section).<br>    3. Under Source, select the branch: main (or master), and folder: /root.<br>    4. Click Save.<br>    5. GitHub will provide a URL, e.g., https://YOUR_USERNAME.github.io/python-cs-notes/<br>        • Wait a few minutes for GitHub Pages to process.</div>
+<!--CONTENT-GitHub--></p>
         </div>
     </div>
     <script>
-        const modaltest_category = document.getElementById("myModal-test_category");
-        const btntest_category = document.getElementById("openBtn-test_category");
-        const spantest_category = modaltest_category.querySelector(".close");
-        btntest_category.onclick = () => modaltest_category.style.display = "block";
-        spantest_category.onclick = () => modaltest_category.style.display = "none";
+        const modalGitHub = document.getElementById("myModal-GitHub");
+        const btnGitHub = document.getElementById("openBtn-GitHub");
+        const spanGitHub = modalGitHub.querySelector(".close");
+        btnGitHub.onclick = () => modalGitHub.style.display = "block";
+        spanGitHub.onclick = () => modalGitHub.style.display = "none";
         window.onclick = (event) => {
-            if(event.target === modaltest_category) modaltest_category.style.display = "none";
+            if(event.target === modalGitHub) modalGitHub.style.display = "none";
         }
     </script>
 </div>
-<!-- END OF test_category -->
+<!-- END OF GitHub -->
+<!-- Slice Notation -->
+<div class="grid-item">
+    <button id="openBtn-Slice_Notation">Slice Notation</button>
+    <div id="myModal-Slice_Notation" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Slice Notation</h2>
+            <p><!--START-CONTENT-Slice_Notation--></p>
+            <p><div class="category-content"># reverse<br>word = input()<br>print(word[::-1]) <br><br>----------------------<br><br>#slicing with a step - skips letters<br>print(text[::2])<br></div>
+<!--CONTENT-Slice_Notation--></p>
+        </div>
+    </div>
+    <script>
+        const modalSlice_Notation = document.getElementById("myModal-Slice_Notation");
+        const btnSlice_Notation = document.getElementById("openBtn-Slice_Notation");
+        const spanSlice_Notation = modalSlice_Notation.querySelector(".close");
+        btnSlice_Notation.onclick = () => modalSlice_Notation.style.display = "block";
+        spanSlice_Notation.onclick = () => modalSlice_Notation.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalSlice_Notation) modalSlice_Notation.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Slice Notation -->
+<!-- .replace() -->
+<div class="grid-item">
+    <button id="openBtn-_replace__">.replace()</button>
+    <div id="myModal-_replace__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>.replace()</h2>
+            <p><!--START-CONTENT-_replace__--></p>
+            <p><div class="category-content">>> Replace by index - use slicing:<br>&nbsp;&nbsp;&nbsp;&nbsp;#  Strings are immutable: assignment via index like name[0] = 'b' won’t work, you need slicing:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;name = 'Yoana'<br>&nbsp;&nbsp;&nbsp;&nbsp;new_name = 'b' + name[1:] # oana<br>&nbsp;&nbsp;&nbsp;&nbsp;print(new_name)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Boana<br><br>&nbsp;&nbsp;&nbsp;&nbsp;my_list = [10, 20, 30, 40]<br>&nbsp;&nbsp;&nbsp;&nbsp;my_list[1] = 99<br>&nbsp;&nbsp;&nbsp;&nbsp;print(my_list)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [10, 99, 30, 40]<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {'a': 1, 'b': 2, 'c': 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict['b'] = 99<br>&nbsp;&nbsp;&nbsp;&nbsp;print(my_dict)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: {'a': 1, 'b': 99, 'c': 3}<br><br>>> Replace by char - use .replace(old, new):<br>#  .replace() is a string method only. It cannot be called on lists, dicts, numbers, or other types.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;text = "banana"<br>&nbsp;&nbsp;&nbsp;&nbsp;new_text = text.replace('b', 'c')<br>&nbsp;&nbsp;&nbsp;&nbsp;print(new_text) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: canana<br><br>#  By default str.replace(old, new) replaces all occurrences of old in the string. To replace only the first occurrence of a substring in Python, use the third argument of .replace():<br><br>&nbsp;&nbsp;&nbsp;&nbsp;text = "hello world, hello universe, hello everyone"<br>&nbsp;&nbsp;&nbsp;&nbsp;new_text = text.replace("hello", "hi", 1)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(new_text)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: hi world, hello universe, hello everyone<br><br></div>
+<!--CONTENT-_replace__--></p>
+        </div>
+    </div>
+    <script>
+        const modal_replace__ = document.getElementById("myModal-_replace__");
+        const btn_replace__ = document.getElementById("openBtn-_replace__");
+        const span_replace__ = modal_replace__.querySelector(".close");
+        btn_replace__.onclick = () => modal_replace__.style.display = "block";
+        span_replace__.onclick = () => modal_replace__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_replace__) modal_replace__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF .replace() -->
+<!-- ASCII -->
+<div class="grid-item">
+    <button id="openBtn-ASCII">ASCII</button>
+    <div id="myModal-ASCII" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ASCII</h2>
+            <p><!--START-CONTENT-ASCII--></p>
+            <p><div class="category-content">ord('a')<br>#this will get the ASCII code<br><br>----------------------<br><br>chr(100)<br>this will get the ASCII symbol<br><br><br><a href="https://www.ascii-code.com/" target="_blank">ASCII Table</a><br></div>
+<!--CONTENT-ASCII--></p>
+        </div>
+    </div>
+    <script>
+        const modalASCII = document.getElementById("myModal-ASCII");
+        const btnASCII = document.getElementById("openBtn-ASCII");
+        const spanASCII = modalASCII.querySelector(".close");
+        btnASCII.onclick = () => modalASCII.style.display = "block";
+        spanASCII.onclick = () => modalASCII.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalASCII) modalASCII.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF ASCII -->
+<!-- Ranges -->
+<div class="grid-item">
+    <button id="openBtn-Ranges">Ranges</button>
+    <div id="myModal-Ranges" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ranges</h2>
+            <p><!--START-CONTENT-Ranges--></p>
+            <p><div class="category-content"># regular<br>range(start=0, stop=stop -1, step=1) <br>for a in range(5):  # (0, 5, 1)<br>    print(a)<br> 0<br> 1<br> 2<br> 3<br> 4<br><br>----------------------<br><br># reverse<br>range(start=n, stop=stop +1, step=-1) <br><br>for a in range(5, 0, -1):<br>    print(a)<br>5<br>4<br>3<br>2<br>1    <br><br>word = "hello"<br>for i in range((len(word) -1), -1, -1):<br>    print(word[i], end='')<br># Output: olleh<br><br>----------------------    <br><br>#shape illustration <br><br>n = int(input())<br>for i in range(1, n + 1):<br>    print('*' * i)<br>for k in range(n -1, 0, -1):<br>    print('*' * k)<br><br># Output: <br>*<br>**<br>***<br>****<br>*****<br>****<br>***<br>**<br>*<br></div>
+<!--CONTENT-Ranges--></p>
+        </div>
+    </div>
+    <script>
+        const modalRanges = document.getElementById("myModal-Ranges");
+        const btnRanges = document.getElementById("openBtn-Ranges");
+        const spanRanges = modalRanges.querySelector(".close");
+        btnRanges.onclick = () => modalRanges.style.display = "block";
+        spanRanges.onclick = () => modalRanges.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalRanges) modalRanges.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Ranges -->
+<!-- for + else -->
+<div class="grid-item">
+    <button id="openBtn-for___else">for + else</button>
+    <div id="myModal-for___else" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>for + else</h2>
+            <p><!--START-CONTENT-for___else--></p>
+            <p><div class="category-content">for item in iterable:<br>    if condition:<br>        break  # If this runs, 'else' is skipped<br>else:<br>    print("No break occurred")   # Runs only if the loop wasn't broken</div>
+<!--CONTENT-for___else--></p>
+        </div>
+    </div>
+    <script>
+        const modalfor___else = document.getElementById("myModal-for___else");
+        const btnfor___else = document.getElementById("openBtn-for___else");
+        const spanfor___else = modalfor___else.querySelector(".close");
+
+        btnfor___else.onclick = () => modalfor___else.style.display = "block";
+        spanfor___else.onclick = () => modalfor___else.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalfor___else) modalfor___else.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF for + else -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>

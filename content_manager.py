@@ -16,6 +16,15 @@ class ContentManager:
         else:
             self.category_name_content_pairs = {}
 
+    @staticmethod
+    def safe_id(name: str) -> str:
+        name = name.strip()
+        # Replace any non-alphanumeric character with an underscore
+        safe = re.sub(r'[^a-zA-Z0-9_]', '_', name)
+        # Ensure it doesn't start with a digit (HTML IDs can't start with a number)
+        if safe and safe[0].isdigit():
+            safe = '_' + safe
+        return safe
 
     def save_pairs(self):
         with open(self.DICT_FILE, 'w', encoding='utf-8') as f:
@@ -23,8 +32,10 @@ class ContentManager:
 
 
     def add_category(self, category_name):
-        if category_name in self.category_name_content_pairs:
-            return False  # Already exists
+        if category_name.strip() == '':
+            return 'Empty string'
+
+        category_id = self.safe_id(category_name)
 
         self.category_name_content_pairs[category_name] = {
             "location": os.path.join('contents', f"{category_name}.html"),
@@ -35,7 +46,8 @@ class ContentManager:
         with open(self.file_path, 'r', encoding='utf-8') as page:
             html_content = page.read()
 
-        new_item = content_template.replace("TITLE", category_name)
+        new_item = content_template.replace("TITLE_ID", category_id).replace("TITLE_NAME", category_name)
+
         html_content = html_content.replace(
             "<!-- INSERT_CATEGORIES_HERE -->",
             f"{new_item}\n<!-- INSERT_CATEGORIES_HERE -->"
@@ -44,72 +56,73 @@ class ContentManager:
         with open(self.file_path, 'w', encoding='utf-8') as page:
             page.write(html_content)
 
+        return 'all good'
 
     def add_content_to_cat(self, category_name, content):
-        if category_name not in self.category_name_content_pairs:
-            raise ValueError("Category does not exist")
-
         formatted_content = (
             f'<div class="category-content">'
             f'{content.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;").replace("\n", "<br>")}'
             f'</div>'
         )
 
+        # Save in dictionary
         self.category_name_content_pairs[category_name]["content"] = formatted_content
         self.save_pairs()
+
+        category_id = self.safe_id(category_name)  # <-- use safe ID
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        placeholder = f"<!--CONTENT-{category_name}-->"
+        placeholder = f"<!--CONTENT-{category_id}-->"
         html_content = html_content.replace(placeholder, formatted_content + '\n' + placeholder)
 
         with open(self.file_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-
     def remove_category(self, category_name):
-        self.category_name_content_pairs.pop(category_name)
-        self.save_pairs()
+        if category_name in self.category_name_content_pairs:
+            self.category_name_content_pairs.pop(category_name)
+            self.save_pairs()
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        content_placeholder = f"<!--CONTENT-{category_name}-->"
+        category_id = self.safe_id(category_name)
+
+        # Remove the content placeholder if present
+        content_placeholder = f"<!--CONTENT-{category_id}-->"
         html_content = html_content.replace(content_placeholder, '')
 
-        # This pattern matches from the opening comment to the end comment
+        # Remove the full category block, from opening comment to END comment
         block_pattern = re.compile(
             rf'<!--\s*{re.escape(category_name)}\s*-->.*?<!--\s*END\s+OF\s+{re.escape(category_name)}\s*-->',
             re.DOTALL
         )
         html_content = block_pattern.sub('', html_content)
 
-        # Additionally, remove any empty whitespace that might be left
-        html_content = re.sub(r'\n\s*\n', '\n', html_content)  # Remove empty lines
+        # Clean up extra empty lines
+        html_content = re.sub(r'\n\s*\n', '\n', html_content)
 
         with open(self.file_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-
     def remove_content_from_cat(self, category_name):
-        self.category_name_content_pairs[category_name]["content"] = ""
-        self.save_pairs()
+        category_id = self.safe_id(category_name)
+
+        if category_name in self.category_name_content_pairs:
+            self.category_name_content_pairs[category_name]["content"] = ""
+            self.save_pairs()
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        # Regex to match everything between START-CONTENT and CONTENT placeholders
+        # Remove only the content between the START-CONTENT and CONTENT placeholders
         pattern = re.compile(
-            rf"(<!--START-CONTENT-{re.escape(category_name)}-->)(.*?)(<!--CONTENT-{re.escape(category_name)}-->)",
-            re.DOTALL | re.IGNORECASE
+            rf'(<!--START-CONTENT-{re.escape(category_id)}-->).*?(<!--CONTENT-{re.escape(category_id)}-->)',
+            re.DOTALL
         )
-
-        # Replace the inner content with nothing, keep the placeholders
-        html_content = pattern.sub(r"\1\n\3", html_content)
+        html_content = pattern.sub(r'\1\n\2', html_content)
 
         with open(self.file_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
-
-
-

@@ -1,7 +1,7 @@
 import tkinter as tk
 from helpers import clean_screen, add_background
 from canvas import app
-from content_adder import ContentManager
+from content_manager import ContentManager
 
 content_manager = ContentManager()
 
@@ -31,16 +31,28 @@ def check_cat(cat_name, frame):
         frame.success_label = None
 
     if cat_name.get() not in content_manager.category_name_content_pairs.keys():
-        content_manager.add_category(cat_name.get())
-        frame.success_label = tk.Label(
-            frame,
-            text='Category added successfully!',
-            font=("Arial", 18),
-            width=25,
-            anchor="w",
-            fg="green"
-        )
-        frame.success_label.pack(side='left')
+        result = content_manager.add_category(cat_name.get())
+        if result == 'Empty string':
+            frame.error_label = tk.Label(
+                frame,
+                text='Please no empty strings :(',
+                font=("Arial", 18),
+                width=25,
+                anchor="w",
+                fg="red"
+            )
+            frame.error_label.pack(side='left')
+        else:
+
+            frame.success_label = tk.Label(
+                frame,
+                text='Category added successfully!',
+                font=("Arial", 18),
+                width=25,
+                anchor="w",
+                fg="green"
+            )
+            frame.success_label.pack(side='left')
     else:
         frame.error_label = tk.Label(
             frame,

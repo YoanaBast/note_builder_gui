@@ -1,7 +1,7 @@
 Structure:
 DB: a json file to hold my data
 GUI: the tkinter app is implemented
-content_adder.py: the ContentManager class that handles the backend ops
+content_manager.py: the ContentManager class that handles the backend ops
 html_template.py: my template for adding a category (with empty content by default) with all related placeholders
 index.html: this is the page that is published in https://yoanabast.github.io/note_builder_gui/
 style.css: I don't go there much :)
@@ -27,8 +27,8 @@ Issues encountered and resolved:
 - 'Category already exists' and 'Category added successfully!' were stacking and not going away - created check_cat to delete all labels at the start and apply where needed.
 - Made some helper functions like one to hold the Enter and Back buttons (it only takes a func reference as an arg) to be reused and obey DRY.
 - The dropdown for options that needed to select an existing category was not refreshing upon entering - helper functions used in render_remove_cat, implemented success_label as a flag.
+- Implemented category name validation - no empty strings, allow spaces, SQL injection protection - The pop-up wasn’t opening when there were spaces in variable names, due to the script part. Created a separate placeholder for the name and ID, as ID's in JS do not tolerate spaces.
 
 
 To do:
-- Implement category name validation - no empty strings, allow spaces, SQL injection protection - The pop-up isn’t opening if I use spaces in variable names.
 - Start adding real categories and content
