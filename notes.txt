@@ -33,3 +33,4 @@ Issues encountered and resolved:
 To do:
 - Continue adding real categories and content
 - Add a 'Content added' message in the app
+- Make the page pretty
