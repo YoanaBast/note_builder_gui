@@ -64,3 +64,13 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
+.code-block {
+    font-family: monospace;      /* Use a code-friendly font */
+    white-space: pre-wrap;       /* Preserve spaces, tabs, and newlines */
+    text-align: left;            /* Left-align the text */
+    background-color: #f5f5f5;  /* Optional: light background like a code editor */
+    padding: 10px;               /* Optional: some padding for readability */
+    border-radius: 5px;          /* Optional: rounded corners */
+    overflow-x: auto;            /* Horizontal scroll if content is wide */
+}

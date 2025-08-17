@@ -1,18 +1,6 @@
 {
-    "Test1": {
-        "location": "contents\\Test1.html",
-        "content": "<p>Adding some text. </p>\n<p>And some more. </p>\n"
-    },
-    "Test2": {
-        "location": "contents\\Test2.html",
-        "content": "<p>Hello from cat2!</p>\n<p>Hi!</p>\n"
-    },
-    "reji": {
-        "location": "contents\\reji.html",
-        "content": "<p>hiii</p>\n<p><3</p>\n"
-    },
-    "test1111": {
-        "location": "contents\\test1111.html",
-        "content": ""
+    "for_loop": {
+        "location": "contents\\for_loop.html",
+        "content": "<div style=\"font-family: monospace; white-space: pre-wrap; text-align: left;\">for item in iterable:<br>    if condition:<br>        break  # If this runs, 'else' is skipped<br>else:<br>    print(\"No break occurred\")   # Runs only if the loop wasn't broken</div>"
     }
 }

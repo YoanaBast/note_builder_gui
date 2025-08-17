@@ -1,36 +1,22 @@
 import os
 import re
+import html
 import json
-import textwrap
+from html_template import content_template
+
+
+def extract_block(hc, category_name):
+    pattern = re.compile(
+        rf"<!-- {category_name} -->(.*?)<!-- ENF OF {category_name} -->",
+        re.DOTALL
+    )
+    match = pattern.search(hc)
+    return match.group(0) if match else None  # full block including comments
+
 
 class AddContentToPage:
     DICT_FILE = os.path.join('..', 'DB', 'category_name_file_pairs.json')
-
-    content_template = textwrap.dedent("""\
-        <!-- TITLE -->
-        <div class="grid-item">
-            <button id="openBtn-TITLE">TITLE</button>
-            <div id="myModal-TITLE" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>TITLE</h2>
-                    <p><!--CONTENT-TITLE--></p>
-                </div>
-            </div>
-            <script>
-                const modalTITLE = document.getElementById("myModal-TITLE");
-                const btnTITLE = document.getElementById("openBtn-TITLE");
-                const spanTITLE = modalTITLE.querySelector(".close");
-
-                btnTITLE.onclick = () => modalTITLE.style.display = "block";
-                spanTITLE.onclick = () => modalTITLE.style.display = "none";
-                window.onclick = (event) => {
-                    if(event.target === modalTITLE) modalTITLE.style.display = "none";
-                }
-            </script>
-        </div>
-        <!-- ENF OF TITLE -->
-    """)
+    file_path = os.path.join('..', 'index.html')
 
 
     def __init__(self):
@@ -48,46 +34,59 @@ class AddContentToPage:
 
 
     def add_category(self, category_name):
-        if category_name in self.category_name_content_pairs:
-            return f'Category {category_name} already exists'
-
-        # track category file
         self.category_name_content_pairs[category_name] = {
             "location": os.path.join('contents', f"{category_name}.html"),
             "content": ""
         }
         self.save_pairs()
 
-        main_web = os.path.join('..', 'index.html')
-
-        with open(main_web, 'r') as page:
+        with open(self.file_path, 'r') as page:
             html_content = page.read()
 
-        # replace placeholder in template
-        new_item = self.content_template.replace("TITLE", category_name)
-
-        # insert new grid-item before placeholder
+        new_item = content_template.replace("TITLE", category_name)
         html_content = html_content.replace(
             "<!-- INSERT_CATEGORIES_HERE -->",
             f"{new_item}\n<!-- INSERT_CATEGORIES_HERE -->"
         )
 
-        with open(main_web, 'w') as page:
+        with open(self.file_path, 'w') as page:
             page.write(html_content)
 
-
     def add_content_to_cat(self, category_name, content):
-        self.category_name_content_pairs[category_name]["content"] += f"<p>{content}</p>\n"
+        # Convert tabs and newlines; spaces can remain normal since CSS will preserve them
+        formatted_content = content.replace('\t', '&nbsp;&nbsp;&nbsp;&nbsp;').replace('\n', '<br>')
+
+        # Wrap in a div styled for code, left-aligned
+        formatted_content = (
+            f'<div style="font-family: monospace; white-space: pre-wrap; text-align: left;">'
+            f'{formatted_content}'
+            f'</div>'
+        )
+
+
+        self.category_name_content_pairs[category_name]["content"] = formatted_content
         self.save_pairs()
 
-        file_path = os.path.join('..', 'index.html')
-
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
         placeholder = f"<!--CONTENT-{category_name}-->"
-        html_content = html_content.replace(placeholder, f"<p>{content}</p>\n" + placeholder)
+        html_content = html_content.replace(placeholder, formatted_content + '\n' + placeholder)
 
-        with open(file_path, 'w', encoding='utf-8') as f:
+        with open(self.file_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
+
+    def remove_category(self, cat):
+        self.category_name_content_pairs.pop(cat)
+        self.save_pairs()
+
+        with open(self.file_path, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+
+        block = extract_block(html_content, cat)
+        html_content = html_content.replace(block, '')
+
+        with open(self.file_path, 'w') as page:
+            page.write(html_content)
+
 
