@@ -201,6 +201,140 @@
     </script>
 </div>
 <!-- END OF Printing } in f-string -->
+<!-- SyntaxError: f-string: expecting '}' -->
+<div class="grid-item">
+    <button id="openBtn-SyntaxError__f_string__expecting____">SyntaxError: f-string: expecting '}'</button>
+    <div id="myModal-SyntaxError__f_string__expecting____" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SyntaxError: f-string: expecting '}'</h2>
+            <p><!--START-CONTENT-SyntaxError__f_string__expecting____-->
+<div class="category-content">Use single quotes inside double-quoted f-strings:<br><br>    f"Hello, {'John'}"<br><br>Or use double quotes inside single-quoted f-strings:<br><br>    f'Hello, {"John"}'<br><br>Python gets confused when it sees the same quote type inside and outside — it can’t tell where the string ends.<br>Use single quotes inside double-quoted f-strings:<br><br>Rule applies even in {}, ex:<br>f"You've ordered pizza {self.name} prepared with {", ".join(f'{i}: {q}' for i, q in self.ingredients.items())} and the price will be {self.price}lv."  <br>(this will raise the error still)   </div>
+<!--CONTENT-SyntaxError__f_string__expecting____--></p>
+        </div>
+    </div>
+    <script>
+        const modalSyntaxError__f_string__expecting____ = document.getElementById("myModal-SyntaxError__f_string__expecting____");
+        const btnSyntaxError__f_string__expecting____ = document.getElementById("openBtn-SyntaxError__f_string__expecting____");
+        const spanSyntaxError__f_string__expecting____ = modalSyntaxError__f_string__expecting____.querySelector(".close");
+
+        btnSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "block";
+        spanSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalSyntaxError__f_string__expecting____) modalSyntaxError__f_string__expecting____.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF SyntaxError: f-string: expecting '}' -->
+
+<!-- end=  -->
+<div class="grid-item">
+    <button id="openBtn-end_">end= </button>
+    <div id="myModal-end_" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>end= </h2>
+            <p><!--START-CONTENT-end_--></p>
+            <p><div class="category-content">&nbsp;&nbsp;&nbsp;&nbsp;name = "Alice"<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Hello, {name}", end=' ')<br>&nbsp;&nbsp;&nbsp;&nbsp;print("How are you?")<br><br>&nbsp;&nbsp;&nbsp;&nbsp;#  Output:Hello, Alice How are you?<br><br>&nbsp;&nbsp;&nbsp;&nbsp;# keep it out of the f str<br><br>#  end='\n' is the default behavior of Python’s print() function.</div>
+<!--CONTENT-end_--></p>
+        </div>
+    </div>
+    <script>
+        const modalend_ = document.getElementById("myModal-end_");
+        const btnend_ = document.getElementById("openBtn-end_");
+        const spanend_ = modalend_.querySelector(".close");
+
+        btnend_.onclick = () => modalend_.style.display = "block";
+        spanend_.onclick = () => modalend_.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalend_) modalend_.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF end=  -->
+
+<!-- sep=
+ -->
+<div class="grid-item">
+    <button id="openBtn-sep_">sep=
+</button>
+    <div id="myModal-sep_" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>sep=
+</h2>
+            <p><!--START-CONTENT-sep_--></p>
+            <p><div class="category-content">&nbsp;&nbsp;&nbsp;&nbsp;print(1, 2, 3, sep='-')  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 1-2-3<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;print('apple', 'banana', 'cherry', sep='\n')<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;apple<br>&nbsp;&nbsp;&nbsp;&nbsp;banana<br>&nbsp;&nbsp;&nbsp;&nbsp;cherry<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = ['apple', 'banana', 'cherry']<br>&nbsp;&nbsp;&nbsp;&nbsp;print(*fruits, sep=', ')<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: apple, banana, cherry<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = {'apple': 5, 'banana': 3, 'cherry': 7}<br>&nbsp;&nbsp;&nbsp;&nbsp;items = [f"{key}:{value}" for key, value in fruits.items()]  # Create a list of "key:value" strings<br>&nbsp;&nbsp;&nbsp;&nbsp;print(*items, sep=', ', end=' ENDED HERE\n')<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: apple:5, banana:3, cherry:7 ENDED HERE<br><br>&nbsp;&nbsp;&nbsp;&nbsp;items = [f"{k}:{v}" for k, v in fruits.items()]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(*items, sep='\n')<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: <br>&nbsp;&nbsp;&nbsp;&nbsp;apple:5<br>&nbsp;&nbsp;&nbsp;&nbsp;banana:3<br>&nbsp;&nbsp;&nbsp;&nbsp;cherry:7</div>
+<!--CONTENT-sep_--></p>
+        </div>
+    </div>
+    <script>
+        const modalsep_ = document.getElementById("myModal-sep_");
+        const btnsep_ = document.getElementById("openBtn-sep_");
+        const spansep_ = modalsep_.querySelector(".close");
+
+        btnsep_.onclick = () => modalsep_.style.display = "block";
+        spansep_.onclick = () => modalsep_.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalsep_) modalsep_.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF sep=
+ -->
+
+<!-- unpacing operator * -->
+<div class="grid-item">
+    <button id="openBtn-unpacing_operator__">unpacing operator *</button>
+    <div id="myModal-unpacing_operator__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>unpacing operator *</h2>
+            <p><!--START-CONTENT-unpacing_operator__--></p>
+            <p><div class="category-content">The * in print(*fruits, sep=', ') is the unpacking operator.<br><br>Without *:<br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = ['apple', 'banana', 'cherry']<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['apple', 'banana', 'cherry']<br>#  It prints the list as a list, with brackets and quotes.<br><br>With *:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: apple banana cherry<br><br>#  The * unpacks the list, so print receives the items as if you had written:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('apple', 'banana', 'cherry')</div>
+<!--CONTENT-unpacing_operator__--></p>
+        </div>
+    </div>
+    <script>
+        const modalunpacing_operator__ = document.getElementById("myModal-unpacing_operator__");
+        const btnunpacing_operator__ = document.getElementById("openBtn-unpacing_operator__");
+        const spanunpacing_operator__ = modalunpacing_operator__.querySelector(".close");
+
+        btnunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "block";
+        spanunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalunpacing_operator__) modalunpacing_operator__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF unpacing operator * -->
+
+<!-- .join() -->
+<div class="grid-item">
+    <button id="openBtn-_join__">.join()</button>
+    <div id="myModal-_join__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>.join()</h2>
+            <p><!--START-CONTENT-_join__--></p>
+            <p><div class="category-content">#  joins elements of an iterable (like a list of strings) into a single string.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;numbers = [1, 2, 4, 7, 14]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(" + ".join(map(str, numbers)))<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 1 + 2 + 4 + 7 + 14<br># str.join() only works with strings, so we map to str<br><br>&nbsp;&nbsp;&nbsp;&nbsp;words = ['Python', 'is', 'awesome']<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('\n'.join(words))<br>&nbsp;&nbsp;&nbsp;&nbsp;Python<br>&nbsp;&nbsp;&nbsp;&nbsp;is<br>&nbsp;&nbsp;&nbsp;&nbsp;Awesome<br><br>&nbsp;&nbsp;&nbsp;&nbsp;word = "hello"<br>&nbsp;&nbsp;&nbsp;&nbsp;print(', '.join(word))<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: h, e, l, l, o<br><br>&nbsp;&nbsp;&nbsp;&nbsp;data = {'a': 1, 'b': 2, 'c': 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;print(', '.join(data.keys()))<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: a, b, c<br></div>
+<!--CONTENT-_join__--></p>
+        </div>
+    </div>
+    <script>
+        const modal_join__ = document.getElementById("myModal-_join__");
+        const btn_join__ = document.getElementById("openBtn-_join__");
+        const span_join__ = modal_join__.querySelector(".close");
+
+        btn_join__.onclick = () => modal_join__.style.display = "block";
+        span_join__.onclick = () => modal_join__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_join__) modal_join__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF .join() -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
