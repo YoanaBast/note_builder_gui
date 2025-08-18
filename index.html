@@ -217,7 +217,6 @@
         const modalSyntaxError__f_string__expecting____ = document.getElementById("myModal-SyntaxError__f_string__expecting____");
         const btnSyntaxError__f_string__expecting____ = document.getElementById("openBtn-SyntaxError__f_string__expecting____");
         const spanSyntaxError__f_string__expecting____ = modalSyntaxError__f_string__expecting____.querySelector(".close");
-
         btnSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "block";
         spanSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "none";
         window.onclick = (event) => {
@@ -226,7 +225,6 @@
     </script>
 </div>
 <!-- END OF SyntaxError: f-string: expecting '}' -->
-
 <!-- end=  -->
 <div class="grid-item">
     <button id="openBtn-end_">end= </button>
@@ -243,7 +241,6 @@
         const modalend_ = document.getElementById("myModal-end_");
         const btnend_ = document.getElementById("openBtn-end_");
         const spanend_ = modalend_.querySelector(".close");
-
         btnend_.onclick = () => modalend_.style.display = "block";
         spanend_.onclick = () => modalend_.style.display = "none";
         window.onclick = (event) => {
@@ -252,7 +249,6 @@
     </script>
 </div>
 <!-- END OF end=  -->
-
 <!-- sep=
  -->
 <div class="grid-item">
@@ -272,7 +268,6 @@
         const modalsep_ = document.getElementById("myModal-sep_");
         const btnsep_ = document.getElementById("openBtn-sep_");
         const spansep_ = modalsep_.querySelector(".close");
-
         btnsep_.onclick = () => modalsep_.style.display = "block";
         spansep_.onclick = () => modalsep_.style.display = "none";
         window.onclick = (event) => {
@@ -282,7 +277,6 @@
 </div>
 <!-- END OF sep=
  -->
-
 <!-- unpacing operator * -->
 <div class="grid-item">
     <button id="openBtn-unpacing_operator__">unpacing operator *</button>
@@ -299,7 +293,6 @@
         const modalunpacing_operator__ = document.getElementById("myModal-unpacing_operator__");
         const btnunpacing_operator__ = document.getElementById("openBtn-unpacing_operator__");
         const spanunpacing_operator__ = modalunpacing_operator__.querySelector(".close");
-
         btnunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "block";
         spanunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "none";
         window.onclick = (event) => {
@@ -308,7 +301,6 @@
     </script>
 </div>
 <!-- END OF unpacing operator * -->
-
 <!-- .join() -->
 <div class="grid-item">
     <button id="openBtn-_join__">.join()</button>
@@ -325,7 +317,6 @@
         const modal_join__ = document.getElementById("myModal-_join__");
         const btn_join__ = document.getElementById("openBtn-_join__");
         const span_join__ = modal_join__.querySelector(".close");
-
         btn_join__.onclick = () => modal_join__.style.display = "block";
         span_join__.onclick = () => modal_join__.style.display = "none";
         window.onclick = (event) => {
@@ -334,6 +325,135 @@
     </script>
 </div>
 <!-- END OF .join() -->
+<!-- Concatenation  -->
+<div class="grid-item">
+    <button id="openBtn-Concatenation">Concatenation </button>
+    <div id="myModal-Concatenation" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Concatenation </h2>
+            <p><!--START-CONTENT-Concatenation--></p>
+            <p><div class="category-content"># joining strings together to form one longer string<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print('100% Complete!' + "\n" + '[%%%%%%%%%%]')<br>&nbsp;&nbsp;&nbsp;&nbsp;100% Complete!<br>&nbsp;&nbsp;&nbsp;&nbsp;[%%%%%%%%%%]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print('ba' + 'na' + 'na')<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: banana<br><br>&nbsp;&nbsp;&nbsp;&nbsp;return (f"Hotel {self.name} has {self.guests} total guests"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;           f"\nFree rooms: {', '.join(map(str, free))}"
+        <br>                           f"\nTaken rooms: {', '.join(map(str, taken))}")<br><br>• Each line inside the parentheses is an f-string (formatted string literal).<br>• When you put string literals one after another inside parentheses, Python automatically concatenates them into one string.<br>• So this is the same as writing:<br>&nbsp;&nbsp;&nbsp;&nbsp;return (f"Hotel {self.name} has {self.guests} total guests" + f"\nFree rooms: {', '.join(map(str, free))}" + f"\nTaken rooms: {', '.join(map(str, taken))}")<br></div>
+<!--CONTENT-Concatenation--></p>
+        </div>
+    </div>
+    <script>
+        const modalConcatenation = document.getElementById("myModal-Concatenation");
+        const btnConcatenation = document.getElementById("openBtn-Concatenation");
+        const spanConcatenation = modalConcatenation.querySelector(".close");
+        btnConcatenation.onclick = () => modalConcatenation.style.display = "block";
+        spanConcatenation.onclick = () => modalConcatenation.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalConcatenation) modalConcatenation.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Concatenation  -->
+<!-- string formatting for numbers
+ -->
+<div class="grid-item">
+    <button id="openBtn-string_formatting_for_numbers">string formatting for numbers
+</button>
+    <div id="myModal-string_formatting_for_numbers" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>string formatting for numbers
+</h2>
+            <p><!--START-CONTENT-string_formatting_for_numbers--></p>
+            <p><div class="category-content">:.2f<br>________________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;n = 35.75432345<br>&nbsp;&nbsp;&nbsp;&nbsp;formatted_number = "%.2f" % n<br>&nbsp;&nbsp;&nbsp;&nbsp;print(formatted_number)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: '35.75'  <br>&nbsp;&nbsp;&nbsp;&nbsp;# it is a str now<br><br>&nbsp;&nbsp;&nbsp;&nbsp;price = 3.14159<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Price: {price:.2f}")<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Price: 3.14  <br>&nbsp;&nbsp;&nbsp;&nbsp;# all is 1 str<br><br><br>:02d<br>________________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;class Time:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, hours):<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.hours = hours<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def formatted_hours(self):<br>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return f"{self.hours:02d}"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;t = Time(5)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(t.formatted_hours())  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 05<br><br><br>:02d → the format specification:<br>0 → pad with zeros<br>2 → width = 2 characters<br>d → integer (decimal)<br><br>Example:<br>&nbsp;&nbsp;&nbsp;&nbsp;hours = 5<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"{hours:02d}")<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 05<br><br>&nbsp;&nbsp;&nbsp;&nbsp;hours = 12<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"{hours:02d}")<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 12<br><br>So :02d means:<br>print as a 2-digit integer, left-padded with zeros if necessary.<br></div>
+<div class="category-content"><br>#  the result is always a string, no matter what type self.hours is.</div>
+<!--CONTENT-string_formatting_for_numbers--></p>
+        </div>
+    </div>
+    <script>
+        const modalstring_formatting_for_numbers = document.getElementById("myModal-string_formatting_for_numbers");
+        const btnstring_formatting_for_numbers = document.getElementById("openBtn-string_formatting_for_numbers");
+        const spanstring_formatting_for_numbers = modalstring_formatting_for_numbers.querySelector(".close");
+        btnstring_formatting_for_numbers.onclick = () => modalstring_formatting_for_numbers.style.display = "block";
+        spanstring_formatting_for_numbers.onclick = () => modalstring_formatting_for_numbers.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalstring_formatting_for_numbers) modalstring_formatting_for_numbers.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF string formatting for numbers
+ -->
+<!-- \n in f-string -->
+<div class="grid-item">
+    <button id="openBtn-_n_in_f_string">\n in f-string</button>
+    <div id="myModal-_n_in_f_string" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>\n in f-string</h2>
+            <p><!--START-CONTENT-_n_in_f_string--></p>
+            <p><div class="category-content"><br># You can't use \n (or any backslash) inside {} in an f-string. This is invalid: &nbsp;&nbsp;&nbsp;&nbsp;f"{\n'.join(...)}"<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Section {self.name}: {'\n'.join(t.details() for t in self.tasks)}"<br><br>Fix:<br>Move the expression outside:<br>&nbsp;&nbsp;&nbsp;&nbsp;joined = '\n'.join(t.details() for t in self.tasks)<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Section {self.name}: {joined}"<br></div>
+<!--CONTENT-_n_in_f_string--></p>
+        </div>
+    </div>
+    <script>
+        const modal_n_in_f_string = document.getElementById("myModal-_n_in_f_string");
+        const btn_n_in_f_string = document.getElementById("openBtn-_n_in_f_string");
+        const span_n_in_f_string = modal_n_in_f_string.querySelector(".close");
+        btn_n_in_f_string.onclick = () => modal_n_in_f_string.style.display = "block";
+        span_n_in_f_string.onclick = () => modal_n_in_f_string.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_n_in_f_string) modal_n_in_f_string.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF \n in f-string -->
+<!-- whitespaces, .strip() -->
+<div class="grid-item">
+    <button id="openBtn-whitespaces___strip__">whitespaces, .strip()</button>
+    <div id="myModal-whitespaces___strip__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>whitespaces, .strip()</h2>
+            <p><!--START-CONTENT-whitespaces___strip__--></p>
+            <p><div class="category-content">#  If a string is empty or contains only white spaces, calling .strip() on it will return an empty string.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;value = "   "     # only spaces<br>&nbsp;&nbsp;&nbsp;&nbsp;value.strip()     # returns ""<br><br>#  So, to check whether a string is empty or only spaces:<br>&nbsp;&nbsp;&nbsp;&nbsp;if not value.strip():<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise ValueError("Name cannot be empty or just whitespace!")<br><br>#  In Python, the empty string "" is considered falsy, which means it behaves like False in a boolean context, hence 'if not' can be used.</div>
+<!--CONTENT-whitespaces___strip__--></p>
+        </div>
+    </div>
+    <script>
+        const modalwhitespaces___strip__ = document.getElementById("myModal-whitespaces___strip__");
+        const btnwhitespaces___strip__ = document.getElementById("openBtn-whitespaces___strip__");
+        const spanwhitespaces___strip__ = modalwhitespaces___strip__.querySelector(".close");
+        btnwhitespaces___strip__.onclick = () => modalwhitespaces___strip__.style.display = "block";
+        spanwhitespaces___strip__.onclick = () => modalwhitespaces___strip__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalwhitespaces___strip__) modalwhitespaces___strip__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF whitespaces, .strip() -->
+<!-- str(), repr(), !r, !s -->
+<div class="grid-item">
+    <button id="openBtn-str____repr_____r___s">str(), repr(), !r, !s</button>
+    <div id="myModal-str____repr_____r___s" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>str(), repr(), !r, !s</h2>
+            <p><!--START-CONTENT-str____repr_____r___s--></p>
+            <p><div class="category-content">    &nbsp;&nbsp;&nbsp;&nbsp;return '{' + ', '.join(f"{kvp[0]!r}: {kvp[1]!r}" for kvp in self.array) + '}'<br># the !r in an f-string is a conversion flag that tells Python to use the repr() of the expression instead of str().<br><br>&nbsp;&nbsp;&nbsp;&nbsp;{'name': 'Peter', 'age': 25}<br>#Notice that !r includes the quotes around "Peter", because that’s how repr() shows strings.<br><br><br>• !r → use repr()<br>f"{x!r}"&nbsp;&nbsp;&nbsp;&nbsp;Calls repr(x) inside f-string<br><br>• {} (default) → use str()<br>f"{x!s}"&nbsp;&nbsp;&nbsp;&nbsp;Calls str(x) inside f-string&nbsp;&nbsp;&nbsp;&nbsp;<br>f"{x}"&nbsp;&nbsp;&nbsp;&nbsp;Calls str(x) inside f-string&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>str() → Meant to return a “nice” or human-readable representation of an object. Used by print() by default.<br>&nbsp;&nbsp;&nbsp;&nbsp;s = "Hello\nWorld"<br>&nbsp;&nbsp;&nbsp;&nbsp;print(str(s))   <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;Hello<br>&nbsp;&nbsp;&nbsp;&nbsp;World<br>#  Notice that the newline is interpreted; it prints on two lines.<br><br>repr() → Meant to return an “official” or unambiguous representation of an object. Shows all escape characters, quotes, etc.<br>&nbsp;&nbsp;&nbsp;&nbsp;s = "Hello\nWorld"<br>&nbsp;&nbsp;&nbsp;&nbsp;print(repr(s))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 'Hello\nWorld'<br>#  Notice the \n is visible, and quotes are included.<br><br></div>
+<!--CONTENT-str____repr_____r___s--></p>
+        </div>
+    </div>
+    <script>
+        const modalstr____repr_____r___s = document.getElementById("myModal-str____repr_____r___s");
+        const btnstr____repr_____r___s = document.getElementById("openBtn-str____repr_____r___s");
+        const spanstr____repr_____r___s = modalstr____repr_____r___s.querySelector(".close");
+
+        btnstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "block";
+        spanstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalstr____repr_____r___s) modalstr____repr_____r___s.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF str(), repr(), !r, !s -->
 
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
