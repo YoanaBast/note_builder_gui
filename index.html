@@ -574,6 +574,35 @@
     </script>
 </div>
 <!-- END OF .remove(), .pop(), .popitem() -->
+<!-- List vs Array
+ -->
+<div class="grid-item">
+    <button id="openBtn-List_vs_Array">List vs Array
+</button>
+    <div id="myModal-List_vs_Array" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>List vs Array
+</h2>
+            <p><!--START-CONTENT-List_vs_Array--></p>
+            <p><!--CONTENT-List_vs_Array--></p>
+        </div>
+    </div>
+    <script>
+        const modalList_vs_Array = document.getElementById("myModal-List_vs_Array");
+        const btnList_vs_Array = document.getElementById("openBtn-List_vs_Array");
+        const spanList_vs_Array = modalList_vs_Array.querySelector(".close");
+
+        btnList_vs_Array.onclick = () => modalList_vs_Array.style.display = "block";
+        spanList_vs_Array.onclick = () => modalList_vs_Array.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalList_vs_Array) modalList_vs_Array.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF List vs Array
+ -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
