@@ -277,30 +277,6 @@
 </div>
 <!-- END OF sep=
  -->
-<!-- unpacing operator * -->
-<div class="grid-item">
-    <button id="openBtn-unpacing_operator__">unpacing operator *</button>
-    <div id="myModal-unpacing_operator__" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>unpacing operator *</h2>
-            <p><!--START-CONTENT-unpacing_operator__--></p>
-            <p><div class="category-content">The * in print(*fruits, sep=', ') is the unpacking operator.<br><br>Without *:<br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = ['apple', 'banana', 'cherry']<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['apple', 'banana', 'cherry']<br>#  It prints the list as a list, with brackets and quotes.<br><br>With *:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: apple banana cherry<br><br>#  The * unpacks the list, so print receives the items as if you had written:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('apple', 'banana', 'cherry')</div>
-<!--CONTENT-unpacing_operator__--></p>
-        </div>
-    </div>
-    <script>
-        const modalunpacing_operator__ = document.getElementById("myModal-unpacing_operator__");
-        const btnunpacing_operator__ = document.getElementById("openBtn-unpacing_operator__");
-        const spanunpacing_operator__ = modalunpacing_operator__.querySelector(".close");
-        btnunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "block";
-        spanunpacing_operator__.onclick = () => modalunpacing_operator__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalunpacing_operator__) modalunpacing_operator__.style.display = "none";
-        }
-    </script>
-</div>
-<!-- END OF unpacing operator * -->
 <!-- .join() -->
 <div class="grid-item">
     <button id="openBtn-_join__">.join()</button>
@@ -445,7 +421,6 @@
         const modalstr____repr_____r___s = document.getElementById("myModal-str____repr_____r___s");
         const btnstr____repr_____r___s = document.getElementById("openBtn-str____repr_____r___s");
         const spanstr____repr_____r___s = modalstr____repr_____r___s.querySelector(".close");
-
         btnstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "block";
         spanstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "none";
         window.onclick = (event) => {
@@ -454,7 +429,151 @@
     </script>
 </div>
 <!-- END OF str(), repr(), !r, !s -->
-
+<!-- unpacking operator * -->
+<div class="grid-item">
+    <button id="openBtn-unpacking_operator__">unpacking operator *</button>
+    <div id="myModal-unpacking_operator__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>unpacking operator *</h2>
+            <p><!--START-CONTENT-unpacking_operator__--></p>
+            <p><div class="category-content">The * in print(*fruits, sep=', ') is the unpacking operator.<br><br>Without *:<br>    fruits = ['apple', 'banana', 'cherry']<br>    print(fruits)<br>    # Output: ['apple', 'banana', 'cherry']<br>#  It prints the list as a list, with brackets and quotes.<br><br>With *:<br>    print(fruits)<br>    # Output: apple banana cherry<br><br>#  The * unpacks the list, so print receives the items as if you had written:<br>    print('apple', 'banana', 'cherry')</div>
+<!--CONTENT-unpacking_operator__--></p>
+        </div>
+    </div>
+    <script>
+        const modalunpacking_operator__ = document.getElementById("myModal-unpacking_operator__");
+        const btnunpacking_operator__ = document.getElementById("openBtn-unpacking_operator__");
+        const spanunpacking_operator__ = modalunpacking_operator__.querySelector(".close");
+        btnunpacking_operator__.onclick = () => modalunpacking_operator__.style.display = "block";
+        spanunpacking_operator__.onclick = () => modalunpacking_operator__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalunpacking_operator__) modalunpacking_operator__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF unpacking operator * -->
+<!-- Sets  -->
+<div class="grid-item">
+    <button id="openBtn-Sets">Sets </button>
+    <div id="myModal-Sets" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sets </h2>
+            <p><!--START-CONTENT-Sets--></p>
+            <p><div class="category-content">{} → empty dictionary, not set.<br>set() → empty set.<br>{1,} → a set with one element (the comma is optional but allowed for single-element sets).<br><br>1. Union (| or .union())<br>&nbsp;&nbsp;&nbsp;&nbsp;A = {1, 2, 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;B = {3, 4, 5}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A | B         # {1, 2, 3, 4, 5}<br>&nbsp;&nbsp;&nbsp;&nbsp;A.union(B)    # {1, 2, 3, 4, 5}<br><br>2. Intersection (& or .intersection())<br>&nbsp;&nbsp;&nbsp;&nbsp;A = {1, 2, 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;B = {3, 4, 5}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A & B              # {3}<br>&nbsp;&nbsp;&nbsp;&nbsp;A.intersection(B)  # {3}<br><br>3. Difference (- or .difference())<br>&nbsp;&nbsp;&nbsp;&nbsp;A = {1, 2, 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;B = {3, 4, 5}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A - B             # {1, 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;B - A             # {4, 5}<br>&nbsp;&nbsp;&nbsp;&nbsp;A.difference(B)   # {1, 2}<br><br>4. Symmetric Difference (^ or .symmetric_difference())<br>&nbsp;&nbsp;&nbsp;&nbsp;A = {1, 2, 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;B = {3, 4, 5}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A ^ B                          # {1, 2, 4, 5}<br>&nbsp;&nbsp;&nbsp;&nbsp;A.symmetric_difference(B)     # {1, 2, 4, 5}<br><br>5. Subset (<=, <) & Superset (>=, >)<br>&nbsp;&nbsp;&nbsp;&nbsp;A = {1, 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;B = {1, 2, 3}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A <= B           # True (A is a subset of B)<br>&nbsp;&nbsp;&nbsp;&nbsp;B >= A           # True (B is a superset of A)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(A < B)  # True<br>&nbsp;&nbsp;&nbsp;&nbsp;print(B > A)  # True<br><br>&nbsp;&nbsp;&nbsp;&nbsp;A.issubset(B)    # True<br>&nbsp;&nbsp;&nbsp;&nbsp;B.issuperset(A)  # True<br></div>
+<!--CONTENT-Sets--></p>
+        </div>
+    </div>
+    <script>
+        const modalSets = document.getElementById("myModal-Sets");
+        const btnSets = document.getElementById("openBtn-Sets");
+        const spanSets = modalSets.querySelector(".close");
+        btnSets.onclick = () => modalSets.style.display = "block";
+        spanSets.onclick = () => modalSets.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalSets) modalSets.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Sets  -->
+<!-- Lists -->
+<div class="grid-item">
+    <button id="openBtn-Lists">Lists</button>
+    <div id="myModal-Lists" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Lists</h2>
+            <p><!--START-CONTENT-Lists--></p>
+            <p><div class="category-content"># list[index] = calls the value at that position; the first position is 0 and the last is (len(list) - 1)<br>&nbsp;&nbsp;&nbsp;&nbsp;letters = ['a', 'b', 'c', 'd']<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(letters[0])  # 'a'  → first element<br>&nbsp;&nbsp;&nbsp;&nbsp;print(letters[2])  # 'c'  → third element<br>&nbsp;&nbsp;&nbsp;&nbsp;print(letters[-1]) # 'd'  → last element using negative index<br><br># list.index(letter) = calls the index<br>&nbsp;&nbsp;&nbsp;&nbsp;letters = ['a', 'b', 'c', 'd']<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(letters.index('b'))  # 1  → 'b' is at index 1<br>&nbsp;&nbsp;&nbsp;&nbsp;print(letters.index('d'))  # 3  → 'd' is at index 3<br><br><br>>> Slice Lists:<br>&nbsp;&nbsp;&nbsp;&nbsp;start = [10, 20, 30, 40, 50]<br>&nbsp;&nbsp;&nbsp;&nbsp;middle = 2<br><br>&nbsp;&nbsp;&nbsp;&nbsp;left = start[0:middle + 1]    # Elements from index 0 up to middle (inclusive)<br>&nbsp;&nbsp;&nbsp;&nbsp;right = start[middle + 1:]    # Elements from index middle+1 to the end<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(left)   # [10, 20, 30]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(right)  # [40, 50]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;# does not work for deque, needs to be converted to list<br><br><br>>> List Comprehension:<br><br>[expression for item in iterable if condition]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;squares = [x**2 for x in range(5)]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(squares)  # Output: [0, 1, 4, 9, 16]<br><br><br>>> Replace:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = ['apple', 'banana', 'cherry']<br>&nbsp;&nbsp;&nbsp;&nbsp;fruits[1] = 'blueberry'<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['apple', 'blueberry', 'cherry']<br>#  in Python, replacing an element in a list must be done using its index. Lists are ordered and mutable, so you can assign a new value to a specific position.<br><br><br>>> Reference object:<br><br>### shallow copy<br>&nbsp;&nbsp;&nbsp;&nbsp;list_a = [1, 2, 3]<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b = list_a[:]<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b[0] = 5<br>&nbsp;&nbsp;&nbsp;&nbsp;print(list_a) # Output:  [1, 2, 3]<br>`list_b = list_a[:]` creates a shallow copy of `list_a`. `list_b` is now a new object, so modifying it does not affect the original `list_a`.<br><br><br>### reference<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b = list_a<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b[0] = 5<br>&nbsp;&nbsp;&nbsp;&nbsp;print(list_a)  # Output: [5, 2, 3]<br>list_b would be just another reference to the same list object. Modifying list_b would also change list_a<br><br><br>### shallow copy - nested<br>&nbsp;&nbsp;&nbsp;&nbsp;list_a = [[1, 2], [3, 4]]<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b = list_a[:]   # shallow copy<br>&nbsp;&nbsp;&nbsp;&nbsp;list_b[0][0] = 9<br>&nbsp;&nbsp;&nbsp;&nbsp;print(list_a)  # Output: [[9, 2], [3, 4]]<br>Shallow copies only copy the top-level list. If the list contains nested lists or mutable objects, those inner objects are shared. So, changes to nested objects will affect the original, even with a shallow copy.<br></div>
+<!--CONTENT-Lists--></p>
+        </div>
+    </div>
+    <script>
+        const modalLists = document.getElementById("myModal-Lists");
+        const btnLists = document.getElementById("openBtn-Lists");
+        const spanLists = modalLists.querySelector(".close");
+        btnLists.onclick = () => modalLists.style.display = "block";
+        spanLists.onclick = () => modalLists.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalLists) modalLists.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Lists -->
+<!-- input transformations -->
+<div class="grid-item">
+    <button id="openBtn-input_transformations">input transformations</button>
+    <div id="myModal-input_transformations" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>input transformations</h2>
+            <p><!--START-CONTENT-input_transformations--></p>
+            <p><div class="category-content">str -> list[str]:<br>&nbsp;&nbsp;&nbsp;&nbsp;name = 'Yoana'<br>&nbsp;&nbsp;&nbsp;&nbsp;name_list = list(name)<br>&nbsp;&nbsp;&nbsp;&nbsp;['Y', 'o', 'a', 'n', 'a']<br><br>str -> list[int]:<br>&nbsp;&nbsp;&nbsp;&nbsp;nums = '1, 2, 3, 4, 5'<br>&nbsp;&nbsp;&nbsp;&nbsp;nums_list = [int(item) for item in nums.split(', ')]<br>&nbsp;&nbsp;&nbsp;&nbsp;[1, 2, 3, 4, 5]  # list of integers<br><br>&nbsp;&nbsp;&nbsp;&nbsp;num = 46473829<br>&nbsp;&nbsp;&nbsp;&nbsp;print((list(map(int, str(num)))))<br>&nbsp;&nbsp;&nbsp;&nbsp;[4, 6, 4, 7, 3, 8, 2, 9] # list of integers<br><br>lowercase<br>&nbsp;&nbsp;&nbsp;&nbsp;x = (input().lower().split(' '))<br>&nbsp;&nbsp;&nbsp;&nbsp;SCREAMING IN CAPS LOCK<br>&nbsp;&nbsp;&nbsp;&nbsp;['screaming', 'in', 'caps', 'lock']</div>
+<!--CONTENT-input_transformations--></p>
+        </div>
+    </div>
+    <script>
+        const modalinput_transformations = document.getElementById("myModal-input_transformations");
+        const btninput_transformations = document.getElementById("openBtn-input_transformations");
+        const spaninput_transformations = modalinput_transformations.querySelector(".close");
+        btninput_transformations.onclick = () => modalinput_transformations.style.display = "block";
+        spaninput_transformations.onclick = () => modalinput_transformations.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalinput_transformations) modalinput_transformations.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF input transformations -->
+<!-- .split() -->
+<div class="grid-item">
+    <button id="openBtn-_split__">.split()</button>
+    <div id="myModal-_split__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>.split()</h2>
+            <p><!--START-CONTENT-_split__--></p>
+            <p><div class="category-content">.split() is a string method.<br><br>It splits a string into a list of substrings based on a separator.<br><br>By default, the separator is any whitespace (spaces, tabs, newlines).<br><br>&nbsp;&nbsp;&nbsp;&nbsp;text = "Hello world Python"<br>&nbsp;&nbsp;&nbsp;&nbsp;words = text.split()<br>&nbsp;&nbsp;&nbsp;&nbsp;print(words)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['Hello', 'world', 'Python']<br><br><br>Using a custom separator<br>You can pass a string as the separator:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;text = "apple,banana,cherry"<br>&nbsp;&nbsp;&nbsp;&nbsp;fruits = text.split(",")<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruits)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['apple', 'banana', 'cherry']<br><br><br>Limiting the number of splits<br>You can also limit how many splits are made using the maxsplit argument:<br>&nbsp;&nbsp;&nbsp;&nbsp;text = "one two three four"<br>&nbsp;&nbsp;&nbsp;&nbsp;print(text.split(maxsplit=2))<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ['one', 'two', 'three four']</div>
+<!--CONTENT-_split__--></p>
+        </div>
+    </div>
+    <script>
+        const modal_split__ = document.getElementById("myModal-_split__");
+        const btn_split__ = document.getElementById("openBtn-_split__");
+        const span_split__ = modal_split__.querySelector(".close");
+        btn_split__.onclick = () => modal_split__.style.display = "block";
+        span_split__.onclick = () => modal_split__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_split__) modal_split__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF .split() -->
+<!-- .remove(), .pop(), .popitem() -->
+<div class="grid-item">
+    <button id="openBtn-_remove_____pop_____popitem__">.remove(), .pop(), .popitem()</button>
+    <div id="myModal-_remove_____pop_____popitem__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>.remove(), .pop(), .popitem()</h2>
+            <p><!--START-CONTENT-_remove_____pop_____popitem__--></p>
+            <p><div class="category-content">>>> .pop()<br><br>Works on lists (and also dictionaries, but differently).<br>Removes and returns an element at a given index. If no index is given, it removes the last element at (index = -1)<br><br>    lst = [10, 20, 30, 40]<br><br>    # Pop last element<br>    x = lst.pop()<br>    print(x)   # 40<br>    print(lst) # [10, 20, 30]<br><br>    # Pop element at index 1<br>    y = lst.pop(1)<br>    print(y)   # 20<br>    print(lst) # [10, 30]<br><br>>>> .pop() with dictionaries:<br><br>    d = {'a': 1, 'b': 2}<br>    value = d.pop('a')<br>    print(value) # 1<br>    print(d)     # {'b': 2}<br>For dicts, .pop(key) removes the key and returns its value.<br><br><br>>>> .popitem()<br><br>Removes the last inserted key-value pair (or first if last=False).<br>Designed specifically for “pop the last entry” without needing the key:<br>    d = {'a': 1, 'b': 2, 'c': 3}<br><br>    # Remove the first inserted item<br>    first_item = d.popitem(last=False)<br>    print(first_item)  # ('a', 1)<br>    print(d)           # {'b': 2, 'c': 3}<br><br>    # Remove the last inserted item<br>    last_item = d.popitem()  # last=True by default<br>    print(last_item)  # ('c', 3)<br>    print(d)          # {'b': 2}<br><br>In Python 3.7+, dictionaries preserve insertion order, so you can pop the “last key” using .popitem(). The reason is that .pop() in a dict requires you to specify a key. Unlike lists, dictionaries aren’t indexed by position, they are keyed collections. You cannot just call .pop() with no arguments like you do for a list, because “the last item” isn’t inherently known to the method—it’s keyed, not indexed.<br><br><br>.remove()<br>Works only on lists.<br>Removes the first occurrence of a specific value.<br>Does not return the value.<br>    lst = [10, 20, 30, 20]<br>    lst.remove(20)<br>    print(lst)  # [10, 30, 20]<br>#  Removes the first 20, not all of them.</div>
+<div class="category-content"><br>To remove all occurrences:<br>&nbsp;&nbsp;&nbsp;&nbsp;lst = [1, 2, 3, 2, 4, 2]<br>&nbsp;&nbsp;&nbsp;&nbsp;while 2 in lst:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lst.remove(2)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(lst)  # [1, 3, 4]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;lst = [1, 2, 3, 2, 4, 2]<br>&nbsp;&nbsp;&nbsp;&nbsp;lst = [x for x in lst if x != 2]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(lst)  # [1, 3, 4]<br></div>
+<!--CONTENT-_remove_____pop_____popitem__--></p>
+        </div>
+    </div>
+    <script>
+        const modal_remove_____pop_____popitem__ = document.getElementById("myModal-_remove_____pop_____popitem__");
+        const btn_remove_____pop_____popitem__ = document.getElementById("openBtn-_remove_____pop_____popitem__");
+        const span_remove_____pop_____popitem__ = modal_remove_____pop_____popitem__.querySelector(".close");
+        btn_remove_____pop_____popitem__.onclick = () => modal_remove_____pop_____popitem__.style.display = "block";
+        span_remove_____pop_____popitem__.onclick = () => modal_remove_____pop_____popitem__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_remove_____pop_____popitem__) modal_remove_____pop_____popitem__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF .remove(), .pop(), .popitem() -->
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
