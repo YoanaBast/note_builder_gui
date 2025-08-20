@@ -13,15 +13,7 @@ content_template = textwrap.dedent("""\
         </div>
     </div>
     <script>
-        const modalTITLE_ID = document.getElementById("myModal-TITLE_ID");
-        const btnTITLE_ID = document.getElementById("openBtn-TITLE_ID");
-        const spanTITLE_ID = modalTITLE_ID.querySelector(".close");
-
-        btnTITLE_ID.onclick = () => modalTITLE_ID.style.display = "block";
-        spanTITLE_ID.onclick = () => modalTITLE_ID.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalTITLE_ID) modalTITLE_ID.style.display = "none";
-        }
+        setupModal("myModal-TITLE_ID", "openBtn-TITLE_ID");
     </script>
 </div>
 <!-- END OF TITLE_NAME -->

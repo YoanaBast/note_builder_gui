@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+      <script src="modal.js"></script>
+
   <h1>Explore Python and CS topics here:</h1>
   <div id="grid">
 <!-- GitHub -->
@@ -22,14 +24,7 @@
         </div>
     </div>
     <script>
-        const modalGitHub = document.getElementById("myModal-GitHub");
-        const btnGitHub = document.getElementById("openBtn-GitHub");
-        const spanGitHub = modalGitHub.querySelector(".close");
-        btnGitHub.onclick = () => modalGitHub.style.display = "block";
-        spanGitHub.onclick = () => modalGitHub.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalGitHub) modalGitHub.style.display = "none";
-        }
+        setupModal("myModal-GitHub", "openBtn-GitHub");
     </script>
 </div>
 <!-- END OF GitHub -->
@@ -46,14 +41,7 @@
         </div>
     </div>
     <script>
-        const modalSlice_Notation = document.getElementById("myModal-Slice_Notation");
-        const btnSlice_Notation = document.getElementById("openBtn-Slice_Notation");
-        const spanSlice_Notation = modalSlice_Notation.querySelector(".close");
-        btnSlice_Notation.onclick = () => modalSlice_Notation.style.display = "block";
-        spanSlice_Notation.onclick = () => modalSlice_Notation.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalSlice_Notation) modalSlice_Notation.style.display = "none";
-        }
+        setupModal("myModal-Slice_Notation", "openBtn-Slice_Notation");
     </script>
 </div>
 <!-- END OF Slice Notation -->
@@ -69,16 +57,9 @@
 <!--CONTENT-_replace__--></p>
         </div>
     </div>
-    <script>
-        const modal_replace__ = document.getElementById("myModal-_replace__");
-        const btn_replace__ = document.getElementById("openBtn-_replace__");
-        const span_replace__ = modal_replace__.querySelector(".close");
-        btn_replace__.onclick = () => modal_replace__.style.display = "block";
-        span_replace__.onclick = () => modal_replace__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_replace__) modal_replace__.style.display = "none";
-        }
-    </script>
+      <script>
+          setupModal("myModal-_replace__", "openBtn-_replace__");
+      </script>
 </div>
 <!-- END OF .replace() -->
 <!-- ASCII -->
@@ -94,14 +75,7 @@
         </div>
     </div>
     <script>
-        const modalASCII = document.getElementById("myModal-ASCII");
-        const btnASCII = document.getElementById("openBtn-ASCII");
-        const spanASCII = modalASCII.querySelector(".close");
-        btnASCII.onclick = () => modalASCII.style.display = "block";
-        spanASCII.onclick = () => modalASCII.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalASCII) modalASCII.style.display = "none";
-        }
+        setupModal("myModal-ASCII", "openBtn-ASCII");
     </script>
 </div>
 <!-- END OF ASCII -->
@@ -118,14 +92,7 @@
         </div>
     </div>
     <script>
-        const modalRanges = document.getElementById("myModal-Ranges");
-        const btnRanges = document.getElementById("openBtn-Ranges");
-        const spanRanges = modalRanges.querySelector(".close");
-        btnRanges.onclick = () => modalRanges.style.display = "block";
-        spanRanges.onclick = () => modalRanges.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalRanges) modalRanges.style.display = "none";
-        }
+        setupModal("myModal-Ranges", "openBtn-Ranges");
     </script>
 </div>
 <!-- END OF Ranges -->
@@ -142,14 +109,7 @@
         </div>
     </div>
     <script>
-        const modalfor___else = document.getElementById("myModal-for___else");
-        const btnfor___else = document.getElementById("openBtn-for___else");
-        const spanfor___else = modalfor___else.querySelector(".close");
-        btnfor___else.onclick = () => modalfor___else.style.display = "block";
-        spanfor___else.onclick = () => modalfor___else.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalfor___else) modalfor___else.style.display = "none";
-        }
+        setupModal("myModal-for___else", "openBtn-for___else");
     </script>
 </div>
 <!-- END OF for + else -->
@@ -166,14 +126,7 @@
         </div>
     </div>
     <script>
-        const modalbreak_vs_continue = document.getElementById("myModal-break_vs_continue");
-        const btnbreak_vs_continue = document.getElementById("openBtn-break_vs_continue");
-        const spanbreak_vs_continue = modalbreak_vs_continue.querySelector(".close");
-        btnbreak_vs_continue.onclick = () => modalbreak_vs_continue.style.display = "block";
-        spanbreak_vs_continue.onclick = () => modalbreak_vs_continue.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalbreak_vs_continue) modalbreak_vs_continue.style.display = "none";
-        }
+        setupModal("myModal-break_vs_continue", "openBtn-break_vs_continue");
     </script>
 </div>
 <!-- END OF break vs continue -->
@@ -190,14 +143,7 @@
         </div>
     </div>
     <script>
-        const modalPrinting___in_f_string = document.getElementById("myModal-Printing___in_f_string");
-        const btnPrinting___in_f_string = document.getElementById("openBtn-Printing___in_f_string");
-        const spanPrinting___in_f_string = modalPrinting___in_f_string.querySelector(".close");
-        btnPrinting___in_f_string.onclick = () => modalPrinting___in_f_string.style.display = "block";
-        spanPrinting___in_f_string.onclick = () => modalPrinting___in_f_string.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalPrinting___in_f_string) modalPrinting___in_f_string.style.display = "none";
-        }
+        setupModal("myModal-Printing___in_f_string", "openBtn-Printing___in_f_string");
     </script>
 </div>
 <!-- END OF Printing } in f-string -->
@@ -214,14 +160,7 @@
         </div>
     </div>
     <script>
-        const modalSyntaxError__f_string__expecting____ = document.getElementById("myModal-SyntaxError__f_string__expecting____");
-        const btnSyntaxError__f_string__expecting____ = document.getElementById("openBtn-SyntaxError__f_string__expecting____");
-        const spanSyntaxError__f_string__expecting____ = modalSyntaxError__f_string__expecting____.querySelector(".close");
-        btnSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "block";
-        spanSyntaxError__f_string__expecting____.onclick = () => modalSyntaxError__f_string__expecting____.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalSyntaxError__f_string__expecting____) modalSyntaxError__f_string__expecting____.style.display = "none";
-        }
+        setupModal("myModal-SyntaxError__f_string__expecting____", "openBtn-SyntaxError__f_string__expecting____");
     </script>
 </div>
 <!-- END OF SyntaxError: f-string: expecting '}' -->
@@ -238,14 +177,7 @@
         </div>
     </div>
     <script>
-        const modalend_ = document.getElementById("myModal-end_");
-        const btnend_ = document.getElementById("openBtn-end_");
-        const spanend_ = modalend_.querySelector(".close");
-        btnend_.onclick = () => modalend_.style.display = "block";
-        spanend_.onclick = () => modalend_.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalend_) modalend_.style.display = "none";
-        }
+        setupModal("myModal-end_", "openBtn-end_");
     </script>
 </div>
 <!-- END OF end=  -->
@@ -265,14 +197,7 @@
         </div>
     </div>
     <script>
-        const modalsep_ = document.getElementById("myModal-sep_");
-        const btnsep_ = document.getElementById("openBtn-sep_");
-        const spansep_ = modalsep_.querySelector(".close");
-        btnsep_.onclick = () => modalsep_.style.display = "block";
-        spansep_.onclick = () => modalsep_.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalsep_) modalsep_.style.display = "none";
-        }
+        setupModal("myModal-sep_", "openBtn-sep_");
     </script>
 </div>
 <!-- END OF sep=
@@ -290,14 +215,7 @@
         </div>
     </div>
     <script>
-        const modal_join__ = document.getElementById("myModal-_join__");
-        const btn_join__ = document.getElementById("openBtn-_join__");
-        const span_join__ = modal_join__.querySelector(".close");
-        btn_join__.onclick = () => modal_join__.style.display = "block";
-        span_join__.onclick = () => modal_join__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_join__) modal_join__.style.display = "none";
-        }
+        setupModal("myModal-_join__", "openBtn-_join__");
     </script>
 </div>
 <!-- END OF .join() -->
@@ -316,14 +234,7 @@
         </div>
     </div>
     <script>
-        const modalConcatenation = document.getElementById("myModal-Concatenation");
-        const btnConcatenation = document.getElementById("openBtn-Concatenation");
-        const spanConcatenation = modalConcatenation.querySelector(".close");
-        btnConcatenation.onclick = () => modalConcatenation.style.display = "block";
-        spanConcatenation.onclick = () => modalConcatenation.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalConcatenation) modalConcatenation.style.display = "none";
-        }
+        setupModal("myModal-Concatenation", "openBtn-Concatenation");
     </script>
 </div>
 <!-- END OF Concatenation  -->
@@ -344,14 +255,7 @@
         </div>
     </div>
     <script>
-        const modalstring_formatting_for_numbers = document.getElementById("myModal-string_formatting_for_numbers");
-        const btnstring_formatting_for_numbers = document.getElementById("openBtn-string_formatting_for_numbers");
-        const spanstring_formatting_for_numbers = modalstring_formatting_for_numbers.querySelector(".close");
-        btnstring_formatting_for_numbers.onclick = () => modalstring_formatting_for_numbers.style.display = "block";
-        spanstring_formatting_for_numbers.onclick = () => modalstring_formatting_for_numbers.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalstring_formatting_for_numbers) modalstring_formatting_for_numbers.style.display = "none";
-        }
+        setupModal("myModal-string_formatting_for_numbers", "openBtn-string_formatting_for_numbers");
     </script>
 </div>
 <!-- END OF string formatting for numbers
@@ -369,14 +273,7 @@
         </div>
     </div>
     <script>
-        const modal_n_in_f_string = document.getElementById("myModal-_n_in_f_string");
-        const btn_n_in_f_string = document.getElementById("openBtn-_n_in_f_string");
-        const span_n_in_f_string = modal_n_in_f_string.querySelector(".close");
-        btn_n_in_f_string.onclick = () => modal_n_in_f_string.style.display = "block";
-        span_n_in_f_string.onclick = () => modal_n_in_f_string.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_n_in_f_string) modal_n_in_f_string.style.display = "none";
-        }
+        setupModal("myModal-_n_in_f_string", "openBtn-_n_in_f_string");
     </script>
 </div>
 <!-- END OF \n in f-string -->
@@ -394,14 +291,7 @@
         </div>
     </div>
     <script>
-        const modalwhitespaces___strip__ = document.getElementById("myModal-whitespaces___strip__");
-        const btnwhitespaces___strip__ = document.getElementById("openBtn-whitespaces___strip__");
-        const spanwhitespaces___strip__ = modalwhitespaces___strip__.querySelector(".close");
-        btnwhitespaces___strip__.onclick = () => modalwhitespaces___strip__.style.display = "block";
-        spanwhitespaces___strip__.onclick = () => modalwhitespaces___strip__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalwhitespaces___strip__) modalwhitespaces___strip__.style.display = "none";
-        }
+        setupModal("myModal-whitespaces___strip__", "openBtn-whitespaces___strip__");
     </script>
 </div>
 <!-- END OF whitespaces, .strip() -->
@@ -418,14 +308,7 @@
         </div>
     </div>
     <script>
-        const modalstr____repr_____r___s = document.getElementById("myModal-str____repr_____r___s");
-        const btnstr____repr_____r___s = document.getElementById("openBtn-str____repr_____r___s");
-        const spanstr____repr_____r___s = modalstr____repr_____r___s.querySelector(".close");
-        btnstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "block";
-        spanstr____repr_____r___s.onclick = () => modalstr____repr_____r___s.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalstr____repr_____r___s) modalstr____repr_____r___s.style.display = "none";
-        }
+        setupModal("myModal-str____repr_____r___s", "openBtn-str____repr_____r___s");
     </script>
 </div>
 <!-- END OF str(), repr(), !r, !s -->
@@ -442,14 +325,7 @@
         </div>
     </div>
     <script>
-        const modalunpacking_operator__ = document.getElementById("myModal-unpacking_operator__");
-        const btnunpacking_operator__ = document.getElementById("openBtn-unpacking_operator__");
-        const spanunpacking_operator__ = modalunpacking_operator__.querySelector(".close");
-        btnunpacking_operator__.onclick = () => modalunpacking_operator__.style.display = "block";
-        spanunpacking_operator__.onclick = () => modalunpacking_operator__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalunpacking_operator__) modalunpacking_operator__.style.display = "none";
-        }
+        setupModal("myModal-unpacking_operator__", "openBtn-unpacking_operator__");
     </script>
 </div>
 <!-- END OF unpacking operator * -->
@@ -466,14 +342,7 @@
         </div>
     </div>
     <script>
-        const modalSets = document.getElementById("myModal-Sets");
-        const btnSets = document.getElementById("openBtn-Sets");
-        const spanSets = modalSets.querySelector(".close");
-        btnSets.onclick = () => modalSets.style.display = "block";
-        spanSets.onclick = () => modalSets.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalSets) modalSets.style.display = "none";
-        }
+        setupModal("myModal-Sets", "openBtn-Sets");
     </script>
 </div>
 <!-- END OF Sets  -->
@@ -490,14 +359,7 @@
         </div>
     </div>
     <script>
-        const modalLists = document.getElementById("myModal-Lists");
-        const btnLists = document.getElementById("openBtn-Lists");
-        const spanLists = modalLists.querySelector(".close");
-        btnLists.onclick = () => modalLists.style.display = "block";
-        spanLists.onclick = () => modalLists.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalLists) modalLists.style.display = "none";
-        }
+        setupModal("myModal-Lists", "openBtn-Lists");
     </script>
 </div>
 <!-- END OF Lists -->
@@ -514,14 +376,7 @@
         </div>
     </div>
     <script>
-        const modalinput_transformations = document.getElementById("myModal-input_transformations");
-        const btninput_transformations = document.getElementById("openBtn-input_transformations");
-        const spaninput_transformations = modalinput_transformations.querySelector(".close");
-        btninput_transformations.onclick = () => modalinput_transformations.style.display = "block";
-        spaninput_transformations.onclick = () => modalinput_transformations.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalinput_transformations) modalinput_transformations.style.display = "none";
-        }
+        setupModal("myModal-input_transformations", "openBtn-input_transformations");
     </script>
 </div>
 <!-- END OF input transformations -->
@@ -538,14 +393,7 @@
         </div>
     </div>
     <script>
-        const modal_split__ = document.getElementById("myModal-_split__");
-        const btn_split__ = document.getElementById("openBtn-_split__");
-        const span_split__ = modal_split__.querySelector(".close");
-        btn_split__.onclick = () => modal_split__.style.display = "block";
-        span_split__.onclick = () => modal_split__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_split__) modal_split__.style.display = "none";
-        }
+        setupModal("myModal-_split__", "openBtn-_split__");
     </script>
 </div>
 <!-- END OF .split() -->
@@ -563,14 +411,7 @@
         </div>
     </div>
     <script>
-        const modal_remove_____pop_____popitem__ = document.getElementById("myModal-_remove_____pop_____popitem__");
-        const btn_remove_____pop_____popitem__ = document.getElementById("openBtn-_remove_____pop_____popitem__");
-        const span_remove_____pop_____popitem__ = modal_remove_____pop_____popitem__.querySelector(".close");
-        btn_remove_____pop_____popitem__.onclick = () => modal_remove_____pop_____popitem__.style.display = "block";
-        span_remove_____pop_____popitem__.onclick = () => modal_remove_____pop_____popitem__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_remove_____pop_____popitem__) modal_remove_____pop_____popitem__.style.display = "none";
-        }
+        setupModal("myModal-_remove_____pop_____popitem__", "openBtn-_remove_____pop_____popitem__");
     </script>
 </div>
 <!-- END OF .remove(), .pop(), .popitem() -->
@@ -589,20 +430,11 @@
         </div>
     </div>
     <script>
-        const modalList_vs_Array = document.getElementById("myModal-List_vs_Array");
-        const btnList_vs_Array = document.getElementById("openBtn-List_vs_Array");
-        const spanList_vs_Array = modalList_vs_Array.querySelector(".close");
-
-        btnList_vs_Array.onclick = () => modalList_vs_Array.style.display = "block";
-        spanList_vs_Array.onclick = () => modalList_vs_Array.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalList_vs_Array) modalList_vs_Array.style.display = "none";
-        }
+        setupModal("myModal-List_vs_Array", "openBtn-List_vs_Array");
     </script>
 </div>
 <!-- END OF List vs Array
  -->
-
 <!-- Dicts -->
 <div class="grid-item">
     <button id="openBtn-Dicts">Dicts</button>
@@ -617,19 +449,10 @@
         </div>
     </div>
     <script>
-        const modalDicts = document.getElementById("myModal-Dicts");
-        const btnDicts = document.getElementById("openBtn-Dicts");
-        const spanDicts = modalDicts.querySelector(".close");
-
-        btnDicts.onclick = () => modalDicts.style.display = "block";
-        spanDicts.onclick = () => modalDicts.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalDicts) modalDicts.style.display = "none";
-        }
+        setupModal("myModal-Dicts", "openBtn-Dicts");
     </script>
 </div>
 <!-- END OF Dicts -->
-
 <!-- sorted() -->
 <div class="grid-item">
     <button id="openBtn-sorted__">sorted()</button>
@@ -643,19 +466,10 @@
         </div>
     </div>
     <script>
-        const modalsorted__ = document.getElementById("myModal-sorted__");
-        const btnsorted__ = document.getElementById("openBtn-sorted__");
-        const spansorted__ = modalsorted__.querySelector(".close");
-
-        btnsorted__.onclick = () => modalsorted__.style.display = "block";
-        spansorted__.onclick = () => modalsorted__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalsorted__) modalsorted__.style.display = "none";
-        }
+        setupModal("myModal-sorted__", "openBtn-sorted__");
     </script>
 </div>
 <!-- END OF sorted() -->
-
 <!-- .get(), .setdefault() -->
 <div class="grid-item">
     <button id="openBtn-_get_____setdefault__">.get(), .setdefault()</button>
@@ -670,19 +484,10 @@
         </div>
     </div>
     <script>
-        const modal_get_____setdefault__ = document.getElementById("myModal-_get_____setdefault__");
-        const btn_get_____setdefault__ = document.getElementById("openBtn-_get_____setdefault__");
-        const span_get_____setdefault__ = modal_get_____setdefault__.querySelector(".close");
-
-        btn_get_____setdefault__.onclick = () => modal_get_____setdefault__.style.display = "block";
-        span_get_____setdefault__.onclick = () => modal_get_____setdefault__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal_get_____setdefault__) modal_get_____setdefault__.style.display = "none";
-        }
+        setupModal("myModal-_get_____setdefault__", "openBtn-_get_____setdefault__");
     </script>
 </div>
 <!-- END OF .get(), .setdefault() -->
-
 <!-- next() -->
 <div class="grid-item">
     <button id="openBtn-next__">next()</button>
@@ -697,19 +502,10 @@
         </div>
     </div>
     <script>
-        const modalnext__ = document.getElementById("myModal-next__");
-        const btnnext__ = document.getElementById("openBtn-next__");
-        const spannext__ = modalnext__.querySelector(".close");
-
-        btnnext__.onclick = () => modalnext__.style.display = "block";
-        spannext__.onclick = () => modalnext__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalnext__) modalnext__.style.display = "none";
-        }
+        setupModal("myModal-next__", "openBtn-next__");
     </script>
 </div>
 <!-- END OF next() -->
-
 <!-- all()
  -->
 <div class="grid-item">
@@ -726,20 +522,11 @@
         </div>
     </div>
     <script>
-        const modalall__ = document.getElementById("myModal-all__");
-        const btnall__ = document.getElementById("openBtn-all__");
-        const spanall__ = modalall__.querySelector(".close");
-
-        btnall__.onclick = () => modalall__.style.display = "block";
-        spanall__.onclick = () => modalall__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalall__) modalall__.style.display = "none";
-        }
+        setupModal("myModal-all__", "openBtn-all__");
     </script>
 </div>
 <!-- END OF all()
  -->
-
 <!-- any()
  -->
 <div class="grid-item">
@@ -755,20 +542,11 @@
         </div>
     </div>
     <script>
-        const modalany__ = document.getElementById("myModal-any__");
-        const btnany__ = document.getElementById("openBtn-any__");
-        const spanany__ = modalany__.querySelector(".close");
-
-        btnany__.onclick = () => modalany__.style.display = "block";
-        spanany__.onclick = () => modalany__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalany__) modalany__.style.display = "none";
-        }
+        setupModal("myModal-any__", "openBtn-any__");
     </script>
 </div>
 <!-- END OF any()
  -->
-
 <!-- reduce() -->
 <div class="grid-item">
     <button id="openBtn-reduce__">reduce()</button>
@@ -781,19 +559,10 @@
         </div>
     </div>
     <script>
-        const modalreduce__ = document.getElementById("myModal-reduce__");
-        const btnreduce__ = document.getElementById("openBtn-reduce__");
-        const spanreduce__ = modalreduce__.querySelector(".close");
-
-        btnreduce__.onclick = () => modalreduce__.style.display = "block";
-        spanreduce__.onclick = () => modalreduce__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalreduce__) modalreduce__.style.display = "none";
-        }
+        setupModal("myModal-reduce__", "openBtn-reduce__");
     </script>
 </div>
 <!-- END OF reduce() -->
-
 <!-- isinstance() -->
 <div class="grid-item">
     <button id="openBtn-isinstance__">isinstance()</button>
@@ -808,19 +577,10 @@
         </div>
     </div>
     <script>
-        const modalisinstance__ = document.getElementById("myModal-isinstance__");
-        const btnisinstance__ = document.getElementById("openBtn-isinstance__");
-        const spanisinstance__ = modalisinstance__.querySelector(".close");
-
-        btnisinstance__.onclick = () => modalisinstance__.style.display = "block";
-        spanisinstance__.onclick = () => modalisinstance__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modalisinstance__) modalisinstance__.style.display = "none";
-        }
+        setupModal("myModal-isinstance__", "openBtn-isinstance__");
     </script>
 </div>
 <!-- END OF isinstance() -->
-
 <!-- __getitem__, __setitem__ -->
 <div class="grid-item">
     <button id="openBtn-__getitem______setitem__">__getitem__, __setitem__</button>
@@ -834,19 +594,10 @@
         </div>
     </div>
     <script>
-        const modal__getitem______setitem__ = document.getElementById("myModal-__getitem______setitem__");
-        const btn__getitem______setitem__ = document.getElementById("openBtn-__getitem______setitem__");
-        const span__getitem______setitem__ = modal__getitem______setitem__.querySelector(".close");
-
-        btn__getitem______setitem__.onclick = () => modal__getitem______setitem__.style.display = "block";
-        span__getitem______setitem__.onclick = () => modal__getitem______setitem__.style.display = "none";
-        window.onclick = (event) => {
-            if(event.target === modal__getitem______setitem__) modal__getitem______setitem__.style.display = "none";
-        }
+        setupModal("myModal-__getitem______setitem__", "openBtn-__getitem______setitem__");
     </script>
 </div>
 <!-- END OF __getitem__, __setitem__ -->
-
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>
