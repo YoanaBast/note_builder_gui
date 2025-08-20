@@ -20,3 +20,5 @@ def add_background():
     # Keep reference to avoid garbage collection
     background_label.image = bg_image
     app.background_label = background_label
+
+

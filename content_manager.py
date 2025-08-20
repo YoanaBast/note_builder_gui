@@ -58,13 +58,7 @@ class ContentManager:
 
         return 'all good'
 
-    def add_content_to_cat(self, category_name, content):
-        formatted_content = (
-            f'<div class="category-content">'
-            f'{content.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;").replace("\n", "<br>")}'
-            f'</div>'
-        )
-
+    def save_content(self, category_name, formatted_content):
         # Save in dictionary
         self.category_name_content_pairs[category_name]["content"] = formatted_content
         self.save_pairs()
@@ -79,6 +73,20 @@ class ContentManager:
 
         with open(self.file_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
+
+    def add_content_to_cat(self, category_name, content):
+        formatted_content = (
+            f'<div class="category-content">'
+            f'{content.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;").replace("\n", "<br>")}'
+            f'</div>'
+        )
+        self.save_content(category_name, formatted_content)
+
+
+    def add_pic_to_cat(self, category_name, image_name, width: int):
+        formatted_content = f'<img src="cat_images/{image_name}.png" alt="{category_name}" width="{width}" style="display:block; margin-right:auto;">'
+        self.save_content(category_name, formatted_content)
+
 
     def remove_category(self, category_name):
         if category_name in self.category_name_content_pairs:

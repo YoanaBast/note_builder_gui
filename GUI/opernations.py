@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from helpers import clean_screen, add_background
 from canvas import app
@@ -63,6 +64,38 @@ def check_cat(cat_name, frame):
             fg="red"
         )
         frame.error_label.pack(side='left')
+
+def check_img_name(name, frame):
+    if frame.error_label:
+        frame.error_label.destroy()
+        frame.error_label = None
+    if frame.success_label:
+        frame.success_label.destroy()
+        frame.success_label = None
+
+    if not f"{name}.png" in os.listdir("cat_images"):
+        frame.error_label = tk.Label(
+            frame,
+            text='Please check the image name',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="red"
+        )
+        frame.error_label.pack(side='left')
+        return False
+    else:
+        frame.success_label = tk.Label(
+            frame,
+            text='Image added successfully!',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="green"
+        )
+        frame.success_label.pack(side='left')
+        return True
+
 
 
 def render_no_category(frame):
@@ -142,6 +175,42 @@ def render_add_content():
         content_manager.add_content_to_cat(dropdown.get(), raw_text)
 
     enter_back(add_content)
+
+def render_add_img():
+    dropdown = cat_dropdown()[0]
+    cat_con_name_frame = tk.Frame(app)
+    cat_con_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+
+    tk.Label(cat_con_name_frame, text="Image name (as saved in cat_images):",
+             font=("Arial", 18), anchor="w").pack(anchor='w')
+
+    img_name = tk.Entry(cat_con_name_frame, width=15, font=("Arial", 18))
+    img_name.pack(side='left', padx=5)
+
+    dropdown_w_frame = tk.Frame(app)
+    dropdown_w_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+
+    tk.Label(dropdown_w_frame, text="Image size:", font=("Arial", 18), anchor="w").pack(anchor='w')
+
+    selected = tk.StringVar(value="Choose a size")  # ✅ make default clearer
+    options = [300, 500, 700, 900]
+
+    dropdown_w = tk.OptionMenu(dropdown_w_frame, selected, *options)
+    dropdown_w.config(font=("Arial", 16), width=20, bg="white", fg="black")
+    dropdown_w.pack(anchor="w")
+
+    # Define a callback
+    def add_img():
+        category = dropdown.get()
+        image = img_name.get()
+        size = selected.get()
+
+        print("debug:", category, image, size)
+        content_manager.add_pic_to_cat(category, image, size)
+
+
+    # Pass the callback
+    enter_back(add_img)
 
 
 def render_remove_cat():
@@ -265,6 +334,11 @@ def render_main_enter_screen():
                                     command=render_add_category)
     add_category_button.pack(side="left", padx=(10, 5))
 
+    remove_cat_button = tk.Button(frame, text="Remove Category", font=("Arial", 14, "bold"),
+                                padx=9, pady=5, bg="blue", fg="white",
+                                command=render_remove_cat)
+    remove_cat_button.pack(side="left", padx=(5, 10))
+
 
     add_content_to_cat_button = tk.Button(frame, text="Add Content", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="black", fg="white",
@@ -272,10 +346,10 @@ def render_main_enter_screen():
     add_content_to_cat_button.pack(side="left", padx=(5, 10))
 
 
-    remove_cat_button = tk.Button(frame, text="Remove Category", font=("Arial", 14, "bold"),
-                                padx=9, pady=5, bg="blue", fg="white",
-                                command=render_remove_cat)
-    remove_cat_button.pack(side="left", padx=(5, 10))
+    add_img_to_cat_button = tk.Button(frame, text="Add Image", font=("Arial", 14, "bold"),
+                                padx=9, pady=5, bg="black", fg="white",
+                                command=render_add_img)
+    add_img_to_cat_button.pack(side="left", padx=(5, 10))
 
 
     remove_content_to_cat_button = tk.Button(frame, text="Remove Content", font=("Arial", 14, "bold"),
