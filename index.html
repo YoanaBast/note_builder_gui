@@ -603,6 +603,250 @@
 <!-- END OF List vs Array
  -->
 
+<!-- Dicts -->
+<div class="grid-item">
+    <button id="openBtn-Dicts">Dicts</button>
+    <div id="myModal-Dicts" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Dicts</h2>
+            <p><!--START-CONTENT-Dicts--></p>
+            <p><div class="category-content">>>> How it works:<br>Python’s built-in dict is a hash table under the hood.<br><br><br>>>> Dict Comprehension<br>&nbsp;&nbsp;&nbsp;&nbsp;letters = input().split(', ')<br>&nbsp;&nbsp;&nbsp;&nbsp;dict = {i: ord(i) for i in letters}<br>&nbsp;&nbsp;&nbsp;&nbsp;print(dict)<br><br>>>>Unpacking<br><br>1. dict.items()<br>&nbsp;&nbsp;&nbsp;&nbsp;d = {'x': 1, 'y': 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;for key, value in d.items():<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(key, value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# x 1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# y 2<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(list(d.items()))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [('x', 1), ('y', 2)]<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;skills = [f"=== {skill_name} - {skill_mana}" for skill_name, skill_mana in self.skills.items()]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(skills)<br>&nbsp;&nbsp;&nbsp;&nbsp;#Output: ['=== farting - 50', '=== crying - 50']<br><br>2. dict.keys()<br>&nbsp;&nbsp;&nbsp;&nbsp;d = {'a': 10, 'b': 20}<br>&nbsp;&nbsp;&nbsp;&nbsp;for key in d.keys():<br>    &nbsp;&nbsp;&nbsp;&nbsp;print(key)<br>&nbsp;&nbsp;&nbsp;&nbsp;#Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;# a<br>&nbsp;&nbsp;&nbsp;&nbsp;# b<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(list(d.keys()))  <br>&nbsp;&nbsp;&nbsp;&nbsp;#Output: ['a', 'b']<br><br>3. dict.values()<br>&nbsp;&nbsp;&nbsp;&nbsp;d = {'apple': 5, 'banana': 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;for value in d.values():<br>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(value)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;# 5<br>&nbsp;&nbsp;&nbsp;&nbsp;# 3<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(list(d.values()))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [5, 3]<br><br>3. The dictionary view object wrapper:<br>&nbsp;&nbsp;&nbsp;&nbsp;self.rented_books = {<br>    &nbsp;&nbsp;&nbsp;&nbsp;    "john_doe": {"The Hobbit": 5},<br>    &nbsp;&nbsp;&nbsp;&nbsp;    "jane_smith": {"1984": 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;    }<br>&nbsp;&nbsp;&nbsp;&nbsp;print(self.rented_books.values())  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: dict_values([{'The Hobbit': 5}, {'1984': 3}])<br><br>self.rented_books.values() returns a dict_values object (a special view). It’s not wrapped in parentheses (...), but in a dict_values([...]) wrapper.<br>It shows up anytime you call one of these methods on a dict:<br>&nbsp;&nbsp;&nbsp;&nbsp;.keys() → dict_keys([...])<br>&nbsp;&nbsp;&nbsp;&nbsp;.values() → dict_values([...])<br>&nbsp;&nbsp;&nbsp;&nbsp;.items() → dict_items([...])<br><br>d = {"a": 1, "b": 2}<br><br>print(d.keys())    # dict_keys(['a', 'b'])<br>print(d.values())  # dict_values([1, 2])<br>print(d.items())   # dict_items([('a', 1), ('b', 2)])<br><br># Convert to list for clearer visualization:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(list(self.rented_books.values()))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [{'The Hobbit': 5}, {'1984': 3}]<br><br># Convert to tuple for clearer visualization:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(tuple(self.rented_books.values()))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: ({'The Hobbit': 5}, {'1984': 3})<br><br># Iterate and print each inner dict separately:<br>&nbsp;&nbsp;&nbsp;&nbsp;for books in self.rented_books.values():<br>    &nbsp;&nbsp;&nbsp;&nbsp;print(books)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output:<br>&nbsp;&nbsp;&nbsp;&nbsp;# {'The Hobbit': 5}<br>&nbsp;&nbsp;&nbsp;&nbsp;# {'1984': 3}<br><br>4. Single key unpacking:<br>&nbsp;&nbsp;&nbsp;&nbsp;(curr_position, coor), = choose_position(current_player).items()<br><br>choose_position(current_player) must return a dictionary (or dict-like object).<br>.items() gives you a view of key-value pairs as (key, value) tuples.<br>The trailing comma in the assignment (...), = ... means you expect exactly one item from the dict.<br>(curr_position, coor) unpacks that single (key, value) pair into:<br>&nbsp;&nbsp;&nbsp;&nbsp;curr_position = the key<br>&nbsp;&nbsp;&nbsp;&nbsp;coor = the value<br><br>#  This only works if the dictionary has exactly one key-value pair.</div>
+<div class="category-content"><br>>>> Multiple values per 1 key:<br>&nbsp;&nbsp;&nbsp;&nbsp;dict = {}<br>&nbsp;&nbsp;&nbsp;&nbsp;index = int(input())<br>&nbsp;&nbsp;&nbsp;&nbsp;for i in range(index):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key = input()<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val = input()<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if key not in dict:<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dict[key] = []<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dict[key].append(val)</div>
+<!--CONTENT-Dicts--></p>
+        </div>
+    </div>
+    <script>
+        const modalDicts = document.getElementById("myModal-Dicts");
+        const btnDicts = document.getElementById("openBtn-Dicts");
+        const spanDicts = modalDicts.querySelector(".close");
+
+        btnDicts.onclick = () => modalDicts.style.display = "block";
+        spanDicts.onclick = () => modalDicts.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalDicts) modalDicts.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF Dicts -->
+
+<!-- sorted() -->
+<div class="grid-item">
+    <button id="openBtn-sorted__">sorted()</button>
+    <div id="myModal-sorted__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>sorted()</h2>
+            <p><!--START-CONTENT-sorted__--></p>
+            <p><div class="category-content">>>> Sorting Dict By Values<br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {'apple': 3, 'banana': 1, 'orange': 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;sorted_dict = dict(sorted(my_dict.items(), key=lambda item: item[1]))<br>&nbsp;&nbsp;&nbsp;&nbsp;print(sorted_dict)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: {'banana': 1, 'orange': 2, 'apple': 3}<br>#  You're telling Python: "Sort using the value part of each (key, value) pair (index 1 of the item tuple)"<br><br><br></div>
+<!--CONTENT-sorted__--></p>
+        </div>
+    </div>
+    <script>
+        const modalsorted__ = document.getElementById("myModal-sorted__");
+        const btnsorted__ = document.getElementById("openBtn-sorted__");
+        const spansorted__ = modalsorted__.querySelector(".close");
+
+        btnsorted__.onclick = () => modalsorted__.style.display = "block";
+        spansorted__.onclick = () => modalsorted__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalsorted__) modalsorted__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF sorted() -->
+
+<!-- .get(), .setdefault() -->
+<div class="grid-item">
+    <button id="openBtn-_get_____setdefault__">.get(), .setdefault()</button>
+    <div id="myModal-_get_____setdefault__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>.get(), .setdefault()</h2>
+            <p><!--START-CONTENT-_get_____setdefault__--></p>
+            <p><div class="category-content">>>> .get()<br>&nbsp;&nbsp;&nbsp;&nbsp;d = {"a": 1, "b": 2}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(d.get("a"))       # 1<br>&nbsp;&nbsp;&nbsp;&nbsp;print(d.get("z"))       # None (instead of KeyError)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(d.get("z", 99))   # 99 (custom default)<br>Safer than [] because it won’t crash if key missing.<br>You can provide a default return value.<br><br>>>> .setdefault()<br>&nbsp;&nbsp;&nbsp;&nbsp;d = {"a": 1, "b": 2}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;print(d.setdefault("b", 100))  # 2 (already exists, keeps value)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(d.setdefault("z", 100))  # 100 (adds key if missing)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(d)  # {'a': 1, 'b': 2, 'z': 100}<br>Returns the value if key exists.<br>Otherwise, sets it to the given default and returns that.<br><br></div>
+<div class="category-content">>>> Update the quantity of a specific ingredient in the dictionary.<br>&nbsp;&nbsp;&nbsp;&nbsp;self.ingredients = {"flour": 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;ingredient = "flour"<br>&nbsp;&nbsp;&nbsp;&nbsp;quantity = 3<br><br>&nbsp;&nbsp;&nbsp;&nbsp;self.ingredients[ingredient] = self.ingredients.get(ingredient, 0) + quantity<br><br>1. self.ingredients.get(ingredient, 0):<br>&nbsp;&nbsp;&nbsp;&nbsp;- Checks if the ingredient exists in the dictionary.<br>&nbsp;&nbsp;&nbsp;&nbsp;- If it does, returns its current amount.<br>&nbsp;&nbsp;&nbsp;&nbsp;- If not, returns 0.<br> 2. + quantity:<br>&nbsp;&nbsp;&nbsp;&nbsp;- Adds the new quantity to the existing amount (or 0 if it's new).<br>3. self.ingredients[ingredient] = ...:<br>&nbsp;&nbsp;&nbsp;&nbsp;- Stores the new total back in the dictionary. If they key did not exist, it created key: 0<br><br># {"flour": 5} if "flour" was 2 and we added 3<br># {"sugar": 3} if "sugar" was not in the dictionary before<br></div>
+<!--CONTENT-_get_____setdefault__--></p>
+        </div>
+    </div>
+    <script>
+        const modal_get_____setdefault__ = document.getElementById("myModal-_get_____setdefault__");
+        const btn_get_____setdefault__ = document.getElementById("openBtn-_get_____setdefault__");
+        const span_get_____setdefault__ = modal_get_____setdefault__.querySelector(".close");
+
+        btn_get_____setdefault__.onclick = () => modal_get_____setdefault__.style.display = "block";
+        span_get_____setdefault__.onclick = () => modal_get_____setdefault__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal_get_____setdefault__) modal_get_____setdefault__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF .get(), .setdefault() -->
+
+<!-- next() -->
+<div class="grid-item">
+    <button id="openBtn-next__">next()</button>
+    <div id="myModal-next__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>next()</h2>
+            <p><!--START-CONTENT-next__--></p>
+            <p><div class="category-content">&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {"a": 1, "b": 2, "c": 3}<br>&nbsp;&nbsp;&nbsp;&nbsp;value = 2<br><br>&nbsp;&nbsp;&nbsp;&nbsp;key = next((k for k, v in my_dict.items() if v == value), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;if key:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(key)  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Output: 'b'<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {<br>    &nbsp;&nbsp;&nbsp;&nbsp;     "fruits": ["apple", "banana"],<br>    &nbsp;&nbsp;&nbsp;&nbsp;     "vegetables": ["carrot", "broccoli"],<br>    &nbsp;&nbsp;&nbsp;&nbsp;     "snacks": ["chips", "banana"]<br>&nbsp;&nbsp;&nbsp;&nbsp;     }<br>&nbsp;&nbsp;&nbsp;&nbsp;value = "banana"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;key = next((k for k, v in my_dict.items() if value in v), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;if key:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(key)  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Output: 'fruits' (first match)<br><br></div>
+<div class="category-content">&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;numbers = [1, 2, 3, 4]<br><br># Find the first even number<br>&nbsp;&nbsp;&nbsp;&nbsp;first_even = next((n for n in numbers if n % 2 == 0), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(first_even)  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 2</div>
+<!--CONTENT-next__--></p>
+        </div>
+    </div>
+    <script>
+        const modalnext__ = document.getElementById("myModal-next__");
+        const btnnext__ = document.getElementById("openBtn-next__");
+        const spannext__ = modalnext__.querySelector(".close");
+
+        btnnext__.onclick = () => modalnext__.style.display = "block";
+        spannext__.onclick = () => modalnext__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalnext__) modalnext__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF next() -->
+
+<!-- all()
+ -->
+<div class="grid-item">
+    <button id="openBtn-all__">all()
+</button>
+    <div id="myModal-all__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>all()
+</h2>
+            <p><!--START-CONTENT-all__--></p>
+            <p><div class="category-content">&nbsp;&nbsp;&nbsp;&nbsp;conditions = [True, True, True]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(all(conditions))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: True<br><br>&nbsp;&nbsp;&nbsp;&nbsp;conditions = [True, False, True]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(all(conditions))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: False</div>
+<!--CONTENT-all__--></p>
+        </div>
+    </div>
+    <script>
+        const modalall__ = document.getElementById("myModal-all__");
+        const btnall__ = document.getElementById("openBtn-all__");
+        const spanall__ = modalall__.querySelector(".close");
+
+        btnall__.onclick = () => modalall__.style.display = "block";
+        spanall__.onclick = () => modalall__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalall__) modalall__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF all()
+ -->
+
+<!-- any()
+ -->
+<div class="grid-item">
+    <button id="openBtn-any__">any()
+</button>
+    <div id="myModal-any__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>any()
+</h2>
+            <p><!--START-CONTENT-any__--></p>
+            <p><!--CONTENT-any__--></p>
+        </div>
+    </div>
+    <script>
+        const modalany__ = document.getElementById("myModal-any__");
+        const btnany__ = document.getElementById("openBtn-any__");
+        const spanany__ = modalany__.querySelector(".close");
+
+        btnany__.onclick = () => modalany__.style.display = "block";
+        spanany__.onclick = () => modalany__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalany__) modalany__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF any()
+ -->
+
+<!-- reduce() -->
+<div class="grid-item">
+    <button id="openBtn-reduce__">reduce()</button>
+    <div id="myModal-reduce__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>reduce()</h2>
+            <p><!--START-CONTENT-reduce__--></p>
+            <p><!--CONTENT-reduce__--></p>
+        </div>
+    </div>
+    <script>
+        const modalreduce__ = document.getElementById("myModal-reduce__");
+        const btnreduce__ = document.getElementById("openBtn-reduce__");
+        const spanreduce__ = modalreduce__.querySelector(".close");
+
+        btnreduce__.onclick = () => modalreduce__.style.display = "block";
+        spanreduce__.onclick = () => modalreduce__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalreduce__) modalreduce__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF reduce() -->
+
+<!-- isinstance() -->
+<div class="grid-item">
+    <button id="openBtn-isinstance__">isinstance()</button>
+    <div id="myModal-isinstance__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>isinstance()</h2>
+            <p><!--START-CONTENT-isinstance__--></p>
+            <p><div class="category-content">isinstance(object, classinfo)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;item = 3.14<br>&nbsp;&nbsp;&nbsp;&nbsp;if isinstance(item, float):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Item is a float.")<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Item is NOT a float.")<br><br>>>> with class:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;class Animal:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass<br><br>&nbsp;&nbsp;&nbsp;&nbsp;class Dog(Animal):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass<br><br>&nbsp;&nbsp;&nbsp;&nbsp;d = Dog()<br>&nbsp;&nbsp;&nbsp;&nbsp;print(isinstance(d, Dog))     # True<br>&nbsp;&nbsp;&nbsp;&nbsp;print(isinstance(d, Animal))  # True, because Dog is a subclass of Animal<br><br># Using a tuple in isinstance lets you check if the object is an instance of any of several classes. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;if not isinstance(food, (Vegetable, Fruit)):
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise TypeError(f"{self.__class__.__name__} does not eat {food.__class__.__name__}!")<br>This means:<br>&nbsp;&nbsp;&nbsp;&nbsp;• If food is not a Vegetable or a Fruit, raise the error.<br>&nbsp;&nbsp;&nbsp;&nbsp;• If it is either Vegetable or Fruit (or subclasses), it passes.<br></div>
+<!--CONTENT-isinstance__--></p>
+        </div>
+    </div>
+    <script>
+        const modalisinstance__ = document.getElementById("myModal-isinstance__");
+        const btnisinstance__ = document.getElementById("openBtn-isinstance__");
+        const spanisinstance__ = modalisinstance__.querySelector(".close");
+
+        btnisinstance__.onclick = () => modalisinstance__.style.display = "block";
+        spanisinstance__.onclick = () => modalisinstance__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modalisinstance__) modalisinstance__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF isinstance() -->
+
+<!-- __getitem__, __setitem__ -->
+<div class="grid-item">
+    <button id="openBtn-__getitem______setitem__">__getitem__, __setitem__</button>
+    <div id="myModal-__getitem______setitem__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>__getitem__, __setitem__</h2>
+            <p><!--START-CONTENT-__getitem______setitem__--></p>
+            <p><div class="category-content">When you write:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;table["name"] = "Peter"<br>Python internally calls the special method:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__setitem__("name", "Peter")<br><br>For example, to get the value back, you can write:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(table["name"])<br>which calls:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__getitem__("name")<br>and returns "Peter".</div>
+<!--CONTENT-__getitem______setitem__--></p>
+        </div>
+    </div>
+    <script>
+        const modal__getitem______setitem__ = document.getElementById("myModal-__getitem______setitem__");
+        const btn__getitem______setitem__ = document.getElementById("openBtn-__getitem______setitem__");
+        const span__getitem______setitem__ = modal__getitem______setitem__.querySelector(".close");
+
+        btn__getitem______setitem__.onclick = () => modal__getitem______setitem__.style.display = "block";
+        span__getitem______setitem__.onclick = () => modal__getitem______setitem__.style.display = "none";
+        window.onclick = (event) => {
+            if(event.target === modal__getitem______setitem__) modal__getitem______setitem__.style.display = "none";
+        }
+    </script>
+</div>
+<!-- END OF __getitem__, __setitem__ -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 </body>

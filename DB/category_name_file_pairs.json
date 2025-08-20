@@ -94,5 +94,41 @@
     "List vs Array\n": {
         "location": "contents\\List vs Array\n.html",
         "content": ""
+    },
+    "Dicts": {
+        "location": "contents\\Dicts.html",
+        "content": "<div class=\"category-content\"><br>>>> Multiple values per 1 key:<br>&nbsp;&nbsp;&nbsp;&nbsp;dict = {}<br>&nbsp;&nbsp;&nbsp;&nbsp;index = int(input())<br>&nbsp;&nbsp;&nbsp;&nbsp;for i in range(index):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key = input()<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val = input()<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if key not in dict:<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dict[key] = []<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dict[key].append(val)</div>"
+    },
+    "sorted()": {
+        "location": "contents\\sorted().html",
+        "content": "<div class=\"category-content\">>>> Sorting Dict By Values<br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {'apple': 3, 'banana': 1, 'orange': 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;sorted_dict = dict(sorted(my_dict.items(), key=lambda item: item[1]))<br>&nbsp;&nbsp;&nbsp;&nbsp;print(sorted_dict)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: {'banana': 1, 'orange': 2, 'apple': 3}<br>#  You're telling Python: \"Sort using the value part of each (key, value) pair (index 1 of the item tuple)\"<br><br><br></div>"
+    },
+    ".get(), .setdefault()": {
+        "location": "contents\\.get(), .setdefault().html",
+        "content": "<div class=\"category-content\">>>> Update the quantity of a specific ingredient in the dictionary.<br>&nbsp;&nbsp;&nbsp;&nbsp;self.ingredients = {\"flour\": 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;ingredient = \"flour\"<br>&nbsp;&nbsp;&nbsp;&nbsp;quantity = 3<br><br>&nbsp;&nbsp;&nbsp;&nbsp;self.ingredients[ingredient] = self.ingredients.get(ingredient, 0) + quantity<br><br>1. self.ingredients.get(ingredient, 0):<br>&nbsp;&nbsp;&nbsp;&nbsp;- Checks if the ingredient exists in the dictionary.<br>&nbsp;&nbsp;&nbsp;&nbsp;- If it does, returns its current amount.<br>&nbsp;&nbsp;&nbsp;&nbsp;- If not, returns 0.<br> 2. + quantity:<br>&nbsp;&nbsp;&nbsp;&nbsp;- Adds the new quantity to the existing amount (or 0 if it's new).<br>3. self.ingredients[ingredient] = ...:<br>&nbsp;&nbsp;&nbsp;&nbsp;- Stores the new total back in the dictionary. If they key did not exist, it created key: 0<br><br># {\"flour\": 5} if \"flour\" was 2 and we added 3<br># {\"sugar\": 3} if \"sugar\" was not in the dictionary before<br></div>"
+    },
+    "next()": {
+        "location": "contents\\next().html",
+        "content": "<div class=\"category-content\">&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;numbers = [1, 2, 3, 4]<br><br># Find the first even number<br>&nbsp;&nbsp;&nbsp;&nbsp;first_even = next((n for n in numbers if n % 2 == 0), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(first_even)  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: 2</div>"
+    },
+    "all()\n": {
+        "location": "contents\\all()\n.html",
+        "content": "<div class=\"category-content\">&nbsp;&nbsp;&nbsp;&nbsp;conditions = [True, True, True]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(all(conditions))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: True<br><br>&nbsp;&nbsp;&nbsp;&nbsp;conditions = [True, False, True]<br>&nbsp;&nbsp;&nbsp;&nbsp;print(all(conditions))  <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: False</div>"
+    },
+    "any()\n": {
+        "location": "contents\\any()\n.html",
+        "content": ""
+    },
+    "reduce()": {
+        "location": "contents\\reduce().html",
+        "content": ""
+    },
+    "isinstance()": {
+        "location": "contents\\isinstance().html",
+        "content": "<div class=\"category-content\">isinstance(object, classinfo)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;item = 3.14<br>&nbsp;&nbsp;&nbsp;&nbsp;if isinstance(item, float):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(\"Item is a float.\")<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(\"Item is NOT a float.\")<br><br>>>> with class:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;class Animal:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass<br><br>&nbsp;&nbsp;&nbsp;&nbsp;class Dog(Animal):<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass<br><br>&nbsp;&nbsp;&nbsp;&nbsp;d = Dog()<br>&nbsp;&nbsp;&nbsp;&nbsp;print(isinstance(d, Dog))     # True<br>&nbsp;&nbsp;&nbsp;&nbsp;print(isinstance(d, Animal))  # True, because Dog is a subclass of Animal<br><br># Using a tuple in isinstance lets you check if the object is an instance of any of several classes. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;if not isinstance(food, (Vegetable, Fruit)):\r    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise TypeError(f\"{self.__class__.__name__} does not eat {food.__class__.__name__}!\")<br>This means:<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 If food is not a Vegetable or a Fruit, raise the error.<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 If it is either Vegetable or Fruit (or subclasses), it passes.<br></div>"
+    },
+    "__getitem__, __setitem__": {
+        "location": "contents\\__getitem__, __setitem__.html",
+        "content": "<div class=\"category-content\">When you write:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;table[\"name\"] = \"Peter\"<br>Python internally calls the special method:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__setitem__(\"name\", \"Peter\")<br><br>For example, to get the value back, you can write:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(table[\"name\"])<br>which calls:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__getitem__(\"name\")<br>and returns \"Peter\".</div>"
     }
 }
