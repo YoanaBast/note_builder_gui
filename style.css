@@ -13,6 +13,15 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+h2 {
+    font-family: 'Poppins', 'Arial', sans-serif; /* Rounded, modern font */
+    color: #4B0082; /* Deep indigo */
+    font-weight: 700;
+    text-align: left; /* aligns all h2 left */
+    letter-spacing: 1px; /* optional spacing */
+    margin-bottom: 10px; /* some spacing below */
+}
+
 .grid-item button {
     background: transparent;
     border: 2px solid rgba(75, 0, 130, 0.1);

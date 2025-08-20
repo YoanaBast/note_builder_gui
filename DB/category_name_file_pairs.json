@@ -130,9 +130,5 @@
     "__getitem__, __setitem__": {
         "location": "contents\\__getitem__, __setitem__.html",
         "content": "<div class=\"category-content\">When you write:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;table[\"name\"] = \"Peter\"<br>Python internally calls the special method:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__setitem__(\"name\", \"Peter\")<br><br>For example, to get the value back, you can write:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(table[\"name\"])<br>which calls:<br>&nbsp;&nbsp;&nbsp;&nbsp;table.__getitem__(\"name\")<br>and returns \"Peter\".</div>"
-    },
-    "test1": {
-        "location": "contents\\test1.html",
-        "content": ""
     }
 }
