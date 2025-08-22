@@ -21,9 +21,44 @@ def enter_back(enter_com, *args):
                             command=render_back_to_main)
     back_button.pack(side="left")
 
+def category_dropdown_label_check(cat, frame):
+    if cat == "Choose a category":
+        if not frame.error_label:
+            frame.error_label = tk.Label(
+                frame,
+                text='Please select a category first!',
+                font=("Arial", 16),
+                fg="red",
+                anchor="w"
+            )
+            frame.error_label.pack(side='left')
+        return  # don’t add anything
+    # clear error if category is valid
+    if frame.error_label:
+        frame.error_label.destroy()
+        frame.error_label = None
+
+
+def content_added(frame):
+    if frame.error_label:
+        frame.error_label.destroy()
+        frame.error_label = None
+    if frame.success_label:
+        frame.success_label.destroy()
+        frame.success_label = None
+
+    frame.success_label = tk.Label(
+        frame,
+        text='Added successfully!',
+        font=("Arial", 18),
+        width=30,
+        anchor="w",
+        fg="green"
+    )
+    frame.success_label.pack(side='left')
+
 
 def check_cat(cat_name, frame):
-    # clear old labels
     if frame.error_label:
         frame.error_label.destroy()
         frame.error_label = None
@@ -73,7 +108,7 @@ def check_img_name(name, frame):
         frame.success_label.destroy()
         frame.success_label = None
 
-    if not f"{name}.png" in os.listdir("cat_images"):
+    if not f"{name}.png" in os.listdir(os.path.join("..", "cat_images")):
         frame.error_label = tk.Label(
             frame,
             text='Please check the image name',
@@ -115,18 +150,18 @@ def render_no_category(frame):
 
 def cat_dropdown():
     clean_screen()
-    cat_con_name_frame = tk.Frame(app)
-    cat_con_name_frame.success_label = None
-    cat_con_name_frame.pack(fill='x', pady=10, padx=15)
+    cat_dropdown_frame = tk.Frame(app)
+    cat_dropdown_frame.success_label = None
+    cat_dropdown_frame.pack(fill='x', pady=10, padx=15)
 
     if len(content_manager.category_name_content_pairs.keys()) < 1:
-        render_no_category(cat_con_name_frame)
+        render_no_category(cat_dropdown_frame)
 
     else:
         dropdown_frame = tk.Frame(app)
         dropdown_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
-        tk.Label(cat_con_name_frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
+        tk.Label(cat_dropdown_frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
 
         selected = tk.StringVar(value="Choose a category")
         options = list(content_manager.category_name_content_pairs.keys())
@@ -134,7 +169,7 @@ def cat_dropdown():
         dropdown = tk.OptionMenu(dropdown_frame, selected, *options)
         dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
         dropdown.pack(anchor="w")  # align left
-        return selected, cat_con_name_frame
+        return selected, cat_dropdown_frame
 
 
 
@@ -163,6 +198,9 @@ def render_add_content():
     dropdown = cat_dropdown()[0]
 
     cat_con_name_frame = tk.Frame(app)
+    cat_con_name_frame.success_label = None
+    cat_con_name_frame.error_label = None
+
     cat_con_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
     tk.Label(cat_con_name_frame, text="Category content:", font=("Arial", 18), anchor="w").pack(anchor='w')
@@ -171,28 +209,38 @@ def render_add_content():
     content.pack(fill='x', pady=5)
 
     def add_content():
-        raw_text = content.get("1.0", "end-1c")  # Keep spaces and newlines exactly
-        content_manager.add_content_to_cat(dropdown.get(), raw_text)
+        category = dropdown.get()
+        category_dropdown_label_check(category, cat_con_name_frame)
+
+        raw_text = content.get("1.0", "end-1c")
+        content_manager.add_content_to_cat(category, raw_text)
+
+        content_added(cat_con_name_frame)
 
     enter_back(add_content)
 
-def render_add_img():
-    dropdown = cat_dropdown()[0]
-    cat_con_name_frame = tk.Frame(app)
-    cat_con_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
-    tk.Label(cat_con_name_frame, text="Image name (as saved in cat_images):",
+def render_add_img():
+    cat_dropdown_selected, cat_frame = cat_dropdown()
+
+    image_name_frame = tk.Frame(app)
+    image_name_frame.error_label = None
+    image_name_frame.success_label = None
+    image_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+
+    tk.Label(image_name_frame, text="Image name (as saved in cat_images):",
              font=("Arial", 18), anchor="w").pack(anchor='w')
 
-    img_name = tk.Entry(cat_con_name_frame, width=15, font=("Arial", 18))
+    img_name = tk.Entry(image_name_frame, width=15, font=("Arial", 18))
     img_name.pack(side='left', padx=5)
+
 
     dropdown_w_frame = tk.Frame(app)
     dropdown_w_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
     tk.Label(dropdown_w_frame, text="Image size:", font=("Arial", 18), anchor="w").pack(anchor='w')
 
-    selected = tk.StringVar(value="Choose a size")  # ✅ make default clearer
+    selected = tk.StringVar(value="Choose a size")
     options = [300, 500, 700, 900]
 
     dropdown_w = tk.OptionMenu(dropdown_w_frame, selected, *options)
@@ -201,15 +249,19 @@ def render_add_img():
 
     # Define a callback
     def add_img():
-        category = dropdown.get()
-        image = img_name.get()
-        size = selected.get()
+        print(img_name.get())
 
-        print("debug:", category, image, size)
-        content_manager.add_pic_to_cat(category, image, size)
+        # category = cat_dropdown_selected.get()
+        # category_dropdown_label_check(category, cat_frame)
 
+        if check_img_name(img_name.get(), image_name_frame):
+            category = cat_dropdown_selected.get()
+            image = img_name.get()
+            size = selected.get()
+            print("debug:", category, image, size)
+            content_manager.add_pic_to_cat(category, image, size)
+            # content_added(cat_dropdown_selected)
 
-    # Pass the callback
     enter_back(add_img)
 
 
