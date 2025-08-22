@@ -162,5 +162,17 @@
     "SOLID": {
         "location": "contents\\SOLID.html",
         "content": ""
+    },
+    "Bubble Sort (sinking sort, exchange sort)\n": {
+        "location": "contents\\Bubble Sort (sinking sort, exchange sort)\n.html",
+        "content": "<img src=\"cat_images/bubble2.png\" alt=\"Bubble Sort (sinking sort, exchange sort)\n\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Insertion Sort (\u201cdirect insertion\u201d) \n": {
+        "location": "contents\\Insertion Sort (\u201cdirect insertion\u201d) \n.html",
+        "content": "<img src=\"cat_images/insert2.png\" alt=\"Insertion Sort (\u201cdirect insertion\u201d) \n\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Selection Sort (direct selection)\n": {
+        "location": "contents\\Selection Sort (direct selection)\n.html",
+        "content": "<img src=\"cat_images/select2.png\" alt=\"Selection Sort (direct selection)\n\" width=\"500\" style=\"display:block; margin-right:auto;\">"
     }
 }
