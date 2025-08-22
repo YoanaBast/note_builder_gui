@@ -634,6 +634,117 @@
 </div>
 <!-- END OF comparison dunder methods -->
 
+<!-- Namespaces Order -->
+<div class="grid-item">
+    <button id="openBtn-Namespaces_Order">Namespaces Order</button>
+    <div id="myModal-Namespaces_Order" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Namespaces Order</h2>
+            <p><!--START-CONTENT-Namespaces_Order--></p>
+            <p><img src="cat_images/namespaces.png" alt="Namespaces Order" width="300" style="display:block; margin-right:auto;">
+<div class="category-content"><br>x = "global x"  # Global<br><br>def outer():<br>    x = "enclosing x"  # Enclosing<br><br>    def inner():<br>        x = "local x"  # Local<br>        print(x)<br><br>    inner()<br><br>outer()<br>print(x)  # Prints the global x<br><br>local x<br>global x</div>
+<!--CONTENT-Namespaces_Order--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Namespaces_Order", "openBtn-Namespaces_Order");
+    </script>
+</div>
+<!-- END OF Namespaces Order -->
+
+<!-- Comparing objects and str -->
+<div class="grid-item">
+    <button id="openBtn-Comparing_objects_and_str">Comparing objects and str</button>
+    <div id="myModal-Comparing_objects_and_str" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comparing objects and str</h2>
+            <p><!--START-CONTENT-Comparing_objects_and_str--></p>
+            <p><div class="category-content">self.tasks is a list that holds objects from another class.<br><br>if task_name not in self.tasks: -> if str not in object = nono<br><br># Correct way: find the object by its 'name' attribute:<br>&nbsp;&nbsp;&nbsp;&nbsp;t = next((t for t in self.tasks if t.name == task_name), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;If not t:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return f"Could not find task with the name {task_name}"<br>&nbsp;&nbsp;&nbsp;&nbsp;t.completed =T rue<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Completed task {task_name}"<br><br><br></div>
+<!--CONTENT-Comparing_objects_and_str--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Comparing_objects_and_str", "openBtn-Comparing_objects_and_str");
+    </script>
+</div>
+<!-- END OF Comparing objects and str -->
+
+<!-- types of inheritance -->
+<div class="grid-item">
+    <button id="openBtn-types_of_inheritance">types of inheritance</button>
+    <div id="myModal-types_of_inheritance" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>types of inheritance</h2>
+            <p><!--START-CONTENT-types_of_inheritance--></p>
+            <p><img src="cat_images/types_inh.png" alt="types of inheritance" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-types_of_inheritance--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-types_of_inheritance", "openBtn-types_of_inheritance");
+    </script>
+</div>
+<!-- END OF types of inheritance -->
+
+<!--  super() -->
+<div class="grid-item">
+    <button id="openBtn-super__"> super()</button>
+    <div id="myModal-super__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2> super()</h2>
+            <p><!--START-CONTENT-super__--></p>
+            <p><div class="category-content">>Bad:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name: str, quantity: int):
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(name, quantity)
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.quantity = 10<br>Behavior:<br>&nbsp;&nbsp;&nbsp;&nbsp;• Whatever value is passed in as quantity, it gets ignored — self.quantity is always overwritten to 10.<br>&nbsp;&nbsp;&nbsp;&nbsp;• So this is a bit misleading to the caller, who might pass quantity=5 expecting it to be used.<br><br><br>>Good:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name: str, quantity=10):
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(name, quantity)<br>Behavior:<br>&nbsp;&nbsp;&nbsp;&nbsp;• If quantity is not passed, it defaults to 10.<br>&nbsp;&nbsp;&nbsp;&nbsp;• But if the user does pass a specific value, it is used.<br>&nbsp;&nbsp;&nbsp;&nbsp;• This is flexible, clean, and expected behavior in Python.<br><br></div>
+<!--CONTENT-super__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-super__", "openBtn-super__");
+    </script>
+</div>
+<!-- END OF  super() -->
+
+<!-- Getter/setter -->
+<div class="grid-item">
+    <button id="openBtn-Getter_setter">Getter/setter</button>
+    <div id="myModal-Getter_setter" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Getter/setter</h2>
+            <p><!--START-CONTENT-Getter_setter--></p>
+            <p><div class="category-content"><br>    @property<br>    def username(self):<br>        return self.__username<br>    <br>    @username.setter<br>    def username(self, value):<br>        if len(value) < 5 or len(value) > 15:<br>            raise ValueError("The username must be between 5 and 15 characters.")<br>        self.__username = value<br></div>
+<!--CONTENT-Getter_setter--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Getter_setter", "openBtn-Getter_setter");
+    </script>
+</div>
+<!-- END OF Getter/setter -->
+
+<!-- SOLID -->
+<div class="grid-item">
+    <button id="openBtn-SOLID">SOLID</button>
+    <div id="myModal-SOLID" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SOLID</h2>
+            <p><!--START-CONTENT-SOLID--></p>
+            <p><!--CONTENT-SOLID--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SOLID", "openBtn-SOLID");
+    </script>
+</div>
+<!-- END OF SOLID -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 <script src="modalColors.js"></script>

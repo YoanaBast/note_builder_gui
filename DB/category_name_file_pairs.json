@@ -138,5 +138,29 @@
     "comparison dunder methods": {
         "location": "contents\\comparison dunder methods.html",
         "content": "<div class=\"category-content\">==&nbsp;&nbsp;&nbsp;&nbsp;__eq__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Equality<br>!=&nbsp;&nbsp;&nbsp;&nbsp;__ne__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Not equal<br><&nbsp;&nbsp;&nbsp;&nbsp;__lt__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Less than<br><=&nbsp;&nbsp;&nbsp;&nbsp;__le__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Less than or equal<br>>&nbsp;&nbsp;&nbsp;&nbsp;__gt__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Greater than<br>>=&nbsp;&nbsp;&nbsp;&nbsp;__ge__(self, other)&nbsp;&nbsp;&nbsp;&nbsp;Greater than or equal<br><br>class Box:<br>    def __init__(self, volume):<br>        self.volume = volume<br><br>    def __lt__(self, other):<br>        return self.volume < other.volume<br><br>    def __eq__(self, other):<br>        return self.volume == other.volume<br><br>b1 = Box(10)<br>b2 = Box(20)<br><br>print(b1 < b2)  # True<br>print(b1 == b2) # False</div>"
+    },
+    "Namespaces Order": {
+        "location": "contents\\Namespaces Order.html",
+        "content": "<div class=\"category-content\"><br>x = \"global x\"  # Global<br><br>def outer():<br>    x = \"enclosing x\"  # Enclosing<br><br>    def inner():<br>        x = \"local x\"  # Local<br>        print(x)<br><br>    inner()<br><br>outer()<br>print(x)  # Prints the global x<br><br>local x<br>global x</div>"
+    },
+    "Comparing objects and str": {
+        "location": "contents\\Comparing objects and str.html",
+        "content": "<div class=\"category-content\">self.tasks is a list that holds objects from another class.<br><br>if task_name not in self.tasks: -> if str not in object = nono<br><br># Correct way: find the object by its 'name' attribute:<br>&nbsp;&nbsp;&nbsp;&nbsp;t = next((t for t in self.tasks if t.name == task_name), None)<br>&nbsp;&nbsp;&nbsp;&nbsp;If not t:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return f\"Could not find task with the name {task_name}\"<br>&nbsp;&nbsp;&nbsp;&nbsp;t.completed =T rue<br>&nbsp;&nbsp;&nbsp;&nbsp;return f\"Completed task {task_name}\"<br><br><br></div>"
+    },
+    "types of inheritance": {
+        "location": "contents\\types of inheritance.html",
+        "content": "<img src=\"cat_images/types_inh.png\" alt=\"types of inheritance\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    " super()": {
+        "location": "contents\\ super().html",
+        "content": "<div class=\"category-content\">>Bad:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name: str, quantity: int):\r    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(name, quantity)\r    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.quantity = 10<br>Behavior:<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 Whatever value is passed in as quantity, it gets ignored \u2014 self.quantity is always overwritten to 10.<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 So this is a bit misleading to the caller, who might pass quantity=5 expecting it to be used.<br><br><br>>Good:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name: str, quantity=10):\r    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(name, quantity)<br>Behavior:<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 If quantity is not passed, it defaults to 10.<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 But if the user does pass a specific value, it is used.<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 This is flexible, clean, and expected behavior in Python.<br><br></div>"
+    },
+    "Getter/setter": {
+        "location": "contents\\Getter/setter.html",
+        "content": "<div class=\"category-content\"><br>    @property<br>    def username(self):<br>        return self.__username<br>    <br>    @username.setter<br>    def username(self, value):<br>        if len(value) < 5 or len(value) > 15:<br>            raise ValueError(\"The username must be between 5 and 15 characters.\")<br>        self.__username = value<br></div>"
+    },
+    "SOLID": {
+        "location": "contents\\SOLID.html",
+        "content": ""
     }
 }
