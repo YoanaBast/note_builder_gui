@@ -174,5 +174,21 @@
     "Selection Sort (direct selection)\n": {
         "location": "contents\\Selection Sort (direct selection)\n.html",
         "content": "<img src=\"cat_images/select2.png\" alt=\"Selection Sort (direct selection)\n\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Math symbols in py": {
+        "location": "contents\\Math symbols in py.html",
+        "content": "<div class=\"category-content\">3 * 2 # multiply<br>3 ** 2 # exponent = stepenuvane<br><br>----------------------<br><br># modulo division<br>5 % 2   # \u2192 1 (remainder)<br># 5 // 2  # \u2192 2 (quotient)<br>2 % 0 = ZeroDivisionError<br>--<br># good for checking odd and even nums<br>5 % 2 = 1 # odd<br>4 % 2 = 0 # even<br><br>----------------------<br><br># Integer Division (//)<br>5 // 2  = 2<br>4 // 2  = 2<br>5.0 // 2  = 2.0<br>ZeroDivisionError applies 5 // 0 = bad <br><br>----------------------<br><br># Normal Division (/)<br>5 / 2  # Output: 2.5<br>4 / 2  # Output: 2.0<br>ZeroDivisionError applies 5 / 0 = nono<br></div>"
+    },
+    "Neat math tricks": {
+        "location": "contents\\Neat math tricks.html",
+        "content": "<div class=\"category-content\">take the last digit<br>&nbsp;&nbsp;&nbsp;&nbsp;n % 10 <br>&nbsp;&nbsp;&nbsp;&nbsp;567 % 10 = 7<br><br>take all digits but the last<br>&nbsp;&nbsp;&nbsp;&nbsp;x // 10 <br>&nbsp;&nbsp;&nbsp;&nbsp;452 // 10 = 45<br><br>&nbsp;&nbsp;&nbsp;&nbsp;#x needs to be longer than 1 digit for this one<br>&nbsp;&nbsp;&nbsp;&nbsp;3 // 10 = 0<br><br>check if num is divisable<br>&nbsp;&nbsp;&nbsp;&nbsp;if num1 % num2 == 0:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(\"Divisible\")<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(\"Not Divisible\")<br>    &nbsp;&nbsp;&nbsp;&nbsp;num = int(input())<br></div>"
+    },
+    "Algebraic Formulas": {
+        "location": "contents\\Algebraic Formulas.html",
+        "content": "<img src=\"cat_images/algebra1.png\" alt=\"Algebraic Formulas\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Determinant of a Matrix\n": {
+        "location": "contents\\Determinant of a Matrix\n.html",
+        "content": "<div class=\"category-content\"><br>A determinant is a scalar (a single number) that can be computed from a square matrix (a matrix with the same number of rows and columns). It has important properties and interpretations in linear algebra, including understanding whether a matrix is invertible, calculating areas/volumes</div>"
     }
 }

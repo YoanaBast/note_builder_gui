@@ -241,7 +241,7 @@ def render_add_img():
     tk.Label(dropdown_w_frame, text="Image size:", font=("Arial", 18), anchor="w").pack(anchor='w')
 
     selected = tk.StringVar(value="Choose a size")
-    options = [300, 500, 700, 900]
+    options = [300, 500, 600]
 
     dropdown_w = tk.OptionMenu(dropdown_w_frame, selected, *options)
     dropdown_w.config(font=("Arial", 16), width=20, bg="white", fg="black")
