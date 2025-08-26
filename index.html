@@ -729,7 +729,8 @@
             <span class="close">&times;</span>
             <h2>SOLID</h2>
             <p><!--START-CONTENT-SOLID--></p>
-            <p><!--CONTENT-SOLID--></p>
+            <p><div class="category-content">1. Single Responsibility Principle (SRP) – One class, one job<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Teacher<br>&nbsp;&nbsp;&nbsp;&nbsp;Responsibility: Teach students<br>&nbsp;&nbsp;&nbsp;&nbsp;What it shouldn’t do: Fix the school’s computers<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: Only one reason to change—teaching. If you make it fix computers too, changes in IT affect teaching.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Keep teaching tasks in Teacher.<br>&nbsp;&nbsp;&nbsp;&nbsp;Put IT-related work in a separate ITSupport class.<br>&nbsp;&nbsp;&nbsp;&nbsp;One reason to change = one class.<br><br><br>2. Open/Closed Principle (OCP) – Open for extension, closed for modification<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: RemoteControl<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Controls TV functions (volume, channels)<br>&nbsp;&nbsp;&nbsp;&nbsp;Extending: Add voice control or streaming buttons without changing existing buttons<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: You can add new features without touching the original design.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Use extensible design: e.g., allow adding new buttons/features without modifying existing ones.<br>&nbsp;&nbsp;&nbsp;&nbsp;New functionality = new class or method, not editing old ones.<br><br><br>3. Liskov Substitution Principle (LSP) – Subtypes must work like their base type<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Car<br>&nbsp;&nbsp;&nbsp;&nbsp;Subclass: SportsCar<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Drive, stop, turn<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A SportsCar can replace a Car anywhere, behaving as expected. If it breaks normal car behavior, it violates LSP.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Ensure all subclasses behave like the base class.<br>&nbsp;&nbsp;&nbsp;&nbsp;Don’t override methods in a way that breaks expectations.<br>&nbsp;&nbsp;&nbsp;&nbsp;Anyone using Car should seamlessly use SportsCar.<br><br><br>4. Interface Segregation Principle (ISP) – Many small interfaces > one big interface<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Smartphone<br>&nbsp;&nbsp;&nbsp;&nbsp;Interfaces: Calling, Camera, MusicPlayer<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A person who just wants to make calls doesn’t need to implement camera or music features.<br>&nbsp;&nbsp;&nbsp;&nbsp;Idea: Split big interfaces into small, focused ones.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Split big interfaces into small, focused interfaces: Calling, Camera, Music.<br>&nbsp;&nbsp;&nbsp;&nbsp;Classes only implement the interfaces they need, avoiding unnecessary methods.<br><br><br>5. Dependency Inversion Principle (DIP) – Depend on abstractions, not concretes<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: TV<br>&nbsp;&nbsp;&nbsp;&nbsp;Depends on: PowerSource (abstract idea of electricity)<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: It doesn’t care if it’s a battery, plug, or solar—high-level module depends on abstraction, not concrete implementation.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Depend on abstract concepts (like PowerSource) rather than concrete types.<br>&nbsp;&nbsp;&nbsp;&nbsp;You can swap battery, plug, solar panel without changing the TV class.<br></div>
+<!--CONTENT-SOLID--></p>
         </div>
     </div>
     <script>
@@ -882,7 +883,19 @@
             <p><!--START-CONTENT-Determinant_of_a_Matrix-->
 <img src="cat_images/det1.png" alt="Determinant of a Matrix
 " width="500" style="display:block; margin-right:auto;">
-<div class="category-content"><br>A determinant is a scalar (a single number) that can be computed from a square matrix (a matrix with the same number of rows and columns). It has important properties and interpretations in linear algebra, including understanding whether a matrix is invertible, calculating areas/volumes</div>
+<div class="category-content"><br>A determinant is a scalar (a single number) that can be computed from a square matrix (a matrix with the same number of rows and columns). It is a numeric representation of how the area of a matirx changes (space between i-hat, j-hat, k-hat). It looks like an area for 2D space and volume for 3D space. Negative det means it gor inverted, and 0 a line or a dot in 2D (no area) or a 2D shape, line, or a dot in 3D (no volume). <br><br></div>
+<img src="cat_images/det2.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/det3.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/detvol.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/det0.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/detvolflat.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/detneg.png" alt="Determinant of a Matrix
+" width="500" style="display:block; margin-right:auto;">
 <!--CONTENT-Determinant_of_a_Matrix--></p>
         </div>
     </div>
@@ -892,6 +905,85 @@
 </div>
 <!-- END OF Determinant of a Matrix
  -->
+
+<!-- Adding Vectors -->
+<div class="grid-item">
+    <button id="openBtn-Adding_Vectors">Adding Vectors</button>
+    <div id="myModal-Adding_Vectors" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adding Vectors</h2>
+            <p><!--START-CONTENT-Adding_Vectors--></p>
+            <p><div class="category-content">Vectors represent movement, it is like walking on the first and then the second (starting from the point of the first), not in terms of distance, but in terms of result, the destination reached <br><br><br><br></div>
+<img src="cat_images/add_vec.png" alt="Adding Vectors" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Adding_Vectors--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Adding_Vectors", "openBtn-Adding_Vectors");
+    </script>
+</div>
+<!-- END OF Adding Vectors -->
+
+<!-- Multiplication of vectors -->
+<div class="grid-item">
+    <button id="openBtn-Multiplication_of_vectors">Multiplication of vectors</button>
+    <div id="myModal-Multiplication_of_vectors" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Multiplication of vectors</h2>
+            <p><!--START-CONTENT-Multiplication_of_vectors--></p>
+            <p><img src="cat_images/vec_mul.png" alt="Multiplication of vectors" width="500" style="display:block; margin-right:auto;">
+<div class="category-content"><br>The num by which we multiply a vector is called a scaler.<br></div>
+<img src="cat_images/mul2.png" alt="Multiplication of vectors" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Multiplication_of_vectors--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Multiplication_of_vectors", "openBtn-Multiplication_of_vectors");
+    </script>
+</div>
+<!-- END OF Multiplication of vectors -->
+
+<!-- Linear combination of vectors -->
+<div class="grid-item">
+    <button id="openBtn-Linear_combination_of_vectors">Linear combination of vectors</button>
+    <div id="myModal-Linear_combination_of_vectors" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Linear combination of vectors</h2>
+            <p><!--START-CONTENT-Linear_combination_of_vectors--></p>
+            <p><div class="category-content"><br><br></div>
+<img src="cat_images/linear_comb.png" alt="Linear combination of vectors" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/lin2.png" alt="Linear combination of vectors" width="500" style="display:block; margin-right:auto;">
+<div class="category-content"><br>Scaling then adding is called linear combination.<br><br>3 and -2 are the scalers of i-hat and j-hat. Their combination creates a new vector.</div>
+<!--CONTENT-Linear_combination_of_vectors--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Linear_combination_of_vectors", "openBtn-Linear_combination_of_vectors");
+    </script>
+</div>
+<!-- END OF Linear combination of vectors -->
+
+<!-- Time Complexities -->
+<div class="grid-item">
+    <button id="openBtn-Time_Complexities">Time Complexities</button>
+    <div id="myModal-Time_Complexities" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Time Complexities</h2>
+            <p><!--START-CONTENT-Time_Complexities--></p>
+            <p><div class="category-content">Big-O Notation (O-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Big O of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the worst-case complexity (upper bound).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is O(n²), it means in the worst case, the runtime grows no faster than n².<br><br>Omega Notation (Ω-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Omega of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the best-case complexity (lower bound).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is Ω(n), it means it takes at least linear time in the best case.<br><br>Theta Notation (Θ-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Theta of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the average or tight bound (both upper and lower).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is Θ(n log n), it means its runtime grows like n log n on average and tightly bounded there.<br><br></div>
+<img src="cat_images/complexity.png" alt="Time Complexities" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Time_Complexities--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Time_Complexities", "openBtn-Time_Complexities");
+    </script>
+</div>
+<!-- END OF Time Complexities -->
 
 <!-- INSERT_CATEGORIES_HERE -->
   </div>

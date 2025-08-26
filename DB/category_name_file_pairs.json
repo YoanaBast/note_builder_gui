@@ -161,7 +161,7 @@
     },
     "SOLID": {
         "location": "contents\\SOLID.html",
-        "content": ""
+        "content": "<div class=\"category-content\">1. Single Responsibility Principle (SRP) \u2013 One class, one job<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Teacher<br>&nbsp;&nbsp;&nbsp;&nbsp;Responsibility: Teach students<br>&nbsp;&nbsp;&nbsp;&nbsp;What it shouldn\u2019t do: Fix the school\u2019s computers<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: Only one reason to change\u2014teaching. If you make it fix computers too, changes in IT affect teaching.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Keep teaching tasks in Teacher.<br>&nbsp;&nbsp;&nbsp;&nbsp;Put IT-related work in a separate ITSupport class.<br>&nbsp;&nbsp;&nbsp;&nbsp;One reason to change = one class.<br><br><br>2. Open/Closed Principle (OCP) \u2013 Open for extension, closed for modification<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: RemoteControl<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Controls TV functions (volume, channels)<br>&nbsp;&nbsp;&nbsp;&nbsp;Extending: Add voice control or streaming buttons without changing existing buttons<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: You can add new features without touching the original design.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Use extensible design: e.g., allow adding new buttons/features without modifying existing ones.<br>&nbsp;&nbsp;&nbsp;&nbsp;New functionality = new class or method, not editing old ones.<br><br><br>3. Liskov Substitution Principle (LSP) \u2013 Subtypes must work like their base type<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Car<br>&nbsp;&nbsp;&nbsp;&nbsp;Subclass: SportsCar<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Drive, stop, turn<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A SportsCar can replace a Car anywhere, behaving as expected. If it breaks normal car behavior, it violates LSP.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Ensure all subclasses behave like the base class.<br>&nbsp;&nbsp;&nbsp;&nbsp;Don\u2019t override methods in a way that breaks expectations.<br>&nbsp;&nbsp;&nbsp;&nbsp;Anyone using Car should seamlessly use SportsCar.<br><br><br>4. Interface Segregation Principle (ISP) \u2013 Many small interfaces > one big interface<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Smartphone<br>&nbsp;&nbsp;&nbsp;&nbsp;Interfaces: Calling, Camera, MusicPlayer<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A person who just wants to make calls doesn\u2019t need to implement camera or music features.<br>&nbsp;&nbsp;&nbsp;&nbsp;Idea: Split big interfaces into small, focused ones.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Split big interfaces into small, focused interfaces: Calling, Camera, Music.<br>&nbsp;&nbsp;&nbsp;&nbsp;Classes only implement the interfaces they need, avoiding unnecessary methods.<br><br><br>5. Dependency Inversion Principle (DIP) \u2013 Depend on abstractions, not concretes<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: TV<br>&nbsp;&nbsp;&nbsp;&nbsp;Depends on: PowerSource (abstract idea of electricity)<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: It doesn\u2019t care if it\u2019s a battery, plug, or solar\u2014high-level module depends on abstraction, not concrete implementation.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Depend on abstract concepts (like PowerSource) rather than concrete types.<br>&nbsp;&nbsp;&nbsp;&nbsp;You can swap battery, plug, solar panel without changing the TV class.<br></div>"
     },
     "Bubble Sort (sinking sort, exchange sort)\n": {
         "location": "contents\\Bubble Sort (sinking sort, exchange sort)\n.html",
@@ -189,6 +189,22 @@
     },
     "Determinant of a Matrix\n": {
         "location": "contents\\Determinant of a Matrix\n.html",
-        "content": "<div class=\"category-content\"><br>A determinant is a scalar (a single number) that can be computed from a square matrix (a matrix with the same number of rows and columns). It has important properties and interpretations in linear algebra, including understanding whether a matrix is invertible, calculating areas/volumes</div>"
+        "content": "<img src=\"cat_images/detneg.png\" alt=\"Determinant of a Matrix\n\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Adding Vectors": {
+        "location": "contents\\Adding Vectors.html",
+        "content": "<img src=\"cat_images/add_vec.png\" alt=\"Adding Vectors\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Multiplication of vectors": {
+        "location": "contents\\Multiplication of vectors.html",
+        "content": "<img src=\"cat_images/mul2.png\" alt=\"Multiplication of vectors\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "Linear combination of vectors": {
+        "location": "contents\\Linear combination of vectors.html",
+        "content": "<div class=\"category-content\"><br>Scaling then adding is called linear combination.<br><br>3 and -2 are the scalers of i-hat and j-hat. Their combination creates a new vector.</div>"
+    },
+    "Time Complexities": {
+        "location": "contents\\Time Complexities.html",
+        "content": "<img src=\"cat_images/complexity.png\" alt=\"Time Complexities\" width=\"500\" style=\"display:block; margin-right:auto;\">"
     }
 }
