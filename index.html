@@ -788,7 +788,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
 </div>
 <!-- END OF Bubble Sort (sinking sort, exchange sort)
  -->
-
 <!-- Insertion Sort (“direct insertion”) 
  -->
 <div class="grid-item">
@@ -814,7 +813,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
 </div>
 <!-- END OF Insertion Sort (“direct insertion”) 
  -->
-
 <!-- Selection Sort (direct selection)
  -->
 <div class="grid-item">
@@ -840,7 +838,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
 </div>
 <!-- END OF Selection Sort (direct selection)
  -->
-
 <!-- Math symbols in py -->
 <div class="grid-item">
     <button id="openBtn-Math_symbols_in_py">Math symbols in py</button>
@@ -858,7 +855,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Math symbols in py -->
-
 <!-- Neat math tricks -->
 <div class="grid-item">
     <button id="openBtn-Neat_math_tricks">Neat math tricks</button>
@@ -876,7 +872,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Neat math tricks -->
-
 <!-- Algebraic Formulas -->
 <div class="grid-item">
     <button id="openBtn-Algebraic_Formulas">Algebraic Formulas</button>
@@ -894,7 +889,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Algebraic Formulas -->
-
 <!-- Determinant of a Matrix
  -->
 <div class="grid-item">
@@ -930,7 +924,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
 </div>
 <!-- END OF Determinant of a Matrix
  -->
-
 <!-- Adding Vectors -->
 <div class="grid-item">
     <button id="openBtn-Adding_Vectors">Adding Vectors</button>
@@ -949,7 +942,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Adding Vectors -->
-
 <!-- Multiplication of vectors -->
 <div class="grid-item">
     <button id="openBtn-Multiplication_of_vectors">Multiplication of vectors</button>
@@ -969,7 +961,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Multiplication of vectors -->
-
 <!-- Linear combination of vectors -->
 <div class="grid-item">
     <button id="openBtn-Linear_combination_of_vectors">Linear combination of vectors</button>
@@ -990,7 +981,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Linear combination of vectors -->
-
 <!-- Time Complexities -->
 <div class="grid-item">
     <button id="openBtn-Time_Complexities">Time Complexities</button>
@@ -1009,7 +999,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Time Complexities -->
-
 <!-- unittest -->
 <div class="grid-item">
     <button id="openBtn-unittest">unittest</button>
@@ -1027,7 +1016,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF unittest -->
-
 <!-- File Handling -->
 <div class="grid-item">
     <button id="openBtn-File_Handling">File Handling</button>
@@ -1045,7 +1033,6 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF File Handling -->
-
 <!-- setattr() -->
 <div class="grid-item">
     <button id="openBtn-setattr__">setattr()</button>
@@ -1066,7 +1053,6 @@ elif team_name == "Mercedes":<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
     </script>
 </div>
 <!-- END OF setattr() -->
-
 <!-- the time library -->
 <div class="grid-item">
     <button id="openBtn-the_time_library">the time library</button>
@@ -1085,6 +1071,72 @@ elif team_name == "Mercedes":<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
     </script>
 </div>
 <!-- END OF the time library -->
+<!-- Typing -->
+<div class="grid-item">
+    <button id="openBtn-Typing">Typing</button>
+    <div id="myModal-Typing" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Typing</h2>
+            <p><!--START-CONTENT-Typing--></p>
+            <p><div class="category-content">from typing import List, Optional<br><br>class Student:<br>    def __init__(self, name: str, age: int) -> None:<br>        self.name: str = name<br>        self.age: int = age<br><br>    def greet(self) -> str:<br>        return f"Hello, my name is {self.name}."<br><br><br>class Classroom:<br>    def __init__(self) -> None:<br>        self.students: List[Student] = []<br><br>    def add_student(self, student: Student) -> None:<br>        self.students.append(student)<br><br>    def find_student_by_name(self, name: str) -> Optional[Student]:<br>        """<br>        Search for a student by name.<br>        Returns the Student object if found, otherwise None.<br>        """<br>        return next((s for s in self.students if s.name == name), None)<br><br><br># it is really helful for lists of objects, because we can access the object's attributes (when we type s. it will show all available attributes), otherwise, we can manually type s.name but it will not show as an error if we use an attr that does not exist <br><br>In Python 3.9+, many built-in generic types like list, dict, tuple and set now support type hints directly.<br>This means you don’t always need to import from typing for common annotations.<br><br></div>
+<!--CONTENT-Typing--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Typing", "openBtn-Typing");
+    </script>
+</div>
+<!-- END OF Typing -->
+<!-- NamedTuple (typing) -->
+<div class="grid-item">
+    <button id="openBtn-NamedTuple__typing_">NamedTuple (typing)</button>
+    <div id="myModal-NamedTuple__typing_" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NamedTuple (typing)</h2>
+            <p><!--START-CONTENT-NamedTuple__typing_--></p>
+            <p><div class="category-content">from typing import NamedTuple, Any<br><br><br>class Pair(NamedTuple):<br>    key: Any<br>    value: Any<br><br>>>What is this syntax?<br>&nbsp;&nbsp;&nbsp;&nbsp;• Pair is a class that inherits from NamedTuple.<br>&nbsp;&nbsp;&nbsp;&nbsp;• NamedTuple is a special kind of tuple introduced in Python's typing module (or collections module in earlier versions).<br>&nbsp;&nbsp;&nbsp;&nbsp;• It allows you to create tuple-like objects with named fields, so you can access elements by name instead of position.<br>&nbsp;&nbsp;&nbsp;&nbsp;• The syntax key: Any and value: Any are type annotations indicating that the key and value fields can hold any type of data (Any means any type).<br><br>What does this do practically?<br>You can create immutable pairs with named fields:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;p = Pair(key="name", value="Alice")<br>&nbsp;&nbsp;&nbsp;&nbsp;
+print(p.key) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: name<br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedTuple?<br>&nbsp;&nbsp;&nbsp;&nbsp;• It creates a lightweight, immutable class.<br>&nbsp;&nbsp;&nbsp;&nbsp;• Gives you readable code because you access fields by name instead of by index.<br>&nbsp;&nbsp;&nbsp;&nbsp;• It supports type hints for better static analysis and IDE support.<br><br><br>When you use NamedTuple, you don’t need to write your own __init__ method because it’s automatically generated for you by the NamedTuple base class.<br>&nbsp;&nbsp;&nbsp;&nbsp;• NamedTuple creates an immutable data structure with fields you define.<br>&nbsp;&nbsp;&nbsp;&nbsp;• Behind the scenes, Python generates the __init__ method that takes parameters matching the field names (key and value in your example) and assigns them.<br>&nbsp;&nbsp;&nbsp;&nbsp;• So you get:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;p = Pair(key="name", value="Alice")  <br>&nbsp;&nbsp;&nbsp;&nbsp;# This works without you writing __init__<br><br>If you had to write it manually (for a normal class), it would look like:<br>&nbsp;&nbsp;&nbsp;&nbsp;class Pair:
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, key, value):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        self.key = key<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        self.value = value<br><br>But NamedTuple saves you this boilerplate, plus adds immutability and other tuple-like behaviors.<br><br></div>
+<!--CONTENT-NamedTuple__typing_--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-NamedTuple__typing_", "openBtn-NamedTuple__typing_");
+    </script>
+</div>
+<!-- END OF NamedTuple (typing) -->
+<!-- Binary Tree -->
+<div class="grid-item">
+    <button id="openBtn-Binary_Tree">Binary Tree</button>
+    <div id="myModal-Binary_Tree" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Binary Tree</h2>
+            <p><!--START-CONTENT-Binary_Tree-->
+<div class="category-content">A binary tree is a data structure where each node has at most two children:<br>    Left child<br>    Right child<br>    The top node is called the root.<br>    Nodes with no children are called leaves.</div>
+<img src="cat_images/bt1.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
+<div class="category-content">10 → root<br>5 → left child of 10<br>20 → right child of 10<br>Each node can have 0, 1, or 2 children.<br><br><br>>>> Binary Search Tree (BST)<br>A BST is a binary tree where for every node:<br>    Left child ≤ parent<br>    Right child ≥ parent<br>This property makes searching efficient.<br></div>
+<img src="cat_images/bt2.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
+<div class="category-content">Search: To find 15 → compare with root 10 → go right → 20 → go left → 15.<br>Time complexity: O(log n) in a balanced tree<br><br><br>>>> Min-Heap<br>A Min-Heap is a binary tree (usually implemented as an array) where:<br>    A complete binary tree where:<br>    Parent ≤ children<br>    Minimum element at root<br>    Used in priority queues.<br><br>    • The smallest element is always at the root.<br>    • Every parent node is less than or equal to its children.<br>    • It's a complete binary tree (all levels filled except possibly the last, which is filled left to right).<br></div>
+<img src="cat_images/bt3.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
+<div class="category-content"><br>In array form:<br>[1, 3, 5, 4, 8, 6]<br><br>"Min-Heap of size k" — What does that mean?<br>It means:<br>    • You're using a Min-Heap that stores at most k elements at any time.<br>    • This is common in algorithms where you want to track the smallest (or largest) k elements from a larger set.<br><br><br>>>> Max-Heap<br>A complete binary tree where:<br>    Parent ≥ children<br>    Maximum element at root<br>Used when you want largest element quickly.<br></div>
+<img src="cat_images/bt4.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
+<div class="category-content">>>><<<<br>BST → Organized phonebook (searchable by value)<br>Min-Heap → Queue where the smallest task is always on top<br>Max-Heap → Queue where the largest task is always on top<br>>>><<<</div>
+<div class="category-content"><br></div>
+<img src="cat_images/bt_stack.png" alt="Binary Tree" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Binary_Tree--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Binary_Tree", "openBtn-Binary_Tree");
+    </script>
+</div>
+<!-- END OF Binary Tree -->
 
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
