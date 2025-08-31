@@ -101,7 +101,7 @@
     },
     "sorted()": {
         "location": "contents\\sorted().html",
-        "content": "<div class=\"category-content\">>>> Sorting Dict By Values<br>&nbsp;&nbsp;&nbsp;&nbsp;my_dict = {'apple': 3, 'banana': 1, 'orange': 2}<br>&nbsp;&nbsp;&nbsp;&nbsp;sorted_dict = dict(sorted(my_dict.items(), key=lambda item: item[1]))<br>&nbsp;&nbsp;&nbsp;&nbsp;print(sorted_dict)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: {'banana': 1, 'orange': 2, 'apple': 3}<br>#  You're telling Python: \"Sort using the value part of each (key, value) pair (index 1 of the item tuple)\"<br><br><br></div>"
+        "content": "<div class=\"category-content\">Sorting a List of Dictionaries<br>&nbsp;&nbsp;&nbsp;&nbsp;ships = [\r    {'name': 'Titan', 'hit_strength': 80},\r    {'name': 'Aegis', 'hit_strength': 100},\r    {'name': 'Blazer', 'hit_strength': 100},\r]<br>&nbsp;&nbsp;&nbsp;&nbsp;# Sort by hit_strength DESC, then name ASC<br>&nbsp;&nbsp;&nbsp;&nbsp;\rsorted_ships = sorted(ships, key=lambda x: (-x['hit_strength'], x['name']))\rprint(sorted_ships)<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [{'name': 'Aegis', 'hit_strength': 100},\r    {'name': 'Blazer', 'hit_strength': 100},\r    {'name': 'Titan', 'hit_strength': 80}\r]<br><br>Sorting a List of Tuples or Lists<br>&nbsp;&nbsp;&nbsp;&nbsp;ships = [('Titan', 80),\r    ('Aegis', 100),\r    ('Blazer', 100),\r]<br>&nbsp;&nbsp;&nbsp;&nbsp;# Sort by hit_strength DESC, then name ASC<br>&nbsp;&nbsp;&nbsp;&nbsp;\rsorted_ships = sorted(ships, key=lambda x: (-x[1], x[0]))\rprint(sorted_ships)<br>&nbsp;&nbsp;&nbsp;&nbsp;Same idea, just index-based access.<br><br>Sorting a List of Objects<br>&nbsp;&nbsp;&nbsp;&nbsp;class Ship:\r    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, name, hit_strength):\r        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = name\r        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.hit_strength = hit_strength<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def __repr__(self):\r        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return f\"{self.name} ({self.hit_strength})\"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;ships = [Ship(\"Titan\", 80),\r    Ship(\"Aegis\", 100),\r    Ship(\"Blazer\", 100),\r]<br>&nbsp;&nbsp;&nbsp;&nbsp;# Sort by hit_strength DESC, then name ASC<br>&nbsp;&nbsp;&nbsp;&nbsp;\rsorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: [Aegis (100), Blazer (100), Titan (80)] &nbsp;&nbsp;&nbsp;&nbsp;<br></div>"
     },
     ".get(), .setdefault()": {
         "location": "contents\\.get(), .setdefault().html",
@@ -117,7 +117,7 @@
     },
     "any()\n": {
         "location": "contents\\any()\n.html",
-        "content": ""
+        "content": "<div class=\"category-content\">conditions = [False, False, True]<br>print(any(conditions))  <br># Output: True<br><br>conditions = [False, False, False]<br>print(any(conditions))  <br># Output: False<br><br><br>marks = [85, 90, 78]<br>print(all(m >= 40 for m in marks))<br># Output: True<br><br><br>marks = [85, 30, 78]<br>print(all(m >= 40 for m in marks))<br># Output: False</div>"
     },
     "reduce()": {
         "location": "contents\\reduce().html",
@@ -133,7 +133,7 @@
     },
     "Tuples": {
         "location": "contents\\Tuples.html",
-        "content": ""
+        "content": "<div class=\"category-content\">A tuple is an ordered, immutable collection of items.<br><br>Defined using parentheses (), e.g., my_tuple = (1, 2, 3).<br><br>Can store heterogeneous data (integers, strings, lists, etc.).<br><br>Indexing and slicing are supported (like lists).<br><br>Immutable \u2192 values cannot be changed after creation.<br><br>Useful for storing fixed collections of data (e.g., coordinates, database records).<br><br>Support nesting: tuples inside tuples.<br><br>Can be used as dictionary keys (unlike lists).</div>"
     },
     "comparison dunder methods": {
         "location": "contents\\comparison dunder methods.html",
@@ -206,5 +206,21 @@
     "Time Complexities": {
         "location": "contents\\Time Complexities.html",
         "content": "<img src=\"cat_images/complexity.png\" alt=\"Time Complexities\" width=\"500\" style=\"display:block; margin-right:auto;\">"
+    },
+    "unittest": {
+        "location": "contents\\unittest.html",
+        "content": "<div class=\"category-content\">import unittest<br><br>from project.hero import Hero # class we will test<br><br><br>class TestHero(unittest.TestCase):<br>    def setUp(self):<br>        self.hero  = Hero('Yoana', 5, 100.00, 70.00) #create object to test<br><br>    def test_init(self):<br>        self.assertEqual('Yoana', self.hero.username)<br>        ...&nbsp;&nbsp;&nbsp;&nbsp;<br><br>    def test_battle_self(self):<br>        with self.assertRaises(Exception) as ex:   # catch exception msg as str and compare it<br>            self.hero.battle(Hero('Yoana', 5, 100.00, 70.00))<br>        self.assertEqual(\"You cannot fight yourself\", str(ex.exception))<br><br>    def test_battle_self_zero_or_below(self):<br>        self.hero  = Hero('Yoana', 5, 0.00, 70.00)<br>        with self.assertRaises(Exception) as ex:<br>            self.hero.battle(Hero('Rengin', 5, 0.00, 70.00))<br>        self.assertEqual(\"Your health is lower than or equal to 0. You need to rest\", str(ex.exception))<br><br> <br>while __name__ == '__main__':<br>    unittest.main()</div>"
+    },
+    "File Handling": {
+        "location": "contents\\File Handling.html",
+        "content": "<div class=\"category-content\"># 1. Read (default)<br>with open(\"example.txt\", \"r\") as f:<br>    print(f.read())    # Reads whole file<br><br><br># 2. Write (overwrites existing)<br>with open(\"example.txt\", \"w\") as f:<br>    f.write(\"New content replaces old!\")<br><br><br># 3. Append (adds to existing file)<br>with open(\"example.txt\", \"a\") as f:<br>    f.write(\"\\nThis line is appended.\")<br><br><br># 4. Create new file (error if file exists)<br>with open(\"newfile.txt\", \"x\") as f:<br>    f.write(\"This file is newly created.\")<br><br><br># 5. Binary read<br>with open(\"image.png\", \"rb\") as f:<br>    data = f.read()<br><br># 6. Binary write<br>with open(\"copy.png\", \"wb\") as f:<br>    f.write(data)<br><br>Text files \u2192 \"r\", \"w\", \"a\", \"x\"<br>Binary files \u2192 \"rb\", \"wb\", \"ab\", \"xb\"<br><br>A binary file stores data in raw bytes rather than human-readable text.<br>Unlike text files, you cannot open it in a normal text editor and expect to read it properly.<br>Examples: images, videos, audio files, PDFs, executable files.<br><br>Files like .png, .mp3, .mp4 are stored as bytes, not text.<br>To read, process, or copy them, you need to handle them in binary mode.<br>Example: creating a copy of an image, or uploading a video in a program.<br><br>Some apps don\u2019t store the image as a file.<br>Instead, they store the raw bytes of the image (binary) in a database column (often BLOB = Binary Large Object).<br>&nbsp;&nbsp;&nbsp;&nbsp;Pros:<br>Everything is in one place (database).<br>Easier to back up and manage.<br>&nbsp;&nbsp;&nbsp;&nbsp;Cons:<br>Can make the database large.<br>Serving images may be slightly slower.<br><br></div>"
+    },
+    "setattr()": {
+        "location": "contents\\setattr().html",
+        "content": "<div class=\"category-content\">>>> What does setattr do?<br><br>Python has built-in functions like setattr to dynamically assign attributes to objects.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;setattr(self, 'red_bull_team', RedBullTeam(budget))<br>&nbsp;&nbsp;&nbsp;&nbsp;is exactly the same as writing:<br>&nbsp;&nbsp;&nbsp;&nbsp;self.red_bull_team = RedBullTeam(budget)<br><br>But setattr lets you do it dynamically, meaning you don\u2019t need to hard-code \"red_bull_team\" \u2014 you can get that name from a variable.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;team_class = RedBullTeam<br>&nbsp;&nbsp;&nbsp;&nbsp;\rattr_name = 'red_bull_team'<br>&nbsp;&nbsp;&nbsp;&nbsp;\rbudget = 10_000_000<br><br>&nbsp;&nbsp;&nbsp;&nbsp;setattr(self, attr_name, team_class(budget))<br>It\u2019s doing:<br>&nbsp;&nbsp;&nbsp;&nbsp;self.red_bull_team = RedBullTeam(10_000_000)<br>&nbsp;&nbsp;&nbsp;&nbsp;But dynamically, based on:<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 Which team you\u2019re registering (Red Bull, Mercedes, etc.)<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 Which class to create (from a dictionary)<br>&nbsp;&nbsp;&nbsp;&nbsp;\u2022 Which attribute to store it in (also from the dictionary)<br><br>Why not just use self.red_bull_team = ...?<br>You could \u2014 but then you'd need an if:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;if team_name == \"Red Bull\":<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.red_bull_team = RedBullTeam(budget)<br>&nbsp;&nbsp;&nbsp;&nbsp;\relif team_name == \"Mercedes\":<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.mercedes_team = MercedesTeam(budget)<br><br>With setattr, you generalize that logic \u2014 you no longer need the if.<br><br></div>"
+    },
+    "the time library": {
+        "location": "contents\\the time library.html",
+        "content": "<img src=\"cat_images/time_sleep.png\" alt=\"the time library\" width=\"500\" style=\"display:block; margin-right:auto;\">"
     }
 }
