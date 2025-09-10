@@ -1174,6 +1174,24 @@ print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedT
 </div>
 <!-- END OF SQL String (Character) Data Types -->
 
+<!-- SQL Date & Time Data Types -->
+<div class="grid-item">
+    <button id="openBtn-SQL_Date___Time_Data_Types">SQL Date & Time Data Types</button>
+    <div id="myModal-SQL_Date___Time_Data_Types" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SQL Date & Time Data Types</h2>
+            <p><!--START-CONTENT-SQL_Date___Time_Data_Types--></p>
+            <p><div class="category-content">1. DATE<br>Stores a calendar date (year, month, day).<br>Format: YYYY-MM-DD.<br>'2025-09-09'<br>No time of day is stored.<br><br>2. TIME [WITHOUT TIME ZONE]<br>Stores only the time of day (hours, minutes, seconds, fractions).<br>Format: HH:MI:SS[.ffff].<br>'14:35:20'<br><br>3. TIMESTAMP [WITHOUT TIME ZONE]<br>Stores both date and time together.<br>Format: YYYY-MM-DD HH:MI:SS[.ffff].<br>'2025-09-09 14:35:20'<br><br>4. TIMESTAMP WITH TIME ZONE (timestamptz in PostgreSQL)<br>Same as TIMESTAMP, but also stores a time zone offset.<br>'2025-09-09 14:35:20+02'<br>Useful when working across multiple time zones.<br><br>5. INTERVAL (PostgreSQL, some others)<br>Stores a time duration (years, months, days, hours, minutes, seconds).<br>'2 days 5 hours 30 minutes'<br><br>6. DATETIME (MySQL, SQL Server)<br>Equivalent to TIMESTAMP in many systems.<br>Stores both date and time (without timezone).<br>Copy code<br>'2025-09-09 14:35:20'</div>
+<!--CONTENT-SQL_Date___Time_Data_Types--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SQL_Date___Time_Data_Types", "openBtn-SQL_Date___Time_Data_Types");
+    </script>
+</div>
+<!-- END OF SQL Date & Time Data Types -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 <script src="modalColors.js"></script>
