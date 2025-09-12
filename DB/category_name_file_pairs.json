@@ -250,5 +250,9 @@
     "ENUM SQL": {
         "location": "contents\\ENUM SQL.html",
         "content": "<div class=\"category-content\">CREATE TYPE type_mood AS ENUM ('happy', 'relaxed', 'stressed', 'sad');<br>ALTER TABLE minions_info ADD COLUMN mood type_mood;<br></div>"
+    },
+    "Custom type in SQL": {
+        "location": "contents\\Custom type in SQL.html",
+        "content": "<img src=\"cat_images/custom_type.png\" alt=\"Custom type in SQL\" width=\"500\" style=\"display:block; margin-right:auto;\">"
     }
 }
