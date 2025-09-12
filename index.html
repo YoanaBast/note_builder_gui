@@ -1192,6 +1192,24 @@ print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedT
 </div>
 <!-- END OF SQL Date & Time Data Types -->
 
+<!-- ENUM SQL -->
+<div class="grid-item">
+    <button id="openBtn-ENUM_SQL">ENUM SQL</button>
+    <div id="myModal-ENUM_SQL" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ENUM SQL</h2>
+            <p><!--START-CONTENT-ENUM_SQL--></p>
+            <p><div class="category-content">CREATE TYPE type_mood AS ENUM ('happy', 'relaxed', 'stressed', 'sad');<br>ALTER TABLE minions_info ADD COLUMN mood type_mood;<br></div>
+<!--CONTENT-ENUM_SQL--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ENUM_SQL", "openBtn-ENUM_SQL");
+    </script>
+</div>
+<!-- END OF ENUM SQL -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 <script src="modalColors.js"></script>
