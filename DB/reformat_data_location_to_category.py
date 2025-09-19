@@ -1,10 +1,7 @@
 import json
 
 def replace_location_with_category(json_file_path, output_file_path=None):
-    """
-    Replace 'location' with 'category' for each entry in a JSON file.
-    Prompts the user to choose a category for each topic.
-    """
+
     with open(json_file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -12,7 +9,7 @@ def replace_location_with_category(json_file_path, output_file_path=None):
 
     for key, details in data.items():
         if "location" in details:
-            # Ask user which category this topic belongs to
+
             while True:
                 print(f"\nTopic: {key}")
                 print("Choose category for this topic:", valid_categories)
@@ -23,9 +20,9 @@ def replace_location_with_category(json_file_path, output_file_path=None):
                 else:
                     print("Invalid category. Please choose from:", valid_categories)
 
-            del details["location"]  # remove old field
+            del details["location"]
 
-    # Save updated JSON
+
     if output_file_path is None:
         output_file_path = json_file_path
 
@@ -35,7 +32,7 @@ def replace_location_with_category(json_file_path, output_file_path=None):
     return data
 
 
-# Example usage
+
 updated_data = replace_location_with_category(
     "category_name_file_pairs.json",
     output_file_path="updated_data.json"

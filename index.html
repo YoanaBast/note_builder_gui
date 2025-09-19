@@ -18,23 +18,7 @@
         </header>
 
   <div id="grid">
-<!-- GitHub -->
-<div class="grid-item">
-    <button id="openBtn-GitHub">GitHub</button>
-    <div id="myModal-GitHub" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>GitHub</h2>
-            <p><!--START-CONTENT-GitHub-->
-<div class="category-content">>> Upload a folder to an empty GitHub repo:<br><br>    cd path/to/your/folder<br>    git init<br>    git remote add origin https://github.com/your-username/your-repo-name.git<br>    git add .<br>    git commit -m "Initial commit"<br>    git branch -M main<br>    git push -u origin main<br>    <br><br>>> Clone a repo into an empty folder:<br><br>    cd path/to/your/empty-folder<br>    git clone https://github.com/your-username/your-repo.git <br><br><br>>> Remove folder after added by mistake (ex.: .idea):<br><br>    git rm -r --cached .idea<br>    git commit -m "Stop tracking .idea"<br>    git push<br><br>>> Publish a page:<br><br>    The main HTML file should be in root named index.html<br><br>    1. Go to your repository on GitHub.<br>    2. Click Settings → Pages (or scroll to the “GitHub Pages” section).<br>    3. Under Source, select the branch: main (or master), and folder: /root.<br>    4. Click Save.<br>    5. GitHub will provide a URL, e.g., https://YOUR_USERNAME.github.io/python-cs-notes/<br>        • Wait a few minutes for GitHub Pages to process.</div>
-<!--CONTENT-GitHub--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-GitHub", "openBtn-GitHub");
-    </script>
-</div>
-<!-- END OF GitHub -->
+
 <!-- Slice Notation -->
 <div class="grid-item">
     <button id="openBtn-Slice_Notation">Slice Notation</button>
@@ -423,26 +407,7 @@
     </script>
 </div>
 <!-- END OF .remove(), .pop(), .popitem() -->
-<!-- List vs Array
- -->
-<div class="grid-item">
-    <button id="openBtn-List_vs_Array">List vs Array
-</button>
-    <div id="myModal-List_vs_Array" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>List vs Array
-</h2>
-            <p><!--START-CONTENT-List_vs_Array--></p>
-            <p><!--CONTENT-List_vs_Array--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-List_vs_Array", "openBtn-List_vs_Array");
-    </script>
-</div>
-<!-- END OF List vs Array
- -->
+
 <!-- Dicts -->
 <div class="grid-item">
     <button id="openBtn-Dicts">Dicts</button>
@@ -665,24 +630,7 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF comparison dunder methods -->
-<!-- Namespaces Order -->
-<div class="grid-item">
-    <button id="openBtn-Namespaces_Order">Namespaces Order</button>
-    <div id="myModal-Namespaces_Order" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Namespaces Order</h2>
-            <p><!--START-CONTENT-Namespaces_Order--></p>
-            <p><img src="cat_images/namespaces.png" alt="Namespaces Order" width="300" style="display:block; margin-right:auto;">
-<div class="category-content"><br>x = "global x"  # Global<br><br>def outer():<br>    x = "enclosing x"  # Enclosing<br><br>    def inner():<br>        x = "local x"  # Local<br>        print(x)<br><br>    inner()<br><br>outer()<br>print(x)  # Prints the global x<br><br>local x<br>global x</div>
-<!--CONTENT-Namespaces_Order--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Namespaces_Order", "openBtn-Namespaces_Order");
-    </script>
-</div>
-<!-- END OF Namespaces Order -->
+
 <!-- Comparing objects and str -->
 <div class="grid-item">
     <button id="openBtn-Comparing_objects_and_str">Comparing objects and str</button>
@@ -700,23 +648,7 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Comparing objects and str -->
-<!-- types of inheritance -->
-<div class="grid-item">
-    <button id="openBtn-types_of_inheritance">types of inheritance</button>
-    <div id="myModal-types_of_inheritance" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>types of inheritance</h2>
-            <p><!--START-CONTENT-types_of_inheritance--></p>
-            <p><img src="cat_images/types_inh.png" alt="types of inheritance" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-types_of_inheritance--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-types_of_inheritance", "openBtn-types_of_inheritance");
-    </script>
-</div>
-<!-- END OF types of inheritance -->
+
 <!--  super() -->
 <div class="grid-item">
     <button id="openBtn-super__"> super()</button>
@@ -754,98 +686,7 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Getter/setter -->
-<!-- SOLID -->
-<div class="grid-item">
-    <button id="openBtn-SOLID">SOLID</button>
-    <div id="myModal-SOLID" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>SOLID</h2>
-            <p><!--START-CONTENT-SOLID--></p>
-            <p><div class="category-content">1. Single Responsibility Principle (SRP) – One class, one job<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Teacher<br>&nbsp;&nbsp;&nbsp;&nbsp;Responsibility: Teach students<br>&nbsp;&nbsp;&nbsp;&nbsp;What it shouldn’t do: Fix the school’s computers<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: Only one reason to change—teaching. If you make it fix computers too, changes in IT affect teaching.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Keep teaching tasks in Teacher.<br>&nbsp;&nbsp;&nbsp;&nbsp;Put IT-related work in a separate ITSupport class.<br>&nbsp;&nbsp;&nbsp;&nbsp;One reason to change = one class.<br><br><br>2. Open/Closed Principle (OCP) – Open for extension, closed for modification<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: RemoteControl<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Controls TV functions (volume, channels)<br>&nbsp;&nbsp;&nbsp;&nbsp;Extending: Add voice control or streaming buttons without changing existing buttons<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: You can add new features without touching the original design.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Use extensible design: e.g., allow adding new buttons/features without modifying existing ones.<br>&nbsp;&nbsp;&nbsp;&nbsp;New functionality = new class or method, not editing old ones.<br><br><br>3. Liskov Substitution Principle (LSP) – Subtypes must work like their base type<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Car<br>&nbsp;&nbsp;&nbsp;&nbsp;Subclass: SportsCar<br>&nbsp;&nbsp;&nbsp;&nbsp;Behavior: Drive, stop, turn<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A SportsCar can replace a Car anywhere, behaving as expected. If it breaks normal car behavior, it violates LSP.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Ensure all subclasses behave like the base class.<br>&nbsp;&nbsp;&nbsp;&nbsp;Don’t override methods in a way that breaks expectations.<br>&nbsp;&nbsp;&nbsp;&nbsp;Anyone using Car should seamlessly use SportsCar.<br><br><br>4. Interface Segregation Principle (ISP) – Many small interfaces > one big interface<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: Smartphone<br>&nbsp;&nbsp;&nbsp;&nbsp;Interfaces: Calling, Camera, MusicPlayer<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: A person who just wants to make calls doesn’t need to implement camera or music features.<br>&nbsp;&nbsp;&nbsp;&nbsp;Idea: Split big interfaces into small, focused ones.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Split big interfaces into small, focused interfaces: Calling, Camera, Music.<br>&nbsp;&nbsp;&nbsp;&nbsp;Classes only implement the interfaces they need, avoiding unnecessary methods.<br><br><br>5. Dependency Inversion Principle (DIP) – Depend on abstractions, not concretes<br>&nbsp;&nbsp;&nbsp;&nbsp;Class: TV<br>&nbsp;&nbsp;&nbsp;&nbsp;Depends on: PowerSource (abstract idea of electricity)<br>&nbsp;&nbsp;&nbsp;&nbsp;Why: It doesn’t care if it’s a battery, plug, or solar—high-level module depends on abstraction, not concrete implementation.<br>Implementation:<br>&nbsp;&nbsp;&nbsp;&nbsp;Depend on abstract concepts (like PowerSource) rather than concrete types.<br>&nbsp;&nbsp;&nbsp;&nbsp;You can swap battery, plug, solar panel without changing the TV class.<br></div>
-<!--CONTENT-SOLID--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-SOLID", "openBtn-SOLID");
-    </script>
-</div>
-<!-- END OF SOLID -->
-<!-- Bubble Sort (sinking sort, exchange sort)
- -->
-<div class="grid-item">
-    <button id="openBtn-Bubble_Sort__sinking_sort__exchange_sort_">Bubble Sort (sinking sort, exchange sort)
-</button>
-    <div id="myModal-Bubble_Sort__sinking_sort__exchange_sort_" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Bubble Sort (sinking sort, exchange sort)
-</h2>
-            <p><!--START-CONTENT-Bubble_Sort__sinking_sort__exchange_sort_--></p>
-            <p><div class="category-content">i and j stick together and move 1 index ahead, they swap if j is bigger<br>This runs multiple times until no more sorts are needed<br><br></div>
-<img src="cat_images/bubble1.png" alt="Bubble Sort (sinking sort, exchange sort)
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/bubble2.png" alt="Bubble Sort (sinking sort, exchange sort)
-" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Bubble_Sort__sinking_sort__exchange_sort_--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Bubble_Sort__sinking_sort__exchange_sort_", "openBtn-Bubble_Sort__sinking_sort__exchange_sort_");
-    </script>
-</div>
-<!-- END OF Bubble Sort (sinking sort, exchange sort)
- -->
-<!-- Insertion Sort (“direct insertion”) 
- -->
-<div class="grid-item">
-    <button id="openBtn-Insertion_Sort___direct_insertion__">Insertion Sort (“direct insertion”) 
-</button>
-    <div id="myModal-Insertion_Sort___direct_insertion__" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Insertion Sort (“direct insertion”) 
-</h2>
-            <p><!--START-CONTENT-Insertion_Sort___direct_insertion__-->
-<div class="category-content">Index i starts at 0<br>j starts at 1<br>j compares to i and swaps if smaller, it does not scan the whole arr like in selection<br>i moves ahead until len - 1<br><br></div>
-<img src="cat_images/insert1.png" alt="Insertion Sort (“direct insertion”) 
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/insert2.png" alt="Insertion Sort (“direct insertion”) 
-" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Insertion_Sort___direct_insertion__--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Insertion_Sort___direct_insertion__", "openBtn-Insertion_Sort___direct_insertion__");
-    </script>
-</div>
-<!-- END OF Insertion Sort (“direct insertion”) 
- -->
-<!-- Selection Sort (direct selection)
- -->
-<div class="grid-item">
-    <button id="openBtn-Selection_Sort__direct_selection_">Selection Sort (direct selection)
-</button>
-    <div id="myModal-Selection_Sort__direct_selection_" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Selection Sort (direct selection)
-</h2>
-            <p><!--START-CONTENT-Selection_Sort__direct_selection_--></p>
-            <p><div class="category-content">Index i stays at the start<br>Index j scans the whole array and finds the smallest<br>If it is smaller than i, swap<br>i is moved 1 ahead until it reaches len - 1<br><br></div>
-<img src="cat_images/select1.png" alt="Selection Sort (direct selection)
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/select2.png" alt="Selection Sort (direct selection)
-" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Selection_Sort__direct_selection_--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Selection_Sort__direct_selection_", "openBtn-Selection_Sort__direct_selection_");
-    </script>
-</div>
-<!-- END OF Selection Sort (direct selection)
- -->
+
 <!-- Math symbols in py -->
 <div class="grid-item">
     <button id="openBtn-Math_symbols_in_py">Math symbols in py</button>
@@ -880,133 +721,7 @@ sorted_ships = sorted(ships, key=lambda x: (-x.hit_strength, x.name))<br>&nbsp;&
     </script>
 </div>
 <!-- END OF Neat math tricks -->
-<!-- Algebraic Formulas -->
-<div class="grid-item">
-    <button id="openBtn-Algebraic_Formulas">Algebraic Formulas</button>
-    <div id="myModal-Algebraic_Formulas" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Algebraic Formulas</h2>
-            <p><!--START-CONTENT-Algebraic_Formulas--></p>
-            <p><img src="cat_images/algebra1.png" alt="Algebraic Formulas" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Algebraic_Formulas--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Algebraic_Formulas", "openBtn-Algebraic_Formulas");
-    </script>
-</div>
-<!-- END OF Algebraic Formulas -->
-<!-- Determinant of a Matrix
- -->
-<div class="grid-item">
-    <button id="openBtn-Determinant_of_a_Matrix">Determinant of a Matrix
-</button>
-    <div id="myModal-Determinant_of_a_Matrix" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Determinant of a Matrix
-</h2>
-            <p><!--START-CONTENT-Determinant_of_a_Matrix-->
-<img src="cat_images/det1.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<div class="category-content"><br>A determinant is a scalar (a single number) that can be computed from a square matrix (a matrix with the same number of rows and columns). It is a numeric representation of how the area of a matirx changes (space between i-hat, j-hat, k-hat). It looks like an area for 2D space and volume for 3D space. Negative det means it gor inverted, and 0 a line or a dot in 2D (no area) or a 2D shape, line, or a dot in 3D (no volume). <br><br></div>
-<img src="cat_images/det2.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/det3.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/detvol.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/det0.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/detvolflat.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/detneg.png" alt="Determinant of a Matrix
-" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Determinant_of_a_Matrix--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Determinant_of_a_Matrix", "openBtn-Determinant_of_a_Matrix");
-    </script>
-</div>
-<!-- END OF Determinant of a Matrix
- -->
-<!-- Adding Vectors -->
-<div class="grid-item">
-    <button id="openBtn-Adding_Vectors">Adding Vectors</button>
-    <div id="myModal-Adding_Vectors" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Adding Vectors</h2>
-            <p><!--START-CONTENT-Adding_Vectors--></p>
-            <p><div class="category-content">Vectors represent movement, it is like walking on the first and then the second (starting from the point of the first), not in terms of distance, but in terms of result, the destination reached <br><br><br><br></div>
-<img src="cat_images/add_vec.png" alt="Adding Vectors" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Adding_Vectors--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Adding_Vectors", "openBtn-Adding_Vectors");
-    </script>
-</div>
-<!-- END OF Adding Vectors -->
-<!-- Multiplication of vectors -->
-<div class="grid-item">
-    <button id="openBtn-Multiplication_of_vectors">Multiplication of vectors</button>
-    <div id="myModal-Multiplication_of_vectors" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Multiplication of vectors</h2>
-            <p><!--START-CONTENT-Multiplication_of_vectors--></p>
-            <p><img src="cat_images/vec_mul.png" alt="Multiplication of vectors" width="500" style="display:block; margin-right:auto;">
-<div class="category-content"><br>The num by which we multiply a vector is called a scaler.<br></div>
-<img src="cat_images/mul2.png" alt="Multiplication of vectors" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Multiplication_of_vectors--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Multiplication_of_vectors", "openBtn-Multiplication_of_vectors");
-    </script>
-</div>
-<!-- END OF Multiplication of vectors -->
-<!-- Linear combination of vectors -->
-<div class="grid-item">
-    <button id="openBtn-Linear_combination_of_vectors">Linear combination of vectors</button>
-    <div id="myModal-Linear_combination_of_vectors" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Linear combination of vectors</h2>
-            <p><!--START-CONTENT-Linear_combination_of_vectors--></p>
-            <p><div class="category-content"><br><br></div>
-<img src="cat_images/linear_comb.png" alt="Linear combination of vectors" width="500" style="display:block; margin-right:auto;">
-<img src="cat_images/lin2.png" alt="Linear combination of vectors" width="500" style="display:block; margin-right:auto;">
-<div class="category-content"><br>Scaling then adding is called linear combination.<br><br>3 and -2 are the scalers of i-hat and j-hat. Their combination creates a new vector.</div>
-<!--CONTENT-Linear_combination_of_vectors--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Linear_combination_of_vectors", "openBtn-Linear_combination_of_vectors");
-    </script>
-</div>
-<!-- END OF Linear combination of vectors -->
-<!-- Time Complexities -->
-<div class="grid-item">
-    <button id="openBtn-Time_Complexities">Time Complexities</button>
-    <div id="myModal-Time_Complexities" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Time Complexities</h2>
-            <p><!--START-CONTENT-Time_Complexities--></p>
-            <p><div class="category-content">Big-O Notation (O-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Big O of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the worst-case complexity (upper bound).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is O(n²), it means in the worst case, the runtime grows no faster than n².<br><br>Omega Notation (Ω-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Omega of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the best-case complexity (lower bound).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is Ω(n), it means it takes at least linear time in the best case.<br><br>Theta Notation (Θ-notation)<br>&nbsp;&nbsp;&nbsp;&nbsp;Read as: "Theta of f(n)"<br>&nbsp;&nbsp;&nbsp;&nbsp;Meaning: Describes the average or tight bound (both upper and lower).<br>&nbsp;&nbsp;&nbsp;&nbsp;Example: If an algorithm is Θ(n log n), it means its runtime grows like n log n on average and tightly bounded there.<br><br></div>
-<img src="cat_images/complexity.png" alt="Time Complexities" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Time_Complexities--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Time_Complexities", "openBtn-Time_Complexities");
-    </script>
-</div>
-<!-- END OF Time Complexities -->
+
 <!-- unittest -->
 <div class="grid-item">
     <button id="openBtn-unittest">unittest</button>
@@ -1118,124 +833,9 @@ print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedT
     </script>
 </div>
 <!-- END OF NamedTuple (typing) -->
-<!-- Binary Tree -->
-<div class="grid-item">
-    <button id="openBtn-Binary_Tree">Binary Tree</button>
-    <div id="myModal-Binary_Tree" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Binary Tree</h2>
-            <p><!--START-CONTENT-Binary_Tree-->
-<div class="category-content">A binary tree is a data structure where each node has at most two children:<br>    Left child<br>    Right child<br>    The top node is called the root.<br>    Nodes with no children are called leaves.</div>
-<img src="cat_images/bt1.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
-<div class="category-content">10 → root<br>5 → left child of 10<br>20 → right child of 10<br>Each node can have 0, 1, or 2 children.<br><br><br>>>> Binary Search Tree (BST)<br>A BST is a binary tree where for every node:<br>    Left child ≤ parent<br>    Right child ≥ parent<br>This property makes searching efficient.<br></div>
-<img src="cat_images/bt2.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
-<div class="category-content">Search: To find 15 → compare with root 10 → go right → 20 → go left → 15.<br>Time complexity: O(log n) in a balanced tree<br><br><br>>>> Min-Heap<br>A Min-Heap is a binary tree (usually implemented as an array) where:<br>    A complete binary tree where:<br>    Parent ≤ children<br>    Minimum element at root<br>    Used in priority queues.<br><br>    • The smallest element is always at the root.<br>    • Every parent node is less than or equal to its children.<br>    • It's a complete binary tree (all levels filled except possibly the last, which is filled left to right).<br></div>
-<img src="cat_images/bt3.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
-<div class="category-content"><br>In array form:<br>[1, 3, 5, 4, 8, 6]<br><br>"Min-Heap of size k" — What does that mean?<br>It means:<br>    • You're using a Min-Heap that stores at most k elements at any time.<br>    • This is common in algorithms where you want to track the smallest (or largest) k elements from a larger set.<br><br><br>>>> Max-Heap<br>A complete binary tree where:<br>    Parent ≥ children<br>    Maximum element at root<br>Used when you want largest element quickly.<br></div>
-<img src="cat_images/bt4.png" alt="Binary Tree" width="300" style="display:block; margin-right:auto;">
-<div class="category-content">>>><<<<br>BST → Organized phonebook (searchable by value)<br>Min-Heap → Queue where the smallest task is always on top<br>Max-Heap → Queue where the largest task is always on top<br>>>><<<</div>
-<div class="category-content"><br></div>
-<img src="cat_images/bt_stack.png" alt="Binary Tree" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Binary_Tree--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Binary_Tree", "openBtn-Binary_Tree");
-    </script>
-</div>
-<!-- END OF Binary Tree -->
 
-<!-- SQL Numeric Data Types -->
-<div class="grid-item">
-    <button id="openBtn-SQL_Numeric_Data_Types">SQL Numeric Data Types</button>
-    <div id="myModal-SQL_Numeric_Data_Types" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>SQL Numeric Data Types</h2>
-            <p><!--START-CONTENT-SQL_Numeric_Data_Types--></p>
-            <p><div class="category-content">1. INTEGER (INT)<br>Stores whole numbers (no decimals).<br>Typical range: -2,147,483,648 to 2,147,483,647 (4 bytes).<br>Good for things like IDs, counts, ages.<br>Variants: SMALLINT (2 bytes), BIGINT (8 bytes).<br><br>2. SMALLINT<br>Smaller range than INT.<br>Typical range: -32,768 to 32,767 (2 bytes).<br>Saves storage if you know values are small (e.g., number of items in stock, months of the year).<br><br>3. BIGINT<br>Larger range than INT.<br>Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (8 bytes).<br>Use for very large counts (e.g., social media user IDs, transaction logs).<br><br>4. DECIMAL(p, s) / NUMERIC(p, s)<br>Stores exact fixed-point numbers.<br>p = precision (total number of digits).<br>s = scale (digits after the decimal point).<br>Example: DECIMAL(10,2) can store up to 99999999.99.<br>Great for money, prices, financial data (no rounding errors).<br><br>5. FLOAT / REAL / DOUBLE PRECISION<br>Stores approximate values with floating-point representation.<br>FLOAT → database decides precision (often 4 bytes, ~7 digits).<br>DOUBLE PRECISION → higher precision (8 bytes, ~15 digits).<br>Faster than DECIMAL, but not always exact (can have rounding errors).<br>Use for scientific data, measurements, percentages, but avoid for money.<br><br>These are all floating-point numeric types, meaning they store approximate numbers (not exact). The main difference is in precision (how many digits they can represent reliably) and storage size.<br>REAL = small, fast, less precise.<br>DOUBLE PRECISION = bigger, slower, much more precise.<br>FLOAT(p) = SQL standard that maps to REAL or DOUBLE depending on p.<br><br>6. SERIAL / BIGSERIAL (PostgreSQL only)<br>Auto-incrementing integer.<br>SERIAL = INTEGER + auto-increment.<br>BIGSERIAL = BIGINT + auto-increment.<br>Perfect for primary keys.</div>
-<!--CONTENT-SQL_Numeric_Data_Types--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-SQL_Numeric_Data_Types", "openBtn-SQL_Numeric_Data_Types");
-    </script>
-</div>
-<!-- END OF SQL Numeric Data Types -->
 
-<!-- SQL String (Character) Data Types -->
-<div class="grid-item">
-    <button id="openBtn-SQL_String__Character__Data_Types">SQL String (Character) Data Types</button>
-    <div id="myModal-SQL_String__Character__Data_Types" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>SQL String (Character) Data Types</h2>
-            <p><!--START-CONTENT-SQL_String__Character__Data_Types--></p>
-            <p><div class="category-content">1. CHAR(n)<br>Fixed-length string.<br>Always stores exactly n characters → pads with spaces if shorter.<br>Example: CHAR(5)<br>'hi' is stored as 'hi ' (3 spaces added).<br>Efficient for codes of fixed length (e.g., country codes like USA, postal codes).<br><br>2. VARCHAR(n)<br>Variable-length string.<br>Stores up to n characters, without extra padding.<br>Example: VARCHAR(50) → can store between 0 and 50 characters.<br>More flexible than CHAR.<br>VARCHAR (without n) → unlimited length (same as TEXT).<br>Common for names, emails, descriptions.<br><br>3. TEXT<br>Stores unlimited-length text (well, very large).<br>Example: in PostgreSQL, up to 1 GB per value.<br>No need to define a max length.<br>Good for long text (comments, articles, logs).<br>But often lacks some indexing/constraint options compared to VARCHAR.<br><br>4. NVARCHAR / NCHAR (Unicode types, mainly SQL Server / Oracle)<br>Like VARCHAR/CHAR, but stores Unicode characters.<br>Needed when working with multilingual data (Chinese, Arabic, emojis, etc.).<br>Each character can take more bytes (UTF-16 encoding).<br><br>5. Other Useful String Types (DB-specific)<br>UUID (PostgreSQL, MySQL 8.0) → special string for universally unique identifiers.<br>JSON / JSONB (PostgreSQL, MySQL, SQL Server) → structured text data.<br>ENUM (MySQL, PostgreSQL) → predefined list of string values (like "pending", "approved", "rejected").</div>
-<!--CONTENT-SQL_String__Character__Data_Types--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-SQL_String__Character__Data_Types", "openBtn-SQL_String__Character__Data_Types");
-    </script>
-</div>
-<!-- END OF SQL String (Character) Data Types -->
 
-<!-- SQL Date & Time Data Types -->
-<div class="grid-item">
-    <button id="openBtn-SQL_Date___Time_Data_Types">SQL Date & Time Data Types</button>
-    <div id="myModal-SQL_Date___Time_Data_Types" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>SQL Date & Time Data Types</h2>
-            <p><!--START-CONTENT-SQL_Date___Time_Data_Types--></p>
-            <p><div class="category-content">1. DATE<br>Stores a calendar date (year, month, day).<br>Format: YYYY-MM-DD.<br>'2025-09-09'<br>No time of day is stored.<br><br>2. TIME [WITHOUT TIME ZONE]<br>Stores only the time of day (hours, minutes, seconds, fractions).<br>Format: HH:MI:SS[.ffff].<br>'14:35:20'<br><br>3. TIMESTAMP [WITHOUT TIME ZONE]<br>Stores both date and time together.<br>Format: YYYY-MM-DD HH:MI:SS[.ffff].<br>'2025-09-09 14:35:20'<br><br>4. TIMESTAMP WITH TIME ZONE (timestamptz in PostgreSQL)<br>Same as TIMESTAMP, but also stores a time zone offset.<br>'2025-09-09 14:35:20+02'<br>Useful when working across multiple time zones.<br><br>5. INTERVAL (PostgreSQL, some others)<br>Stores a time duration (years, months, days, hours, minutes, seconds).<br>'2 days 5 hours 30 minutes'<br><br>6. DATETIME (MySQL, SQL Server)<br>Equivalent to TIMESTAMP in many systems.<br>Stores both date and time (without timezone).<br>Copy code<br>'2025-09-09 14:35:20'</div>
-<div class="category-content"><br><br>>>> General SQL Rules for Dates & Intervals<br><br>Type awareness<br><br>You can only add/subtract intervals to/from DATE or TIMESTAMP types.<br>Example: DATE '2025-01-01' + INTERVAL '10 days' → 2025-01-11.<br><br>Valid units for INTERVAL<br>Standard SQL supports: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND.<br><br>Some databases add extras like WEEK, MICROSECOND, etc.<br><br>Addition vs. subtraction<br><br>date + interval → moves forward.<br>date - interval → moves backward.<br>date1 - date2 → returns an interval (the difference).<br><br>Overflow handling (months/years)<br><br>Adding months is tricky because months have different lengths.<br>Example in PostgreSQL:<br>DATE '2025-01-31' + INTERVAL '1 month' → 2025-02-28 (it clamps to the last valid day).<br><br>MySQL might behave differently.</div>
-<!--CONTENT-SQL_Date___Time_Data_Types--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-SQL_Date___Time_Data_Types", "openBtn-SQL_Date___Time_Data_Types");
-    </script>
-</div>
-<!-- END OF SQL Date & Time Data Types -->
-
-<!-- ENUM SQL -->
-<div class="grid-item">
-    <button id="openBtn-ENUM_SQL">ENUM SQL</button>
-    <div id="myModal-ENUM_SQL" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>ENUM SQL</h2>
-            <p><!--START-CONTENT-ENUM_SQL--></p>
-            <p><div class="category-content">CREATE TYPE type_mood AS ENUM ('happy', 'relaxed', 'stressed', 'sad');<br>ALTER TABLE minions_info ADD COLUMN mood type_mood;<br></div>
-<!--CONTENT-ENUM_SQL--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-ENUM_SQL", "openBtn-ENUM_SQL");
-    </script>
-</div>
-<!-- END OF ENUM SQL -->
-
-<!-- Custom type in SQL -->
-<div class="grid-item">
-    <button id="openBtn-Custom_type_in_SQL">Custom type in SQL</button>
-    <div id="myModal-Custom_type_in_SQL" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Custom type in SQL</h2>
-            <p><!--START-CONTENT-Custom_type_in_SQL--></p>
-            <p><img src="cat_images/custom_type.png" alt="Custom type in SQL" width="500" style="display:block; margin-right:auto;">
-<!--CONTENT-Custom_type_in_SQL--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-Custom_type_in_SQL", "openBtn-Custom_type_in_SQL");
-    </script>
-</div>
-<!-- END OF Custom type in SQL -->
 
 <!-- INSERT_CATEGORIES_HERE -->
   </div>

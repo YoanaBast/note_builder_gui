@@ -67,7 +67,7 @@ def check_cat(cat_name, frame):
         frame.success_label = None
 
     if cat_name.get() not in content_manager.category_name_content_pairs.keys():
-        result = content_manager.add_category(cat_name.get())
+        result = content_manager.add_topic(cat_name.get())
         if result == 'Empty string':
             frame.error_label = tk.Label(
                 frame,

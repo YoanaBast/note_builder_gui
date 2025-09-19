@@ -17,5 +17,103 @@
             </nav>
         </header>
 
-    </body>
+  <div id="grid">
+
+<!-- SQL Numeric Data Types -->
+<div class="grid-item">
+    <button id="openBtn-SQL_Numeric_Data_Types">SQL Numeric Data Types</button>
+    <div id="myModal-SQL_Numeric_Data_Types" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SQL Numeric Data Types</h2>
+            <p><!--START-CONTENT-SQL_Numeric_Data_Types--></p>
+            <p><div class="category-content">1. INTEGER (INT)<br>Stores whole numbers (no decimals).<br>Typical range: -2,147,483,648 to 2,147,483,647 (4 bytes).<br>Good for things like IDs, counts, ages.<br>Variants: SMALLINT (2 bytes), BIGINT (8 bytes).<br><br>2. SMALLINT<br>Smaller range than INT.<br>Typical range: -32,768 to 32,767 (2 bytes).<br>Saves storage if you know values are small (e.g., number of items in stock, months of the year).<br><br>3. BIGINT<br>Larger range than INT.<br>Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (8 bytes).<br>Use for very large counts (e.g., social media user IDs, transaction logs).<br><br>4. DECIMAL(p, s) / NUMERIC(p, s)<br>Stores exact fixed-point numbers.<br>p = precision (total number of digits).<br>s = scale (digits after the decimal point).<br>Example: DECIMAL(10,2) can store up to 99999999.99.<br>Great for money, prices, financial data (no rounding errors).<br><br>5. FLOAT / REAL / DOUBLE PRECISION<br>Stores approximate values with floating-point representation.<br>FLOAT → database decides precision (often 4 bytes, ~7 digits).<br>DOUBLE PRECISION → higher precision (8 bytes, ~15 digits).<br>Faster than DECIMAL, but not always exact (can have rounding errors).<br>Use for scientific data, measurements, percentages, but avoid for money.<br><br>These are all floating-point numeric types, meaning they store approximate numbers (not exact). The main difference is in precision (how many digits they can represent reliably) and storage size.<br>REAL = small, fast, less precise.<br>DOUBLE PRECISION = bigger, slower, much more precise.<br>FLOAT(p) = SQL standard that maps to REAL or DOUBLE depending on p.<br><br>6. SERIAL / BIGSERIAL (PostgreSQL only)<br>Auto-incrementing integer.<br>SERIAL = INTEGER + auto-increment.<br>BIGSERIAL = BIGINT + auto-increment.<br>Perfect for primary keys.</div>
+<!--CONTENT-SQL_Numeric_Data_Types--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SQL_Numeric_Data_Types", "openBtn-SQL_Numeric_Data_Types");
+    </script>
+</div>
+<!-- END OF SQL Numeric Data Types -->
+
+<!-- SQL String (Character) Data Types -->
+<div class="grid-item">
+    <button id="openBtn-SQL_String__Character__Data_Types">SQL String (Character) Data Types</button>
+    <div id="myModal-SQL_String__Character__Data_Types" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SQL String (Character) Data Types</h2>
+            <p><!--START-CONTENT-SQL_String__Character__Data_Types--></p>
+            <p><div class="category-content">1. CHAR(n)<br>Fixed-length string.<br>Always stores exactly n characters → pads with spaces if shorter.<br>Example: CHAR(5)<br>'hi' is stored as 'hi ' (3 spaces added).<br>Efficient for codes of fixed length (e.g., country codes like USA, postal codes).<br><br>2. VARCHAR(n)<br>Variable-length string.<br>Stores up to n characters, without extra padding.<br>Example: VARCHAR(50) → can store between 0 and 50 characters.<br>More flexible than CHAR.<br>VARCHAR (without n) → unlimited length (same as TEXT).<br>Common for names, emails, descriptions.<br><br>3. TEXT<br>Stores unlimited-length text (well, very large).<br>Example: in PostgreSQL, up to 1 GB per value.<br>No need to define a max length.<br>Good for long text (comments, articles, logs).<br>But often lacks some indexing/constraint options compared to VARCHAR.<br><br>4. NVARCHAR / NCHAR (Unicode types, mainly SQL Server / Oracle)<br>Like VARCHAR/CHAR, but stores Unicode characters.<br>Needed when working with multilingual data (Chinese, Arabic, emojis, etc.).<br>Each character can take more bytes (UTF-16 encoding).<br><br>5. Other Useful String Types (DB-specific)<br>UUID (PostgreSQL, MySQL 8.0) → special string for universally unique identifiers.<br>JSON / JSONB (PostgreSQL, MySQL, SQL Server) → structured text data.<br>ENUM (MySQL, PostgreSQL) → predefined list of string values (like "pending", "approved", "rejected").</div>
+<!--CONTENT-SQL_String__Character__Data_Types--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SQL_String__Character__Data_Types", "openBtn-SQL_String__Character__Data_Types");
+    </script>
+</div>
+<!-- END OF SQL String (Character) Data Types -->
+
+<!-- SQL Date & Time Data Types -->
+<div class="grid-item">
+    <button id="openBtn-SQL_Date___Time_Data_Types">SQL Date & Time Data Types</button>
+    <div id="myModal-SQL_Date___Time_Data_Types" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SQL Date & Time Data Types</h2>
+            <p><!--START-CONTENT-SQL_Date___Time_Data_Types--></p>
+            <p><div class="category-content">1. DATE<br>Stores a calendar date (year, month, day).<br>Format: YYYY-MM-DD.<br>'2025-09-09'<br>No time of day is stored.<br><br>2. TIME [WITHOUT TIME ZONE]<br>Stores only the time of day (hours, minutes, seconds, fractions).<br>Format: HH:MI:SS[.ffff].<br>'14:35:20'<br><br>3. TIMESTAMP [WITHOUT TIME ZONE]<br>Stores both date and time together.<br>Format: YYYY-MM-DD HH:MI:SS[.ffff].<br>'2025-09-09 14:35:20'<br><br>4. TIMESTAMP WITH TIME ZONE (timestamptz in PostgreSQL)<br>Same as TIMESTAMP, but also stores a time zone offset.<br>'2025-09-09 14:35:20+02'<br>Useful when working across multiple time zones.<br><br>5. INTERVAL (PostgreSQL, some others)<br>Stores a time duration (years, months, days, hours, minutes, seconds).<br>'2 days 5 hours 30 minutes'<br><br>6. DATETIME (MySQL, SQL Server)<br>Equivalent to TIMESTAMP in many systems.<br>Stores both date and time (without timezone).<br>Copy code<br>'2025-09-09 14:35:20'</div>
+<div class="category-content"><br><br>>>> General SQL Rules for Dates & Intervals<br><br>Type awareness<br><br>You can only add/subtract intervals to/from DATE or TIMESTAMP types.<br>Example: DATE '2025-01-01' + INTERVAL '10 days' → 2025-01-11.<br><br>Valid units for INTERVAL<br>Standard SQL supports: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND.<br><br>Some databases add extras like WEEK, MICROSECOND, etc.<br><br>Addition vs. subtraction<br><br>date + interval → moves forward.<br>date - interval → moves backward.<br>date1 - date2 → returns an interval (the difference).<br><br>Overflow handling (months/years)<br><br>Adding months is tricky because months have different lengths.<br>Example in PostgreSQL:<br>DATE '2025-01-31' + INTERVAL '1 month' → 2025-02-28 (it clamps to the last valid day).<br><br>MySQL might behave differently.</div>
+<!--CONTENT-SQL_Date___Time_Data_Types--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SQL_Date___Time_Data_Types", "openBtn-SQL_Date___Time_Data_Types");
+    </script>
+</div>
+<!-- END OF SQL Date & Time Data Types -->
+
+<!-- ENUM SQL -->
+<div class="grid-item">
+    <button id="openBtn-ENUM_SQL">ENUM SQL</button>
+    <div id="myModal-ENUM_SQL" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ENUM SQL</h2>
+            <p><!--START-CONTENT-ENUM_SQL--></p>
+            <p><div class="category-content">CREATE TYPE type_mood AS ENUM ('happy', 'relaxed', 'stressed', 'sad');<br>ALTER TABLE minions_info ADD COLUMN mood type_mood;<br></div>
+<!--CONTENT-ENUM_SQL--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ENUM_SQL", "openBtn-ENUM_SQL");
+    </script>
+</div>
+<!-- END OF ENUM SQL -->
+
+<!-- Custom type in SQL -->
+<div class="grid-item">
+    <button id="openBtn-Custom_type_in_SQL">Custom type in SQL</button>
+    <div id="myModal-Custom_type_in_SQL" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Custom type in SQL</h2>
+            <p><!--START-CONTENT-Custom_type_in_SQL--></p>
+            <p><img src="cat_images/custom_type.png" alt="Custom type in SQL" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Custom_type_in_SQL--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Custom_type_in_SQL", "openBtn-Custom_type_in_SQL");
+    </script>
+</div>
+<!-- END OF Custom type in SQL -->
+
+<!-- INSERT_CATEGORIES_HERE -->
+
+</div>
+
+<script src="scripts/modalColors.js"></script>
+</body>
 </html>
