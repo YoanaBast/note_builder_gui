@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from helpers import clean_screen, add_background
 from canvas import app
-from content_manager import ContentManager
+from content_mngmt_funcs.content_manager import ContentManager
 
 content_manager = ContentManager()
 

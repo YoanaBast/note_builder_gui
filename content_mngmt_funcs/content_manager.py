@@ -1,12 +1,12 @@
 import os
 import re
 import json
-from html_template import content_template
+from content_mngmt_funcs.html_template import content_template
 
 
 class ContentManager:
-    DICT_FILE = os.path.join('..', 'DB', 'category_name_file_pairs.json')
-    file_path = os.path.join('..', 'index.html')
+    DICT_FILE = os.path.join('../..', 'DB', 'category_name_file_pairs.json')
+    file_path = os.path.join('../..', 'index.html')
 
 
     def __init__(self):
@@ -15,6 +15,7 @@ class ContentManager:
                 self.category_name_content_pairs = json.load(f)
         else:
             self.category_name_content_pairs = {}
+
 
     @staticmethod
     def safe_id(name: str) -> str:
