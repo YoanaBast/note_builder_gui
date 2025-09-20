@@ -5,7 +5,7 @@ def replace_location_with_category(json_file_path, output_file_path=None):
     with open(json_file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    valid_categories = ["Python", "SQL", "CS"]
+    valid_categories = ["Python", "SQL", "CS"] # TO DO: dynamic from SQL
 
     for key, details in data.items():
         if "location" in details:

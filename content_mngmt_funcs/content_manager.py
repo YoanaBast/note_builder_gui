@@ -1,6 +1,8 @@
 import os
 import re
 import psycopg2
+
+from content_mngmt_funcs.helpers import build_navigation, safe_id, log_and_return
 from content_mngmt_funcs.html_category_placeholder_template import category_template
 from content_mngmt_funcs.html_topic_paceholder_template import content_template
 
@@ -9,6 +11,7 @@ from content_mngmt_funcs.html_topic_paceholder_template import content_template
 class ContentManager:
     file_path = os.path.join('..', 'index.html')
 
+#connect to PSQL
     def __init__(self):
         self.conn = psycopg2.connect(
             dbname=os.getenv("DB_NAME"),
@@ -20,41 +23,59 @@ class ContentManager:
         self.conn.autocommit = True
 
 
-    @staticmethod
-    def safe_id(name: str) -> str:
-        name = name.strip()
-        # Replace any non-alphanumeric character with an underscore
-        safe = re.sub(r'[^a-zA-Z0-9_]', '_', name)
-        # Ensure it doesn't start with a digit (HTML IDs can't start with a number)
-        if safe and safe[0].isdigit():
-            safe = '_' + safe
-        return safe
+#Update navigation bar with new cats
+    def update_navigation_bar(self):
+        with self.conn.cursor() as cur:
+            cur.execute("SELECT name FROM nav_categories ORDER BY name;")
+            categories = [row[0] for row in cur.fetchall()]
 
+        nav_html = build_navigation(categories)
 
+        files_to_update = [os.path.join('..', 'index.html')] + [
+            os.path.join('..', f"{safe_id(cat)}.html") for cat in categories
+        ]
+
+        for file_path in files_to_update:
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    html_content = f.read()
+
+                updated_html = re.sub(
+                    r"<nav>.*?</nav>",
+                    nav_html,
+                    html_content,
+                    flags=re.DOTALL
+                )
+
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(updated_html)
+        return log_and_return(f"Navigation updated for {len(files_to_update)} files.")
+
+#Create new category (nav)
     def create_nav_category(self, category_name):
         if not category_name.strip():
-            return "Empty category name"
+            return log_and_return("Empty category name")
 
         with self.conn.cursor() as cur:
             cur.execute(
                 "INSERT INTO nav_categories (name) VALUES (%s) ON CONFLICT DO NOTHING;",
                 (category_name,)
             )
-
-        safe_name = self.safe_id(category_name)
+        safe_name = safe_id(category_name)
         file_path = os.path.join('..', f"{safe_name}.html")
 
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(category_template)
 
-        return f"Category '{category_name}' saved to DB and created HTML file at {file_path}"
+        self.update_navigation_bar()
+        return log_and_return(f"Category '{category_name}' saved to PSQL and created HTML file at {file_path}")
 
 
     def add_topic(self, topic, category):
         if topic.strip() == '':
             return 'Empty string'
-        topic_id = self.safe_id(topic)
-        category_file = os.path.join('..', f"{self.safe_id(category)}.html")
+        topic_id = safe_id(topic)
+        category_file = os.path.join('..', f"{safe_id(category)}.html")
 
         with open(category_file, 'r', encoding='utf-8') as page:
             html_content = page.read()
@@ -64,18 +85,16 @@ class ContentManager:
             "<!-- INSERT_CATEGORIES_HERE -->",
             f"{new_item}\n<!-- INSERT_CATEGORIES_HERE -->"
         )
-
-        #save to DB
         with self.conn.cursor() as cur:
             cur.execute("""
                 INSERT INTO notes (topic, from_category)
                 VALUES (%s, (SELECT id FROM nav_categories WHERE name = %s))
                 ON CONFLICT DO NOTHING;
             """, (topic, category))
-        #save to HTML
+
         with open(category_file, 'w', encoding='utf-8') as page:
             page.write(html_content)
-        return 'added cat to html and DB'
+        return 'added cat to html and PSQL'
 
 
     def save_image_or_text_content_helper(self, category_name, formatted_content, topic):
@@ -87,7 +106,7 @@ class ContentManager:
             """, (topic, formatted_content, category_name))
             note_id = cur.fetchone()[0]
 
-        category_id = self.safe_id(category_name)
+        category_id = safe_id(category_name)
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
@@ -112,7 +131,7 @@ class ContentManager:
         self.save_image_or_text_content_helper(category_name, formatted_content)
 
 
-    def remove_category(self, category_name):
+    def remove_category(self, category_name): #tipic
         if category_name in self.category_name_content_pairs:
             self.category_name_content_pairs.pop(category_name)
             self.save_pairs()
@@ -160,4 +179,4 @@ class ContentManager:
             f.write(html_content)
 
 c = ContentManager()
-c.create_nav_category('test13')
+c.create_nav_category('test')
