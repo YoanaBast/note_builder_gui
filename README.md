@@ -1,17 +1,12 @@
-These are my python + CS notes, sorted as pop-up buttons on an HTML page. 
-They are focused on things I have struggled with or found amusing and may not be entirely useful to a new learner. 
-
-As I don't want to type new code for each section, I have created a basic tkinter app to do it for me, 
-it only takes my input - category name and content. 
-
-My goal here is to encounter real project issues, as well as come back and optimize or recreate stuff as I learn and grow. 
+A Tkinter GUI app that handles files, generates HTML code and syncs it with a PostgreSQL DB. I use it to write little sticky notes with interesting things I learn. 
 
 Web page: https://yoanabast.github.io/note_builder_gui/
 
 The GUI app runs when starting the gui_main.py file. 
+It offers the following option: Add category; Remove Category; Add Topic; Remove Topic; Add Text Content; Add Image Content; Clear Content;
 
+The only HTML I have written here is the templates. My program then reuses them to handle everything. 
 
-It works by replacing placeholders in the HTML file using the ContentManager class. 
 
 
 ## License
