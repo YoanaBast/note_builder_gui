@@ -10,6 +10,7 @@ def clean_screen():
         print(f"Destroying {widget}")
         widget.destroy()
 
+
 def add_background():
     img_path = os.path.join('backgrounds', 'bg1.png')
     bg_image = tk.PhotoImage(file=img_path)
@@ -22,3 +23,64 @@ def add_background():
     app.background_label = background_label
 
 
+def clear_labels(frame):
+    if frame.error_label:
+        frame.error_label.destroy()
+        frame.error_label = None
+    if frame.success_label:
+        frame.success_label.destroy()
+        frame.success_label = None
+
+
+def show_enter_back_buttons(enter_com, back_com, *args):
+    """this is a reusable back/enter duo, back renders to main and enter takes a function"""
+    frame = tk.Frame(app)
+    frame.pack(anchor='w', pady=10, padx=20)
+
+    enter_button = tk.Button(frame, text="Enter", font=("Arial", 14, "bold"),
+                             padx=9, pady=5, bg="blue", fg="white",
+                             command=lambda: enter_com(*args))
+    enter_button.pack(side="left", padx=(0, 10))
+
+    back_button = tk.Button(frame, text="Back", font=("Arial", 14, "bold"),
+                            padx=9, pady=5, bg="black", fg="white",
+                            command=lambda: back_com(*args))
+    back_button.pack(side="left")
+
+
+def create_category_topic_labels(frame, result):
+    """ calls create_nav_category and creates labels based on the result"""
+    clear_labels(frame)
+
+    if result == "That already exists":
+        frame.error_label = tk.Label(
+            frame,
+            text='That already exists',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="red"
+        )
+        frame.error_label.pack(side='left')
+
+    elif result == 'Empty entry':
+        frame.error_label = tk.Label(
+            frame,
+            text='Please no empty strings :(',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="red"
+        )
+        frame.error_label.pack(side='left')
+    else:
+
+        frame.success_label = tk.Label(
+            frame,
+            text='Category added successfully!',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="green"
+        )
+        frame.success_label.pack(side='left')

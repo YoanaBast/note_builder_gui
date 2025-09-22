@@ -1,112 +1,20 @@
 import os
 import tkinter as tk
-from helpers import clean_screen, add_background
+from helpers import clean_screen, add_background, clear_labels, show_enter_back_buttons, create_category_topic_labels
 from canvas import app
 from content_mngmt_funcs.content_manager import ContentManager
 
 content_manager = ContentManager()
 
+def create_category_labels(cat_name_entry, frame):
+    create_category_topic_labels(frame, content_manager.create_nav_category(cat_name_entry.get().strip()))
 
-def enter_back(enter_com, *args):
-    frame = tk.Frame(app)
-    frame.pack(anchor='w', pady=10, padx=20)
-
-    enter_button = tk.Button(frame, text="Enter", font=("Arial", 14, "bold"),
-                             padx=9, pady=5, bg="blue", fg="white",
-                             command=lambda: enter_com(*args))
-    enter_button.pack(side="left", padx=(0, 10))
-
-    back_button = tk.Button(frame, text="Back", font=("Arial", 14, "bold"),
-                            padx=9, pady=5, bg="black", fg="white",
-                            command=render_back_to_main)
-    back_button.pack(side="left")
-
-def category_dropdown_label_check(cat, frame):
-    if cat == "Choose a category":
-        if not frame.error_label:
-            frame.error_label = tk.Label(
-                frame,
-                text='Please select a category first!',
-                font=("Arial", 16),
-                fg="red",
-                anchor="w"
-            )
-            frame.error_label.pack(side='left')
-        return  # don’t add anything
-    # clear error if category is valid
-    if frame.error_label:
-        frame.error_label.destroy()
-        frame.error_label = None
-
-
-def content_added(frame):
-    if frame.error_label:
-        frame.error_label.destroy()
-        frame.error_label = None
-    if frame.success_label:
-        frame.success_label.destroy()
-        frame.success_label = None
-
-    frame.success_label = tk.Label(
-        frame,
-        text='Added successfully!',
-        font=("Arial", 18),
-        width=30,
-        anchor="w",
-        fg="green"
-    )
-    frame.success_label.pack(side='left')
-
-
-def check_cat(cat_name, frame):
-    if frame.error_label:
-        frame.error_label.destroy()
-        frame.error_label = None
-    if frame.success_label:
-        frame.success_label.destroy()
-        frame.success_label = None
-
-    if cat_name.get() not in content_manager.category_name_content_pairs.keys():
-        result = content_manager.add_topic(cat_name.get())
-        if result == 'Empty string':
-            frame.error_label = tk.Label(
-                frame,
-                text='Please no empty strings :(',
-                font=("Arial", 18),
-                width=25,
-                anchor="w",
-                fg="red"
-            )
-            frame.error_label.pack(side='left')
-        else:
-
-            frame.success_label = tk.Label(
-                frame,
-                text='Category added successfully!',
-                font=("Arial", 18),
-                width=25,
-                anchor="w",
-                fg="green"
-            )
-            frame.success_label.pack(side='left')
-    else:
-        frame.error_label = tk.Label(
-            frame,
-            text='Category already exists',
-            font=("Arial", 18),
-            width=25,
-            anchor="w",
-            fg="red"
-        )
-        frame.error_label.pack(side='left')
+def create_topic_labels(topic_name_entry, category, frame):
+    result = content_manager.add_topic(topic_name_entry.get().strip(), category)
+    create_category_topic_labels(frame, result)
 
 def check_img_name(name, frame):
-    if frame.error_label:
-        frame.error_label.destroy()
-        frame.error_label = None
-    if frame.success_label:
-        frame.success_label.destroy()
-        frame.success_label = None
+    clear_labels(frame)
 
     if not f"{name}.png" in os.listdir(os.path.join("..", "cat_images")):
         frame.error_label = tk.Label(
@@ -132,8 +40,40 @@ def check_img_name(name, frame):
         return True
 
 
+def topics_dropdown_labels(cat, frame):
+    if cat == "Choose a topic":
+        if not frame.error_label:
+            frame.error_label = tk.Label(
+                frame,
+                text='Please select a topic first!',
+                font=("Arial", 16),
+                fg="red",
+                anchor="w"
+            )
+            frame.error_label.pack(side='left')
+        return  # don’t add anything
+    # clear error if category is valid
+    if frame.error_label:
+        frame.error_label.destroy()
+        frame.error_label = None
 
-def render_no_category(frame):
+
+def content_added_label(frame):
+    clear_labels(frame)
+
+    frame.success_label = tk.Label(
+        frame,
+        text='Added successfully!',
+        font=("Arial", 18),
+        width=30,
+        anchor="w",
+        fg="green"
+    )
+    frame.success_label.pack(side='left')
+
+
+
+def render_no_topic_selected(frame):
     frame.pack(fill='x', anchor='w', pady=10, padx=15)
 
     tk.Label(frame, text="Please add categories first!",
@@ -148,30 +88,56 @@ def render_no_category(frame):
     back_button.pack(side="left")
 
 
-def cat_dropdown():
+def display_topic_dropdown():
     clean_screen()
-    cat_dropdown_frame = tk.Frame(app)
-    cat_dropdown_frame.success_label = None
-    cat_dropdown_frame.pack(fill='x', pady=10, padx=15)
+    topic_dropdown_frame = tk.Frame(app)
+    topic_dropdown_frame.success_label = None
+    topic_dropdown_frame.pack(fill='x', pady=10, padx=15)
 
-    if len(content_manager.category_name_content_pairs.keys()) < 1:
-        render_no_category(cat_dropdown_frame)
+    with content_manager.conn.cursor() as cur:
+        cur.execute("SELECT topic FROM notes;")
+        topics = [row[0] for row in cur.fetchall()]
+    if len(topics) < 1:
+        render_no_topic_selected(topic_dropdown_frame)
 
     else:
         dropdown_frame = tk.Frame(app)
         dropdown_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
-        tk.Label(cat_dropdown_frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
+        tk.Label(topic_dropdown_frame, text="Topic:", font=("Arial", 18), anchor="w").pack(anchor='w')
 
         selected = tk.StringVar(value="Choose a category")
-        options = list(content_manager.category_name_content_pairs.keys())
 
-        dropdown = tk.OptionMenu(dropdown_frame, selected, *options)
+        dropdown = tk.OptionMenu(dropdown_frame, selected, *topics)
         dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
         dropdown.pack(anchor="w")  # align left
-        return selected, cat_dropdown_frame
+        return selected, topic_dropdown_frame
 
 
+def display_category_dropdown():
+    clean_screen()
+    category_dropdown_frame = tk.Frame(app)
+    category_dropdown_frame.success_label = None
+    category_dropdown_frame.pack(fill='x', pady=10, padx=15)
+
+    with content_manager.conn.cursor() as cur:
+        cur.execute("SELECT name FROM nav_categories;")
+        categories = [row[0] for row in cur.fetchall()]
+    if len(categories) < 1:
+        render_no_topic_selected(category_dropdown_frame)
+
+    else:
+        dropdown_frame = tk.Frame(app)
+        dropdown_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+
+        tk.Label(category_dropdown_frame, text="Category:", font=("Arial", 18), anchor="w").pack(anchor='w')
+
+        selected = tk.StringVar(value="Choose a category")
+
+        dropdown = tk.OptionMenu(dropdown_frame, selected, *categories)
+        dropdown.config(font=("Arial", 16), width=20, bg="white", fg="black")
+        dropdown.pack(anchor="w")  # align left
+        return selected, category_dropdown_frame
 
 
 def render_back_to_main():
@@ -181,6 +147,7 @@ def render_back_to_main():
 
 def render_add_category():
     clean_screen()
+
     cat_name_frame = tk.Frame(app)
     cat_name_frame.error_label = None
     cat_name_frame.success_label = None
@@ -191,37 +158,83 @@ def render_add_category():
     cat_name = tk.Entry(cat_name_frame, width=15, font=("Arial", 18))
     cat_name.pack(side='left', padx=5)
 
-    enter_back(lambda: check_cat(cat_name, cat_name_frame))
+    show_enter_back_buttons(lambda: create_category_labels(cat_name, cat_name_frame), render_back_to_main)
+
+
+def render_add_topic():
+    clean_screen()
+
+    # Get the selected category dropdown
+    category_dropdown_var, category_frame = display_category_dropdown()
+    if category_dropdown_var is None:
+        return  # no categories available
+
+    topic_name_frame = tk.Frame(app)
+    topic_name_frame.error_label = None
+    topic_name_frame.success_label = None
+    topic_name_frame.pack(fill='x', pady=10, padx=15)
+
+    tk.Label(topic_name_frame, text="Topic Name:", font=("Arial", 18), width=15, anchor="w").pack(side='left')
+
+    topic_name_entry = tk.Entry(topic_name_frame, width=15, font=("Arial", 18))
+    topic_name_entry.pack(side='left', padx=5)
+
+    # Define enter callback
+    def on_enter():
+        category = category_dropdown_var.get()
+        if category == "Choose a category":
+            if not topic_name_frame.error_label:
+                topic_name_frame.error_label = tk.Label(
+                    topic_name_frame,
+                    text='Please select a category first!',
+                    font=("Arial", 16),
+                    fg="red",
+                    anchor="w"
+                )
+                topic_name_frame.error_label.pack(side='left')
+            return
+        if topic_name_frame.error_label:
+            topic_name_frame.error_label.destroy()
+            topic_name_frame.error_label = None
+
+        create_topic_labels(topic_name_entry, category, topic_name_frame)
+
+    show_enter_back_buttons(on_enter, render_back_to_main)
+
+
+
 
 
 def render_add_content():
-    dropdown = cat_dropdown()[0]
+    clean_screen()
 
-    cat_con_name_frame = tk.Frame(app)
-    cat_con_name_frame.success_label = None
-    cat_con_name_frame.error_label = None
+    topics_dropdown = display_topic_dropdown()[0]
 
-    cat_con_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+    topic_content_name_frame = tk.Frame(app)
+    topic_content_name_frame.success_label = None
+    topic_content_name_frame.error_label = None
 
-    tk.Label(cat_con_name_frame, text="Category content:", font=("Arial", 18), anchor="w").pack(anchor='w')
+    topic_content_name_frame.pack(fill='x', pady=5, padx=15, anchor='w')
 
-    content = tk.Text(cat_con_name_frame, width=80, height=20, font=("Arial", 16), wrap='word')
+    tk.Label(topic_content_name_frame, text="Topic content:", font=("Arial", 18), anchor="w").pack(anchor='w')
+
+    content = tk.Text(topic_content_name_frame, width=80, height=20, font=("Arial", 16), wrap='word')
     content.pack(fill='x', pady=5)
 
     def add_content():
-        category = dropdown.get()
-        category_dropdown_label_check(category, cat_con_name_frame)
+        topic = topics_dropdown.get()
+        topics_dropdown_labels(topic, topic_content_name_frame)
 
         raw_text = content.get("1.0", "end-1c")
-        content_manager.add_content_to_cat(category, raw_text)
+        content_manager.add_content_to_topic(topic, raw_text)
 
-        content_added(cat_con_name_frame)
+        content_added_label(topic_content_name_frame)
 
-    enter_back(add_content)
+    show_enter_back_buttons(add_content, render_back_to_main)
 
 
 def render_add_img():
-    cat_dropdown_selected, cat_frame = cat_dropdown()
+    cat_dropdown_selected, cat_frame = display_topic_dropdown()
 
     image_name_frame = tk.Frame(app)
     image_name_frame.error_label = None
@@ -259,10 +272,10 @@ def render_add_img():
             image = img_name.get()
             size = selected.get()
             print("debug:", category, image, size)
-            content_manager.add_pic_to_cat(category, image, size)
+            content_manager.add_pic_to_topic(category, image, size)
             # content_added(cat_dropdown_selected)
 
-    enter_back(add_img)
+    show_enter_back_buttons(add_img, render_back_to_main)
 
 
 def render_remove_cat():
@@ -271,7 +284,7 @@ def render_remove_cat():
     if not content_manager.category_name_content_pairs:
         temp_frame = tk.Frame(app)
         temp_frame.pack(pady=10, padx=15)
-        render_no_category(temp_frame)
+        render_no_topic_selected(temp_frame)
         return
 
     frame = tk.Frame(app)
@@ -293,10 +306,10 @@ def render_remove_cat():
     dropdown_var.trace_add("write", on_dropdown_change)
 
     # Function to remove category
-    def remove_category():
+    def remove_topic():
         cat = dropdown_var.get()
         if cat in content_manager.category_name_content_pairs:
-            content_manager.remove_category(cat)
+            content_manager.delete_topic(cat)
 
             if frame.success_label:
                 frame.success_label.destroy()
@@ -324,7 +337,7 @@ def render_remove_cat():
 
     enter_button = tk.Button(frame, text="Enter", font=("Arial", 14, "bold"),
                              padx=9, pady=5, bg="blue", fg="white",
-                             command=remove_category)
+                             command=remove_topic)
     enter_button.pack(side="left", padx=(0, 10))
     back_button = tk.Button(frame, text="Back", font=("Arial", 14, "bold"),
                             padx=9, pady=5, bg="black", fg="white",
@@ -336,7 +349,7 @@ def render_remove_content():
     if not content_manager.category_name_content_pairs:
         temp_frame = tk.Frame(app)
         temp_frame.pack(pady=10, padx=15)
-        render_no_category(temp_frame)
+        render_no_topic_selected(temp_frame)
         return
 
     frame = tk.Frame(app)
@@ -367,7 +380,7 @@ def render_remove_content():
             )
             frame.success_label.pack(side='left', pady=5)
 
-    enter_back(remove_content)
+    show_enter_back_buttons(remove_content, render_back_to_main)
 
 def render_main_enter_screen():
     clean_screen()
@@ -378,33 +391,51 @@ def render_main_enter_screen():
     tk.Label(app, text="Please choose an option:", font=("Arial", 15, "italic")) \
         .pack(anchor="w", padx=5, pady=(0, 20))
 
-    frame = tk.Frame(app)
-    frame.pack(anchor="w", pady=(0, 20))
+    top_frame = tk.Frame(app)
+    top_frame.pack(anchor="w", pady=(0, 20))
 
-    add_category_button = tk.Button(frame, text="Add Category", font=("Arial", 14, "bold"),
+    #ADD CATEGORY
+    add_category_button = tk.Button(top_frame, text="Add Category", font=("Arial", 14, "bold"),
                                     padx=9, pady=5, bg="blue", fg="white",
                                     command=render_add_category)
-    add_category_button.pack(side="left", padx=(10, 5))
+    add_category_button.pack(side="left", padx=(5, 10))
 
-    remove_cat_button = tk.Button(frame, text="Remove Category", font=("Arial", 14, "bold"),
-                                padx=9, pady=5, bg="blue", fg="white",
+    #REMOVE CATEGORY
+    remove_cat_button = tk.Button(top_frame, text="Remove Category", font=("Arial", 14, "bold"),
+                                padx=9, pady=5, bg="black", fg="white",
                                 command=render_remove_cat)
     remove_cat_button.pack(side="left", padx=(5, 10))
 
+    #ADD TOPIC
+    add_topic_button = tk.Button(top_frame, text="Add Topic", font=("Arial", 14, "bold"),
+                                    padx=9, pady=5, bg="blue", fg="white",
+                                    command=render_add_topic)
+    add_topic_button.pack(side="left", padx=(5, 10))
 
-    add_content_to_cat_button = tk.Button(frame, text="Add Content", font=("Arial", 14, "bold"),
+    #REMOVE TOPIC
+    remove_topic_button = tk.Button(top_frame, text="Remove Topic", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="black", fg="white",
+                                command=render_remove_cat)
+    remove_topic_button.pack(side="left", padx=(5, 10))
+
+
+    bot_frame = tk.Frame(app)
+    bot_frame.pack(anchor="w", pady=(0, 20))
+
+    #ADD CONTENT TEXT
+    add_content_to_cat_button = tk.Button(bot_frame, text="Add Text Content", font=("Arial", 14, "bold"),
+                                padx=9, pady=5, bg="blue", fg="white",
                                 command=render_add_content)
     add_content_to_cat_button.pack(side="left", padx=(5, 10))
 
-
-    add_img_to_cat_button = tk.Button(frame, text="Add Image", font=("Arial", 14, "bold"),
-                                padx=9, pady=5, bg="black", fg="white",
+    # ADD CONTENT IMAGE
+    add_img_to_cat_button = tk.Button(bot_frame, text="Add Image Content", font=("Arial", 14, "bold"),
+                                padx=9, pady=5, bg="blue", fg="white",
                                 command=render_add_img)
     add_img_to_cat_button.pack(side="left", padx=(5, 10))
 
-
-    remove_content_to_cat_button = tk.Button(frame, text="Remove Content", font=("Arial", 14, "bold"),
+    #REMOVE CONTENT
+    remove_content_to_cat_button = tk.Button(bot_frame, text="Clear Content", font=("Arial", 14, "bold"),
                                 padx=9, pady=5, bg="black", fg="white",
                                 command=render_remove_content)
     remove_content_to_cat_button.pack(side="left", padx=(5, 10))

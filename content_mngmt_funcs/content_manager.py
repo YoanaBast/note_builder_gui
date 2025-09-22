@@ -2,7 +2,7 @@ import os
 import re
 import psycopg2
 
-from content_mngmt_funcs.helpers import build_navigation, safe_id, log_and_return
+from content_mngmt_funcs.helpers import build_navigation, safe_id, log
 from content_mngmt_funcs.html_category_placeholder_template import category_template
 from content_mngmt_funcs.html_topic_paceholder_template import content_template
 
@@ -11,8 +11,9 @@ from content_mngmt_funcs.html_topic_paceholder_template import content_template
 class ContentManager:
     file_path = os.path.join('..', 'index.html')
 
-#connect to PSQL
+
     def __init__(self):
+        """connect to PSQL"""
         self.conn = psycopg2.connect(
             dbname=os.getenv("DB_NAME"),
             user=os.getenv("DB_USER"),
@@ -23,8 +24,8 @@ class ContentManager:
         self.conn.autocommit = True
 
 
-#Update navigation bar with new cats
     def update_navigation_bar(self):
+        """Update navigation bar with new cats"""
         with self.conn.cursor() as cur:
             cur.execute("SELECT name FROM nav_categories ORDER BY name;")
             categories = [row[0] for row in cur.fetchall()]
@@ -49,18 +50,24 @@ class ContentManager:
 
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(updated_html)
-        return log_and_return(f"Navigation updated for {len(files_to_update)} files.")
+        return log(f"Navigation updated for {len(files_to_update)} files.")
 
-#Create new category (nav)
     def create_nav_category(self, category_name):
+        "Create new category (those on the navigation bar)"
         if not category_name.strip():
-            return log_and_return("Empty category name")
+            log(f"{category_name} is an empty string")
+            return "Empty entry"
 
         with self.conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO nav_categories (name) VALUES (%s) ON CONFLICT DO NOTHING;",
+                "INSERT INTO nav_categories (name) VALUES (%s) ON CONFLICT DO NOTHING RETURNING id;",
                 (category_name,)
             )
+            row = cur.fetchone()  # Will be None if conflict happened
+        if not row:
+            log(f"{category_name} already exists")
+            return "That already exists"
+
         safe_name = safe_id(category_name)
         file_path = os.path.join('..', f"{safe_name}.html")
 
@@ -68,12 +75,18 @@ class ContentManager:
             f.write(category_template)
 
         self.update_navigation_bar()
-        return log_and_return(f"Category '{category_name}' saved to PSQL and created HTML file at {file_path}")
+        return log(f"Category '{category_name}' saved to PSQL and created HTML file at {file_path}")
+
+
+    def delete_nav_category(self, category_name):
+        pass
 
 
     def add_topic(self, topic, category):
         if topic.strip() == '':
-            return 'Empty string'
+            log(f"{topic} is an empty string")
+            return "Empty entry"
+
         topic_id = safe_id(topic)
         category_file = os.path.join('..', f"{safe_id(category)}.html")
 
@@ -85,61 +98,86 @@ class ContentManager:
             "<!-- INSERT_CATEGORIES_HERE -->",
             f"{new_item}\n<!-- INSERT_CATEGORIES_HERE -->"
         )
+
         with self.conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO notes (topic, from_category)
+                INSERT INTO notes (topic, category_id)
                 VALUES (%s, (SELECT id FROM nav_categories WHERE name = %s))
-                ON CONFLICT DO NOTHING;
+                ON CONFLICT (topic, category_id) DO NOTHING
+                RETURNING id;
             """, (topic, category))
+            row = cur.fetchone()
+        if not row:
+            log(f"{topic} already exists")
+            return "That already exists"
 
         with open(category_file, 'w', encoding='utf-8') as page:
             page.write(html_content)
-        return 'added cat to html and PSQL'
+        return log(f'added {topic} to html and PSQL')
 
+    def save_image_or_text_content_helper(self, topic_name, formatted_content):
+        """Update the content column for an existing topic and update the topic's HTML placeholder."""
 
-    def save_image_or_text_content_helper(self, category_name, formatted_content, topic):
+        # Update the content in the database
         with self.conn.cursor() as cur:
             cur.execute("""
-                INSERT INTO notes (topic, content, from_category)
-                VALUES (%s, %s, (SELECT id FROM nav_categories WHERE name = %s))
-                RETURNING id;
-            """, (topic, formatted_content, category_name))
-            note_id = cur.fetchone()[0]
+                UPDATE notes
+                SET content = %s
+                WHERE topic = %s
+                RETURNING category_id;
+            """, (formatted_content, topic_name))
+            row = cur.fetchone()
 
-        category_id = safe_id(category_name)
+            if not row:
+                log(f"No existing topic '{topic_name}' found to update")
+                return
+            category_id_db = row[0]
 
-        with open(self.file_path, 'r', encoding='utf-8') as f:
+            # Get the category name to locate the correct HTML file
+            cur.execute("SELECT name FROM nav_categories WHERE id = %s", (category_id_db,))
+            category_name = cur.fetchone()[0]
+
+        # Determine HTML file path
+        category_file = os.path.join('..', f"{safe_id(category_name)}.html")
+
+        # Read HTML
+        with open(category_file, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        placeholder = f"<!--CONTENT-{category_id}-->"
-        html_content = html_content.replace(placeholder, formatted_content + '\n' + placeholder)
+        # Replace the topic placeholder while keeping it for future updates
+        topic_placeholder = f"<!--CONTENT-{safe_id(topic_name)}-->"
+        html_content = html_content.replace(topic_placeholder, formatted_content + '\n' + topic_placeholder)
 
-        with open(self.file_path, 'w', encoding='utf-8') as f:
+        # Write back
+        with open(category_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-    def add_content_to_cat(self, category_name, content):
+        log(f"Content updated for topic '{topic_name}' in {category_file}")
+
+    def add_content_to_topic(self, topic_name, content):
         formatted_content = (
             f'<div class="category-content">'
             f'{content.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;").replace("\n", "<br>")}'
             f'</div>'
         )
-        self.save_image_or_text_content_helper(category_name, formatted_content)
+        self.save_image_or_text_content_helper(topic_name, formatted_content)
 
+    def add_pic_to_topic(self, topic_name, image_name, width: int):
+        formatted_content = (
+            f'<img src="cat_images/{image_name}.png" alt="{topic_name}" '
+            f'width="{width}" style="display:block; margin-right:auto;">'
+        )
+        self.save_image_or_text_content_helper(topic_name, formatted_content)
 
-    def add_pic_to_cat(self, category_name, image_name, width: int):
-        formatted_content = f'<img src="cat_images/{image_name}.png" alt="{category_name}" width="{width}" style="display:block; margin-right:auto;">'
-        self.save_image_or_text_content_helper(category_name, formatted_content)
-
-
-    def remove_category(self, category_name): #tipic
-        if category_name in self.category_name_content_pairs:
-            self.category_name_content_pairs.pop(category_name)
-            self.save_pairs()
+    def delete_topic(self, category_name): #tipic
+        # if category_name in self.category_name_content_pairs:
+        #     self.category_name_content_pairs.pop(category_name)
+        #     self.save_pairs() >> AD SQL check here
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        category_id = self.safe_id(category_name)
+        category_id = safe_id(category_name)
 
         # Remove the content placeholder if present
         content_placeholder = f"<!--CONTENT-{category_id}-->"
@@ -159,11 +197,11 @@ class ContentManager:
             f.write(html_content)
 
     def remove_content_from_cat(self, category_name):
-        category_id = self.safe_id(category_name)
+        category_id = safe_id(category_name)
 
-        if category_name in self.category_name_content_pairs:
-            self.category_name_content_pairs[category_name]["content"] = ""
-            self.save_pairs()
+        # if category_name in self.category_name_content_pairs:
+        #     self.category_name_content_pairs[category_name]["content"] = ""
+        #     self.save_pairs() # Add SQL here
 
         with open(self.file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
@@ -179,4 +217,4 @@ class ContentManager:
             f.write(html_content)
 
 c = ContentManager()
-c.create_nav_category('test')
+c.save_image_or_text_content_helper('test', "<div class='category-content'>Test content</div>")

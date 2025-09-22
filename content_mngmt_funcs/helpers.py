@@ -1,13 +1,27 @@
+import os
 import re
 import logging
 
+log_file = os.path.join('..', 'Logs', 'content_manager.log')
+
+# Make sure the folder exists
+os.makedirs(os.path.dirname(log_file), exist_ok=True)
+
 logging.basicConfig(
-    filename="content_manager.log",
+    filename=log_file,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 logger = logging.getLogger(__name__)
+
+
+
+
+def log(message: str):
+    """Helper to log to file and return message."""
+    logger.info(message)
+    return message
 
 
 def safe_id(name: str) -> str:
@@ -17,12 +31,6 @@ def safe_id(name: str) -> str:
     if safe and safe[0].isdigit():
         safe = '_' + safe
     return safe
-
-
-def log_and_return(message: str) -> str:
-    """Helper to log to file and return message."""
-    logger.info(message)
-    return message
 
 
 def build_navigation(categories: list[str]) -> str:
