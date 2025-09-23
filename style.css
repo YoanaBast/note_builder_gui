@@ -129,13 +129,12 @@ h2 {
     background-color: rgba(0,0,0,0.5); /* semi-transparent background */
 }
 
-  /* Modal content box */
 .modal-content {
-    /* background-color: #e6e6ff; */
-    margin: 10% auto; /* center vertically & horizontally */
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
+    margin: 10% auto;
+    padding: 4vw;        /* scales with screen */
+    border-radius: 2vw;
+    width: 90%;           /* relative to viewport */
+    max-width: 600px;     /* optional cap for desktops */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-size: 1em;       /* same as page */
 }
