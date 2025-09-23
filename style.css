@@ -36,8 +36,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    font-size: 16px;
 
 }
+
+
 
 h1 {
   font-family: 'Nunito', sans-serif;
@@ -130,11 +133,11 @@ h2 {
 }
 
 .modal-content {
-    margin: 10% auto;
-    padding: 4vw;        /* scales with screen */
-    border-radius: 2vw;
-    width: 90%;           /* relative to viewport */
-    max-width: 600px;     /* optional cap for desktops */
+    width: 80%;       /* relative to viewport */
+    max-width: 600px; /* desktop cap */
+    margin: 5% auto;
+    padding: 16px;
+    border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    font-size: 1em;       /* same as page */
+    font-size: 1rem;  /* same as page */
 }
