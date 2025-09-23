@@ -106,6 +106,42 @@
 </div>
 <!-- END OF Custom type in SQL -->
 
+<!-- RANDOM() -->
+<div class="grid-item">
+    <button id="openBtn-RANDOM__">RANDOM()</button>
+    <div id="myModal-RANDOM__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>RANDOM()</h2>
+            <p><!--START-CONTENT-RANDOM__--></p>
+            <p><div class="category-content">RANDOM() generates a pseudo-random floating-point number<br><br>0.0 ≤ RANDOM() < 1.0 0.0≤RANDOM()<1.0<br><br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT RANDOM();<br>&nbsp;&nbsp;&nbsp;&nbsp;# Might output: 0.374829<br><br><br>Multiplying RANDOM() by a number scales it<br>0.0≤RANDOM() * 100<100.0<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT RANDOM() * 100;<br>&nbsp;&nbsp;&nbsp;&nbsp;# Might output: 37.4829<br><br>random integer between 0 and 99:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT FLOOR(RANDOM() * 100);<br><br>To get between 1 and 100:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT FLOOR(RANDOM() * 100) + 1;<br><br>Random row selection:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT *<br>&nbsp;&nbsp;&nbsp;&nbsp;FROM users<br>&nbsp;&nbsp;&nbsp;&nbsp;ORDER BY RANDOM()<br>&nbsp;&nbsp;&nbsp;&nbsp;LIMIT 5;<br>Picks 5 random rows from users.<br><br><br>RANDOM() → 0 ≤ x < 1<br><br>RANDOM() * N → scales to 0 ≤ x < N<br><br>FLOOR(RANDOM() * N) → integer 0..(N-1)<br><br>FLOOR(RANDOM() * N) + 1 → integer 1..N</div>
+<!--CONTENT-RANDOM__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-RANDOM__", "openBtn-RANDOM__");
+    </script>
+</div>
+<!-- END OF RANDOM() -->
+
+<!-- ALTER TABLE vs UPDATE -->
+<div class="grid-item">
+    <button id="openBtn-ALTER_TABLE_vs_UPDATE">ALTER TABLE vs UPDATE</button>
+    <div id="myModal-ALTER_TABLE_vs_UPDATE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ALTER TABLE vs UPDATE</h2>
+            <p><!--START-CONTENT-ALTER_TABLE_vs_UPDATE--></p>
+            <p><div class="category-content">ALTER TABLE&nbsp;&nbsp;&nbsp;&nbsp;<br>Table schema&nbsp;&nbsp;&nbsp;&nbsp;Add/drop columns, change types, constraints<br><br>&nbsp;&nbsp;&nbsp;&nbsp;UPDATE&nbsp;&nbsp;&nbsp;&nbsp;<br>Table data&nbsp;&nbsp;&nbsp;&nbsp;Modify or fill in values in existing rows<br><br><br>ALTER TABLE countries<br>ADD COLUMN capital_code CHAR(2);<br><br>ALTER TABLE countries<br>DROP COLUMN capital_code;<br><br>ALTER TABLE countries<br>ALTER COLUMN population TYPE BIGINT;<br>Add a constraint (e.g., primary key or foreign key):<br><br>ALTER TABLE countries<br>ADD CONSTRAINT pk_country_id PRIMARY KEY (id);<br><br><br>UPDATE countries<br>SET capital_code = SUBSTRING(capital, 1, 2);<br><br>UPDATE countries<br>SET population = population * 1000<br>WHERE population < 1000;<br><br>UPDATE always uses SET</div>
+<!--CONTENT-ALTER_TABLE_vs_UPDATE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ALTER_TABLE_vs_UPDATE", "openBtn-ALTER_TABLE_vs_UPDATE");
+    </script>
+</div>
+<!-- END OF ALTER TABLE vs UPDATE -->
+
 <!-- INSERT_CATEGORIES_HERE -->
 
 </div>
