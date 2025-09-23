@@ -61,6 +61,7 @@
             <p><!--START-CONTENT-SQL_Date___Time_Data_Types--></p>
             <p><div class="category-content">1. DATE<br>Stores a calendar date (year, month, day).<br>Format: YYYY-MM-DD.<br>'2025-09-09'<br>No time of day is stored.<br><br>2. TIME [WITHOUT TIME ZONE]<br>Stores only the time of day (hours, minutes, seconds, fractions).<br>Format: HH:MI:SS[.ffff].<br>'14:35:20'<br><br>3. TIMESTAMP [WITHOUT TIME ZONE]<br>Stores both date and time together.<br>Format: YYYY-MM-DD HH:MI:SS[.ffff].<br>'2025-09-09 14:35:20'<br><br>4. TIMESTAMP WITH TIME ZONE (timestamptz in PostgreSQL)<br>Same as TIMESTAMP, but also stores a time zone offset.<br>'2025-09-09 14:35:20+02'<br>Useful when working across multiple time zones.<br><br>5. INTERVAL (PostgreSQL, some others)<br>Stores a time duration (years, months, days, hours, minutes, seconds).<br>'2 days 5 hours 30 minutes'<br><br>6. DATETIME (MySQL, SQL Server)<br>Equivalent to TIMESTAMP in many systems.<br>Stores both date and time (without timezone).<br>Copy code<br>'2025-09-09 14:35:20'</div>
 <div class="category-content"><br><br>>>> General SQL Rules for Dates & Intervals<br><br>Type awareness<br><br>You can only add/subtract intervals to/from DATE or TIMESTAMP types.<br>Example: DATE '2025-01-01' + INTERVAL '10 days' → 2025-01-11.<br><br>Valid units for INTERVAL<br>Standard SQL supports: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND.<br><br>Some databases add extras like WEEK, MICROSECOND, etc.<br><br>Addition vs. subtraction<br><br>date + interval → moves forward.<br>date - interval → moves backward.<br>date1 - date2 → returns an interval (the difference).<br><br>Overflow handling (months/years)<br><br>Adding months is tricky because months have different lengths.<br>Example in PostgreSQL:<br>DATE '2025-01-31' + INTERVAL '1 month' → 2025-02-28 (it clamps to the last valid day).<br><br>MySQL might behave differently.</div>
+<div class="category-content">In PostgreSQL, there’s no separate “bare” date literal without quotes. Every date you write in SQL is either:<br><br>A string literal  ->  'YYYY-MM-DD'  ->  PostgreSQL automatically casts to DATE if needed.<br>A string explicitly cast to date  ->  'YYYY-MM-DD'::DATE.<br>A date literal using the DATE keyword  ->  DATE 'YYYY-MM-DD'.<br><br>There isn’t a scenario where you literally type something like 2025-09-23 without quotes and PostgreSQL interprets it as a date—it would be treated as a numeric expression (2025 minus 9 minus 23 = 1993).</div>
 <!--CONTENT-SQL_Date___Time_Data_Types--></p>
         </div>
     </div>
@@ -141,6 +142,406 @@
     </script>
 </div>
 <!-- END OF ALTER TABLE vs UPDATE -->
+
+<!-- LIKE -->
+<div class="grid-item">
+    <button id="openBtn-LIKE">LIKE</button>
+    <div id="myModal-LIKE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>LIKE</h2>
+            <p><!--START-CONTENT-LIKE--></p>
+            <p><div class="category-content">LIKE is used in WHERE clauses to match text using wildcards.<br><br>% → matches any sequence of characters (including empty).<br>_ → matches exactly one character.<br><br>-- Find all cities starting with 'New'<br>SELECT * FROM cities<br>WHERE name LIKE 'New%';<br><br>-- Find all cities with 3 letters<br>SELECT * FROM cities<br>WHERE name LIKE '___';</div>
+<!--CONTENT-LIKE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-LIKE", "openBtn-LIKE");
+    </script>
+</div>
+<!-- END OF LIKE -->
+
+<!-- ESCAPE -->
+<div class="grid-item">
+    <button id="openBtn-ESCAPE">ESCAPE</button>
+    <div id="myModal-ESCAPE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ESCAPE</h2>
+            <p><!--START-CONTENT-ESCAPE--></p>
+            <p><div class="category-content">-- Find names that literally contain '50%'<br><br>SELECT * FROM products<br>WHERE name LIKE '%50!%%' ESCAPE '!';<br><br>! is defined as the escape character.<br>!% means "treat % literally."<br><br>SELECT * FROM products<br>WHERE name LIKE '%50#%%' ESCAPE '#';<br><br><br>-- Find strings ending with '_end'<br><br>SELECT * FROM logs<br>WHERE message LIKE '%!_end' ESCAPE '!';</div>
+<!--CONTENT-ESCAPE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ESCAPE", "openBtn-ESCAPE");
+    </script>
+</div>
+<!-- END OF ESCAPE -->
+
+<!-- TO_CHAR() -->
+<div class="grid-item">
+    <button id="openBtn-TO_CHAR__">TO_CHAR()</button>
+    <div id="myModal-TO_CHAR__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>TO_CHAR()</h2>
+            <p><!--START-CONTENT-TO_CHAR__--></p>
+            <p><div class="category-content">TO_CHAR in PostgreSQL is a formatting function — it converts numbers or dates/timestamps into nicely formatted strings.<br><br>1. Numbers → String<br>SELECT TO_CHAR(1234.567, 'FM9999.00');  <br><br>-- "1234.57"<br>'9' → digit placeholder (optional if leading zeros aren’t needed)<br>'0' → digit placeholder (always show zero if missing)<br>FM → fill mode (removes padding spaces)<br>. → decimal point<br>, → thousands separator<br><br>SELECT TO_CHAR(12345.678, '999,999.99');  -- "12,345.68"<br>SELECT TO_CHAR(5, '0000');                -- "0005"<br><br><br>2. Dates / Timestamps → String<br><br>SELECT TO_CHAR(NOW(), 'YYYY-MM-DD HH24:MI:SS');  <br>-- e.g. "2025-09-23 14:45:30"<br><br><br>YYYY → 4-digit year<br>YY → 2-digit year<br>MM → month (01–12)<br>MON → abbreviated month (e.g., JAN)<br>MONTH → full month name<br>DD → day of month<br>DY → abbreviated weekday (e.g., MON)<br>DAY → full weekday name<br>HH24 → hour (24-hour)<br>HH12 → hour (12-hour)<br>MI → minutes<br>SS → seconds<br>AM / PM → meridiem<br><br>SELECT TO_CHAR(NOW(), 'Day, DD Mon YYYY');  <br>-- "Tuesday   , 23 Sep 2025"<br><br>SELECT TO_CHAR(NOW(), 'HH12:MI:SS AM');  <br>-- "02:45:30 PM"</div>
+<!--CONTENT-TO_CHAR__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-TO_CHAR__", "openBtn-TO_CHAR__");
+    </script>
+</div>
+<!-- END OF TO_CHAR() -->
+
+<!-- EXTRACT() -->
+<div class="grid-item">
+    <button id="openBtn-EXTRACT__">EXTRACT()</button>
+    <div id="myModal-EXTRACT__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>EXTRACT()</h2>
+            <p><!--START-CONTENT-EXTRACT__--></p>
+            <p><div class="category-content">EXTRACT in PostgreSQL always returns a double precision number.<br><br>EXTRACT(field FROM source)<br>field → what you want (like year, month, day, epoch…)<br>source → a DATE, TIMESTAMP, or INTERVAL<br><br>1. From a date<br><br>SELECT EXTRACT(YEAR FROM DATE '2025-09-23');  <br>-- 2025<br><br>SELECT EXTRACT(MONTH FROM DATE '2025-09-23');  <br>-- 9<br><br>SELECT EXTRACT(DAY FROM DATE '2025-09-23');  <br>-- 23<br><br>2. From a timestamp<br><br>SELECT EXTRACT(HOUR FROM TIMESTAMP '2025-09-23 14:45:30');  <br>-- 14<br><br>SELECT EXTRACT(MINUTE FROM TIMESTAMP '2025-09-23 14:45:30');  <br>-- 45<br><br>SELECT EXTRACT(SECOND FROM TIMESTAMP '2025-09-23 14:45:30');  <br>-- 30<br><br>3. From intervals<br><br>SELECT EXTRACT(DAY FROM INTERVAL '3 days 5 hours');  <br>-- 3<br><br>SELECT EXTRACT(HOUR FROM INTERVAL '3 days 5 hours');  <br>-- 5<br><br>4. Special one: epoch<br>SELECT EXTRACT(EPOCH FROM TIMESTAMP '2025-09-23 14:45:30');  <br>-- 1769246730 (Unix timestamp)<br><br>SELECT TO_TIMESTAMP(1769246730);  <br>-- "2025-09-23 14:45:30+00"</div>
+<!--CONTENT-EXTRACT__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-EXTRACT__", "openBtn-EXTRACT__");
+    </script>
+</div>
+<!-- END OF EXTRACT() -->
+
+<!-- AGE() -->
+<div class="grid-item">
+    <button id="openBtn-AGE__">AGE()</button>
+    <div id="myModal-AGE__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>AGE()</h2>
+            <p><!--START-CONTENT-AGE__--></p>
+            <p><div class="category-content">AGE() in PostgreSQL is for working out differences between dates/timestamps, but instead of giving you just a number, it returns an interval.<br><br>SELECT AGE(TIMESTAMP '2025-09-23', TIMESTAMP '2000-09-23');<br>-- 25 years 0 mons 0 days<br><br>SELECT AGE(TIMESTAMP '2000-09-23');<br>-- relative to NOW(), e.g. "25 years 0 mons 0 days"<br><br><br>SELECT '2025-09-23'::date - '2000-09-23'::date;<br>-- 9132   (days)<br><br>SELECT AGE('2025-09-23'::date, '2000-09-23'::date);<br>-- 25 years</div>
+<!--CONTENT-AGE__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-AGE__", "openBtn-AGE__");
+    </script>
+</div>
+<!-- END OF AGE() -->
+
+<!-- NOW() -->
+<div class="grid-item">
+    <button id="openBtn-NOW__">NOW()</button>
+    <div id="myModal-NOW__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NOW()</h2>
+            <p><!--START-CONTENT-NOW__--></p>
+            <p><div class="category-content">NOW() in PostgreSQL is a function that returns the current date and time as a TIMESTAMP WITH TIME ZONE.<br><br>Returns current timestamp at the moment the query runs.<br>Includes date and time, e.g., 2025-09-23 14:35:12.123456+00.<br><br>.123456 → the microseconds (fractional part of a second, up to 6 digits)<br>+00 → the time zone offset from UTC (in this case, +00 means UTC itself)<br><br>-- Insert a record with the current timestamp<br>INSERT INTO orders (order_date, customer_id)<br>VALUES (NOW(), 42);<br><br>-- Select events happening from now onwards<br>SELECT * FROM events<br>WHERE start_time >= NOW();<br><br>Equivalent to CURRENT_TIMESTAMP<br><br>SELECT NOW()::DATE;  -- returns '2025-09-23'</div>
+<!--CONTENT-NOW__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-NOW__", "openBtn-NOW__");
+    </script>
+</div>
+<!-- END OF NOW() -->
+
+<!-- :: CAST() -->
+<div class="grid-item">
+    <button id="openBtn-___CAST__">:: CAST()</button>
+    <div id="myModal-___CAST__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>:: CAST()</h2>
+            <p><!--START-CONTENT-___CAST__--></p>
+            <p><div class="category-content">In PostgreSQL, :: is shorthand for casting a value from one type to another. It’s equivalent to using the CAST() function.<br><br>'2025-09-23'::DATE<br>CAST('2025-09-23' AS DATE)<br><br>SELECT 123::TEXT;         -- Converts number 123 to text<br>SELECT '12.34'::NUMERIC;  -- Converts string to numeric<br>SELECT 'true'::BOOLEAN;   -- Converts string to boolean<br><br>:: is PostgreSQL-specific shorthand.<br>CAST() is standard SQL and works in other databases too.</div>
+<!--CONTENT-___CAST__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-___CAST__", "openBtn-___CAST__");
+    </script>
+</div>
+<!-- END OF :: CAST() -->
+
+<!-- ROUND, CEIL (or CEILING),  FLOOR -->
+<div class="grid-item">
+    <button id="openBtn-ROUND__CEIL__or_CEILING____FLOOR">ROUND, CEIL (or CEILING),  FLOOR</button>
+    <div id="myModal-ROUND__CEIL__or_CEILING____FLOOR" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ROUND, CEIL (or CEILING),  FLOOR</h2>
+            <p><!--START-CONTENT-ROUND__CEIL__or_CEILING____FLOOR--></p>
+            <p><div class="category-content">SELECT ROUND(12.34);      -- 12<br>SELECT ROUND(12.56);      -- 13<br><br>-- Round to 1 decimal place<br>SELECT ROUND(12.345, 1);  -- 12.3<br><br>SELECT ROUND(0.55);   -- 1<br>SELECT ROUND(-0.55);  -- -1<br><br>SELECT CEIL(12.01);       -- 13<br>SELECT CEILING(12.99);    -- 13<br><br>SELECT FLOOR(12.99);      -- 12<br>SELECT FLOOR(12.01);      -- 12<br><br><br>ROUND&nbsp;&nbsp;&nbsp;&nbsp;12.56&nbsp;&nbsp;&nbsp;&nbsp;13<br>CEIL&nbsp;&nbsp;&nbsp;&nbsp;12.01&nbsp;&nbsp;&nbsp;&nbsp;13<br>FLOOR&nbsp;&nbsp;&nbsp;&nbsp;12.99&nbsp;&nbsp;&nbsp;&nbsp;12</div>
+<div class="category-content">In PostgreSQL FLOOR() and CEIL() (or CEILING()) only work on the whole number—they do not take a precision argument like ROUND() does.</div>
+<!--CONTENT-ROUND__CEIL__or_CEILING____FLOOR--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ROUND__CEIL__or_CEILING____FLOOR", "openBtn-ROUND__CEIL__or_CEILING____FLOOR");
+    </script>
+</div>
+<!-- END OF ROUND, CEIL (or CEILING),  FLOOR -->
+
+<!-- TRANSLATE() -->
+<div class="grid-item">
+    <button id="openBtn-TRANSLATE__">TRANSLATE()</button>
+    <div id="myModal-TRANSLATE__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>TRANSLATE()</h2>
+            <p><!--START-CONTENT-TRANSLATE__--></p>
+            <p><div class="category-content">TRANSLATE() is used to replace characters in a string, one-to-one. It's different from REPLACE() because it works character by character, not substrings.<br><br>SELECT TRANSLATE('abcdef', 'abc', '123');<br>-- Result: '123def'<br>-- 'a' → '1', 'b' → '2', 'c' → '3'<br><br>SELECT TRANSLATE('hello world', 'ld', 'XY');<br>-- Result: 'heXXo worY'<br>-- 'l' → 'X', 'd' → 'Y'<br><br>SELECT TRANSLATE('123-456-789', '123456789', '987654321');<br>-- Result: '987-654-321'<br><br>TRANSLATE(string, from_chars, to_chars)<br>Characters in from_chars without a matching character in to_chars are removed.</div>
+<!--CONTENT-TRANSLATE__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-TRANSLATE__", "openBtn-TRANSLATE__");
+    </script>
+</div>
+<!-- END OF TRANSLATE() -->
+
+<!-- REPLACE() -->
+<div class="grid-item">
+    <button id="openBtn-REPLACE__">REPLACE()</button>
+    <div id="myModal-REPLACE__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>REPLACE()</h2>
+            <p><!--START-CONTENT-REPLACE__--></p>
+            <p><div class="category-content">REPLACE() is used to replace substrings within a string, not individual characters.<br><br>REPLACE(string, from_substring, to_substring)<br><br>SELECT REPLACE('hello world', 'world', 'PostgreSQL');<br>-- Result: 'hello PostgreSQL'<br><br>SELECT REPLACE('ababab', 'ab', 'cd');<br>-- Result: 'cdcdcd'<br><br>SELECT REPLACE('2025-09-23', '-', '/');<br>-- Result: '2025/09/23'</div>
+<!--CONTENT-REPLACE__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-REPLACE__", "openBtn-REPLACE__");
+    </script>
+</div>
+<!-- END OF REPLACE() -->
+
+<!-- LEFT, RIGHT, SUBSTRING -->
+<div class="grid-item">
+    <button id="openBtn-LEFT__RIGHT__SUBSTRING">LEFT, RIGHT, SUBSTRING</button>
+    <div id="myModal-LEFT__RIGHT__SUBSTRING" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>LEFT, RIGHT, SUBSTRING</h2>
+            <p><!--START-CONTENT-LEFT__RIGHT__SUBSTRING--></p>
+            <p><div class="category-content">SELECT LEFT('PostgreSQL', 4);  -- 'Post'<br>SELECT LEFT('PostgreSQL', 0);  -- ''<br>SELECT LEFT('PostgreSQL', -3);  --Postgre<br><br><br>SELECT RIGHT('PostgreSQL', 3);   -- 'SQL'<br>SELECT RIGHT('PostgreSQL', 0);   -- ''<br>SELECT RIGHT('PostgreSQL', -3);  -- tgreSQL<br><br><br>SELECT SUBSTRING('PostgreSQL' FROM 5 FOR 3);   -- 'gre'<br>SELECT SUBSTRING('PostgreSQL' FROM -3 FOR 2);  -- Null<br>SELECT SUBSTRING('PostgreSQL' FROM -3);      -- PostgreSQL (seems to break)<br><br>SELECT SUBSTRING('PostgreSQL' FROM 5);<br>-- Result: 'greSQL' (till end of string)</div>
+<div class="category-content">SELECT RIGHT('PostgreSQL', -1);<br>ostgreSQL<br><br>SELECT LEFT('PostgreSQL', -1);<br>PostgreSQ</div>
+<!--CONTENT-LEFT__RIGHT__SUBSTRING--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-LEFT__RIGHT__SUBSTRING", "openBtn-LEFT__RIGHT__SUBSTRING");
+    </script>
+</div>
+<!-- END OF LEFT, RIGHT, SUBSTRING -->
+
+<!-- LENGTH() -->
+<div class="grid-item">
+    <button id="openBtn-LENGTH__">LENGTH()</button>
+    <div id="myModal-LENGTH__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>LENGTH()</h2>
+            <p><!--START-CONTENT-LENGTH__--></p>
+            <p><div class="category-content">SELECT LENGTH('PostgreSQL');  -- 10<br>SELECT LENGTH('こんにちは');     -- 5 (counts characters, even multibyte)<br>SELECT LENGTH('');             -- 0<br><br>-- Get last 3 characters<br>SELECT SUBSTRING('PostgreSQL' FROM LENGTH('PostgreSQL')-2 FOR 3);  -- 'SQL'<br><br>-- Remove last 3 characters<br>SELECT LEFT('PostgreSQL', LENGTH('PostgreSQL')-3);  -- 'Postgre'</div>
+<!--CONTENT-LENGTH__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-LENGTH__", "openBtn-LENGTH__");
+    </script>
+</div>
+<!-- END OF LENGTH() -->
+
+<!-- BIT_LENGTH() -->
+<div class="grid-item">
+    <button id="openBtn-BIT_LENGTH__">BIT_LENGTH()</button>
+    <div id="myModal-BIT_LENGTH__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>BIT_LENGTH()</h2>
+            <p><!--START-CONTENT-BIT_LENGTH__--></p>
+            <p><div class="category-content">BIT_LENGTH() returns the number of bits used to store a string (or bytea). Since each character in a standard string is typically 1 byte (8 bits), BIT_LENGTH() is usually 8 × LENGTH(string).<br><br>SELECT BIT_LENGTH('PostgreSQL');  -- 80 (10 chars × 8 bits)<br>SELECT BIT_LENGTH('');            -- 0<br><br>-- Multibyte characters (UTF-8)<br>SELECT BIT_LENGTH('こんにちは');   -- 40 (5 characters × 8 bits, in UTF-8 each char may take more bytes but BIT_LENGTH counts actual storage in bits)</div>
+<!--CONTENT-BIT_LENGTH__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-BIT_LENGTH__", "openBtn-BIT_LENGTH__");
+    </script>
+</div>
+<!-- END OF BIT_LENGTH() -->
+
+<!-- POSITION() -->
+<div class="grid-item">
+    <button id="openBtn-POSITION__">POSITION()</button>
+    <div id="myModal-POSITION__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>POSITION()</h2>
+            <p><!--START-CONTENT-POSITION__--></p>
+            <p><div class="category-content">POSITION() finds the starting position of a substring within a string. It returns an integer indicating the 1-based index of the first occurrence, or 0 if the substring is not found.<br><br>POSITION(substring IN string)<br><br>SELECT POSITION('SQL' IN 'PostgreSQL');   -- 9<br>SELECT POSITION('Post' IN 'PostgreSQL');  -- 1<br>SELECT POSITION('x' IN 'PostgreSQL');     -- 0 (not found)</div>
+<img src="cat_images/position.png" alt="POSITION()" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-POSITION__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-POSITION__", "openBtn-POSITION__");
+    </script>
+</div>
+<!-- END OF POSITION() -->
+
+<!-- CONCAT(), CONCAT_WS() -->
+<div class="grid-item">
+    <button id="openBtn-CONCAT____CONCAT_WS__">CONCAT(), CONCAT_WS()</button>
+    <div id="myModal-CONCAT____CONCAT_WS__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>CONCAT(), CONCAT_WS()</h2>
+            <p><!--START-CONTENT-CONCAT____CONCAT_WS__--></p>
+            <p><div class="category-content">SELECT CONCAT('Hello', ' ', 'World');        -- 'Hello World'<br>SELECT CONCAT('Value: ', NULL, '123');      -- 'Value: 123'<br><br>SELECT CONCAT_WS('-', '2025', '09', '23');     -- '2025-09-23'<br>SELECT CONCAT_WS(' ', 'Hello', NULL, 'World'); -- 'Hello World'<br><br>SELECT 'Hello' || ' ' || 'World';   -- 'Hello World'<br><br>SELECT 'Value: ' || NULL || '123';  -- NULL<br>Here NULL propagates and the entire concatenation returns NULL. <br><br>SELECT 'Value: ' || COALESCE(NULL, '') || '123';  -- 'Value: 123'</div>
+<!--CONTENT-CONCAT____CONCAT_WS__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-CONCAT____CONCAT_WS__", "openBtn-CONCAT____CONCAT_WS__");
+    </script>
+</div>
+<!-- END OF CONCAT(), CONCAT_WS() -->
+
+<!-- TRIM() -->
+<div class="grid-item">
+    <button id="openBtn-TRIM__">TRIM()</button>
+    <div id="myModal-TRIM__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>TRIM()</h2>
+            <p><!--START-CONTENT-TRIM__--></p>
+            <p><div class="category-content">1. TRIM()<br>Removes leading and/or trailing characters (by default, whitespace) from a string.<br><br>TRIM([LEADING | TRAILING | BOTH] [characters FROM] string)<br>BOTH (default) → removes from both ends.<br>LEADING → removes from the start only.<br>TRAILING → removes from the end only.<br><br>If no characters are specified, spaces are removed.<br><br><br>SELECT TRIM('   hello   ');           -- 'hello'<br>SELECT TRIM(BOTH 'x' FROM 'xxxhelloxx'); -- 'hello'<br>SELECT TRIM(LEADING 'x' FROM 'xxxhelloxx'); -- 'helloxx'<br>SELECT TRIM(TRAILING 'x' FROM 'xxxhelloxx'); -- 'xxxhello'<br><br>2. LTRIM()<br>Removes characters from the left (start) of the string.<br><br>SELECT LTRIM('   hello');      -- 'hello'<br>SELECT LTRIM('xxxhello', 'x'); -- 'hello'<br><br>3. RTRIM()<br>Removes characters from the right (end) of the string.<br><br>SELECT RTRIM('hello   ');       -- 'hello'<br>SELECT RTRIM('helloxxx', 'x');  -- 'hello'</div>
+<!--CONTENT-TRIM__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-TRIM__", "openBtn-TRIM__");
+    </script>
+</div>
+<!-- END OF TRIM() -->
+
+<!-- NULL -->
+<div class="grid-item">
+    <button id="openBtn-NULL">NULL</button>
+    <div id="myModal-NULL" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NULL</h2>
+            <p><!--START-CONTENT-NULL--></p>
+            <p><div class="category-content">SELECT *<br>FROM employees<br>WHERE manager_id = NULL;<br>This will return no rows, even if some manager_id values are NULL.<br><br>The correct way<br>Use IS NULL or IS NOT NULL instead:<br><br>-- Find rows where manager_id is NULL<br>SELECT *<br>FROM employees<br>WHERE manager_id IS NULL;<br><br>-- Find rows where manager_id is not NULL<br>SELECT *<br>FROM employees<br>WHERE manager_id IS NOT NULL;</div>
+<!--CONTENT-NULL--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-NULL", "openBtn-NULL");
+    </script>
+</div>
+<!-- END OF NULL -->
+
+<!-- SET -->
+<div class="grid-item">
+    <button id="openBtn-SET">SET</button>
+    <div id="myModal-SET" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SET</h2>
+            <p><!--START-CONTENT-SET--></p>
+            <p><div class="category-content">1. SET in UPDATE statements<br>Here, the = is required — it assigns a value to a column.<br><br>UPDATE employees<br>SET salary = 50000<br>WHERE id = 123;<br><br>2. ALTER statements<br><br>ALTER TABLE my_table<br>ALTER COLUMN my_column TYPE varchar(100);<br><br>ALTER TABLE my_table<br>ALTER COLUMN my_column SET NOT NULL;<br><br>ALTER TABLE employees<br>ALTER COLUMN salary SET DEFAULT 500;<br>This doesn’t change existing rows. It only affects new inserts where salary isn’t specified.</div>
+<!--CONTENT-SET--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SET", "openBtn-SET");
+    </script>
+</div>
+<!-- END OF SET -->
+
+<!-- search_path -->
+<div class="grid-item">
+    <button id="openBtn-search_path">search_path</button>
+    <div id="myModal-search_path" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>search_path</h2>
+            <p><!--START-CONTENT-search_path--></p>
+            <p><div class="category-content">SET search_path TO public;<br>ALTER ROLE yoana SET search_path TO public;<br><br>This allows for the table and column names to pop up as suggestioons in the QT</div>
+<!--CONTENT-search_path--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-search_path", "openBtn-search_path");
+    </script>
+</div>
+<!-- END OF search_path -->
+
+<!-- SERIAL, GENERATED ALWAYS AS -->
+<div class="grid-item">
+    <button id="openBtn-SERIAL__GENERATED_ALWAYS_AS">SERIAL, GENERATED ALWAYS AS</button>
+    <div id="myModal-SERIAL__GENERATED_ALWAYS_AS" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>SERIAL, GENERATED ALWAYS AS</h2>
+            <p><!--START-CONTENT-SERIAL__GENERATED_ALWAYS_AS--></p>
+            <p><div class="category-content">CREATE TABLE sales (<br>    price numeric,<br>    quantity int,<br>    total numeric GENERATED ALWAYS AS (price * quantity) STORED<br>);<br><br>GENERATED ALWAYS AS (expression) defines the computed column, i.e., it specifies how the value is derived.<br><br>By itself, it doesn’t store anything physically. To actually save the value in the table, you need to add STORED.<br><br><br>CREATE TABLE users (<br>    id SERIAL PRIMARY KEY,<br>    name text<br>);<br><br>INSERT INTO users (name) VALUES ('Alice');<br>-- id = 1 automatically, then 2, 3, ...<br><br>GENERATED ALWAYS AS automatically computes the column value and does not allow manual inserts, while SERIAL uses a sequence to auto-fill values but still lets you manually insert if desired.</div>
+<div class="category-content">>>><br>ALTER TABLE <br>&nbsp;&nbsp;&nbsp;&nbsp;countries<br>ADD COLUMN <br>&nbsp;&nbsp;&nbsp;&nbsp;capital_code CHAR(2) GENERATED ALWAYS AS (SUBSTRING(capital FROM 1 FOR 2)) STORED;</div>
+<!--CONTENT-SERIAL__GENERATED_ALWAYS_AS--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-SERIAL__GENERATED_ALWAYS_AS", "openBtn-SERIAL__GENERATED_ALWAYS_AS");
+    </script>
+</div>
+<!-- END OF SERIAL, GENERATED ALWAYS AS -->
+
+<!-- PRIMARY KEY vs UNIQUE -->
+<div class="grid-item">
+    <button id="openBtn-PRIMARY_KEY_vs_UNIQUE">PRIMARY KEY vs UNIQUE</button>
+    <div id="myModal-PRIMARY_KEY_vs_UNIQUE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>PRIMARY KEY vs UNIQUE</h2>
+            <p><!--START-CONTENT-PRIMARY_KEY_vs_UNIQUE--></p>
+            <p><div class="category-content">PRIMARY KEY&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Uniquely identifies each row in a table. No two rows can have the same value, and the column(s) cannot be NULL.<br>Number of constraints per table:&nbsp;&nbsp;&nbsp;&nbsp;1 - one table cannot have more than 1 PRIMARY KEY columns<br><br>UNIQUE&nbsp;&nbsp;&nbsp;&nbsp;<br>Ensures all values in the column(s) are distinct, but NULLs are allowed (except in some DBMS where multiple NULLs are allowed).<br>Allows NULLs&nbsp;&nbsp;&nbsp;&nbsp;<br>Can be used many times in a table<br><br><br>CREATE TABLE employees (<br>    emp_id SERIAL PRIMARY KEY,<br>    email TEXT UNIQUE,<br>    ssn CHAR(9) UNIQUE<br>);<br>emp_id uniquely identifies each row.<br>email and ssn must be unique, but they are separate from the primary key.<br><br><br>PRIMARY KEY = unique + not null + only one per table<br>UNIQUE = unique values (can be multiple per table, can allow NULL)</div>
+<!--CONTENT-PRIMARY_KEY_vs_UNIQUE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-PRIMARY_KEY_vs_UNIQUE", "openBtn-PRIMARY_KEY_vs_UNIQUE");
+    </script>
+</div>
+<!-- END OF PRIMARY KEY vs UNIQUE -->
+
+<!-- RETURNING -->
+<div class="grid-item">
+    <button id="openBtn-RETURNING">RETURNING</button>
+    <div id="myModal-RETURNING" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>RETURNING</h2>
+            <p><!--START-CONTENT-RETURNING--></p>
+            <p><div class="category-content">RETURNING only works with data-modifying statements:<br><br>INSERT<br>UPDATE<br>DELETE<br><br><br>1. INSERT … RETURNING<br>Use it when you want to know what values were inserted, especially useful for auto-generated IDs.<br><br>INSERT INTO users (name, email)<br>VALUES ('Alice', 'alice@example.com')<br>RETURNING id, name;<br><br>Returns the id and name of the newly inserted row(s).<br><br><br>2. UPDATE … RETURNING<br>Use it when you want to see the new state of updated rows.<br><br>UPDATE users<br>SET email = 'alice@newdomain.com'<br>WHERE name = 'Alice'<br>RETURNING id, email;<br><br>Returns the id and updated email for the rows that were changed.<br><br><br>3. DELETE … RETURNING<br>Use it when you want to know what was deleted.<br><br>DELETE FROM users<br>WHERE name = 'Alice'<br>RETURNING id, name;<br>Returns the id and name of the deleted row(s).</div>
+<!--CONTENT-RETURNING--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-RETURNING", "openBtn-RETURNING");
+    </script>
+</div>
+<!-- END OF RETURNING -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
