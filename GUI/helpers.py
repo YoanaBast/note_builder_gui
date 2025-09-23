@@ -18,7 +18,7 @@ def add_background():
     background_label = tk.Label(app, image=bg_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Keep reference to avoid garbage collection
+    # keep reference to avoid garbage collection
     background_label.image = bg_image
     app.background_label = background_label
 
@@ -84,3 +84,67 @@ def create_category_topic_labels(frame, result):
             fg="green"
         )
         frame.success_label.pack(side='left')
+
+
+def check_img_name(name, frame):
+    clear_labels(frame)
+
+    if not f"{name}.png" in os.listdir(os.path.join("..", "cat_images")):
+        frame.error_label = tk.Label(
+            frame,
+            text='Please check the image name',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="red"
+        )
+        frame.error_label.pack(side='left')
+        return False
+    else:
+        frame.success_label = tk.Label(
+            frame,
+            text='Image added successfully!',
+            font=("Arial", 18),
+            width=25,
+            anchor="w",
+            fg="green"
+        )
+        frame.success_label.pack(side='left')
+        return True
+
+
+def update_status(frame, state):
+    clear_labels(frame)
+
+    if state == "no_topic":
+        frame.error_label = tk.Label(
+            frame,
+            text="Please select a topic first!",
+            font=("Arial", 16),
+            fg="red",
+            anchor="w"
+        )
+        frame.error_label.pack(side='left')
+
+    elif state == "empty_content":
+        frame.error_label = tk.Label(
+            frame,
+            text="Content cannot be empty!",
+            font=("Arial", 16),
+            fg="red",
+            anchor="w"
+        )
+        frame.error_label.pack(side='left')
+
+    elif state == "success":
+        frame.success_label = tk.Label(
+            frame,
+            text="Operation run successfully!",
+            font=("Arial", 18),
+            width=30,
+            anchor="w",
+            fg="green"
+        )
+        frame.success_label.pack(side='left')
+
+

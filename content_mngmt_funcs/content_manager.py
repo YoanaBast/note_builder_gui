@@ -7,13 +7,13 @@ from content_mngmt_funcs.html_category_placeholder_template import category_temp
 from content_mngmt_funcs.html_topic_paceholder_template import content_template
 
 
-
 class ContentManager:
     file_path = os.path.join('..', 'index.html')
 
 
     def __init__(self):
         """connect to PSQL"""
+
         self.conn = psycopg2.connect(
             dbname=os.getenv("DB_NAME"),
             user=os.getenv("DB_USER"),
@@ -25,7 +25,8 @@ class ContentManager:
 
 
     def update_navigation_bar(self):
-        """Update navigation bar with new cats"""
+        """Refresh navigation bar with latest info"""
+
         with self.conn.cursor() as cur:
             cur.execute("SELECT name FROM nav_categories ORDER BY name;")
             categories = [row[0] for row in cur.fetchall()]
@@ -52,8 +53,10 @@ class ContentManager:
                     f.write(updated_html)
         return log(f"Navigation updated for {len(files_to_update)} files.")
 
+
     def create_nav_category(self, category_name):
         "Create new category (those on the navigation bar)"
+
         if not category_name.strip():
             log(f"{category_name} is an empty string")
             return "Empty entry"
@@ -79,10 +82,40 @@ class ContentManager:
 
 
     def delete_nav_category(self, category_name):
-        pass
+        "Delete a category from the nav bar and remove its HTML file"
+
+        if not category_name.strip():
+            log(f"{category_name} is an empty string")
+            return "Empty entry"
+
+        # del from PSQL
+        with self.conn.cursor() as cur:
+            cur.execute(
+                "DELETE FROM nav_categories WHERE name = %s RETURNING id;",
+                (category_name,)
+            )
+            row = cur.fetchone()  # Will be None if category didn't exist
+
+        if not row:
+            log(f"Category '{category_name}' does not exist")
+            return "Category does not exist"
+
+        # del HTML
+        safe_name = safe_id(category_name)
+        file_path = os.path.join('..', f"{safe_name}.html")
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            log(f"Deleted HTML file {file_path}")
+        else:
+            log(f"No HTML file to delete for {file_path}")
+
+        self.update_navigation_bar()
+        return log(f"Category '{category_name}' deleted successfully")
 
 
     def add_topic(self, topic, category):
+        """Add topic to a category"""
+
         if topic.strip() == '':
             log(f"{topic} is an empty string")
             return "Empty entry"
@@ -115,10 +148,57 @@ class ContentManager:
             page.write(html_content)
         return log(f'added {topic} to html and PSQL')
 
+
+    def remove_topic(self, topic, category):
+        """Remove a topic from a category (DB + HTML)"""
+
+        topic = topic.strip()
+        category = category.strip()
+        if not topic:
+            log("Topic is empty")
+            return "Empty entry"
+
+        topic_id = safe_id(topic)
+        category_file = os.path.join('..', f"{safe_id(category)}.html")
+
+        # remove from PSQL
+        with self.conn.cursor() as cur:
+            cur.execute("""
+                DELETE FROM notes
+                WHERE topic = %s
+                  AND category_id = (SELECT id FROM nav_categories WHERE name ILIKE %s)
+                RETURNING id;
+            """, (topic, category))
+            row = cur.fetchone()
+
+        if not row:
+            log(f"Topic '{topic}' does not exist in category '{category}'")
+            return "Topic does not exist"
+
+        # remove from HTML
+        if os.path.exists(category_file):
+            with open(category_file, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+
+            import re
+            # Match everything from <!-- topic --> to <!-- END OF topic -->
+            pattern = rf'<!-- {re.escape(topic)} -->.*?<!-- END OF {re.escape(topic)} -->\s*'
+            new_content, count = re.subn(pattern, '', html_content, flags=re.DOTALL)
+
+            if count == 0:
+                log(f"Warning: topic '{topic}' not found in HTML")
+
+            with open(category_file, 'w', encoding='utf-8') as f:
+                f.write(new_content)
+
+        log(f"Removed topic '{topic}' from category '{category}' (DB + HTML)")
+        return f"Removed '{topic}'"
+
+
     def save_image_or_text_content_helper(self, topic_name, formatted_content):
         """Update the content column for an existing topic and update the topic's HTML placeholder."""
 
-        # Update the content in the database
+        # update the content in the database
         with self.conn.cursor() as cur:
             cur.execute("""
                 UPDATE notes
@@ -133,26 +213,24 @@ class ContentManager:
                 return
             category_id_db = row[0]
 
-            # Get the category name to locate the correct HTML file
+            # get the category name to locate the correct HTML file
             cur.execute("SELECT name FROM nav_categories WHERE id = %s", (category_id_db,))
             category_name = cur.fetchone()[0]
 
-        # Determine HTML file path
         category_file = os.path.join('..', f"{safe_id(category_name)}.html")
 
-        # Read HTML
         with open(category_file, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        # Replace the topic placeholder while keeping it for future updates
+        # replace the topic placeholder while keeping it for future updates
         topic_placeholder = f"<!--CONTENT-{safe_id(topic_name)}-->"
         html_content = html_content.replace(topic_placeholder, formatted_content + '\n' + topic_placeholder)
 
-        # Write back
         with open(category_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
         log(f"Content updated for topic '{topic_name}' in {category_file}")
+
 
     def add_content_to_topic(self, topic_name, content):
         formatted_content = (
@@ -162,6 +240,7 @@ class ContentManager:
         )
         self.save_image_or_text_content_helper(topic_name, formatted_content)
 
+
     def add_pic_to_topic(self, topic_name, image_name, width: int):
         formatted_content = (
             f'<img src="cat_images/{image_name}.png" alt="{topic_name}" '
@@ -169,52 +248,49 @@ class ContentManager:
         )
         self.save_image_or_text_content_helper(topic_name, formatted_content)
 
-    def delete_topic(self, category_name): #tipic
-        # if category_name in self.category_name_content_pairs:
-        #     self.category_name_content_pairs.pop(category_name)
-        #     self.save_pairs() >> AD SQL check here
 
-        with open(self.file_path, 'r', encoding='utf-8') as f:
-            html_content = f.read()
+    def remove_content_from_topic(self, topic, category):
+        topic = topic.strip()
+        category = category.strip()
+        if not topic or not category:
+            log("Topic or category is empty")
+            return "Empty entry"
 
-        category_id = safe_id(category_name)
+        topic_id = safe_id(topic)
+        category_id = safe_id(category)
+        category_file = os.path.join('..', f"{category_id}.html")
 
-        # Remove the content placeholder if present
-        content_placeholder = f"<!--CONTENT-{category_id}-->"
-        html_content = html_content.replace(content_placeholder, '')
+        #remove content from SQL
+        with self.conn.cursor() as cur:
+            cur.execute("""
+                UPDATE notes
+                SET content = ''
+                WHERE topic ILIKE %s
+                  AND category_id = (SELECT id FROM nav_categories WHERE name ILIKE %s)
+                RETURNING id;
+            """, (topic, category))
+            row = cur.fetchone()
+            if not row:
+                log(f"No content found for topic '{topic}' in category '{category}'")
 
-        # Remove the full category block, from opening comment to END comment
-        block_pattern = re.compile(
-            rf'<!--\s*{re.escape(category_name)}\s*-->.*?<!--\s*END\s+OF\s+{re.escape(category_name)}\s*-->',
-            re.DOTALL
-        )
-        html_content = block_pattern.sub('', html_content)
+        #remove content from HTML
+        if os.path.exists(category_file):
+            with open(category_file, 'r', encoding='utf-8') as f:
+                html_content = f.read()
 
-        # Clean up extra empty lines
-        html_content = re.sub(r'\n\s*\n', '\n', html_content)
+            # Remove only the content between the START-CONTENT and CONTENT placeholders for this topic
+            pattern = re.compile(
+                rf'(<!--START-CONTENT-{re.escape(topic_id)}-->).*?(<!--CONTENT-{re.escape(topic_id)}-->)',
+                re.DOTALL
+            )
+            new_html_content, count = pattern.subn(r'\1\n\2', html_content)
+            if count == 0:
+                log(f"Warning: content placeholder not found in HTML for topic '{topic}'")
 
-        with open(self.file_path, 'w', encoding='utf-8') as f:
-            f.write(html_content)
+            with open(category_file, 'w', encoding='utf-8') as f:
+                f.write(new_html_content)
 
-    def remove_content_from_cat(self, category_name):
-        category_id = safe_id(category_name)
+        log(f"Cleared content for topic '{topic}' in category '{category}' (DB + HTML)")
+        return f"Content cleared for '{topic}'"
 
-        # if category_name in self.category_name_content_pairs:
-        #     self.category_name_content_pairs[category_name]["content"] = ""
-        #     self.save_pairs() # Add SQL here
 
-        with open(self.file_path, 'r', encoding='utf-8') as f:
-            html_content = f.read()
-
-        # Remove only the content between the START-CONTENT and CONTENT placeholders
-        pattern = re.compile(
-            rf'(<!--START-CONTENT-{re.escape(category_id)}-->).*?(<!--CONTENT-{re.escape(category_id)}-->)',
-            re.DOTALL
-        )
-        html_content = pattern.sub(r'\1\n\2', html_content)
-
-        with open(self.file_path, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-
-c = ContentManager()
-c.save_image_or_text_content_helper('test', "<div class='category-content'>Test content</div>")
