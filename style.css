@@ -135,3 +135,46 @@ h2 {
     white-space: pre-wrap;
     text-align: left;
 }
+
+/* Base responsive styles */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.grid-item {
+    flex: 1 1 300px;
+    max-width: 400px;
+}
+
+/* Modal fixes for all screens */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    .grid-item {
+        flex: 1 1 100%;
+    }
+
+    .modal-content {
+        margin: 2% auto;
+        max-width: 95%;
+    }
+}
