@@ -19,22 +19,44 @@
 
 
 
-<!-- test -->
+<!-- The DOM (Document Object Model) -->
 <div class="grid-item">
-    <button id="openBtn-test">test</button>
-    <div id="myModal-test" class="modal">
+    <button id="openBtn-The_DOM__Document_Object_Model_">The DOM (Document Object Model)</button>
+    <div id="myModal-The_DOM__Document_Object_Model_" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>test</h2>
-            <p><!--START-CONTENT-test-->
-<!--CONTENT-test--></p>
+            <h2>The DOM (Document Object Model)</h2>
+            <p><!--START-CONTENT-The_DOM__Document_Object_Model_-->
+<div class="category-content">The browser turns your HTML into a tree-like structure called the DOM. Each HTML element is a node in this tree. JS can read and modify this tree, which makes the page interactive.<br><br>document.getElementById("myId")      // Select by ID<br>document.getElementsByClassName("myClass") // Select by class (returns a collection)<br>document.querySelector(".myClass")   // Select first element that matches CSS selector<br>document.querySelectorAll(".myClass") // Select all matching elements (returns NodeList)</div>
+<img src="cat_images/hello_js.png" alt="The DOM (Document Object Model)" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-The_DOM__Document_Object_Model_--></p>
         </div>
     </div>
     <script>
-        setupModal("myModal-test", "openBtn-test");
+        setupModal("myModal-The_DOM__Document_Object_Model_", "openBtn-The_DOM__Document_Object_Model_");
     </script>
 </div>
-<!-- END OF test -->
+<!-- END OF The DOM (Document Object Model) -->
+
+<!-- Events -->
+<div class="grid-item">
+    <button id="openBtn-Events">Events</button>
+    <div id="myModal-Events" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Events</h2>
+            <p><!--START-CONTENT-Events-->
+<div class="category-content">alert() is a built-in JavaScript function provided by the browser.<br>It shows a popup dialog with a message and an OK button.<br><br><button id="myBtn">Click me</button><br><br><script><br>  const btn = document.getElementById("myBtn");<br>  btn.onclick = () => alert("Button clicked!");<br></script></div>
+<img src="cat_images/alert_js.png" alt="Events" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>><br><br>btn.addEventListener("click", () => {<br>  console.log("Clicked!");<br>});<br><br>Attaches a click event listener to the btn element.<br>Every time the user clicks that button, the arrow function runs.</div>
+<!--CONTENT-Events--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Events", "openBtn-Events");
+    </script>
+</div>
+<!-- END OF Events -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
