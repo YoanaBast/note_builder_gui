@@ -154,6 +154,7 @@
             <h2>LIKE</h2>
             <p><!--START-CONTENT-LIKE--></p>
             <p><div class="category-content">LIKE is used in WHERE clauses to match text using wildcards.<br><br>% → matches any sequence of characters (including empty).<br>_ → matches exactly one character.<br><br>-- Find all cities starting with 'New'<br>SELECT * FROM cities<br>WHERE name LIKE 'New%';<br><br>-- Find all cities with 3 letters<br>SELECT * FROM cities<br>WHERE name LIKE '___';</div>
+<div class="category-content">>><br>WHERE LOWER("companion_full_name") LIKE '%and%' <br>&nbsp;&nbsp;&nbsp;&nbsp;"Ms. Brandy Rice"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Terrell Blanda IV"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Andrew Gottlieb PhD"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Sandra Langosh"<br><br>AND "email" NOT LIKE '%@gmail';<br>&nbsp;&nbsp;&nbsp;&nbsp;"Rosalind_Hudson@hotmail.com"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Macie87@hotmail.com"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Alfred.Purdy2@gmail.com"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Thalia_Wehner78@gmail.com"<br><br><br>AND "email" NOT LIKE '%@gmail%';<br>&nbsp;&nbsp;&nbsp;&nbsp;"Ms. Brandy Rice"&nbsp;&nbsp;&nbsp;&nbsp;"Rosalind_Hudson@hotmail.com"<br>&nbsp;&nbsp;&nbsp;&nbsp;"Terrell Blanda IV"&nbsp;&nbsp;&nbsp;&nbsp;"Macie87@hotmail.com"</div>
 <!--CONTENT-LIKE--></p>
         </div>
     </div>
@@ -544,6 +545,27 @@
     </script>
 </div>
 <!-- END OF RETURNING -->
+
+<!-- GROUP BY -->
+<div class="grid-item">
+    <button id="openBtn-GROUP_BY">GROUP BY</button>
+    <div id="myModal-GROUP_BY" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>GROUP BY</h2>
+            <p><!--START-CONTENT-GROUP_BY-->
+<div class="category-content">GROUP BY is used to aggregate data. It takes a table with many rows and groups them into “buckets” based on one or more columns. Then you can apply aggregate functions (COUNT, SUM, AVG, etc.) to each group.<br><br>SELECT <br>    LEFT(first_name, 2) AS initials,<br>    COUNT(*) AS user_count<br>FROM users<br>GROUP BY initials<br><br>GROUP BY initials tells SQL to group all rows by the first two letters of first_name.<br>Within each group, COUNT(*) counts how many users are in that group.<br><br>SELECT city, COUNT(*) AS user_count<br>FROM users<br>GROUP BY city;</div>
+<img src="cat_images/usr_count.png" alt="GROUP BY" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">SQL looked at the city column.<br>Made one group for each unique city.<br>Counted how many rows were in each group using COUNT(*).<br><br>COUNT(*) → counts all rows in the group, including duplicates and NULLs.<br>COUNT(column_name) → counts only rows where the column is not NULL.<br><br>SELECT city,<br>       COUNT(*) AS total_users,<br>       AVG(age) AS avg_age,<br>       MIN(age) AS youngest,<br>       MAX(age) AS oldest<br>FROM users<br>GROUP BY city;</div>
+<img src="cat_images/sql_avg_grp.png" alt="GROUP BY" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-GROUP_BY--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-GROUP_BY", "openBtn-GROUP_BY");
+    </script>
+</div>
+<!-- END OF GROUP BY -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
