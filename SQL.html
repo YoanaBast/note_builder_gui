@@ -662,6 +662,25 @@
 </div>
 <!-- END OF DUAL (Oracle) -->
 
+<!-- COALESCE -->
+<div class="grid-item">
+    <button id="openBtn-COALESCE">COALESCE</button>
+    <div id="myModal-COALESCE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>COALESCE</h2>
+            <p><!--START-CONTENT-COALESCE--></p>
+            <p><div class="category-content">COALESCE() is a SQL function used to return the first non-NULL value from a list of expressions. It’s very useful when you want to handle NULLs gracefully in queries.<br><br>SELECT COALESCE(NULL, NULL, 'Hello', 'World');<br>--Hello<br><br>COALESCE(country, 'Unknown')<br>--If country is NOT NULL, it returns the value of country.<br>--If country is NULL, it returns 'Unknown'.</div>
+<div class="category-content">>><br>COALESCE() is not for conditional logic—it’s only for replacing NULLs.<br><br>Bad example:<br>COALESCE(COUNT(salary) > 1000, 'Rich') <br>--COUNT(salary) returns a number.<br>--COUNT(salary) > 1000 is a boolean expression (true/false in some SQL dialects, 1/0 in others).<br>--COALESCE() is meant to return the first non-NULL value, but COUNT(salary) > 1000 is almost never NULL—it will be either true/false or 1/0. So COALESCE() won’t behave the way you want here.</div>
+<!--CONTENT-COALESCE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-COALESCE", "openBtn-COALESCE");
+    </script>
+</div>
+<!-- END OF COALESCE -->
+
 <!-- INSERT_CATEGORIES_HERE -->
 
 </div>
