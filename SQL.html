@@ -599,6 +599,7 @@
             <p><div class="category-content">CASE<br>    WHEN condition1 THEN result1<br>    WHEN condition2 THEN result2<br>    ELSE result_default<br>END<br><br>SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;e.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.first_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.last_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;CAST(e.salary AS DECIMAL(18,2)),<br>&nbsp;&nbsp;&nbsp;&nbsp;e.department_id,<br>&nbsp;&nbsp;&nbsp;&nbsp;CASE<br>    WHEN d.name NOT IN ('Management', 'Kitchen Staff', 'Service Staff')<br>&nbsp;&nbsp;&nbsp;&nbsp;THEN 'Other'<br>    ELSE d.name<br>&nbsp;&nbsp;&nbsp;&nbsp;END AS department_name<br><br>FROM employees as e<br>JOIN departments as d<br>ON e.department_id = d.id</div>
 <img src="cat_images/case1.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
 <img src="cat_images/case2.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>><br>    CASE department_id<br>        WHEN 1 THEN salary*1.15<br>        WHEN 2 THEN salary*1.10<br>        ELSE salary*1.05<br>    END</div>
 <!--CONTENT-CASE--></p>
         </div>
     </div>
