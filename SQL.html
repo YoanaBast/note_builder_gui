@@ -283,6 +283,7 @@
             <p><div class="category-content">SELECT ROUND(12.34);      -- 12<br>SELECT ROUND(12.56);      -- 13<br><br>-- Round to 1 decimal place<br>SELECT ROUND(12.345, 1);  -- 12.3<br><br>SELECT ROUND(0.55);   -- 1<br>SELECT ROUND(-0.55);  -- -1<br><br>SELECT CEIL(12.01);       -- 13<br>SELECT CEILING(12.99);    -- 13<br><br>SELECT FLOOR(12.99);      -- 12<br>SELECT FLOOR(12.01);      -- 12<br><br><br>ROUND&nbsp;&nbsp;&nbsp;&nbsp;12.56&nbsp;&nbsp;&nbsp;&nbsp;13<br>CEIL&nbsp;&nbsp;&nbsp;&nbsp;12.01&nbsp;&nbsp;&nbsp;&nbsp;13<br>FLOOR&nbsp;&nbsp;&nbsp;&nbsp;12.99&nbsp;&nbsp;&nbsp;&nbsp;12</div>
 <div class="category-content">In PostgreSQL FLOOR() and CEIL() (or CEILING()) only work on the whole number—they do not take a precision argument like ROUND() does.</div>
 <div class="category-content">>> How to format decimals:<br><br>CAST(salary AS DECIMAL(18,2))<br>18 total digits, 2 after the decimal.<br><br>This is a common safe default — enough for salaries, prices, even big amounts.<br>Max: 9999999999999999.99</div>
+<div class="category-content">>><br>Also works:<br><br>TRUNC(salary, 2)</div>
 <!--CONTENT-ROUND__CEIL__or_CEILING____FLOOR--></p>
         </div>
     </div>
@@ -596,6 +597,8 @@
             <h2>CASE</h2>
             <p><!--START-CONTENT-CASE--></p>
             <p><div class="category-content">CASE<br>    WHEN condition1 THEN result1<br>    WHEN condition2 THEN result2<br>    ELSE result_default<br>END<br><br>SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;e.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.first_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.last_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;CAST(e.salary AS DECIMAL(18,2)),<br>&nbsp;&nbsp;&nbsp;&nbsp;e.department_id,<br>&nbsp;&nbsp;&nbsp;&nbsp;CASE<br>    WHEN d.name NOT IN ('Management', 'Kitchen Staff', 'Service Staff')<br>&nbsp;&nbsp;&nbsp;&nbsp;THEN 'Other'<br>    ELSE d.name<br>&nbsp;&nbsp;&nbsp;&nbsp;END AS department_name<br><br>FROM employees as e<br>JOIN departments as d<br>ON e.department_id = d.id</div>
+<img src="cat_images/case1.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/case2.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
 <!--CONTENT-CASE--></p>
         </div>
     </div>
@@ -621,6 +624,42 @@
     </script>
 </div>
 <!-- END OF JOIN -->
+
+<!-- TRUNC -->
+<div class="grid-item">
+    <button id="openBtn-TRUNC">TRUNC</button>
+    <div id="myModal-TRUNC" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>TRUNC</h2>
+            <p><!--START-CONTENT-TRUNC--></p>
+            <p><div class="category-content">SELECT TRUNC(123.456);       -- Result: 123<br>SELECT TRUNC(123.456, 2);    -- Result: 123.45<br>SELECT TRUNC(-123.456, 1);   -- Result: -123.4<br>SELECT TRUNC(123.456, -1);   -- Result: 120<br><br>SELECT DATE_TRUNC('year', CURRENT_TIMESTAMP);   -- Jan 1, 00:00:00 of current year<br>SELECT DATE_TRUNC('month', CURRENT_TIMESTAMP);  -- 1st of month, 00:00:00<br>SELECT DATE_TRUNC('day', CURRENT_TIMESTAMP);    -- Today at 00:00:00<br>SELECT DATE_TRUNC('hour', CURRENT_TIMESTAMP);   -- Current hour, minutes and seconds zeroed</div>
+<!--CONTENT-TRUNC--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-TRUNC", "openBtn-TRUNC");
+    </script>
+</div>
+<!-- END OF TRUNC -->
+
+<!-- DUAL (Oracle) -->
+<div class="grid-item">
+    <button id="openBtn-DUAL__Oracle_">DUAL (Oracle)</button>
+    <div id="myModal-DUAL__Oracle_" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>DUAL (Oracle)</h2>
+            <p><!--START-CONTENT-DUAL__Oracle_--></p>
+            <p><div class="category-content">In Oracle SQL, DUAL is a special one-row, one-column table that exists by default in every Oracle database. It’s mainly used when you need to select a value or evaluate an expression without querying a real table. The column is named DUMMY and contains the value 'X'.<br><br>SELECT 1 + 1 FROM dual;  <br>-- Result: 2<br><br>In PostgreSQL, there is no DUAL table like in Oracle. PostgreSQL allows you to select expressions or call functions without specifying a table at all.<br><br>SELECT 1 + 1;       -- Result: 2</div>
+<!--CONTENT-DUAL__Oracle_--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-DUAL__Oracle_", "openBtn-DUAL__Oracle_");
+    </script>
+</div>
+<!-- END OF DUAL (Oracle) -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
