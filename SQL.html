@@ -600,6 +600,8 @@
 <img src="cat_images/case1.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
 <img src="cat_images/case2.png" alt="CASE" width="500" style="display:block; margin-right:auto;">
 <div class="category-content">>><br>    CASE department_id<br>        WHEN 1 THEN salary*1.15<br>        WHEN 2 THEN salary*1.10<br>        ELSE salary*1.05<br>    END</div>
+<div class="category-content">>><br>UPDATE employees<br>SET<br>    salary = CASE <br>                WHEN hire_date < '2015-01-16' THEN salary + 2500<br>                WHEN hire_date < '2020-03-04' THEN salary + 1500<br>                ELSE salary<br>             END,<br>    job_title = CASE<br>                    WHEN hire_date < '2015-01-16' THEN CONCAT('Senior ', job_title)<br>                    WHEN hire_date < '2020-03-04' THEN CONCAT('Mid-', job_title)<br>                    ELSE job_title<br>                END;</div>
+<div class="category-content">>><br>Nested:<br>SELECT "first_name", "last_name", "job_title", "salary", "department_id",<br><br>CASE<br>&nbsp;&nbsp;&nbsp;&nbsp;WHEN salary >= 25000 THEN <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CASE<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN job_title LIKE 'Senior%' THEN 'High-performing Senior'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE 'High-performing Employee'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<br>&nbsp;&nbsp;&nbsp;&nbsp;ELSE 'Average-performing'<br>END AS performance_rating<br><br>FROM "employees"</div>
 <!--CONTENT-CASE--></p>
         </div>
     </div>
@@ -680,6 +682,60 @@
     </script>
 </div>
 <!-- END OF COALESCE -->
+
+<!-- CTE (Common Table Expression) - WITH -->
+<div class="grid-item">
+    <button id="openBtn-CTE__Common_Table_Expression____WITH">CTE (Common Table Expression) - WITH</button>
+    <div id="myModal-CTE__Common_Table_Expression____WITH" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>CTE (Common Table Expression) - WITH</h2>
+            <p><!--START-CONTENT-CTE__Common_Table_Expression____WITH--></p>
+            <p><div class="category-content">In SQL, you can’t use the alias (age_group) inside the same SELECT for aggregation, hence this lame repeated block:<br><br>SELECT<br>    CASE <br>        WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>        WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>        WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>        WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>        WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>        ELSE '[61+]'<br>    END AS age_group,<br>    COUNT(*) AS group_count<br>FROM wizard_deposits<br>GROUP BY<br>    CASE <br>        WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>        WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>        WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>        WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>        WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>        ELSE '[61+]'<br>    END<br>ORDER BY age_group;<br><br>It can be resolved with CTE:<br><br>WITH age_buckets AS (<br>    SELECT <br>        CASE <br>            WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>            WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>            WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>            WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>            WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>            ELSE '[61+]'<br>        END AS age_group<br>    FROM wizard_deposits<br>)<br>SELECT age_group, COUNT(*) AS group_count<br>FROM age_buckets<br>GROUP BY age_group<br>ORDER BY age_group;</div>
+<!--CONTENT-CTE__Common_Table_Expression____WITH--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-CTE__Common_Table_Expression____WITH", "openBtn-CTE__Common_Table_Expression____WITH");
+    </script>
+</div>
+<!-- END OF CTE (Common Table Expression) - WITH -->
+
+<!-- Pivot -->
+<div class="grid-item">
+    <button id="openBtn-Pivot">Pivot</button>
+    <div id="myModal-Pivot" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pivot</h2>
+            <p><!--START-CONTENT-Pivot--></p>
+            <p><div class="category-content">When you transform row values into columns, that operation is generally called a pivot in SQL.<br><br>SELECT<br>    SUM(CASE WHEN department_id = 1 THEN 1 ELSE 0 END) AS "Engineering",<br>    SUM(CASE WHEN department_id = 2 THEN 1 ELSE 0 END) AS "Tool Design",<br>    SUM(CASE WHEN department_id = 3 THEN 1 ELSE 0 END) AS "Sales",<br>    SUM(CASE WHEN department_id = 4 THEN 1 ELSE 0 END) AS "Marketing",<br>    SUM(CASE WHEN department_id = 5 THEN 1 ELSE 0 END) AS "Purchasing",<br>    SUM(CASE WHEN department_id = 6 THEN 1 ELSE 0 END) AS "Research and Development",<br>    SUM(CASE WHEN department_id = 7 THEN 1 ELSE 0 END) AS "Production"<br>FROM employees;<br><br>>>><br>SQL Server/ Oracle (Postgre does not have PIVOT()):<br><br>SELECT *<br>FROM (<br>    SELECT employee_id, department_code<br>    FROM employees<br>) AS src<br>PIVOT (<br>    COUNT(employee_id)<br>    FOR department_code IN ([1],[2],[3])<br>) AS pvt;</div>
+<!--CONTENT-Pivot--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Pivot", "openBtn-Pivot");
+    </script>
+</div>
+<!-- END OF Pivot -->
+
+<!-- FOREIGN KEY + REFERENCES -->
+<div class="grid-item">
+    <button id="openBtn-FOREIGN_KEY___REFERENCES">FOREIGN KEY + REFERENCES</button>
+    <div id="myModal-FOREIGN_KEY___REFERENCES" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>FOREIGN KEY + REFERENCES</h2>
+            <p><!--START-CONTENT-FOREIGN_KEY___REFERENCES--></p>
+            <p><div class="category-content">CREATE TABLE employees_projects (<br>    id SERIAL PRIMARY KEY,              <br>    employee_id INT NOT NULL,<br>    project_id INT NOT NULL,<br>    FOREIGN KEY (employee_id) REFERENCES employees(id),<br>    FOREIGN KEY (project_id) REFERENCES projects(id)<br>);<br><br>Foreign Key points to a column in another table (usually that table’s primary key).<br>You define it as a normal column, then add the FOREIGN KEY constraint.</div>
+<!--CONTENT-FOREIGN_KEY___REFERENCES--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-FOREIGN_KEY___REFERENCES", "openBtn-FOREIGN_KEY___REFERENCES");
+    </script>
+</div>
+<!-- END OF FOREIGN KEY + REFERENCES -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
