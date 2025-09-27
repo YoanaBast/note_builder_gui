@@ -282,6 +282,7 @@
             <p><!--START-CONTENT-ROUND__CEIL__or_CEILING____FLOOR--></p>
             <p><div class="category-content">SELECT ROUND(12.34);      -- 12<br>SELECT ROUND(12.56);      -- 13<br><br>-- Round to 1 decimal place<br>SELECT ROUND(12.345, 1);  -- 12.3<br><br>SELECT ROUND(0.55);   -- 1<br>SELECT ROUND(-0.55);  -- -1<br><br>SELECT CEIL(12.01);       -- 13<br>SELECT CEILING(12.99);    -- 13<br><br>SELECT FLOOR(12.99);      -- 12<br>SELECT FLOOR(12.01);      -- 12<br><br><br>ROUND&nbsp;&nbsp;&nbsp;&nbsp;12.56&nbsp;&nbsp;&nbsp;&nbsp;13<br>CEIL&nbsp;&nbsp;&nbsp;&nbsp;12.01&nbsp;&nbsp;&nbsp;&nbsp;13<br>FLOOR&nbsp;&nbsp;&nbsp;&nbsp;12.99&nbsp;&nbsp;&nbsp;&nbsp;12</div>
 <div class="category-content">In PostgreSQL FLOOR() and CEIL() (or CEILING()) only work on the whole number—they do not take a precision argument like ROUND() does.</div>
+<div class="category-content">>> How to format decimals:<br><br>CAST(salary AS DECIMAL(18,2))<br>18 total digits, 2 after the decimal.<br><br>This is a common safe default — enough for salaries, prices, even big amounts.<br>Max: 9999999999999999.99</div>
 <!--CONTENT-ROUND__CEIL__or_CEILING____FLOOR--></p>
         </div>
     </div>
@@ -566,6 +567,60 @@
     </script>
 </div>
 <!-- END OF GROUP BY -->
+
+<!-- WHERE vs HAVING -->
+<div class="grid-item">
+    <button id="openBtn-WHERE_vs_HAVING">WHERE vs HAVING</button>
+    <div id="myModal-WHERE_vs_HAVING" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>WHERE vs HAVING</h2>
+            <p><!--START-CONTENT-WHERE_vs_HAVING--></p>
+            <p><div class="category-content">WHERE filters before the aggregation, HAVING filetrs after the aggregation (COUNT, AVG, SUM, MIN, etc)</div>
+<div class="category-content">>><br>In SQL, the key thing to understand is the order in which the clauses are logically processed:<br><br>SELECT <br>    department_id,<br>    SUM(salary) AS "Total Salary",<br>    COUNT(*)    AS "Num Employees"<br>FROM employees<br>WHERE salary > 1000                 -- filter individual rows<br>GROUP BY department_id<br>HAVING SUM(salary) < 4200           -- filter grouped results<br>ORDER BY department_id;<br><br>1. FROM employees → take the table.<br>2. WHERE salary > 1000 → only rows with salary > 1000 remain.<br>3. GROUP BY department_id → group those rows by department.<br>4. SUM(salary) + COUNT(*) are calculated per group.<br>5. HAVING SUM(salary) < 4200 → throw away groups that don’t meet this condition.<br>6. SELECT → output the columns (including aliases).<br>7. ORDER BY department_id → sort the result.</div>
+<!--CONTENT-WHERE_vs_HAVING--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-WHERE_vs_HAVING", "openBtn-WHERE_vs_HAVING");
+    </script>
+</div>
+<!-- END OF WHERE vs HAVING -->
+
+<!-- CASE -->
+<div class="grid-item">
+    <button id="openBtn-CASE">CASE</button>
+    <div id="myModal-CASE" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>CASE</h2>
+            <p><!--START-CONTENT-CASE--></p>
+            <p><div class="category-content">CASE<br>    WHEN condition1 THEN result1<br>    WHEN condition2 THEN result2<br>    ELSE result_default<br>END<br><br>SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;e.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.first_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;e.last_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;CAST(e.salary AS DECIMAL(18,2)),<br>&nbsp;&nbsp;&nbsp;&nbsp;e.department_id,<br>&nbsp;&nbsp;&nbsp;&nbsp;CASE<br>    WHEN d.name NOT IN ('Management', 'Kitchen Staff', 'Service Staff')<br>&nbsp;&nbsp;&nbsp;&nbsp;THEN 'Other'<br>    ELSE d.name<br>&nbsp;&nbsp;&nbsp;&nbsp;END AS department_name<br><br>FROM employees as e<br>JOIN departments as d<br>ON e.department_id = d.id</div>
+<!--CONTENT-CASE--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-CASE", "openBtn-CASE");
+    </script>
+</div>
+<!-- END OF CASE -->
+
+<!-- JOIN -->
+<div class="grid-item">
+    <button id="openBtn-JOIN">JOIN</button>
+    <div id="myModal-JOIN" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>JOIN</h2>
+            <p><!--START-CONTENT-JOIN--></p>
+            <p><!--CONTENT-JOIN--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-JOIN", "openBtn-JOIN");
+    </script>
+</div>
+<!-- END OF JOIN -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
