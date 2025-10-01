@@ -562,6 +562,7 @@
 <img src="cat_images/usr_count.png" alt="GROUP BY" width="500" style="display:block; margin-right:auto;">
 <div class="category-content">SQL looked at the city column.<br>Made one group for each unique city.<br>Counted how many rows were in each group using COUNT(*).<br><br>COUNT(*) → counts all rows in the group, including duplicates and NULLs.<br>COUNT(column_name) → counts only rows where the column is not NULL.<br><br>SELECT city,<br>       COUNT(*) AS total_users,<br>       AVG(age) AS avg_age,<br>       MIN(age) AS youngest,<br>       MAX(age) AS oldest<br>FROM users<br>GROUP BY city;</div>
 <img src="cat_images/sql_avg_grp.png" alt="GROUP BY" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>><br>count(distinct) returns the count of groups<br>count(*)  returns the count of rows</div>
 <!--CONTENT-GROUP_BY--></p>
         </div>
     </div>
@@ -622,7 +623,9 @@
             <span class="close">&times;</span>
             <h2>JOIN</h2>
             <p><!--START-CONTENT-JOIN--></p>
-            <p><!--CONTENT-JOIN--></p>
+            <p><div class="category-content">1. INNER JOIN<br><br>Returns only the rows that match in both tables.<br>If there’s no match, the row is not included.<br><br>SELECT students.id, students.student_name, exams.exam_name<br>FROM students<br>INNER JOIN exams<br>ON students.id = exams.id;<br><br>Here, only students who have matching id in exams will appear.<br><br>2. LEFT JOIN (or LEFT OUTER JOIN)<br><br>Returns all rows from the left table (first table), and the matching rows from the right table.<br>If there’s no match in the right table, you get NULL for the right table’s columns.<br><br>SELECT students.student_name, exams.exam_name<br>FROM students<br>LEFT JOIN exams<br>ON students.id = exams.id;<br>All students appear. If a student has no exam, exam_name will be NULL.<br><br>3. RIGHT JOIN (or RIGHT OUTER JOIN)<br><br>Opposite of LEFT JOIN: returns all rows from the right table, and matching rows from the left table.<br>If there’s no match in the left table, you get NULL for the left table’s columns.<br><br>4. FULL JOIN (or FULL OUTER JOIN)<br><br>Returns all rows from both tables, with NULL where there’s no match.<br><br>5. CROSS JOIN<br><br>Returns every combination of rows from the two tables.<br>If Table A has 3 rows and Table B has 4 rows, the result has 3 × 4 = 12 rows.</div>
+<img src="cat_images/join_sc.png" alt="JOIN" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-JOIN--></p>
         </div>
     </div>
     <script>
@@ -741,6 +744,80 @@
     </script>
 </div>
 <!-- END OF FOREIGN KEY + REFERENCES -->
+
+<!-- Regex in PostgreSQL -->
+<div class="grid-item">
+    <button id="openBtn-Regex_in_PostgreSQL">Regex in PostgreSQL</button>
+    <div id="myModal-Regex_in_PostgreSQL" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Regex in PostgreSQL</h2>
+            <p><!--START-CONTENT-Regex_in_PostgreSQL--></p>
+            <p><div class="category-content">~&nbsp;&nbsp;&nbsp;&nbsp;Matches regex (case-sensitive)<br>~*&nbsp;&nbsp;&nbsp;&nbsp;Matches regex (case-insensitive)<br>!~&nbsp;&nbsp;&nbsp;&nbsp;Does NOT match regex (case-sensitive)<br>!~*&nbsp;&nbsp;&nbsp;&nbsp;Does NOT match regex (case-insensitive)<br><br>-- Case-sensitive match<br>SELECT 'Hello123' ~ '^[A-Z][a-z]+[0-9]+$'; -- true<br><br>-- Case-insensitive match<br>SELECT 'hello123' ~* '^[A-Z][a-z]+[0-9]+$'; -- true<br><br>-- Negation<br>SELECT 'Hello123' !~ '[0-9]$'; -- false<br><br><br>1. REGEXP_MATCHES<br><br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT REGEXP_MATCHES('abc123xyz', '[0-9]+');<br>&nbsp;&nbsp;&nbsp;&nbsp;-- {123}<br><br>Can return multiple matches with the g (global) flag:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT REGEXP_MATCHES('abc123xyz456', '[0-9]+', 'g'); <br>&nbsp;&nbsp;&nbsp;&nbsp;-- {123}, {456}<br><br>2. REGEXP_REPLACE<br><br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT REGEXP_REPLACE('My phone is 408-123-4567', '[0-9]', 'X', 'g');<br>&nbsp;&nbsp;&nbsp;&nbsp;-- 'My phone is XXX-XXX-XXXX'<br>'g' = global replacement (all matches).<br>Without 'g', only the first match is replaced.<br><br>3. REGEXP_SPLIT_TO_ARRAY<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT REGEXP_SPLIT_TO_ARRAY('apple,banana;cherry', '[,;]');<br>&nbsp;&nbsp;&nbsp;&nbsp;-- {apple,banana,cherry}<br><br>4. REGEXP_SPLIT_TO_TABLE<br>Splits a string into multiple rows instead of an array.<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT REGEXP_SPLIT_TO_TABLE('apple,banana;cherry', '[,;]');<br>&nbsp;&nbsp;&nbsp;&nbsp;-- apple<br>&nbsp;&nbsp;&nbsp;&nbsp;-- banana<br>&nbsp;&nbsp;&nbsp;&nbsp;-- cherry</div>
+<!--CONTENT-Regex_in_PostgreSQL--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Regex_in_PostgreSQL", "openBtn-Regex_in_PostgreSQL");
+    </script>
+</div>
+<!-- END OF Regex in PostgreSQL -->
+
+<!-- CONSTRAINT -->
+<div class="grid-item">
+    <button id="openBtn-CONSTRAINT">CONSTRAINT</button>
+    <div id="myModal-CONSTRAINT" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>CONSTRAINT</h2>
+            <p><!--START-CONTENT-CONSTRAINT--></p>
+            <p><div class="category-content">PRIMARY KEY   -> Uniquely identifies each row. Implies NOT NULL.       -> id INT PRIMARY KEY<br>FOREIGN KEY   -> Ensures a column’s values match values in another table (referential integrity)  -> customer_id INT REFERENCES customers(id) ON DELETE CASCADE ON UPDATE CASCADE<br>UNIQUE        -> Ensures all values in a column (or combination of columns) are distinct             -> email VARCHAR(50) UNIQUE<br>CHECK         -> Ensures values meet a condition                                             -> age INT CHECK (age >= 18)<br>NOT NULL      -> Ensures a column cannot be NULL                                             -> name VARCHAR(50) NOT NULL<br>DEFAULT       -> Assigns a default value if none is provided                                  -> status VARCHAR(10) DEFAULT 'active'<br><br><br>a) Foreign Key<br><br>Foreign Key points to a column in another table (usually that table’s primary key).<br>You define it as a normal column, then add the FOREIGN KEY constraint.<br><br>ALTER TABLE employees<br>ADD CONSTRAINT fk_department<br>FOREIGN KEY (department_id) REFERENCES departments(id)<br>ON DELETE CASCADE<br>ON UPDATE CASCADE;<br><br>ON DELETE/UPDATE actions:<br><br>NO ACTION&nbsp;&nbsp;&nbsp;&nbsp;Default. Don’t allow the change if it breaks the foreign key.<br>RESTRICT&nbsp;&nbsp;&nbsp;&nbsp;Same as NO ACTION, but checked immediately.<br>CASCADE&nbsp;&nbsp;&nbsp;&nbsp;Automatically update/delete the child row when the parent is updated/deleted.<br>SET NULL&nbsp;&nbsp;&nbsp;&nbsp;Set the foreign key in the child row to NULL if the parent row is deleted/updated.<br>SET DEFAULT&nbsp;&nbsp;&nbsp;&nbsp;Set the foreign key in the child row to its default value if the parent row changes.<br><br>When crateing a table:<br><br>passport_id INT REFERENCES passports(id) --> CORRECT<br>passport_id REFERENCES passports(id) --> CORRECT --> INCORRECT<br>passport_id INT FOREIGN KEY REFERENCES passports(id); --> INCORRECT<br><br>The FOREIGN KEY keyword is only allowed in table-level constraints, not inline.<br><br>department_id INT,<br>CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id)  --> CORRECT<br><br>b) Unique<br><br>Copy code<br>ALTER TABLE employees<br>ADD CONSTRAINT unique_email UNIQUE (email);<br><br>c) Check<br><br>ALTER TABLE employees<br>ADD CONSTRAINT check_name_length CHECK (char_length(name) > 2);</div>
+<div class="category-content">Each ADD CONSTRAINT must be its own ALTER TABLE.<br><br>ALTER TABLE countries<br>ADD CONSTRAINT fk_currency_code<br>FOREIGN KEY (currency_code)<br>REFERENCES currencies(currency_code)<br>ON DELETE CASCADE;<br><br>ALTER TABLE countries<br>ADD CONSTRAINT fk_continent_code<br>FOREIGN KEY (continent_code)<br>REFERENCES continents(continent_code)<br>ON DELETE CASCADE;</div>
+<div class="category-content">>>><br><br>customer_id INT REFERENCES customers(id) ON DELETE SET NULL ON UPDATE CASCADE ---> WRONG<br><br>Inline foreign key definition (inside the column definition) does not always support ON UPDATE and ON DELETE actions in all databases.<br>Most SQL databases (PostgreSQL, MySQL, etc.) require the more explicit CONSTRAINT syntax if you want to define actions like ON DELETE SET NULL or ON UPDATE CASCADE.<br><br>customer_id INT,<br>CONSTRAINT fk_customer<br>    FOREIGN KEY (customer_id)<br>    REFERENCES customers(id)<br>    ON DELETE SET NULL<br>    ON UPDATE CASCADE ---> CORRECT</div>
+<!--CONTENT-CONSTRAINT--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-CONSTRAINT", "openBtn-CONSTRAINT");
+    </script>
+</div>
+<!-- END OF CONSTRAINT -->
+
+<!-- INSERT INTO -->
+<div class="grid-item">
+    <button id="openBtn-INSERT_INTO">INSERT INTO</button>
+    <div id="myModal-INSERT_INTO" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>INSERT INTO</h2>
+            <p><!--START-CONTENT-INSERT_INTO--></p>
+            <p><div class="category-content">INSERT INTO table_name (column1, column2, column3, ...)<br>VALUES (value1, value2, value3, ...);<br><br>INSERT INTO customers (customer_name)<br>VALUES <br>  ('BlueBird Inc'),<br>  ('Dolphin LLC');<br><br><br>Insert into all columns without specifying column names:<br><br>INSERT INTO students<br>VALUES (1, 'Alice');</div>
+<!--CONTENT-INSERT_INTO--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-INSERT_INTO", "openBtn-INSERT_INTO");
+    </script>
+</div>
+<!-- END OF INSERT INTO -->
+
+<!-- START WITH - INCREMENT BY -->
+<div class="grid-item">
+    <button id="openBtn-START_WITH___INCREMENT_BY">START WITH - INCREMENT BY</button>
+    <div id="myModal-START_WITH___INCREMENT_BY" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>START WITH - INCREMENT BY</h2>
+            <p><!--START-CONTENT-START_WITH___INCREMENT_BY--></p>
+            <p><div class="category-content">SERIAL: Old-style PostgreSQL pseudo-type. Automatically creates a sequence behind the scenes. You cannot directly set START WITH or INCREMENT BY in the column definition; you have to modify the sequence manually.<br><br>GENERATED AS IDENTITY: SQL standard-compliant. Supports options like START WITH and INCREMENT BY directly.<br><br>CREATE TABLE students (<br>    id INT GENERATED ALWAYS AS IDENTITY <br>        (START WITH 101 INCREMENT BY 1) PRIMARY KEY,<br>    student_name VARCHAR(50)<br>);<br>START WITH 101 → The first value of id will be 101.<br>INCREMENT BY 1 → Each new row increases by 1 (can be any number).<br><br>CREATE TABLE students (<br>    id INT GENERATED ALWAYS AS IDENTITY<br>        (START WITH 100      -- first value<br>         INCREMENT BY 5      -- step size<br>         MINVALUE 100        -- minimum value allowed<br>         MAXVALUE 200        -- maximum value allowed<br>         CYCLE)              -- when max is reached, restart from min<br>        PRIMARY KEY,<br>    student_name VARCHAR(50) NOT NULL<br>);<br><br>START WITH&nbsp;&nbsp;&nbsp;&nbsp;The first value assigned to the column (here: 100)<br>INCREMENT BY&nbsp;&nbsp;&nbsp;&nbsp;How much the value increases with each new row (here: 5 → 100, 105, 110…)<br>MINVALUE&nbsp;&nbsp;&nbsp;&nbsp;Minimum allowed value (here: 100)<br>MAXVALUE&nbsp;&nbsp;&nbsp;&nbsp;Maximum allowed value (here: 200)<br>CYCLE&nbsp;&nbsp;&nbsp;&nbsp;After reaching MAXVALUE, the sequence restarts at MINVALUE<br>NO CYCLE&nbsp;&nbsp;&nbsp;&nbsp;Default behavior; sequence stops at MAXVALUE instead of restarting</div>
+<!--CONTENT-START_WITH___INCREMENT_BY--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-START_WITH___INCREMENT_BY", "openBtn-START_WITH___INCREMENT_BY");
+    </script>
+</div>
+<!-- END OF START WITH - INCREMENT BY -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
