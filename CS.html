@@ -44,7 +44,8 @@
             <h2>List vs Array
 </h2>
             <p><!--START-CONTENT-List_vs_Array--></p>
-            <p><!--CONTENT-List_vs_Array--></p>
+            <p><div class="category-content">1. Python List (list)<br>Built-in Python type: list<br><br>Can hold elements of any type, even mixed types:<br><br>lst = [1, "hello", 3.14, True]<br>Dynamic size: You can append, remove, or insert elements at any time.<br>Flexible but slower for large numerical computations because each element is a full Python object.<br><br>lst = [1, 2, 3]<br>lst.append(4)<br>lst[0] = 10<br>Implementation: Array of pointers to Python objects.<br><br><br><br>2. Array (array module or numpy array)<br>array.array: Built-in module for arrays of same type (numbers/characters).<br><br>import array<br>arr = array.array('i', [1, 2, 3, 4])  # 'i' = signed int<br>numpy.array: Part of NumPy library, optimized for numerical operations, supports multidimensional arrays.<br><br><br>import numpy as np<br>arr = np.array([1, 2, 3, 4])<br>All elements must have the same type (homogeneous).<br><br>Faster for math/large data than Python lists.<br><br>Supports vectorized operations:<br><br>arr = np.array([1, 2, 3])<br>arr + 5  # array([6, 7, 8])<br>arr * 2  # array([2, 4, 6])</div>
+<!--CONTENT-List_vs_Array--></p>
         </div>
     </div>
     <script>
@@ -230,6 +231,46 @@
     </script>
 </div>
 <!-- END OF Binary Tree -->
+
+<!-- Merge Sort -->
+<div class="grid-item">
+    <button id="openBtn-Merge_Sort">Merge Sort</button>
+    <div id="myModal-Merge_Sort" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Merge Sort</h2>
+            <p><!--START-CONTENT-Merge_Sort--></p>
+            <p><div class="category-content">class Solution(object):<br>    def sortArray(self, nums):<br>        """<br>        :type nums: List[int]<br>        :rtype: List[int]<br>        """<br><br>        if len(nums) == 1:<br>            return nums<br><br>        pivot = len(nums) // 2<br>        left =  self.sortArray(nums[:pivot])<br>        right = self.sortArray(nums[pivot:])<br><br>        result = []<br>        i = j = 0<br>        while i < len(left) and j < len(right):<br>            if left[i] <= right[j]:<br>                result.append(left[i])<br>                i += 1<br>            else:<br>                result.append(right[j])<br>                j += 1<br>        result += left[i:]<br>        result += right[j:]<br><br>        return result<br><br>sol = Solution()<br>print(sol.sortArray([5,2,3,1]))<br><br>The recusrion breaks nums down to lists with 1 num inside and then after the recursion the code is run for each stack call to compare <br><br>sortArray([5,2,3,1])<br>LEFT<br>    sortArray([5,2])<br>        sortArray([5]) → returns [5]<br>        sortArray([2]) → returns [2]<br>        merge [5] and [2] → [2,5]<br>RIGHT<br>    sortArray([3,1])<br>        sortArray([3]) → returns [3]<br>        sortArray([1]) → returns [1]<br>        merge [3] and [1] → [1,3]<br><br>    merge [2,5] and [1,3] → [1,2,3,5]</div>
+<img src="cat_images/merge_sort.png" alt="Merge Sort" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>> The final stage merge goes like this:<br>Step 0: Initial arrays<br>left  = [2, 5]<br>right = [1, 3]<br>merged = []<br><br>Step 1: Compare 2 and 1 → take 1<br>merged = [1]<br>left  = [2, 5]<br>right = [3]<br><br>Step 2: Compare 2 and 3 → take 2<br>merged = [1, 2]<br>left  = [5]<br>right = [3]<br><br>Step 3: Compare 5 and 3 → take 3<br>merged = [1, 2, 3]<br>left  = [5]<br>right = []<br><br>Step 4: Right empty → take remaining 5<br>merged = [1, 2, 3, 5]</div>
+<div class="category-content">no pivots<br><br>The array is split in half, recursively, and then merged.<br>We just talk about dividing and merging, not a pivot.</div>
+<!--CONTENT-Merge_Sort--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Merge_Sort", "openBtn-Merge_Sort");
+    </script>
+</div>
+<!-- END OF Merge Sort -->
+
+<!-- Quick Sort -->
+<div class="grid-item">
+    <button id="openBtn-Quick_Sort">Quick Sort</button>
+    <div id="myModal-Quick_Sort" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Quick Sort</h2>
+            <p><!--START-CONTENT-Quick_Sort--></p>
+            <p><div class="category-content">class Solution(object):<br>    def sortArray(self, nums):<br><br>        if len(nums) <= 1:<br>            return nums  # Base case: already sorted<br><br>        mid = len(nums) // 2<br>        pivot = nums[mid]  # Choose middle element as pivot<br>        left = []<br>        right = []<br><br>        for i, num in enumerate(nums):<br>            if i == mid:<br>                continue  # Skip the pivot itself<br>            if num <= pivot:<br>                left.append(num)<br>            else:<br>                right.append(num)<br><br>        # Recursively sort left and right, then combine with pivot<br>        return self.sortArray(left) + [pivot] + self.sortArray(right)<br><br><br>sol = Solution()<br>print(sol.sortArray([5, 2, 3, 1]))<br><br><br>Pivot: Middle element of the array.<br>Partition: All elements ≤ pivot go left, all > pivot go right.<br>Skip the pivot when partitioning.<br>Recursively sort left and right subarrays.<br>Combine: sorted left + pivot + sorted right.<br><br>Let’s see what happens if the middle element is the biggest in Quick Sort.<br><br>Suppose the array is:<br><br>[1, 2, 5, 3]<br>Middle element = 5 (pivot)<br>Step 1: Partition around pivot (5)<br>Left (≤ pivot): [1, 2, 3]<br>Right (> pivot): []<br>So after partitioning:<br><br>[1, 2, 3] | 5 | []<br><br><br>In Quick Sort, the pivot can be any element of the array. Pick any element at random. Works well in practice to avoid consistently bad cases.<br>import random<br>pivot_index = random.randint(0, len(arr)-1)<br>pivot = arr[pivot_index]</div>
+<img src="cat_images/quick_sort.png" alt="Quick Sort" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-Quick_Sort--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Quick_Sort", "openBtn-Quick_Sort");
+    </script>
+</div>
+<!-- END OF Quick Sort -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
