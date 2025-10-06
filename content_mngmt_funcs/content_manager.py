@@ -2,7 +2,7 @@ import os
 import re
 import psycopg2
 
-from content_mngmt_funcs.helpers import build_navigation, safe_id, log
+from content_mngmt_funcs.helpers import build_navigation, safe_id, log, python_index_checker
 from content_mngmt_funcs.html_category_placeholder_template import category_template
 from content_mngmt_funcs.html_topic_paceholder_template import content_template
 
@@ -120,8 +120,11 @@ class ContentManager:
             log(f"{topic} is an empty string")
             return "Empty entry"
 
+
+        category_real = python_index_checker(category)
+
         topic_id = safe_id(topic)
-        category_file = os.path.join('..', f"{safe_id(category)}.html")
+        category_file = os.path.join('..', f"{safe_id(category_real)}.html")
 
         with open(category_file, 'r', encoding='utf-8') as page:
             html_content = page.read()
@@ -158,8 +161,10 @@ class ContentManager:
             log("Topic is empty")
             return "Empty entry"
 
+        category_real = python_index_checker(category)
+
         topic_id = safe_id(topic)
-        category_file = os.path.join('..', f"{safe_id(category)}.html")
+        category_file = os.path.join('..', f"{safe_id(category_real)}.html")
 
         # remove from PSQL
         with self.conn.cursor() as cur:
@@ -217,7 +222,9 @@ class ContentManager:
             cur.execute("SELECT name FROM nav_categories WHERE id = %s", (category_id_db,))
             category_name = cur.fetchone()[0]
 
-        category_file = os.path.join('..', f"{safe_id(category_name)}.html")
+        category_real = python_index_checker(category_name)
+
+        category_file = os.path.join('..', f"{safe_id(category_real)}.html")
 
         with open(category_file, 'r', encoding='utf-8') as f:
             html_content = f.read()
@@ -256,8 +263,10 @@ class ContentManager:
             log("Topic or category is empty")
             return "Empty entry"
 
+        category_real = python_index_checker(category)
+
         topic_id = safe_id(topic)
-        category_id = safe_id(category)
+        category_id = safe_id(category_real)
         category_file = os.path.join('..', f"{category_id}.html")
 
         #remove content from SQL

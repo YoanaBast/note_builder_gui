@@ -272,6 +272,24 @@
 </div>
 <!-- END OF Quick Sort -->
 
+<!-- Closure -->
+<div class="grid-item">
+    <button id="openBtn-Closure">Closure</button>
+    <div id="myModal-Closure" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Closure</h2>
+            <p><!--START-CONTENT-Closure--></p>
+            <p><div class="category-content">1. What is a Closure?<br>A closure is a function that “remembers” the variables from its enclosing scope, even after that outer function has finished executing.<br>In simpler terms: a function along with the environment in which it was created.<br>Closures allow you to retain state without using global variables or classes.<br><br>2. Components of a Closure<br>To have a closure in Python, you need:<br><br>An outer function that defines some local variables.<br>An inner function that uses those variables.<br>The outer function returns the inner function.<br><br>3. Example: Simple Closure<br><br>def outer(x):<br>    def inner(y):<br>        return x + y   # 'x' comes from the outer scope<br>    return inner<br><br>add_five = outer(5)  # outer() returns inner()<br>print(add_five(10))  # Output: 15<br><br>Explanation:<br>x = 5 lives in the outer function.<br>inner() remembers x even after outer() has finished.<br>Calling add_five(10) adds 10 to the remembered 5 → 15.<br><br>add_five is a closure — it “closes over” x.<br><br>4. Why Closures Are Useful<br>Maintain state between function calls without globals.<br><br>Can be used to create factory functions (functions that generate other functions).<br>Enable decorators and functional programming patterns in Python.<br><br>5. Another Example: Multiplier Factory<br><br>def make_multiplier(factor):<br>    def multiply(x):<br>        return x * factor<br>    return multiply<br><br>double = make_multiplier(2)<br>triple = make_multiplier(3)<br><br>print(double(5))  # 10<br>print(triple(5))  # 15<br><br>Each returned function remembers its own factor.<br>No global variables required.<br><br>In many languages (like JavaScript, Scheme, or Haskell), a closure is a function plus a persistent environment that keeps references to variables even after the outer function has returned.</div>
+<!--CONTENT-Closure--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Closure", "openBtn-Closure");
+    </script>
+</div>
+<!-- END OF Closure -->
+
 <!-- INSERT_CATEGORIES_HERE -->
 
 </div>

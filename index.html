@@ -833,6 +833,24 @@ print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedT
 
 
 
+<!-- lambda -->
+<div class="grid-item">
+    <button id="openBtn-lambda">lambda</button>
+    <div id="myModal-lambda" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>lambda</h2>
+            <p><!--START-CONTENT-lambda--></p>
+            <p><div class="category-content">print(list(map(lambda x: x**2, [1, 2, 3, 4, 5])))<br># Output: [1, 4, 9, 16, 25]<br><br><br>users = [<br>    {"name": "Alice", "age": 32},<br>    {"name": "Bob", "age": 25},<br>    {"name": "Charlie", "age": 37}<br>]<br><br>sorted_users = sorted(users, key=lambda user: user["age"])<br>print(sorted_users)</div>
+<!--CONTENT-lambda--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-lambda", "openBtn-lambda");
+    </script>
+</div>
+<!-- END OF lambda -->
+
 <!-- INSERT_CATEGORIES_HERE -->
   </div>
 <script src="scripts/modalColors.js"></script>

@@ -40,3 +40,11 @@ def build_navigation(categories: list[str]) -> str:
         for cat in categories
     )
     return f"<nav>{nav_links}</nav>"
+
+
+def python_index_checker(cat):
+    if cat == 'Python':
+        cr = 'index'
+    else:
+        cr = cat
+    return cr

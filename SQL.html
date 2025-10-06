@@ -119,6 +119,7 @@
             <h2>RANDOM()</h2>
             <p><!--START-CONTENT-RANDOM__--></p>
             <p><div class="category-content">RANDOM() generates a pseudo-random floating-point number<br><br>0.0 ≤ RANDOM() < 1.0 0.0≤RANDOM()<1.0<br><br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT RANDOM();<br>&nbsp;&nbsp;&nbsp;&nbsp;# Might output: 0.374829<br><br><br>Multiplying RANDOM() by a number scales it<br>0.0≤RANDOM() * 100<100.0<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT RANDOM() * 100;<br>&nbsp;&nbsp;&nbsp;&nbsp;# Might output: 37.4829<br><br>random integer between 0 and 99:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT FLOOR(RANDOM() * 100);<br><br>To get between 1 and 100:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT FLOOR(RANDOM() * 100) + 1;<br><br>Random row selection:<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT *<br>&nbsp;&nbsp;&nbsp;&nbsp;FROM users<br>&nbsp;&nbsp;&nbsp;&nbsp;ORDER BY RANDOM()<br>&nbsp;&nbsp;&nbsp;&nbsp;LIMIT 5;<br>Picks 5 random rows from users.<br><br><br>RANDOM() → 0 ≤ x < 1<br><br>RANDOM() * N → scales to 0 ≤ x < N<br><br>FLOOR(RANDOM() * N) → integer 0..(N-1)<br><br>FLOOR(RANDOM() * N) + 1 → integer 1..N</div>
+<img src="cat_images/rand1.png" alt="RANDOM()" width="500" style="display:block; margin-right:auto;">
 <!--CONTENT-RANDOM__--></p>
         </div>
     </div>
@@ -264,6 +265,7 @@
             <h2>:: CAST()</h2>
             <p><!--START-CONTENT-___CAST__--></p>
             <p><div class="category-content">In PostgreSQL, :: is shorthand for casting a value from one type to another. It’s equivalent to using the CAST() function.<br><br>'2025-09-23'::DATE<br>CAST('2025-09-23' AS DATE)<br><br>SELECT 123::TEXT;         -- Converts number 123 to text<br>SELECT '12.34'::NUMERIC;  -- Converts string to numeric<br>SELECT 'true'::BOOLEAN;   -- Converts string to boolean<br><br>:: is PostgreSQL-specific shorthand.<br>CAST() is standard SQL and works in other databases too.</div>
+<div class="category-content">>><br>CAST(b.starts_at, DATE) -> WRONG<br><br>CAST(b.starts_at AS DATE) -> RIGHT</div>
 <!--CONTENT-___CAST__--></p>
         </div>
     </div>
@@ -625,6 +627,7 @@
             <p><!--START-CONTENT-JOIN--></p>
             <p><div class="category-content">1. INNER JOIN<br><br>Returns only the rows that match in both tables.<br>If there’s no match, the row is not included.<br><br>SELECT students.id, students.student_name, exams.exam_name<br>FROM students<br>INNER JOIN exams<br>ON students.id = exams.id;<br><br>Here, only students who have matching id in exams will appear.<br><br>2. LEFT JOIN (or LEFT OUTER JOIN)<br><br>Returns all rows from the left table (first table), and the matching rows from the right table.<br>If there’s no match in the right table, you get NULL for the right table’s columns.<br><br>SELECT students.student_name, exams.exam_name<br>FROM students<br>LEFT JOIN exams<br>ON students.id = exams.id;<br>All students appear. If a student has no exam, exam_name will be NULL.<br><br>3. RIGHT JOIN (or RIGHT OUTER JOIN)<br><br>Opposite of LEFT JOIN: returns all rows from the right table, and matching rows from the left table.<br>If there’s no match in the left table, you get NULL for the left table’s columns.<br><br>4. FULL JOIN (or FULL OUTER JOIN)<br><br>Returns all rows from both tables, with NULL where there’s no match.<br><br>5. CROSS JOIN<br><br>Returns every combination of rows from the two tables.<br>If Table A has 3 rows and Table B has 4 rows, the result has 3 × 4 = 12 rows.</div>
 <img src="cat_images/join_sc.png" alt="JOIN" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>>><br>JOIN customers AS c<br>USING customer_id -> WRONG<br><br>JOIN customers AS c<br>USING (customer_id) -> RIGHT</div>
 <!--CONTENT-JOIN--></p>
         </div>
     </div>
@@ -698,6 +701,7 @@
             <h2>CTE (Common Table Expression) - WITH</h2>
             <p><!--START-CONTENT-CTE__Common_Table_Expression____WITH--></p>
             <p><div class="category-content">In SQL, you can’t use the alias (age_group) inside the same SELECT for aggregation, hence this lame repeated block:<br><br>SELECT<br>    CASE <br>        WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>        WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>        WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>        WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>        WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>        ELSE '[61+]'<br>    END AS age_group,<br>    COUNT(*) AS group_count<br>FROM wizard_deposits<br>GROUP BY<br>    CASE <br>        WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>        WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>        WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>        WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>        WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>        ELSE '[61+]'<br>    END<br>ORDER BY age_group;<br><br>It can be resolved with CTE:<br><br>WITH age_buckets AS (<br>    SELECT <br>        CASE <br>            WHEN age BETWEEN 11 AND 20 THEN '[11-20]'<br>            WHEN age BETWEEN 21 AND 30 THEN '[21-30]'<br>            WHEN age BETWEEN 31 AND 40 THEN '[31-40]'<br>            WHEN age BETWEEN 41 AND 50 THEN '[41-50]'<br>            WHEN age BETWEEN 51 AND 60 THEN '[51-60]'<br>            ELSE '[61+]'<br>        END AS age_group<br>    FROM wizard_deposits<br>)<br>SELECT age_group, COUNT(*) AS group_count<br>FROM age_buckets<br>GROUP BY age_group<br>ORDER BY age_group;</div>
+<div class="category-content">>>><br><br>WITH <br>&nbsp;&nbsp;&nbsp;&nbsp;results<br>AS (<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.country_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COALESCE(p.peak_name, '(no highest peak)') AS highest_peak_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COALESCE(p.elevation, 0) AS highest_peak_elevation,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COALESCE(m.mountain_range, '(no mountain)') AS mountain,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROW_NUMBER() OVER (PARTITION BY c.country_name ORDER BY p.elevation DESC) AS row_num<br>&nbsp;&nbsp;&nbsp;&nbsp;FROM<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countries AS c<br>&nbsp;&nbsp;&nbsp;&nbsp;LEFT JOIN<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mountains_countries AS mc<br>&nbsp;&nbsp;&nbsp;&nbsp;USING<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(country_code)<br>&nbsp;&nbsp;&nbsp;&nbsp;LEFT JOIN<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peaks AS p<br>&nbsp;&nbsp;&nbsp;&nbsp;USING<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(mountain_id)<br>&nbsp;&nbsp;&nbsp;&nbsp;LEFT JOIN<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mountains AS m<br>&nbsp;&nbsp;&nbsp;&nbsp;ON<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.id = p.mountain_id<br>)<br><br><br>SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;country_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;highest_peak_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;highest_peak_elevation,<br>&nbsp;&nbsp;&nbsp;&nbsp;mountain<br>FROM <br>&nbsp;&nbsp;&nbsp;&nbsp;results<br>WHERE <br>&nbsp;&nbsp;&nbsp;&nbsp;row_num = 1<br>ORDER BY<br>&nbsp;&nbsp;&nbsp;&nbsp;country_name ASC,<br>&nbsp;&nbsp;&nbsp;&nbsp;highest_peak_elevation DESC;</div>
 <!--CONTENT-CTE__Common_Table_Expression____WITH--></p>
         </div>
     </div>
@@ -818,6 +822,159 @@
     </script>
 </div>
 <!-- END OF START WITH - INCREMENT BY -->
+
+<!-- MTM mapping (junction) table -->
+<div class="grid-item">
+    <button id="openBtn-MTM_mapping__junction__table">MTM mapping (junction) table</button>
+    <div id="myModal-MTM_mapping__junction__table" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>MTM mapping (junction) table</h2>
+            <p><!--START-CONTENT-MTM_mapping__junction__table--></p>
+            <p><div class="category-content">CREATE TABLE students (<br>    student_id INT PRIMARY KEY,<br>    name VARCHAR(100)<br>);<br><br>CREATE TABLE courses (<br>    course_id INT PRIMARY KEY,<br>    title VARCHAR(100)<br>);<br><br>--MAPPING TABLE<br>CREATE TABLE student_courses (<br>    student_id INT,<br>    course_id INT,<br>    PRIMARY KEY (student_id, course_id),<br>    FOREIGN KEY (student_id) REFERENCES students(student_id),<br>    FOREIGN KEY (course_id) REFERENCES courses(course_id)<br>);<br><br>This table connects students and courses.<br><br>The composite primary key here is:<br>PRIMARY KEY (student_id, course_id)<br><br>That means:<br>The combination of student_id and course_id must be unique.<br>A student can’t be enrolled in the same course twice.</div>
+<!--CONTENT-MTM_mapping__junction__table--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-MTM_mapping__junction__table", "openBtn-MTM_mapping__junction__table");
+    </script>
+</div>
+<!-- END OF MTM mapping (junction) table -->
+
+<!-- COUNT() -->
+<div class="grid-item">
+    <button id="openBtn-COUNT__">COUNT()</button>
+    <div id="myModal-COUNT__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>COUNT()</h2>
+            <p><!--START-CONTENT-COUNT__--></p>
+            <p><div class="category-content">COUNT(DISTINCT m.mountain_range)<br><br>COUNT(...) → counts the number of rows<br>DISTINCT → ensures duplicates are removed before counting<br><br>If you had a countries table and wanted to know how many unique mountain ranges per country:<br><br>SELECT country, COUNT(DISTINCT mountain_range) AS unique_ranges<br>FROM mountains<br>GROUP BY country;</div>
+<div class="category-content">>>><br>SELECT country_code<br>from countries<br>LEFT JOIN countries_rivers<br>USING (country_code)<br>LEFT JOIN rivers<br>ON rivers.id = countries_rivers.river_id<br>GROUP BY country_code<br>HAVING COUNT(rivers.river_name) >= 3<br><br><br>COUNT(rivers.river_name) counts how many rivers are linked to each country.<br><br>HAVING COUNT(r.river_name) >= 3 filters to only those countries with at least 3 rivers.<br><br>COUNT() in SQL doesn’t count globally — it counts within the group defined by GROUP BY.<br><br>So, COUNT(rivers.river_name) gives you the number of non-null rivers.river_name values in each group (i.e., for that country).<br><br>It does not count all rivers in the entire dataset.<br>>>></div>
+<!--CONTENT-COUNT__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-COUNT__", "openBtn-COUNT__");
+    </script>
+</div>
+<!-- END OF COUNT() -->
+
+<!-- relation vs relationship -->
+<div class="grid-item">
+    <button id="openBtn-relation_vs_relationship">relation vs relationship</button>
+    <div id="myModal-relation_vs_relationship" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>relation vs relationship</h2>
+            <p><!--START-CONTENT-relation_vs_relationship--></p>
+            <p><div class="category-content">1. Relation<br>→ A table in the relational database sense.<br>A relation is a mathematical concept from relational algebra (the theory behind SQL).<br>In practice, it means a table with:<br>&nbsp;&nbsp;&nbsp;&nbsp;Rows (called tuples)<br>&nbsp;&nbsp;&nbsp;&nbsp;Columns (called attributes)<br>&nbsp;&nbsp;&nbsp;&nbsp;Each row represents one record.<br>&nbsp;&nbsp;&nbsp;&nbsp;Each column represents a property of that record.<br><br>2. Relationship (One-to-One, One-to-Many, Many-to-Many)<br>→ A connection between two (or more) relations.<br>A relationship describes how tables (relations) are linked to each other.<br><br>It’s part of data modeling — in ER diagrams, relationships connect entities.</div>
+<!--CONTENT-relation_vs_relationship--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-relation_vs_relationship", "openBtn-relation_vs_relationship");
+    </script>
+</div>
+<!-- END OF relation vs relationship -->
+
+<!-- sequences (start, increment) -->
+<div class="grid-item">
+    <button id="openBtn-sequences__start__increment_">sequences (start, increment)</button>
+    <div id="myModal-sequences__start__increment_" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>sequences (start, increment)</h2>
+            <p><!--START-CONTENT-sequences__start__increment_--></p>
+            <p><div class="category-content">CREATE SEQUENCE my_sequence<br>    START WITH 100<br>    INCREMENT BY 10;<br><br>START WITH 100&nbsp;&nbsp;&nbsp;&nbsp;First number generated will be 100<br>INCREMENT BY 10&nbsp;&nbsp;&nbsp;&nbsp;Each next number increases by 10: 100, 110, 120, …<br><br><br>INSERT INTO employees (emp_id, name)<br>VALUES (my_sequence.NEXTVAL, 'Alice');<br><br>SERIAL and GENERATED AS IDENTITY are also called sequences.<br><br>In PostgreSQL, the SERIAL type does not support START WITH or INCREMENT BY directly — those options are only available with GENERATED ... AS IDENTITY.<br><br>CREATE TABLE employees (<br>    emp_id INT GENERATED ALWAYS AS IDENTITY<br>        (START WITH 100 INCREMENT BY 10),<br>    name VARCHAR(100)<br>);</div>
+<!--CONTENT-sequences__start__increment_--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-sequences__start__increment_", "openBtn-sequences__start__increment_");
+    </script>
+</div>
+<!-- END OF sequences (start, increment) -->
+
+<!-- subqueries -->
+<div class="grid-item">
+    <button id="openBtn-subqueries">subqueries</button>
+    <div id="myModal-subqueries" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>subqueries</h2>
+            <p><!--START-CONTENT-subqueries--></p>
+            <p><div class="category-content">SELECT <br>MIN(average) AS min_average_area<br>FROM (<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG(area_in_sq_km) AS average<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM countries <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY continent_code ) AS average_area<br><br>The alieses are mandatory in older versions. <br><br>Inner query → calculates average area per continent.<br>Outer query → finds the minimum among these averages.<br>Use of subquery is necessary because you need to aggregate twice:<br>First by continent (AVG)<br>Then across all continents (MIN)<br><br>>>><br><br>UPDATE  monasteries<br>SET three_rivers = TRUE<br>WHERE country_code IN (<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT country_code AS CC<br>&nbsp;&nbsp;&nbsp;&nbsp;from countries<br>&nbsp;&nbsp;&nbsp;&nbsp;LEFT JOIN countries_rivers<br>&nbsp;&nbsp;&nbsp;&nbsp;USING (country_code)<br>&nbsp;&nbsp;&nbsp;&nbsp;LEFT JOIN rivers<br>&nbsp;&nbsp;&nbsp;&nbsp;ON rivers.id = countries_rivers.river_id<br>&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY country_code<br>&nbsp;&nbsp;&nbsp;&nbsp;HAVING COUNT(rivers.river_name) >= 3)<br><br>The outer UPDATE checks monasteries.country_code against the subquery.<br><br>For any monastery in a country with 3+ rivers, three_rivers is set to TRUE<br><br>>>><br><br>UPDATE countries<br>SET three_rivers = (<br>  SELECT COUNT(*) >= 3<br>  FROM countries_rivers AS cr<br>  WHERE cr.country_code = countries.country_code<br>);<br><br>For each row in countries, the subquery:<br>&nbsp;&nbsp;&nbsp;&nbsp;Counts how many rows exist in countries_rivers for that country.<br>&nbsp;&nbsp;&nbsp;&nbsp;Evaluates COUNT(*) >= 3 → returns true or false.<br>&nbsp;&nbsp;&nbsp;&nbsp;That boolean value is assigned to countries.three_rivers.<br>&nbsp;&nbsp;&nbsp;&nbsp;No grouping needed — it’s evaluated per row (correlated subquery).<br><br><br>three_rivers = FALSE&nbsp;&nbsp;&nbsp;&nbsp; -> Does not match null, only rows that are explicitly FALSE<br>three_rivers IS FALSE&nbsp;&nbsp;&nbsp;&nbsp;-> Does not match null, only rows that are explicitly FALSE<br>three_rivers IS NOT TRUE&nbsp;&nbsp;&nbsp;&nbsp;-> Does  match null<br>NOT tree_rivers -> Does  match null</div>
+<div class="category-content">>><br><br>CREATE VIEW<br>&nbsp;&nbsp;&nbsp;&nbsp;continent_currency_usage<br>AS<br>SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;ra.continent_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;ra.currency_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;ra.currency_usage<br>FROM (<br>&nbsp;&nbsp;&nbsp;&nbsp;SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ct.continent_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ct.currency_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ct.currency_usage,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DENSE_RANK() OVER (PARTITION BY ct.continent_code ORDER BY ct.currency_usage DESC) AS ranked_usage<br>&nbsp;&nbsp;&nbsp;&nbsp;FROM (<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continent_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currency_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUNT(currency_code) AS currency_usage<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countries<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continent_code,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currency_code<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HAVING <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUNT(currency_code) > 1<br>&nbsp;&nbsp;&nbsp;&nbsp;) AS ct<br>) AS ra<br>WHERE<br>&nbsp;&nbsp;&nbsp;&nbsp;ra.ranked_usage = 1<br>ORDER BY<br>&nbsp;&nbsp;&nbsp;&nbsp;ra.currency_usage DESC;</div>
+<img src="cat_images/sub1.png" alt="subqueries" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/sub2.png" alt="subqueries" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/sub3.png" alt="subqueries" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-subqueries--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-subqueries", "openBtn-subqueries");
+    </script>
+</div>
+<!-- END OF subqueries -->
+
+<!-- ROW_NUMBER(), RANK(), DENSE_RANK() -->
+<div class="grid-item">
+    <button id="openBtn-ROW_NUMBER____RANK____DENSE_RANK__">ROW_NUMBER(), RANK(), DENSE_RANK()</button>
+    <div id="myModal-ROW_NUMBER____RANK____DENSE_RANK__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ROW_NUMBER(), RANK(), DENSE_RANK()</h2>
+            <p><!--START-CONTENT-ROW_NUMBER____RANK____DENSE_RANK__--></p>
+            <p><div class="category-content">1ROW_NUMBER()<br>Assigns a unique sequential number to each row within a partition (or entire table if no partition).<br>No ties — each row gets a different number even if values are the same.<br><br>Copy code<br>SELECT <br>    country, population,<br>    ROW_NUMBER() OVER (ORDER BY population DESC) AS row_num<br>FROM countries;<br><br>country&nbsp;&nbsp;&nbsp;&nbsp;population&nbsp;&nbsp;&nbsp;&nbsp;  row_num<br>A&nbsp;&nbsp;&nbsp;&nbsp;1000000&nbsp;&nbsp;&nbsp;&nbsp;   1<br>B&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;   2<br>C&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;   3<br>D&nbsp;&nbsp;&nbsp;&nbsp;500000&nbsp;&nbsp;&nbsp;&nbsp;   4<br><br><br>2️RANK()<br>Assigns a rank based on the ordering of a column.<br>Tied values get the same rank, but gaps appear after ties.<br><br>SELECT <br>    country, population,<br>    RANK() OVER (ORDER BY population DESC) AS rnk<br>FROM countries;<br><br>country&nbsp;&nbsp;&nbsp;&nbsp;population&nbsp;&nbsp;&nbsp;&nbsp;   rnk<br>A&nbsp;&nbsp;&nbsp;&nbsp;1000000&nbsp;&nbsp;&nbsp;&nbsp;     1<br>B&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;     2<br>C&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;     2<br>D&nbsp;&nbsp;&nbsp;&nbsp;500000&nbsp;&nbsp;&nbsp;&nbsp;     4<br><br><br>3 DENSE_RANK()<br>Similar to RANK(), but no gaps after ties.<br>Tied values get the same rank, next distinct value gets the next consecutive rank.<br><br>SELECT <br>    country, population,<br>    DENSE_RANK() OVER (ORDER BY population DESC) AS dense_rnk<br>FROM countries;<br><br>country&nbsp;&nbsp;&nbsp;&nbsp;population&nbsp;&nbsp;&nbsp;&nbsp;   dense_rnk<br>A&nbsp;&nbsp;&nbsp;&nbsp;1000000&nbsp;&nbsp;&nbsp;&nbsp;   1<br>B&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;   2<br>C&nbsp;&nbsp;&nbsp;&nbsp;800000&nbsp;&nbsp;&nbsp;&nbsp;   2<br>D&nbsp;&nbsp;&nbsp;&nbsp;500000&nbsp;&nbsp;&nbsp;&nbsp;   3<br><br><br>ROW_NUMBER → when you need a unique identifier for each row.<br><br>RANK → when you want competition-style ranking (like 1st, 2nd, 2nd, 4th).<br><br>DENSE_RANK → when you want ranking without skipping numbers (1, 2, 2, 3).</div>
+<img src="cat_images/dense_r1.png" alt="ROW_NUMBER(), RANK(), DENSE_RANK()" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-ROW_NUMBER____RANK____DENSE_RANK__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ROW_NUMBER____RANK____DENSE_RANK__", "openBtn-ROW_NUMBER____RANK____DENSE_RANK__");
+    </script>
+</div>
+<!-- END OF ROW_NUMBER(), RANK(), DENSE_RANK() -->
+
+<!-- pg_indexes -->
+<div class="grid-item">
+    <button id="openBtn-pg_indexes">pg_indexes</button>
+    <div id="myModal-pg_indexes" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>pg_indexes</h2>
+            <p><!--START-CONTENT-pg_indexes--></p>
+            <p><div class="category-content">SELECT <br>  tablename,<br>  indexname,<br>  indexdef<br>FROM <br>  pg_indexes<br>WHERE <br>  schemaname = 'public'<br>ORDER BY <br>  tablename ASC,<br>  indexname ASC;<br><br>pg_indexes is a PostgreSQL system view that stores metadata about all indexes in the database.<br>schemaname = 'public' filters only indexes belonging to the public schema.<br>ORDER BY tablename ASC, indexname ASC ensures the sorting order matches the requirement — first by table name, then by index name alphabetically.</div>
+<!--CONTENT-pg_indexes--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-pg_indexes", "openBtn-pg_indexes");
+    </script>
+</div>
+<!-- END OF pg_indexes -->
+
+<!-- indexes -->
+<div class="grid-item">
+    <button id="openBtn-indexes">indexes</button>
+    <div id="myModal-indexes" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>indexes</h2>
+            <p><!--START-CONTENT-indexes--></p>
+            <p><div class="category-content">1 What an Index Is<br>An index is a database structure that speeds up data retrieval.<br><br>Common uses:<br>&nbsp;&nbsp;&nbsp;&nbsp;WHERE filters<br>&nbsp;&nbsp;&nbsp;&nbsp;ORDER BY<br>&nbsp;&nbsp;&nbsp;&nbsp;JOIN conditions<br>&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY queries<br><br>2 Types of Indexes in PostgreSQL<br><br>a) B-tree Index (default)<br><br>Most commonly used.<br>Maintains sorted order of the indexed column.<br>Supports:<br>=, <, <=, >, >=<br><br>ORDER BY optimization<br>Default for PRIMARY KEY and UNIQUE.<br><br>b) Hash Index<br>Optimized for equality comparisons (=).<br><br>Faster than B-tree for equality, but:<br>Cannot be used for range queries (<, >)<br>Less commonly used in practice<br><br>c) GIN (Generalized Inverted Index)<br>Optimized for array, JSON, full-text search.<br>Great for containment queries, e.g., WHERE column @> '{value}'.<br><br>d) GiST (Generalized Search Tree)<br>Flexible, supports geometric data types and full-text search.<br>Can handle range, nearest neighbor, and other complex queries.<br><br>e) BRIN (Block Range Index)<br>Very small and fast for large, naturally ordered tables.<br>Stores summary info per block instead of per row.<br>Good for time-series or sequential data.<br><br>3 Clustered Index<br>PostgreSQL does not automatically cluster tables like SQL Server or MySQL.<br>A clustered index in PostgreSQL is actually a table physically reordered according to an index.<br><br>CLUSTER table_name USING index_name;<br><br>Reorders table rows on disk to match the index order.<br><br>Makes range queries and sequential scans faster.<br>Note: PostgreSQL does not maintain clustering automatically.<br>If you insert new rows later, they may not follow the clustered order.<br>You need to CLUSTER again manually if desired.<br><br>Key: In PostgreSQL, every index is technically separate from the table. Clustered indexes only affect physical storage order, not logical indexing.</div>
+<div class="category-content">>><br>CREATE INDEX first_name_idx ON people (first_name)<br><br>Type: B-tree<br>Single-column: Indexes only first_name.<br>Column: first_name<br>Unique: No (unless you add UNIQUE)<br>Separate structure: The index is stored independently from the table data.<br>Not clustered: PostgreSQL does not automatically cluster tables. Rows in people are not reordered on disk unless you use CLUSTER.<br>Purpose: Speeds up equality and range queries (=, <, >, etc.), ORDER BY, JOIN, and GROUP BY operations.</div>
+<img src="cat_images/indx1.png" alt="indexes" width="500" style="display:block; margin-right:auto;">
+<img src="cat_images/indx2.png" alt="indexes" width="500" style="display:block; margin-right:auto;">
+<!--CONTENT-indexes--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-indexes", "openBtn-indexes");
+    </script>
+</div>
+<!-- END OF indexes -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
