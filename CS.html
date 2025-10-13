@@ -290,6 +290,60 @@
 </div>
 <!-- END OF Closure -->
 
+<!-- for loops in other lgs -->
+<div class="grid-item">
+    <button id="openBtn-for_loops_in_other_lgs">for loops in other lgs</button>
+    <div id="myModal-for_loops_in_other_lgs" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>for loops in other lgs</h2>
+            <p><!--START-CONTENT-for_loops_in_other_lgs--></p>
+            <p><div class="category-content">>>> Python (reference)<br># Print numbers 0 to 4<br><br>for i in range(5):<br>    print(i)<br><br><br>>>> C / C++<br><br>#include <stdio.h><br>int main() {<br>    for (int i = 0; i < 5; i++) {<br>        printf("%d\n", i);<br>    }<br>    return 0;<br>}<br><br>>>> Java<br><br>public class Main {<br>    public static void main(String[] args) {<br>        for (int i = 0; i < 5; i++) {<br>            System.out.println(i);<br>        }<br>    }<br>}<br><br>>>> JavaScript<br><br>// Traditional for loop<br>for (let i = 0; i < 5; i++) {<br>    console.log(i);<br>}<br><br>// For-of loop (over arrays)<br>const arr = [10, 20, 30];<br>for (const val of arr) {<br>    console.log(val);<br>}<br><br>>>> Go <br><br>package main<br><br>import "fmt"<br><br>func main() {<br>    for i := 0; i < 5; i++ {<br>        fmt.Println(i)<br>    }<br>}<br><br>>>> Ruby<br># Using a range<br>(0..4).each do |i|<br>  puts i<br>end<br><br>>>> PHP<br><br><?php<br>for ($i = 0; $i < 5; $i++) {<br>    echo $i . "\n";<br>}<br>?><br><br>>>>SQL (pseudo “loop” in PL/pgSQL)<br><br>DO $$<br>DECLARE<br>    i INT;<br>BEGIN<br>    FOR i IN 0..4 LOOP<br>        RAISE NOTICE '%', i;<br>    END LOOP;<br>END $$;</div>
+<!--CONTENT-for_loops_in_other_lgs--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-for_loops_in_other_lgs", "openBtn-for_loops_in_other_lgs");
+    </script>
+</div>
+<!-- END OF for loops in other lgs -->
+
+<!-- while loops in other lgs -->
+<div class="grid-item">
+    <button id="openBtn-while_loops_in_other_lgs">while loops in other lgs</button>
+    <div id="myModal-while_loops_in_other_lgs" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>while loops in other lgs</h2>
+            <p><!--START-CONTENT-while_loops_in_other_lgs--></p>
+            <p><div class="category-content">>>> Python (reference)<br># Print numbers 0 to 4<br><br>i = 0<br>while i < 5:<br>    print(i)<br>    i += 1<br><br>>>> C / C++<br><br>#include <stdio.h><br><br>int main() {<br>    int i = 0;<br>    while (i < 5) {<br>        printf("%d\n", i);<br>        i++;<br>    }<br>    return 0;<br>}<br><br>>>> Java<br><br>public class Main {<br>    public static void main(String[] args) {<br>        int i = 0;<br>        while (i < 5) {<br>            System.out.println(i);<br>            i++;<br>        }<br>    }<br>}<br><br>>>>  JavaScript<br><br>let i = 0;<br>while (i < 5) {<br>    console.log(i);<br>    i++;<br>}<br><br>>>>  Go<br><br>package main<br><br>import "fmt"<br><br>func main() {<br>    i := 0<br>    for i < 5 {  // Go doesn’t have a separate while; "for cond" works as while<br>        fmt.Println(i)<br>        i++<br>    }<br>}<br><br>>>>  Ruby<br><br>i = 0<br>while i < 5<br>  puts i<br>  i += 1<br>end<br><br>>>>  PHP<br><br><?php<br>$i = 0;<br>while ($i < 5) {<br>    echo $i . "\n";<br>    $i++;<br>}<br>?><br><br>>>>  SQL (PL/pgSQL)<br><br>DO $$<br>DECLARE<br>    i INT := 0;<br>BEGIN<br>    WHILE i < 5 LOOP<br>        RAISE NOTICE '%', i;<br>        i := i + 1;<br>    END LOOP;<br>END $$;<br>WHILE loop in PostgreSQL PL/pgSQL.</div>
+<!--CONTENT-while_loops_in_other_lgs--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-while_loops_in_other_lgs", "openBtn-while_loops_in_other_lgs");
+    </script>
+</div>
+<!-- END OF while loops in other lgs -->
+
+<!-- void function -->
+<div class="grid-item">
+    <button id="openBtn-void_function">void function</button>
+    <div id="myModal-void_function" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>void function</h2>
+            <p><!--START-CONTENT-void_function--></p>
+            <p><div class="category-content">void function in SQL (and programming in general) is a function that does not return any value.<br><br>C Example:<br>void sayHello() {<br>    printf("Hello!\n");<br>}<br>It just prints something — no return value.<br><br>Python equivalent:<br>Copy code<br>def say_hello():<br>    print("Hello!")  # No return</div>
+<!--CONTENT-void_function--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-void_function", "openBtn-void_function");
+    </script>
+</div>
+<!-- END OF void function -->
+
 <!-- INSERT_CATEGORIES_HERE -->
 
 </div>

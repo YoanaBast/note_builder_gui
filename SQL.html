@@ -27,6 +27,7 @@
             <h2>SQL Numeric Data Types</h2>
             <p><!--START-CONTENT-SQL_Numeric_Data_Types--></p>
             <p><div class="category-content">1. INTEGER (INT)<br>Stores whole numbers (no decimals).<br>Typical range: -2,147,483,648 to 2,147,483,647 (4 bytes).<br>Good for things like IDs, counts, ages.<br>Variants: SMALLINT (2 bytes), BIGINT (8 bytes).<br><br>2. SMALLINT<br>Smaller range than INT.<br>Typical range: -32,768 to 32,767 (2 bytes).<br>Saves storage if you know values are small (e.g., number of items in stock, months of the year).<br><br>3. BIGINT<br>Larger range than INT.<br>Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (8 bytes).<br>Use for very large counts (e.g., social media user IDs, transaction logs).<br><br>4. DECIMAL(p, s) / NUMERIC(p, s)<br>Stores exact fixed-point numbers.<br>p = precision (total number of digits).<br>s = scale (digits after the decimal point).<br>Example: DECIMAL(10,2) can store up to 99999999.99.<br>Great for money, prices, financial data (no rounding errors).<br><br>5. FLOAT / REAL / DOUBLE PRECISION<br>Stores approximate values with floating-point representation.<br>FLOAT → database decides precision (often 4 bytes, ~7 digits).<br>DOUBLE PRECISION → higher precision (8 bytes, ~15 digits).<br>Faster than DECIMAL, but not always exact (can have rounding errors).<br>Use for scientific data, measurements, percentages, but avoid for money.<br><br>These are all floating-point numeric types, meaning they store approximate numbers (not exact). The main difference is in precision (how many digits they can represent reliably) and storage size.<br>REAL = small, fast, less precise.<br>DOUBLE PRECISION = bigger, slower, much more precise.<br>FLOAT(p) = SQL standard that maps to REAL or DOUBLE depending on p.<br><br>6. SERIAL / BIGSERIAL (PostgreSQL only)<br>Auto-incrementing integer.<br>SERIAL = INTEGER + auto-increment.<br>BIGSERIAL = BIGINT + auto-increment.<br>Perfect for primary keys.</div>
+<div class="category-content">in PostgreSQL, it does not matter whether you use DECIMAL or NUMERIC</div>
 <!--CONTENT-SQL_Numeric_Data_Types--></p>
         </div>
     </div>
@@ -342,6 +343,7 @@
             <p><!--START-CONTENT-LEFT__RIGHT__SUBSTRING--></p>
             <p><div class="category-content">SELECT LEFT('PostgreSQL', 4);  -- 'Post'<br>SELECT LEFT('PostgreSQL', 0);  -- ''<br>SELECT LEFT('PostgreSQL', -3);  --Postgre<br><br><br>SELECT RIGHT('PostgreSQL', 3);   -- 'SQL'<br>SELECT RIGHT('PostgreSQL', 0);   -- ''<br>SELECT RIGHT('PostgreSQL', -3);  -- tgreSQL<br><br><br>SELECT SUBSTRING('PostgreSQL' FROM 5 FOR 3);   -- 'gre'<br>SELECT SUBSTRING('PostgreSQL' FROM -3 FOR 2);  -- Null<br>SELECT SUBSTRING('PostgreSQL' FROM -3);      -- PostgreSQL (seems to break)<br><br>SELECT SUBSTRING('PostgreSQL' FROM 5);<br>-- Result: 'greSQL' (till end of string)</div>
 <div class="category-content">SELECT RIGHT('PostgreSQL', -1);<br>ostgreSQL<br><br>SELECT LEFT('PostgreSQL', -1);<br>PostgreSQ</div>
+<div class="category-content">>><br>SELECT SUBSTRING('PostgreSQL', 1, 4);  -- Output: 'Post'<br>SELECT SUBSTRING('PostgreSQL', 5, 6);  -- Output: 'greSQL'</div>
 <!--CONTENT-LEFT__RIGHT__SUBSTRING--></p>
         </div>
     </div>
@@ -415,6 +417,7 @@
             <h2>CONCAT(), CONCAT_WS()</h2>
             <p><!--START-CONTENT-CONCAT____CONCAT_WS__--></p>
             <p><div class="category-content">SELECT CONCAT('Hello', ' ', 'World');        -- 'Hello World'<br>SELECT CONCAT('Value: ', NULL, '123');      -- 'Value: 123'<br><br>SELECT CONCAT_WS('-', '2025', '09', '23');     -- '2025-09-23'<br>SELECT CONCAT_WS(' ', 'Hello', NULL, 'World'); -- 'Hello World'<br><br>SELECT 'Hello' || ' ' || 'World';   -- 'Hello World'<br><br>SELECT 'Value: ' || NULL || '123';  -- NULL<br>Here NULL propagates and the entire concatenation returns NULL. <br><br>SELECT 'Value: ' || COALESCE(NULL, '') || '123';  -- 'Value: 123'</div>
+<div class="category-content">concat ignores null but || does not</div>
 <!--CONTENT-CONCAT____CONCAT_WS__--></p>
         </div>
     </div>
@@ -433,6 +436,7 @@
             <h2>TRIM()</h2>
             <p><!--START-CONTENT-TRIM__--></p>
             <p><div class="category-content">1. TRIM()<br>Removes leading and/or trailing characters (by default, whitespace) from a string.<br><br>TRIM([LEADING | TRAILING | BOTH] [characters FROM] string)<br>BOTH (default) → removes from both ends.<br>LEADING → removes from the start only.<br>TRAILING → removes from the end only.<br><br>If no characters are specified, spaces are removed.<br><br><br>SELECT TRIM('   hello   ');           -- 'hello'<br>SELECT TRIM(BOTH 'x' FROM 'xxxhelloxx'); -- 'hello'<br>SELECT TRIM(LEADING 'x' FROM 'xxxhelloxx'); -- 'helloxx'<br>SELECT TRIM(TRAILING 'x' FROM 'xxxhelloxx'); -- 'xxxhello'<br><br>2. LTRIM()<br>Removes characters from the left (start) of the string.<br><br>SELECT LTRIM('   hello');      -- 'hello'<br>SELECT LTRIM('xxxhello', 'x'); -- 'hello'<br><br>3. RTRIM()<br>Removes characters from the right (end) of the string.<br><br>SELECT RTRIM('hello   ');       -- 'hello'<br>SELECT RTRIM('helloxxx', 'x');  -- 'hello'</div>
+<div class="category-content">-- Trim whitespace and handle empty result<br> IF TRIM(full_name) = '' THEN<br>        full_name := NULL;<br>    END IF;</div>
 <!--CONTENT-TRIM__--></p>
         </div>
     </div>
@@ -740,6 +744,7 @@
             <p><div class="category-content">CREATE TABLE employees_projects (<br>    id SERIAL PRIMARY KEY,              <br>    employee_id INT NOT NULL,<br>    project_id INT NOT NULL,<br>    FOREIGN KEY (employee_id) REFERENCES employees(id),<br>    FOREIGN KEY (project_id) REFERENCES projects(id)<br>);<br><br>Foreign Key points to a column in another table (usually that table’s primary key).<br>You define it as a normal column, then add the FOREIGN KEY constraint.</div>
 <div class="category-content">>><br>In Postgre SQL we can reference upon creation:<br><br>mountain_id INT REFERENCES mountains --(id by default)</div>
 <div class="category-content">>>><br>We can name constraints like this:<br>CREATE TABLE peaks (<br>    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,<br>    name VARCHAR(50),<br>    mountain_id INT NOT NULL,<br>    CONSTRAINT fk_peaks_mountains<br>        FOREIGN KEY (mountain_id) REFERENCES mountains(id)<br>);</div>
+<div class="category-content">>> NOT NULL placement<br>brand_id INT REFERENCES brands(id) NOT NULL ON DELETE CASCADE ON UPDATE CASCADE, -> WRONG<br>brand_id INT NOT NULL REFERENCES brands(id) ON DELETE CASCADE ON UPDATE CASCADE, -> RIGHT</div>
 <!--CONTENT-FOREIGN_KEY___REFERENCES--></p>
         </div>
     </div>
@@ -987,6 +992,8 @@
             <p><img src="cat_images/funcs1.png" alt="functions" width="500" style="display:block; margin-right:auto;">
 <img src="cat_images/funcs2.png" alt="functions" width="500" style="display:block; margin-right:auto;">
 <img src="cat_images/funcs3.png" alt="functions" width="500" style="display:block; margin-right:auto;">
+<div class="category-content">>>><br> Three Main Types of Functions (by return type)<br><br>1. Scalar Function&nbsp;&nbsp;&nbsp;&nbsp;<br>Returns a single value (one number, text, date, etc.)&nbsp;&nbsp;&nbsp;&nbsp;<br>LENGTH('hello') → 5<br><br>2. Aggregate Function<br>Returns one value per group of rows&nbsp;&nbsp;&nbsp;&nbsp;<br>AVG(salary) or SUM(amount)<br><br>3. Table-Valued Function (Set-Returning Function)&nbsp;&nbsp;&nbsp;&nbsp;<br>Returns a set of rows (like a table)&nbsp;&nbsp;&nbsp;&nbsp;<br>generate_series(1,5) or custom RETURNS TABLE(...)</div>
+<div class="category-content">>>><br>In PostgreSQL, a function declared with RETURNS void means:<br>It performs some work (like logging, inserting, updating) but doesn’t return any data.<br><br>CREATE OR REPLACE FUNCTION log_employee_action(emp_id INT, action TEXT)<br>RETURNS void<br>AS $$<br>BEGIN<br>    INSERT INTO employee_log(employee_id, action, action_time)<br>    VALUES (emp_id, action, NOW());<br>END;<br>$$ LANGUAGE plpgsql;<br><br>You would call it like this:<br>SELECT log_employee_action(101, 'Promoted');<br><br>or inside a trigger:<br>PERFORM log_employee_action(OLD.id, 'Deleted');</div>
 <!--CONTENT-functions--></p>
         </div>
     </div>
@@ -995,6 +1002,189 @@
     </script>
 </div>
 <!-- END OF functions -->
+
+<!-- Stored procedures -->
+<div class="grid-item">
+    <button id="openBtn-Stored_procedures">Stored procedures</button>
+    <div id="myModal-Stored_procedures" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Stored procedures</h2>
+            <p><!--START-CONTENT-Stored_procedures--></p>
+            <p><!--CONTENT-Stored_procedures--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Stored_procedures", "openBtn-Stored_procedures");
+    </script>
+</div>
+<!-- END OF Stored procedures -->
+
+<!-- IF -->
+<div class="grid-item">
+    <button id="openBtn-IF">IF</button>
+    <div id="myModal-IF" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>IF</h2>
+            <p><!--START-CONTENT-IF--></p>
+            <p><div class="category-content">Only in plpgsql, cannot be used in plain SQL<br>That’s why you use CASE inside expressions — it’s the SQL way of doing conditional logic.<br><br><br>UPDATE reviews<br>SET rating = CASE<br>    WHEN item_id = customer_id THEN 10.0<br>    WHEN customer_id > item_id THEN 5.5<br>    ELSE rating<br>END;<br><br>PL/pgSQL (procedural SQL — used inside functions or DO blocks). This is PostgreSQL’s procedural language, used inside CREATE FUNCTION or DO blocks.<br><br>DO $$<br>BEGIN<br>    IF EXISTS (SELECT 1 FROM reviews WHERE item_id = customer_id) THEN<br>        UPDATE reviews<br>        SET rating = 10.0<br>        WHERE item_id = customer_id;<br>    ELSIF EXISTS (SELECT 1 FROM reviews WHERE customer_id > item_id) THEN<br>        UPDATE reviews<br>        SET rating = 5.5<br>        WHERE customer_id > item_id;<br>    END IF;<br>END $$;</div>
+<!--CONTENT-IF--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-IF", "openBtn-IF");
+    </script>
+</div>
+<!-- END OF IF -->
+
+<!-- DELETE FROM -->
+<div class="grid-item">
+    <button id="openBtn-DELETE_FROM">DELETE FROM</button>
+    <div id="myModal-DELETE_FROM" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>DELETE FROM</h2>
+            <p><!--START-CONTENT-DELETE_FROM--></p>
+            <p><div class="category-content">INVALID:<br><br>DELETE FROM customers <br>AS<br>SELECT customers.id FROM customers<br>LEFT JOIN orders<br>ON customers.id = orders.customer_id<br>WHERE orders.id IS NULL<br>This fails because:<br><br>DELETE FROM ... AS SELECT ... is not valid PostgreSQL syntax.<br>You can’t use SELECT directly after DELETE.<br><br>VALID:<br><br>DELETE FROM customers<br>USING orders<br>WHERE customers.id = orders.customer_id<br>AND orders.id IS NULL;<br><br>❌ BUT — this specific version won’t work as expected because orders.id IS NULL can’t be checked like that inside a USING join (since orders.id will never be null in the joined table).<br>So this is not ideal for “no match” situations.<br><br><br>DELETE FROM customers<br>WHERE NOT EXISTS (<br>    SELECT 1<br>    FROM orders<br>    WHERE orders.customer_id = customers.id<br>);<br><br>___________</div>
+<!--CONTENT-DELETE_FROM--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-DELETE_FROM", "openBtn-DELETE_FROM");
+    </script>
+</div>
+<!-- END OF DELETE FROM -->
+
+<!-- transactions -->
+<div class="grid-item">
+    <button id="openBtn-transactions">transactions</button>
+    <div id="myModal-transactions" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>transactions</h2>
+            <p><!--START-CONTENT-transactions--></p>
+            <p><div class="category-content">BEGIN&nbsp;&nbsp;&nbsp;&nbsp;<br>Starts a new transaction block.<br><br>COMMIT&nbsp;&nbsp;&nbsp;&nbsp;<br>Saves all changes made in the current transaction.<br><br>ROLLBACK&nbsp;&nbsp;&nbsp;&nbsp;<br>Cancels all changes made in the current transaction.<br><br>SAVEPOINT name&nbsp;&nbsp;&nbsp;&nbsp;<br>Sets a point inside a transaction you can roll back to.<br><br>ROLLBACK TO name&nbsp;&nbsp;&nbsp;&nbsp;<br>Undoes changes back to a specific savepoint.<br><br>RELEASE SAVEPOINT name&nbsp;&nbsp;&nbsp;&nbsp;<br>Removes a savepoint (can’t roll back to it anymore).<br><br>SET TRANSACTION&nbsp;&nbsp;&nbsp;&nbsp;<br>Sets options like isolation level or read/write mode.<br><br>END&nbsp;&nbsp;&nbsp;&nbsp;<br>Same as COMMIT (alias).<br>>>></div>
+<div class="category-content">BEGIN;<br><br>SAVEPOINT before_update;<br><br>UPDATE accounts SET balance = balance - 100 WHERE id = 1;<br><br>-- Suppose we detect an issue:<br>ROLLBACK TO before_update;<br><br>COMMIT;</div>
+<!--CONTENT-transactions--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-transactions", "openBtn-transactions");
+    </script>
+</div>
+<!-- END OF transactions -->
+
+<!-- triggers -->
+<div class="grid-item">
+    <button id="openBtn-triggers">triggers</button>
+    <div id="myModal-triggers" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>triggers</h2>
+            <p><!--START-CONTENT-triggers--></p>
+            <p><div class="category-content">CREATE OR REPLACE FUNCTION trigger_fn_insert_new_entry_into_logs() <br>RETURNS TRIGGER AS<br>$$<br>BEGIN<br>&nbsp;&nbsp;&nbsp;&nbsp;INSERT INTO<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logs(account_id, old_sum, new_sum)<br>&nbsp;&nbsp;&nbsp;&nbsp;VALUES<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(OLD.id, OLD.balance, NEW.balance);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;RETURN NEW;<br>END;<br>$$<br>LANGUAGE plpgsql;<br><br>CREATE TRIGGER&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;tr_account_balance_change<br>AFTER UPDATE OF balance ON accounts<br>FOR EACH ROW<br>WHEN <br>&nbsp;&nbsp;&nbsp;&nbsp;(NEW.balance <> OLD.balance)<br>EXECUTE FUNCTION<br>&nbsp;&nbsp;&nbsp;&nbsp;trigger_fn_insert_new_entry_into_logs();</div>
+<div class="category-content">><br>A trigger in PostgreSQL is a piece of code that runs automatically when a specific event happens on a table — for example, when a row is:<br>INSERTED<br>UPDATED<br>DELETED<br><br>Triggers are often used for:<br>Automatic logging<br>Validation before changes<br>Keeping audit trails<br>Enforcing business rules<br><br>In an INSERT trigger: only NEW exists.<br>In a DELETE trigger: only OLD exists.<br>In an UPDATE trigger: both exist — OLD shows the original row, NEW shows the modified version.<br><br>Why You Need RETURN NEW (or RETURN OLD)<br>In a trigger function, PostgreSQL expects you to return a record that represents what should happen to the row being affected.<br><br>BEFORE INSERT / BEFORE UPDATE&nbsp;&nbsp;&nbsp;&nbsp;RETURN NEW;&nbsp;&nbsp;&nbsp;&nbsp;Tells PostgreSQL to continue with the new (possibly modified) row.<br>BEFORE DELETE&nbsp;&nbsp;&nbsp;&nbsp;RETURN OLD;&nbsp;&nbsp;&nbsp;&nbsp;The deleted row is being removed — you return the old one to confirm deletion.<br>AFTER triggers&nbsp;&nbsp;&nbsp;&nbsp;RETURN NEW; (or nothing meaningful)&nbsp;&nbsp;&nbsp;&nbsp;Row is already changed — return value is ignored but required syntactically.<br><br>If you return the wrong thing (like returning NULL or OLD when PostgreSQL expects NEW), your trigger can become useless — or even break your data logic entirely.</div>
+<div class="category-content">CREATE TABLE deleted_employees (<br>    employee_id     SERIAL PRIMARY KEY,<br>    first_name      VARCHAR(20),<br>    last_name       VARCHAR(20),<br>    middle_name     VARCHAR(20),<br>    job_title       VARCHAR(50),<br>    department_id   INTEGER,<br>    salary          NUMERIC(19,4)<br>);<br><br>CREATE OR REPLACE FUNCTION deleted_employees_backup()<br>RETURNS TRIGGER<br>AS<br>$$<br>BEGIN<br>&nbsp;&nbsp;&nbsp;&nbsp;INSERT INTO deleted_employees(first_name, last_name, middle_name, job_title, department_id, salary)<br>&nbsp;&nbsp;&nbsp;&nbsp;VALUES (old.first_name, old.last_name, old.middle_name, old.job_title, old.department_id, old.salary);<br>&nbsp;&nbsp;&nbsp;&nbsp;RETURN OLD;<br><br>END;<br>$$<br>LANGUAGE plpgsql;<br><br>CREATE OR REPLACE TRIGGER backup_deleted_employees<br>AFTER DELETE ON employees <br>FOR EACH ROW EXECUTE PROCEDURE deleted_employees_backup();<br><br><br>FOR EACH ROW&nbsp;&nbsp;&nbsp;&nbsp;<br>The trigger fires once for each row affected by the operation. You can access OLD and NEW for that specific row.<br><br>FOR EACH STATEMENT&nbsp;&nbsp;&nbsp;&nbsp;<br>The trigger fires once per SQL statement, regardless of how many rows are affected. You cannot access OLD or NEW because multiple rows may have changed.</div>
+<div class="category-content">1. BEFORE Trigger<br>Runs before the triggering operation (INSERT, UPDATE, DELETE).<br>Often used to validate or modify data before it’s written.<br><br>You can modify the row by changing NEW, or cancel the operation by returning NULL.<br>Example: Ensure salary is positive before insert<br><br>CREATE OR REPLACE FUNCTION check_salary()<br>RETURNS TRIGGER AS $$<br>BEGIN<br>    IF NEW.salary < 0 THEN<br>        RAISE EXCEPTION 'Salary cannot be negative';<br>    END IF;<br>    RETURN NEW;<br>END;<br>$$ LANGUAGE plpgsql;<br><br>CREATE TRIGGER before_insert_employee<br>BEFORE INSERT ON employees<br>FOR EACH ROW<br>EXECUTE FUNCTION check_salary()<br><br>2. AFTER Trigger<br>Runs after the operation is complete.<br>Often used for logging, auditing, or cascading actions.<br>Can’t prevent the operation (it’s already done), but you can react to it.<br>Example: Backup deleted employees<br><br>CREATE TRIGGER after_delete_employee<br>AFTER DELETE ON employees<br>FOR EACH ROW<br>EXECUTE FUNCTION deleted_employees_backup();<br><br>3. INSTEAD OF Trigger (only on views)<br>Runs instead of the operation.<br>Only available for views, because views can’t normally be directly modified.<br>Lets you simulate inserts, updates, or deletes on views by performing operations on underlying tables.<br>Example: Update a view instead of the underlying tables<br><br>CREATE OR REPLACE VIEW employee_view AS<br>SELECT id, first_name, last_name, department_id FROM employees;<br><br>CREATE OR REPLACE FUNCTION instead_of_update_employee()<br>RETURNS TRIGGER AS $$<br>BEGIN<br>    UPDATE employees<br>    SET first_name = NEW.first_name,<br>        last_name = NEW.last_name,<br>        department_id = NEW.department_id<br>    WHERE id = OLD.id;<br>    RETURN NEW;<br>END;<br>$$ LANGUAGE plpgsql;<br><br>CREATE TRIGGER view_update_trigger<br>INSTEAD OF UPDATE ON employee_view<br>FOR EACH ROW<br>EXECUTE FUNCTION instead_of_update_employee();<br><br>Now updating the view actually updates the underlying table.</div>
+<!--CONTENT-triggers--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-triggers", "openBtn-triggers");
+    </script>
+</div>
+<!-- END OF triggers -->
+
+<!-- INITCAP -->
+<div class="grid-item">
+    <button id="openBtn-INITCAP">INITCAP</button>
+    <div id="myModal-INITCAP" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>INITCAP</h2>
+            <p><!--START-CONTENT-INITCAP--></p>
+            <p><div class="category-content">SELECT INITCAP('hello world');<br>-- Output: Hello World<br><br>SELECT INITCAP('pOstGreSQL is awEsome');<br>-- Output: Postgresql Is Awesome<br><br>SELECT INITCAP('john doe');<br>-- Output: John Doe</div>
+<!--CONTENT-INITCAP--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-INITCAP", "openBtn-INITCAP");
+    </script>
+</div>
+<!-- END OF INITCAP -->
+
+<!-- power() vs ** -->
+<div class="grid-item">
+    <button id="openBtn-power___vs___">power() vs **</button>
+    <div id="myModal-power___vs___" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>power() vs **</h2>
+            <p><!--START-CONTENT-power___vs___--></p>
+            <p><div class="category-content">Use POWER(base, exponent) in SQL because the ** operator does not work in all databases and can fail with certain numeric types, whereas POWER() is standard and works reliably across PostgreSQL, MySQL, SQL Server, and Oracle.</div>
+<!--CONTENT-power___vs___--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-power___vs___", "openBtn-power___vs___");
+    </script>
+</div>
+<!-- END OF power() vs ** -->
+
+<!-- WHILE LOOP -->
+<div class="grid-item">
+    <button id="openBtn-WHILE_LOOP">WHILE LOOP</button>
+    <div id="myModal-WHILE_LOOP" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>WHILE LOOP</h2>
+            <p><!--START-CONTENT-WHILE_LOOP--></p>
+            <p><div class="category-content">DO $$<br>DECLARE<br>    i INT := 0;<br>BEGIN<br>    WHILE i < 5 LOOP<br>        RAISE NOTICE 'i = %', i;<br>        i := i + 1;<br>    END LOOP;<br>END $$;</div>
+<!--CONTENT-WHILE_LOOP--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-WHILE_LOOP", "openBtn-WHILE_LOOP");
+    </script>
+</div>
+<!-- END OF WHILE LOOP -->
+
+<!-- FOR LOOP -->
+<div class="grid-item">
+    <button id="openBtn-FOR_LOOP">FOR LOOP</button>
+    <div id="myModal-FOR_LOOP" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>FOR LOOP</h2>
+            <p><!--START-CONTENT-FOR_LOOP--></p>
+            <p><div class="category-content">DO $$<br>DECLARE<br>    i INT;<br>BEGIN<br>    FOR i IN 0..4 LOOP<br>        RAISE NOTICE 'i = %', i;<br>    END LOOP;<br>END $$;</div>
+<!--CONTENT-FOR_LOOP--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-FOR_LOOP", "openBtn-FOR_LOOP");
+    </script>
+</div>
+<!-- END OF FOR LOOP -->
+
+<!-- := -->
+<div class="grid-item">
+    <button id="openBtn-__">:=</button>
+    <div id="myModal-__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>:=</h2>
+            <p><!--START-CONTENT-__--></p>
+            <p><div class="category-content">:= in PostgreSQL (PL/pgSQL)<br>:= is the assignment operator.<br>It’s used to give a value to a variable inside a PL/pgSQL block.<br><br>Unlike = (used in SQL comparisons), := is specifically for variable assignment.<br><br><br>Declare and initialize a variable:<br><br>DO $$<br>DECLARE<br>    counter INT := 0;  -- initialize with 0<br>BEGIN<br>    RAISE NOTICE 'Counter = %', counter;<br>END $$;</div>
+<!--CONTENT-__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-__", "openBtn-__");
+    </script>
+</div>
+<!-- END OF := -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 
