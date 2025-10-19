@@ -1,0 +1,415 @@
+2025-09-22 23:12:14,489 - INFO - That already exists
+2025-09-22 23:12:19,402 - INFO - That already exists
+2025-09-22 23:19:08,308 - INFO - test already exists
+2025-09-22 23:19:12,707 - INFO - Python already exists
+2025-09-22 23:19:21,621 - INFO - added cat to html and PSQL
+2025-09-22 23:19:22,039 - INFO - test123da already exists
+2025-09-22 23:20:01,444 - INFO - test already exists
+2025-09-22 23:20:06,693 - INFO - added test321 to html and PSQL
+2025-09-22 23:20:15,513 - INFO - test321 already exists
+2025-09-22 23:20:16,521 - INFO - test321 already exists
+2025-09-22 23:28:33,882 - INFO - Navigation updated for 6 files.
+2025-09-22 23:31:30,653 - INFO - Navigation updated for 6 files.
+2025-09-22 23:36:30,247 - INFO - Navigation updated for 6 files.
+2025-09-22 23:46:49,355 - INFO - Content updated for topic 'jstest4'
+2025-09-22 23:49:34,527 - INFO - Content updated for topic 'jstest4'
+2025-09-22 23:51:09,057 - INFO - No existing topic 'jstest4' found to update
+2025-09-22 23:51:13,831 - INFO - added test to html and PSQL
+2025-09-22 23:51:14,270 - INFO - test already exists
+2025-09-22 23:51:36,439 - INFO - Content updated for topic 'test'
+2025-09-22 23:51:37,169 - INFO - Content updated for topic 'test'
+2025-09-22 23:51:38,063 - INFO - Content updated for topic 'test'
+2025-09-22 23:52:07,834 - INFO - Content updated for topic 'test'
+2025-09-22 23:53:11,720 - INFO - Content updated for topic 'test'
+2025-09-22 23:53:18,514 - INFO - added testJS to html and PSQL
+2025-09-22 23:53:19,239 - INFO - testJS already exists
+2025-09-22 23:53:39,202 - INFO - Content updated for topic 'testJS'
+2025-09-22 23:53:40,264 - INFO - Content updated for topic 'testJS'
+2025-09-22 23:59:02,878 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 00:00:25,355 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 00:01:04,981 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 00:01:05,573 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 00:12:58,309 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:42:26,769 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:42:47,778 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 13:46:29,489 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:46:45,693 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 13:51:17,068 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:51:35,995 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 13:51:50,130 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 13:56:56,171 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:56:59,890 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 13:57:00,634 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 13:58:11,939 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 13:58:14,451 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 13:58:15,202 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:02:15,081 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:02:19,680 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:02:20,506 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:03:08,102 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:03:10,458 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:03:11,201 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:06:34,444 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:06:36,498 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:06:37,074 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:06:37,418 - INFO - No existing topic 'Choose a category' found to update
+2025-09-23 14:06:44,849 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:08:00,356 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:08:07,646 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:11:50,271 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:12:03,858 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:13:42,900 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:13:56,149 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:14:07,186 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:16:56,619 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:17:06,150 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:17:25,193 - INFO - No existing topic 'Choose a topic' found to update
+2025-09-23 14:17:39,064 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:17:44,977 - INFO - No existing topic 'Choose a topic' found to update
+2025-09-23 14:19:05,326 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:19:40,338 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:19:45,416 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:19:47,124 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:21:55,001 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:22:18,183 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:23:18,785 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:23:29,168 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:23:47,778 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:24:03,543 - INFO - Content updated for topic 'testJS' in ..\JS.html
+2025-09-23 14:30:11,902 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:30:21,316 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:30:30,245 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 14:30:34,520 - INFO - Navigation updated for 7 files.
+2025-09-23 14:30:34,520 - INFO - Category 'Test' saved to PSQL and created HTML file at ..\Test.html
+2025-09-23 14:30:35,328 - INFO - Test already exists
+2025-09-23 14:31:17,700 - INFO - Deleted HTML file ..\Test.html
+2025-09-23 14:31:17,703 - INFO - Navigation updated for 6 files.
+2025-09-23 14:31:17,703 - INFO - Category 'Test' deleted successfully
+2025-09-23 14:33:55,783 - INFO - Removed topic 'test' from ..\JS.html
+2025-09-23 14:33:55,783 - INFO - Topic 'test' removed from PSQL and HTML
+2025-09-23 14:37:35,199 - INFO - Topic 'test' does not exist in category 'JS'
+2025-09-23 14:39:47,134 - INFO - Topic 'test' does not exist in category 'JS'
+2025-09-23 14:40:02,964 - INFO - Warning: topic 'testJS' not found in HTML
+2025-09-23 14:40:02,965 - INFO - Removed topic 'testJS' from category 'JS' (DB + HTML)
+2025-09-23 14:42:10,108 - INFO - Topic 'testJS' does not exist in category 'JS'
+2025-09-23 14:42:22,384 - INFO - added Test1 to html and PSQL
+2025-09-23 14:42:23,555 - INFO - Test1 already exists
+2025-09-23 14:43:06,348 - INFO - Removed topic 'Test1' from category 'JS' (DB + HTML)
+2025-09-23 14:49:45,918 - INFO - Navigation updated for 7 files.
+2025-09-23 14:49:45,918 - INFO - Category 'test123' saved to PSQL and created HTML file at ..\test123.html
+2025-09-23 14:49:46,335 - INFO - test123 already exists
+2025-09-23 14:49:55,568 - INFO - Deleted HTML file ..\test123.html
+2025-09-23 14:49:55,576 - INFO - Navigation updated for 6 files.
+2025-09-23 14:49:55,576 - INFO - Category 'test123' deleted successfully
+2025-09-23 14:50:15,432 - INFO - Navigation updated for 7 files.
+2025-09-23 14:50:15,432 - INFO - Category 't' saved to PSQL and created HTML file at ..\t.html
+2025-09-23 14:50:15,730 - INFO - t already exists
+2025-09-23 14:50:27,307 - INFO - Deleted HTML file ..\t.html
+2025-09-23 14:50:27,314 - INFO - Navigation updated for 6 files.
+2025-09-23 14:50:27,314 - INFO - Category 't' deleted successfully
+2025-09-23 14:50:28,761 - INFO - Category 't' does not exist
+2025-09-23 14:50:30,689 - INFO - Category 't' does not exist
+2025-09-23 15:06:18,713 - INFO - added teeeeeeeeestttt to html and PSQL
+2025-09-23 15:06:19,674 - INFO - teeeeeeeeestttt already exists
+2025-09-23 15:09:09,855 - INFO - Removed topic 'teeeeeeeeestttt' from category 'JS' (DB + HTML)
+2025-09-23 15:11:00,758 - INFO - Navigation updated for 7 files.
+2025-09-23 15:11:00,758 - INFO - Category '1' saved to PSQL and created HTML file at ..\_1.html
+2025-09-23 15:11:10,926 - INFO - Deleted HTML file ..\_1.html
+2025-09-23 15:11:10,935 - INFO - Navigation updated for 6 files.
+2025-09-23 15:11:10,936 - INFO - Category '1' deleted successfully
+2025-09-23 15:15:52,249 - INFO - added test to html and PSQL
+2025-09-23 15:15:52,683 - INFO - test already exists
+2025-09-23 15:16:15,063 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:16:16,645 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:17:32,198 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:17:39,713 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:17:54,254 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:18:09,910 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:18:22,025 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:19:32,486 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:22:24,413 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:22:47,546 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:22:55,981 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:24:33,629 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:24:49,172 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:26:13,010 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:26:30,338 - INFO - Content updated for topic 'test' in ..\JS.html
+2025-09-23 15:31:33,249 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:31:50,791 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:32:12,636 - INFO - Cleared content for topic 'test' in category 'JS' (DB + HTML)
+2025-09-23 15:53:01,505 - INFO - added RANDOM() to html and PSQL
+2025-09-23 15:56:50,132 - INFO - Content updated for topic 'RANDOM()' in ..\SQL.html
+2025-09-23 15:59:20,212 - INFO - added ALTER TABLE vs UPDATE to html and PSQL
+2025-09-23 16:01:35,794 - INFO - Content updated for topic 'ALTER TABLE vs UPDATE' in ..\SQL.html
+2025-09-23 23:35:07,921 - INFO - added LIKE to html and PSQL
+2025-09-23 23:36:07,190 - INFO - Content updated for topic 'LIKE' in ..\SQL.html
+2025-09-23 23:36:18,903 - INFO - added ESCAPE to html and PSQL
+2025-09-23 23:38:37,311 - INFO - Content updated for topic 'ESCAPE' in ..\SQL.html
+2025-09-23 23:42:43,805 - INFO - added TO_CHAR() to html and PSQL
+2025-09-23 23:46:09,153 - INFO - Content updated for topic 'TO_CHAR()' in ..\SQL.html
+2025-09-23 23:47:07,149 - INFO - added EXTRACT() to html and PSQL
+2025-09-23 23:50:18,264 - INFO - Content updated for topic 'EXTRACT()' in ..\SQL.html
+2025-09-23 23:54:38,316 - INFO - added AGE() to html and PSQL
+2025-09-24 00:00:30,441 - INFO - Content updated for topic 'AGE()' in ..\SQL.html
+2025-09-24 00:04:26,128 - INFO - Content updated for topic 'SQL Date & Time Data Types' in ..\SQL.html
+2025-09-24 00:05:04,965 - INFO - added NOW() to html and PSQL
+2025-09-24 00:07:22,703 - INFO - Content updated for topic 'NOW()' in ..\SQL.html
+2025-09-24 00:08:15,862 - INFO - added :: CAST() to html and PSQL
+2025-09-24 00:09:18,928 - INFO - Content updated for topic ':: CAST()' in ..\SQL.html
+2025-09-24 00:10:07,614 - INFO - added ROUND, CEIL (or CEILING),  FLOOR to html and PSQL
+2025-09-24 00:11:24,623 - INFO - Content updated for topic 'ROUND, CEIL (or CEILING),  FLOOR' in ..\SQL.html
+2025-09-24 00:12:59,208 - INFO - Content updated for topic 'ROUND, CEIL (or CEILING),  FLOOR' in ..\SQL.html
+2025-09-24 00:13:43,004 - INFO - added TRANSLATE() to html and PSQL
+2025-09-24 00:15:12,639 - INFO - Content updated for topic 'TRANSLATE()' in ..\SQL.html
+2025-09-24 00:15:27,397 - INFO - added REPLACE() to html and PSQL
+2025-09-24 00:16:23,510 - INFO - Content updated for topic 'REPLACE()' in ..\SQL.html
+2025-09-24 00:17:29,309 - INFO - added LEFT, RIGHT, SUBSTRING to html and PSQL
+2025-09-24 00:29:25,755 - INFO - Content updated for topic 'LEFT, RIGHT, SUBSTRING' in ..\SQL.html
+2025-09-24 00:30:11,102 - INFO - added LENGTH() to html and PSQL
+2025-09-24 00:30:57,134 - INFO - Content updated for topic 'LENGTH()' in ..\SQL.html
+2025-09-24 00:31:08,629 - INFO - added BIT_LENGTH() to html and PSQL
+2025-09-24 00:31:39,463 - INFO - Content updated for topic 'BIT_LENGTH()' in ..\SQL.html
+2025-09-24 00:32:23,741 - INFO - added POSITION() to html and PSQL
+2025-09-24 00:33:16,744 - INFO - Content updated for topic 'POSITION()' in ..\SQL.html
+2025-09-24 00:33:48,721 - INFO - Content updated for topic 'POSITION()' in ..\SQL.html
+2025-09-24 00:34:50,980 - INFO - added CONCAT(), CONCAT_WS() to html and PSQL
+2025-09-24 00:36:07,758 - INFO - Content updated for topic 'CONCAT(), CONCAT_WS()' in ..\SQL.html
+2025-09-24 00:37:33,647 - INFO - Content updated for topic 'LEFT, RIGHT, SUBSTRING' in ..\SQL.html
+2025-09-24 00:38:33,197 - INFO - added TRIM() to html and PSQL
+2025-09-24 00:40:08,446 - INFO - Content updated for topic 'TRIM()' in ..\SQL.html
+2025-09-24 00:41:15,310 - INFO - added NULL to html and PSQL
+2025-09-24 00:42:01,127 - INFO - Content updated for topic 'NULL' in ..\SQL.html
+2025-09-24 00:43:24,043 - INFO - added SET to html and PSQL
+2025-09-24 00:50:03,071 - INFO - Content updated for topic 'SET' in ..\SQL.html
+2025-09-24 00:51:06,693 - INFO - added search_path to html and PSQL
+2025-09-24 00:51:47,001 - INFO - Content updated for topic 'search_path' in ..\SQL.html
+2025-09-24 00:53:49,927 - INFO - added SERIAL, GENERATED ALWAYS AS to html and PSQL
+2025-09-24 01:00:34,717 - INFO - Content updated for topic 'SERIAL, GENERATED ALWAYS AS' in ..\SQL.html
+2025-09-24 01:01:50,271 - INFO - added PRIMARY KEY vs UNIQUE to html and PSQL
+2025-09-24 01:07:03,264 - INFO - Content updated for topic 'PRIMARY KEY vs UNIQUE' in ..\SQL.html
+2025-09-24 01:08:10,199 - INFO - Content updated for topic 'SERIAL, GENERATED ALWAYS AS' in ..\SQL.html
+2025-09-24 01:09:03,123 - INFO - added RETURNING to html and PSQL
+2025-09-24 01:10:34,224 - INFO - Content updated for topic 'RETURNING' in ..\SQL.html
+2025-09-24 01:24:51,978 - INFO - Removed topic 'test' from category 'JS' (DB + HTML)
+2025-09-24 01:25:00,975 - INFO - added The DOM (Document Object Model) to html and PSQL
+2025-09-24 01:27:54,191 - INFO - Content updated for topic 'The DOM (Document Object Model)' in ..\JS.html
+2025-09-24 01:27:59,934 - INFO - added Events to html and PSQL
+2025-09-24 01:29:58,669 - INFO - Content updated for topic 'Events' in ..\JS.html
+2025-09-24 01:31:07,814 - INFO - Cleared content for topic 'The DOM (Document Object Model)' in category 'JS' (DB + HTML)
+2025-09-24 01:31:23,320 - INFO - Content updated for topic 'The DOM (Document Object Model)' in ..\JS.html
+2025-09-24 01:32:19,774 - INFO - Content updated for topic 'The DOM (Document Object Model)' in ..\JS.html
+2025-09-24 01:32:47,030 - INFO - Cleared content for topic 'Events' in category 'JS' (DB + HTML)
+2025-09-24 01:33:37,999 - INFO - Content updated for topic 'Events' in ..\JS.html
+2025-09-24 01:34:19,909 - INFO - Content updated for topic 'Events' in ..\JS.html
+2025-09-24 01:35:12,158 - INFO - Content updated for topic 'Events' in ..\JS.html
+2025-09-24 01:42:10,567 - INFO - Navigation updated for 7 files.
+2025-09-24 01:42:10,567 - INFO - Category 'ytest' saved to PSQL and created HTML file at ..\ytest.html
+2025-09-24 01:42:55,078 - INFO - Deleted HTML file ..\ytest.html
+2025-09-24 01:42:55,088 - INFO - Navigation updated for 6 files.
+2025-09-24 01:42:55,088 - INFO - Category 'ytest' deleted successfully
+2025-09-24 15:16:21,568 - INFO - Navigation updated for 7 files.
+2025-09-24 15:16:21,569 - INFO - Category 'test' saved to PSQL and created HTML file at C:\Users\User\Documents\GitHub\python_notes_web\GUI\test.html
+2025-09-24 15:16:26,719 - INFO - added test to html and PSQL
+2025-09-24 15:16:33,703 - INFO - Content updated for topic 'test' in C:\Users\User\Documents\GitHub\python_notes_web\GUI\test.html
+2025-09-24 15:17:53,224 - INFO - Navigation updated for 8 files.
+2025-09-24 15:17:53,225 - INFO - Category 'test2' saved to PSQL and created HTML file at ..\test2.html
+2025-09-24 15:17:58,834 - INFO - added test2 to html and PSQL
+2025-09-24 15:18:33,580 - INFO - Content updated for topic 'test2' in ..\test2.html
+2025-09-25 18:13:45,363 - INFO - Content updated for topic 'LIKE' in ..\SQL.html
+2025-09-25 19:04:18,739 - INFO - added GROUP BY to html and PSQL
+2025-09-25 19:10:34,278 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-09-25 19:11:17,699 - INFO - Cleared content for topic 'GROUP BY' in category 'SQL' (DB + HTML)
+2025-09-25 19:12:03,276 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-09-25 19:12:43,213 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-09-25 19:13:02,483 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-09-25 19:13:49,981 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-09-27 02:46:12,899 - INFO - added WHERE vs HAVING to html and PSQL
+2025-09-27 02:47:07,617 - INFO - Content updated for topic 'WHERE vs HAVING' in ..\SQL.html
+2025-09-27 02:53:09,273 - INFO - Content updated for topic 'WHERE vs HAVING' in ..\SQL.html
+2025-09-27 03:10:22,177 - INFO - Content updated for topic 'ROUND, CEIL (or CEILING),  FLOOR' in ..\SQL.html
+2025-09-27 03:17:53,127 - INFO - added CASE to html and PSQL
+2025-09-27 03:18:28,173 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 03:19:07,838 - INFO - added JOIN to html and PSQL
+2025-09-27 03:26:16,225 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 03:27:57,871 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 03:31:33,175 - INFO - Content updated for topic 'ROUND, CEIL (or CEILING),  FLOOR' in ..\SQL.html
+2025-09-27 03:32:09,959 - INFO - added TRUNC to html and PSQL
+2025-09-27 03:33:37,966 - INFO - added DUAL (Oracle) to html and PSQL
+2025-09-27 03:34:14,368 - INFO - Content updated for topic 'DUAL (Oracle)' in ..\SQL.html
+2025-09-27 03:36:13,686 - INFO - Content updated for topic 'TRUNC' in ..\SQL.html
+2025-09-27 03:36:19,862 - INFO - added TRIM to html and PSQL
+2025-09-27 03:37:09,077 - INFO - Removed topic 'TRIM' from category 'SQL' (DB + HTML)
+2025-09-27 03:42:37,279 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 03:44:28,638 - INFO - added COALESCE to html and PSQL
+2025-09-27 03:46:10,526 - INFO - Content updated for topic 'COALESCE' in ..\SQL.html
+2025-09-27 03:51:35,863 - INFO - Content updated for topic 'COALESCE' in ..\SQL.html
+2025-09-27 15:21:53,009 - INFO - added CTE (Common Table Expression) - WITH to html and PSQL
+2025-09-27 15:23:00,352 - INFO - Content updated for topic 'CTE (Common Table Expression) - WITH' in ..\SQL.html
+2025-09-27 15:34:55,988 - INFO - added Pivot to html and PSQL
+2025-09-27 15:37:17,484 - INFO - Content updated for topic 'Pivot' in ..\SQL.html
+2025-09-27 15:57:24,220 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 16:58:50,607 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-27 17:04:23,849 - INFO - added FOREIGN KEY + REFERENCES to html and PSQL
+2025-09-27 17:08:03,065 - INFO - Content updated for topic 'FOREIGN KEY + REFERENCES' in ..\SQL.html
+2025-09-28 13:07:10,901 - INFO - Content updated for topic 'CASE' in ..\SQL.html
+2025-09-28 13:32:06,854 - INFO - Content updated for topic 'SERIAL, GENERATED ALWAYS AS' in ..\SQL.html
+2025-09-28 13:35:58,471 - INFO - added General “transformation rules” to html and PSQL
+2025-09-28 13:37:20,326 - INFO - Content updated for topic 'General “transformation rules”' in ..\Math.html
+2025-09-28 14:09:02,984 - INFO - Content updated for topic 'FOREIGN KEY + REFERENCES' in ..\SQL.html
+2025-09-28 14:11:52,471 - INFO - Content updated for topic 'FOREIGN KEY + REFERENCES' in ..\SQL.html
+2025-10-01 16:51:26,232 - INFO - Content updated for topic 'JOIN' in ..\SQL.html
+2025-10-01 16:52:51,097 - INFO - Content updated for topic 'JOIN' in ..\SQL.html
+2025-10-01 16:54:28,182 - INFO - added COUNT() to html and PSQL
+2025-10-01 16:55:03,433 - INFO - Removed topic 'COUNT()' from category 'SQL' (DB + HTML)
+2025-10-01 16:55:31,940 - INFO - Content updated for topic 'GROUP BY' in ..\SQL.html
+2025-10-01 16:56:40,047 - INFO - added Regex in PostgreSQL to html and PSQL
+2025-10-01 17:02:55,842 - INFO - Content updated for topic 'Regex in PostgreSQL' in ..\SQL.html
+2025-10-01 17:04:53,183 - INFO - added CONSTRAINT to html and PSQL
+2025-10-01 17:19:11,273 - INFO - Content updated for topic 'CONSTRAINT' in ..\SQL.html
+2025-10-01 17:19:43,041 - INFO - Content updated for topic 'CONSTRAINT' in ..\SQL.html
+2025-10-01 17:21:36,050 - INFO - Content updated for topic 'CONSTRAINT' in ..\SQL.html
+2025-10-01 17:23:00,502 - INFO - added INSERT INTO to html and PSQL
+2025-10-01 17:24:12,050 - INFO - Content updated for topic 'INSERT INTO' in ..\SQL.html
+2025-10-01 17:50:14,047 - INFO - added START WITH - INCREMENT BY to html and PSQL
+2025-10-01 17:52:27,940 - INFO - Content updated for topic 'START WITH - INCREMENT BY' in ..\SQL.html
+2025-10-03 01:32:59,706 - INFO - added Merge Sort to html and PSQL
+2025-10-03 01:35:18,536 - INFO - Content updated for topic 'Merge Sort' in ..\CS.html
+2025-10-03 01:38:17,806 - INFO - Content updated for topic 'Merge Sort' in ..\CS.html
+2025-10-03 01:48:53,110 - INFO - Content updated for topic 'Merge Sort' in ..\CS.html
+2025-10-03 01:56:36,015 - INFO - Content updated for topic 'Merge Sort' in ..\CS.html
+2025-10-03 01:59:20,750 - INFO - added Quick Sort to html and PSQL
+2025-10-03 02:03:15,686 - INFO - Content updated for topic 'Quick Sort' in ..\CS.html
+2025-10-03 02:06:26,918 - INFO - Content updated for topic 'Quick Sort' in ..\CS.html
+2025-10-03 02:09:36,118 - INFO - Content updated for topic 'List vs Array
+' in ..\CS.html
+2025-10-03 02:33:13,180 - INFO - Navigation updated for 7 files.
+2025-10-03 02:33:13,181 - INFO - Category 'numpy' saved to PSQL and created HTML file at ..\numpy.html
+2025-10-03 02:33:30,396 - INFO - added Dimensions to html and PSQL
+2025-10-03 02:35:16,448 - INFO - Content updated for topic 'Dimensions' in ..\numpy.html
+2025-10-03 02:35:18,441 - INFO - Content updated for topic 'Dimensions' in ..\numpy.html
+2025-10-03 02:35:20,074 - INFO - Content updated for topic 'Dimensions' in ..\numpy.html
+2025-10-03 02:36:25,696 - INFO - Content updated for topic 'Dimensions' in ..\numpy.html
+2025-10-03 02:38:08,665 - INFO - Content updated for topic 'Dimensions' in ..\numpy.html
+2025-10-06 12:45:29,260 - INFO - added test to html and PSQL
+2025-10-06 12:45:53,061 - INFO - Removed topic 'test' from category 'Math' (DB + HTML)
+2025-10-06 12:49:46,113 - INFO - added lambda to html and PSQL
+2025-10-06 13:04:18,840 - INFO - Content updated for topic 'lambda' in ..\index.html
+2025-10-06 13:07:28,807 - INFO - added vectorization to html and PSQL
+2025-10-06 13:07:48,558 - INFO - Content updated for topic 'vectorization' in ..\numpy.html
+2025-10-06 13:08:31,638 - INFO - Content updated for topic 'vectorization' in ..\numpy.html
+2025-10-06 13:09:34,726 - INFO - added many-to-many mapping (junction) to html and PSQL
+2025-10-06 13:10:04,645 - INFO - Removed topic 'many-to-many mapping (junction)' from category 'SQL' (DB + HTML)
+2025-10-06 13:10:09,486 - INFO - added MTM mapping (junction) table to html and PSQL
+2025-10-06 13:11:58,359 - INFO - Content updated for topic 'MTM mapping (junction) table' in ..\SQL.html
+2025-10-06 13:12:47,694 - INFO - added COUNT() to html and PSQL
+2025-10-06 13:14:17,071 - INFO - Content updated for topic 'COUNT()' in ..\SQL.html
+2025-10-06 13:15:06,582 - INFO - added relation vs relationship to html and PSQL
+2025-10-06 13:17:20,631 - INFO - Content updated for topic 'relation vs relationship' in ..\SQL.html
+2025-10-06 13:18:08,037 - INFO - added sequences (start, increment) to html and PSQL
+2025-10-06 13:21:57,192 - INFO - Content updated for topic 'sequences (start, increment)' in ..\SQL.html
+2025-10-06 13:24:16,471 - INFO - Content updated for topic 'COUNT()' in ..\SQL.html
+2025-10-06 13:25:38,101 - INFO - added Closure to html and PSQL
+2025-10-06 13:28:59,200 - INFO - Content updated for topic 'Closure' in ..\CS.html
+2025-10-06 13:32:07,766 - INFO - added subqueries to html and PSQL
+2025-10-06 13:43:04,912 - INFO - Content updated for topic 'subqueries' in ..\SQL.html
+2025-10-06 13:44:45,472 - INFO - Content updated for topic 'subqueries' in ..\SQL.html
+2025-10-06 13:45:35,582 - INFO - added ROW_NUMBER(), RANK(), DENSE_RANK() to html and PSQL
+2025-10-06 13:50:48,321 - INFO - Content updated for topic 'ROW_NUMBER(), RANK(), DENSE_RANK()' in ..\SQL.html
+2025-10-06 13:52:11,160 - INFO - Content updated for topic 'CTE (Common Table Expression) - WITH' in ..\SQL.html
+2025-10-06 13:53:12,161 - INFO - Content updated for topic 'JOIN' in ..\SQL.html
+2025-10-06 13:54:30,016 - INFO - Content updated for topic ':: CAST()' in ..\SQL.html
+2025-10-06 13:59:26,111 - INFO - added pg_indexes to html and PSQL
+2025-10-06 14:00:02,903 - INFO - Content updated for topic 'pg_indexes' in ..\SQL.html
+2025-10-06 14:00:35,943 - INFO - added indexes to html and PSQL
+2025-10-06 14:03:21,135 - INFO - Content updated for topic 'indexes' in ..\SQL.html
+2025-10-06 14:05:08,744 - INFO - Content updated for topic 'subqueries' in ..\SQL.html
+2025-10-06 14:06:37,441 - INFO - Content updated for topic 'subqueries' in ..\SQL.html
+2025-10-06 14:08:06,809 - INFO - Content updated for topic 'RANDOM()' in ..\SQL.html
+2025-10-06 14:09:02,313 - INFO - Content updated for topic 'subqueries' in ..\SQL.html
+2025-10-06 14:12:41,600 - INFO - Content updated for topic 'indexes' in ..\SQL.html
+2025-10-06 14:13:14,065 - INFO - Content updated for topic 'indexes' in ..\SQL.html
+2025-10-06 14:14:22,520 - INFO - Content updated for topic 'indexes' in ..\SQL.html
+2025-10-06 14:15:47,417 - INFO - Content updated for topic 'ROW_NUMBER(), RANK(), DENSE_RANK()' in ..\SQL.html
+2025-10-06 14:33:13,762 - INFO - added functions to html and PSQL
+2025-10-06 14:33:29,626 - INFO - Content updated for topic 'functions' in ..\SQL.html
+2025-10-06 14:37:42,586 - INFO - Content updated for topic 'functions' in ..\SQL.html
+2025-10-06 14:39:43,313 - INFO - Content updated for topic 'functions' in ..\SQL.html
+2025-10-13 16:04:56,193 - INFO - added Stored procedures to html and PSQL
+2025-10-13 16:06:39,158 - INFO - Content updated for topic 'FOREIGN KEY + REFERENCES' in ..\SQL.html
+2025-10-13 16:07:53,013 - INFO - added IF to html and PSQL
+2025-10-13 16:10:43,693 - INFO - Content updated for topic 'IF' in ..\SQL.html
+2025-10-13 16:11:27,490 - INFO - added DELETE FROM to html and PSQL
+2025-10-13 16:15:14,285 - INFO - Content updated for topic 'DELETE FROM' in ..\SQL.html
+2025-10-13 16:16:10,788 - INFO - added transactions to html and PSQL
+2025-10-13 16:23:49,014 - INFO - Content updated for topic 'transactions' in ..\SQL.html
+2025-10-13 16:28:48,845 - INFO - Content updated for topic 'transactions' in ..\SQL.html
+2025-10-13 16:29:25,827 - INFO - added triggers to html and PSQL
+2025-10-13 16:30:13,436 - INFO - Content updated for topic 'triggers' in ..\SQL.html
+2025-10-13 16:31:36,156 - INFO - Content updated for topic 'CONCAT(), CONCAT_WS()' in ..\SQL.html
+2025-10-13 16:34:07,394 - INFO - Content updated for topic 'triggers' in ..\SQL.html
+2025-10-13 16:36:09,421 - INFO - Content updated for topic 'triggers' in ..\SQL.html
+2025-10-13 16:39:01,958 - INFO - Content updated for topic 'triggers' in ..\SQL.html
+2025-10-13 16:39:37,347 - INFO - added INITCAP to html and PSQL
+2025-10-13 16:39:54,914 - INFO - Content updated for topic 'INITCAP' in ..\SQL.html
+2025-10-13 16:40:26,260 - INFO - Content updated for topic 'TRIM()' in ..\SQL.html
+2025-10-13 16:41:14,642 - INFO - added for loops in other lgs to html and PSQL
+2025-10-13 16:44:22,285 - INFO - Content updated for topic 'for loops in other lgs' in ..\CS.html
+2025-10-13 16:44:51,227 - INFO - added while loops in other lgs to html and PSQL
+2025-10-13 16:46:47,667 - INFO - Content updated for topic 'while loops in other lgs' in ..\CS.html
+2025-10-13 16:49:11,751 - INFO - Content updated for topic 'functions' in ..\SQL.html
+2025-10-13 16:49:42,049 - INFO - added void function to html and PSQL
+2025-10-13 16:50:59,155 - INFO - Content updated for topic 'void function' in ..\CS.html
+2025-10-13 16:51:39,469 - INFO - Content updated for topic 'functions' in ..\SQL.html
+2025-10-13 16:53:51,867 - INFO - Content updated for topic 'SQL Numeric Data Types' in ..\SQL.html
+2025-10-13 16:54:12,160 - INFO - added power() vs ** to html and PSQL
+2025-10-13 16:55:23,454 - INFO - Content updated for topic 'power() vs **' in ..\SQL.html
+2025-10-13 16:56:05,016 - INFO - added WHILE LOOP to html and PSQL
+2025-10-13 16:56:18,059 - INFO - Content updated for topic 'WHILE LOOP' in ..\SQL.html
+2025-10-13 16:56:22,925 - INFO - added FOR LOOP to html and PSQL
+2025-10-13 16:56:36,763 - INFO - Content updated for topic 'FOR LOOP' in ..\SQL.html
+2025-10-13 16:58:00,437 - INFO - Content updated for topic 'LEFT, RIGHT, SUBSTRING' in ..\SQL.html
+2025-10-13 16:58:15,029 - INFO - added := to html and PSQL
+2025-10-13 16:59:09,485 - INFO - Content updated for topic ':=' in ..\SQL.html
+2025-10-13 18:20:06,070 - INFO - added binary to html and PSQL
+2025-10-13 18:23:34,744 - INFO - Content updated for topic 'binary' in ..\CS.html
+2025-10-13 18:23:49,091 - INFO - added onverting a number in any base to decimal to html and PSQL
+2025-10-13 18:23:59,774 - INFO - Removed topic 'onverting a number in any base to decimal' from category 'CS' (DB + HTML)
+2025-10-13 18:24:06,467 - INFO - added converting a number in any base to decimal to html and PSQL
+2025-10-13 18:24:22,982 - INFO - Content updated for topic 'converting a number in any base to decimal' in ..\CS.html
+2025-10-13 18:31:29,062 - INFO - Content updated for topic 'converting a number in any base to decimal' in ..\CS.html
+2025-10-13 18:32:27,211 - INFO - added hexadecimal to html and PSQL
+2025-10-13 18:37:41,396 - INFO - Content updated for topic 'hexadecimal' in ..\CS.html
+2025-10-13 18:48:02,482 - INFO - added decimal to binary to html and PSQL
+2025-10-13 18:48:30,687 - INFO - Content updated for topic 'decimal to binary' in ..\CS.html
+2025-10-13 18:58:58,764 - INFO - added decimal to hex to html and PSQL
+2025-10-13 18:59:08,797 - INFO - Content updated for topic 'decimal to hex' in ..\CS.html
+2025-10-13 18:59:11,175 - INFO - Content updated for topic 'decimal to hex' in ..\CS.html
+2025-10-13 19:00:52,771 - INFO - added bits, bytes, and the larger units to html and PSQL
+2025-10-13 19:05:43,324 - INFO - Content updated for topic 'bits, bytes, and the larger units' in ..\CS.html
+2025-10-13 19:12:34,934 - INFO - Content updated for topic 'hexadecimal' in ..\CS.html
+2025-10-14 02:18:57,624 - INFO - added binary addition to html and PSQL
+2025-10-14 02:19:40,108 - INFO - Content updated for topic 'binary addition' in ..\CS.html
+2025-10-14 02:21:08,008 - INFO - Content updated for topic 'binary addition' in ..\CS.html
+2025-10-14 02:24:26,960 - INFO - Content updated for topic 'converting a number in any base to decimal' in ..\CS.html
+2025-10-14 02:26:52,046 - INFO - Content updated for topic 'binary addition' in ..\CS.html
+2025-10-14 02:29:11,806 - INFO - added binary subtraction to html and PSQL
+2025-10-14 02:29:18,902 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 02:33:17,243 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 02:37:11,658 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 02:39:19,558 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 02:42:47,656 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 02:44:45,705 - INFO - Content updated for topic 'binary subtraction' in ..\CS.html
+2025-10-14 03:17:22,042 - INFO - added hex to binary to html and PSQL
+2025-10-14 03:18:13,271 - INFO - Content updated for topic 'hex to binary' in ..\CS.html
+2025-10-14 03:23:50,471 - INFO - added Boolean Algebra to html and PSQL
+2025-10-14 03:25:28,065 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:26:37,952 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:30:34,880 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:31:07,353 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:38:55,944 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:45:44,151 - INFO - Content updated for topic 'Boolean Algebra' in ..\CS.html
+2025-10-14 03:47:48,038 - INFO - added Logic Gates and Circuits to html and PSQL
+2025-10-14 03:48:36,757 - INFO - Content updated for topic 'Logic Gates and Circuits' in ..\CS.html
+2025-10-14 03:51:52,544 - INFO - Content updated for topic 'Logic Gates and Circuits' in ..\CS.html
+2025-10-14 14:28:31,562 - INFO - Content updated for topic 'Logic Gates and Circuits' in ..\CS.html
+2025-10-14 15:22:19,620 - INFO - Content updated for topic 'hexadecimal' in ..\CS.html
