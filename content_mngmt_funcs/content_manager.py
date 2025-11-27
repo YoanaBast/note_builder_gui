@@ -248,10 +248,10 @@ class ContentManager:
         self.save_image_or_text_content_helper(topic_name, formatted_content)
 
 
-    def add_pic_to_topic(self, topic_name, image_name, width: int):
+    def add_pic_to_topic(self, topic_name, image_name):
         formatted_content = (
             f'<img src="cat_images/{image_name}.png" alt="{topic_name}" '
-            f'width="{width}" style="display:block; margin-right:auto;">'
+            f'style="display:block; margin-right:auto;">'
         )
         self.save_image_or_text_content_helper(topic_name, formatted_content)
 

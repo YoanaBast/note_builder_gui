@@ -15,9 +15,9 @@ category_template = textwrap.dedent("""\
         <h1 class="content">Welcome to my fridge door! </h1>
         <header>
             <nav>
-                <a href="index.html">Python</a> |
-                <a href="SQL.html">SQL</a> |
-                <a href="CS.html">CS</a> |
+                <a href="index.html">Python</a>  
+                <a href="SQL.html">SQL</a>  
+                <a href="CS.html">CS</a>  
             </nav>
         </header>
         

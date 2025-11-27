@@ -383,22 +383,22 @@ def render_add_img():
     img_name = tk.Entry(frame, width=15, font=("Arial", 18))
     img_name.pack(side='left', padx=5)
 
-    # image size dropdown
-    dropdown_w_frame = tk.Frame(frame)
-    dropdown_w_frame.pack(fill='x', pady=5, padx=15, anchor='w')
-    tk.Label(dropdown_w_frame, text="Image size:", font=("Arial", 18), anchor="w").pack(anchor='w')
-    selected = tk.StringVar(value="Choose a size")
-    options = [300, 500, 600]
-    dropdown_w = tk.OptionMenu(dropdown_w_frame, selected, *options)
-    dropdown_w.config(font=("Arial", 16), width=20, bg="white", fg="black")
-    dropdown_w.pack(anchor="w")
+    # # image size dropdown
+    # dropdown_w_frame = tk.Frame(frame)
+    # dropdown_w_frame.pack(fill='x', pady=5, padx=15, anchor='w')
+    # tk.Label(dropdown_w_frame, text="Image size:", font=("Arial", 18), anchor="w").pack(anchor='w')
+    # selected = tk.StringVar(value="Choose a size")
+    # options = [300, 500, 600]
+    # dropdown_w = tk.OptionMenu(dropdown_w_frame, selected, *options)
+    # dropdown_w.config(font=("Arial", 16), width=20, bg="white", fg="black")
+    # dropdown_w.pack(anchor="w")
 
     # callback
     def add_img_callback():
         category = category_var.get()
         topic = topic_var.get()
         image = img_name.get().strip()
-        size = selected.get()
+        # size = selected.get()
 
         if category == "Choose a category" or topic in ["Choose a topic", "No topics"]:
             update_status(frame, "no_topic")
@@ -407,11 +407,11 @@ def render_add_img():
         if not check_img_name(image, frame):
             return
 
-        if size == "Choose a size":
-            update_status(frame, "empty_content")
-            return
+        # if size == "Choose a size":
+        #     update_status(frame, "empty_content")
+        #     return
 
-        content_manager.add_pic_to_topic(topic, image, size)
+        content_manager.add_pic_to_topic(topic, image)
         update_status(frame, "success")
 
     #Enter/Back

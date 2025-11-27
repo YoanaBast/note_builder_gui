@@ -261,3 +261,11 @@ h2 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     font-size: 1rem;  /* same as page */
 }
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* center images */
+    border-radius: 15px;
+}
