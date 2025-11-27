@@ -116,13 +116,12 @@ h1 span:hover {
 }
 
 
-h2 {
-    font-family: 'Reenie Beanie', cursive; /* more cursive, playful handwriting */
-    color: #3a0099; /* deep indigo/blue pen-like */
+h2,
+.grid-item button {
+    font-family: 'Gloria Hallelujah', cursive;
     font-weight: 400;
-    text-align: left;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #3a0099; /* deep indigo/blue pen-like */
 }
 
 
@@ -138,7 +137,7 @@ h2 {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 400;                     /* lighter for handwriting */
-    font-family: 'Reenie Beanie', cursive; /* same as h2 */
+    font-family: 'Gloria Hallelujah', cursive; /* same as h2 */
     font-size: 1.2rem;                    /* adjust size for button */
     box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
     position: relative;
