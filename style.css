@@ -70,9 +70,15 @@ h1 {
   letter-spacing: 0.05em;
 }
 
-/* Span letters styling */
-h1 span {
-  display: inline-block;
+h1 .word {
+  display: inline-block; /* keep word together */
+  white-space: nowrap;    /* don't split words */
+  margin-right: 0.5em;    /* space between words */
+}
+
+
+h1 .word span {
+  display: inline-block; /* keep chunky shadow letters separate */
   cursor: default;
 }
 
@@ -172,9 +178,27 @@ h2 {
 /* this is my column setup */
 #grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 3 columns */
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   margin: 20px;
+}
+
+@media (max-width: 1024px) {
+  #grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  #grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* this is the space between the buttons */
