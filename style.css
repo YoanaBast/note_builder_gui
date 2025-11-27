@@ -16,6 +16,7 @@ main {
   margin-top: 30px;
   padding: 20px;
 }
+
 }
   header {
     position: fixed;
@@ -116,40 +117,37 @@ h1 span:hover {
 
 
 h2 {
-    font-family: 'Poppins', 'Arial', sans-serif; /* Rounded, modern font */
-    color: #4B0082; /* Deep indigo */
-    font-weight: 700;
-    text-align: left; /* aligns all h2 left */
-    letter-spacing: 1px; /* optional spacing */
-    margin-bottom: 10px; /* some spacing below */
+    font-family: 'Reenie Beanie', cursive; /* more cursive, playful handwriting */
+    color: #3a0099; /* deep indigo/blue pen-like */
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
 }
+
+
 
 /* grid item is the button pop-up note*/
 .grid-item button {
-    width: 200px;          /* fixed width */
-    height: 200px;         /* fixed height */
-    padding: 0;            /* padding handled by height/width */
-    background-color: #fff79a;  /* default color */
-    border: 1px solid #fff79a;  /* match inside color */
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    background-color: #fff79a;
+    border: 1px solid #fff79a;
     color: #4b0082;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 400;                     /* lighter for handwriting */
+    font-family: 'Reenie Beanie', cursive; /* same as h2 */
+    font-size: 1.2rem;                    /* adjust size for button */
     box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    /*background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 1px,
-        transparent 1px,
-        transparent 5px
-    );*/
 }
+
 
 /* the little tape */
 .grid-item button::before {
@@ -227,6 +225,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
 
 /* this is the space between the buttons */
 .grid-item {

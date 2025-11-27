@@ -58,13 +58,14 @@ h1 {
 }
 
 h2 {
-    font-family: 'Poppins', 'Arial', sans-serif; /* Rounded, modern font */
-    color: #4B0082; /* Deep indigo */
-    font-weight: 700;
-    text-align: left; /* aligns all h2 left */
-    letter-spacing: 1px; /* optional spacing */
-    margin-bottom: 10px; /* some spacing below */
+    font-family: 'Patrick Hand', cursive; /* handwritten style */
+    color: #3b0080; /* deep indigo/blue pen-like */
+    font-weight: 400; /* lighter for natural handwriting */
+    text-align: left;
+    letter-spacing: 0.5px; /* slightly tighter for realism */
+    margin-bottom: 10px;
 }
+
 
 .grid-item button {
     background: transparent;
