@@ -7,9 +7,9 @@ It offers the following option: Add category; Remove Category; Add Topic; Remove
 
 The only HTML I have written here is the templates. My program then reuses them to handle everything. 
 
-<img src="GUI_demo/GUI_main.png" alt="Demo Main" width="300">
-<img src="GUI_demo/GUI_cat.png" alt="Demo Cat" width="300">
-<img src="GUI_demo/GUI_text.png" alt="Demo Text" width="300">
+<img src="GUI_demo/GUI_main.png" alt="Demo Main" width="600">
+<img src="GUI_demo/GUI_cat.png" alt="Demo Cat" width="600">
+<img src="GUI_demo/GUI_text.png" alt="Demo Text" width="600">
 
 
 
