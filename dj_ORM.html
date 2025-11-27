@@ -58,6 +58,24 @@
 </div>
 <!-- END OF Relationships access -->
 
+<!-- annotate -->
+<div class="grid-item">
+    <button id="openBtn-annotate" class="tilt5">annotate</button>
+    <div id="myModal-annotate" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>annotate</h2>
+            <p><!--START-CONTENT-annotate--></p>
+            <p><div class="category-content">Returns a QuerySet with the annotated fields added.<br><br>Each object in the queryset will have the extra field as an attribute.<br><br>Often used with aggregation functions from django.db.models, like Count, Sum, Avg, Max, Min.<br><br>class Author(models.Model):<br>    name = models.CharField(max_length=100)<br><br>class Book(models.Model):<br>    author = models.ForeignKey(Author, on_delete=models.CASCADE)<br>    title = models.CharField(max_length=100)<br><br>authors = Author.objects.annotate(num_books=Count('book'))<br><br>for author in authors:<br>    print(author.name, author.num_books)</div>
+<!--CONTENT-annotate--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-annotate", "openBtn-annotate");
+    </script>
+</div>
+<!-- END OF annotate -->
+
 <!-- INSERT_CATEGORIES_HERE -->
 
         </div>

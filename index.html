@@ -53,23 +53,6 @@
       </script>
 </div>
 <!-- END OF .replace() -->
-<!-- ASCII -->
-<div class="grid-item">
-    <button class="tilt1" id="openBtn-ASCII">ASCII</button>
-    <div id="myModal-ASCII" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>ASCII</h2>
-            <p><!--START-CONTENT-ASCII--></p>
-            <p><div class="category-content">ord('a')<br>#this will get the ASCII code<br><br>----------------------<br><br>chr(100)<br>this will get the ASCII symbol<br><br><br><a href="https://www.ascii-code.com/" target="_blank">ASCII Table</a><br></div>
-<!--CONTENT-ASCII--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-ASCII", "openBtn-ASCII");
-    </script>
-</div>
-<!-- END OF ASCII -->
 <!-- Ranges -->
 <div class="grid-item">
     <button class="tilt5" id="openBtn-Ranges">Ranges</button>
@@ -854,6 +837,24 @@ print(p.value) <br>&nbsp;&nbsp;&nbsp;&nbsp;# Output: Alice<br><br>Why use NamedT
     </script>
 </div>
 <!-- END OF lambda -->
+
+<!-- ASCII -->
+<div class="grid-item">
+    <button id="openBtn-ASCII" class="tilt5">ASCII</button>
+    <div id="myModal-ASCII" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ASCII</h2>
+            <p><!--START-CONTENT-ASCII--></p>
+            <p><div class="category-content">ord('a')<br>#this will get the ASCII code<br><br>----------------------<br><br>chr(100)<br>this will get the ASCII symbol<br><br><a href="https://www.ascii-code.com/" target="_blank">ASCII Table</a></div>
+<!--CONTENT-ASCII--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-ASCII", "openBtn-ASCII");
+    </script>
+</div>
+<!-- END OF ASCII -->
 
 <!-- INSERT_CATEGORIES_HERE -->
   </div>

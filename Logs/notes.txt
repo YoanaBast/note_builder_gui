@@ -32,4 +32,5 @@ Issues encountered and resolved:
 
 To do:
 - Check CATEGORY_NAME assignment issue in web title
-- Test scaling for mobile, check images scaling on mobile
+- make grid scaling more dynamic
+- ban topic duplicates
