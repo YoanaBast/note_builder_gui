@@ -9,7 +9,8 @@
 <body>
     <script src="scripts/modal.js"></script>
 
-<h1>Programming sticky notes! &#x1F49C;</h1>
+      <h1 class="content">Welcome to my fridge door!</h1>
+
 <header>
     <nav><a href="CS.html">CS</a> | <a href="dj_ORM.html">dj ORM</a> | <a href="JS.html">JS</a> | <a href="Math.html">Math</a> | <a href="numpy.html">numpy</a> | <a href="index.html">Python</a> | <a href="SQL.html">SQL</a></nav>
 </header>
@@ -19,7 +20,7 @@
 
 <!-- The DOM (Document Object Model) -->
 <div class="grid-item">
-    <button id="openBtn-The_DOM__Document_Object_Model_">The DOM (Document Object Model)</button>
+    <button class="tilt5" id="openBtn-The_DOM__Document_Object_Model_">The DOM (Document Object Model)</button>
     <div id="myModal-The_DOM__Document_Object_Model_" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -38,13 +39,13 @@
 
 <!-- Events -->
 <div class="grid-item">
-    <button id="openBtn-Events">Events</button>
+    <button class="tilt5" id="openBtn-Events">Events</button>
     <div id="myModal-Events" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Events</h2>
             <p><!--START-CONTENT-Events-->
-<div class="category-content">alert() is a built-in JavaScript function provided by the browser.<br>It shows a popup dialog with a message and an OK button.<br><br><button id="myBtn">Click me</button><br><br><script><br>  const btn = document.getElementById("myBtn");<br>  btn.onclick = () => alert("Button clicked!");<br></script></div>
+<div class="category-content">alert() is a built-in JavaScript function provided by the browser.<br>It shows a popup dialog with a message and an OK button.<br><br><button class="tilt5" id="myBtn">Click me</button><br><br><script><br>  const btn = document.getElementById("myBtn");<br>  btn.onclick = () => alert("Button clicked!");<br></script></div>
 <img src="cat_images/alert_js.png" alt="Events" width="500" style="display:block; margin-right:auto;">
 <div class="category-content">>><br><br>btn.addEventListener("click", () => {<br>  console.log("Clicked!");<br>});<br><br>Attaches a click event listener to the btn element.<br>Every time the user clicks that button, the arrow function runs.</div>
 <!--CONTENT-Events--></p>
@@ -61,5 +62,7 @@
 </div>
 
 <script src="scripts/modalColors.js"></script>
+      <script src="scripts/magnets.js"></script>
+
 </body>
 </html>

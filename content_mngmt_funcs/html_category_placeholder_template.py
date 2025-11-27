@@ -11,7 +11,7 @@ category_template = textwrap.dedent("""\
 </head>
     <body>
     <script src="scripts/modal.js"></script>
-        <h1>Programming sticky notes! &#x1F49C;</h1>
+        <h1 class="content">Welcome to my fridge door! </h1>
         <header>
             <nav>
                 <a href="index.html">Python</a> |
@@ -28,6 +28,9 @@ category_template = textwrap.dedent("""\
         </div>
     
     <script src="scripts/modalColors.js"></script>
+    <script src="scripts/magnets.js"></script> 
+
     </body>
+
 </html>
 """)

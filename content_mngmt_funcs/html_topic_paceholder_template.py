@@ -1,9 +1,12 @@
 import textwrap
+import random
 
-content_template = textwrap.dedent("""\
+tilt_number = random.randint(1, 5)
+
+content_template = textwrap.dedent(f"""\
 <!-- TITLE_NAME -->
 <div class="grid-item">
-    <button id="openBtn-TITLE_ID">TITLE_NAME</button>
+    <button id="openBtn-TITLE_ID" class="tilt{tilt_number}">TITLE_NAME</button>
     <div id="myModal-TITLE_ID" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
