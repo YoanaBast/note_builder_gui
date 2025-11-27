@@ -43,6 +43,7 @@ def build_navigation(categories: list[str]) -> str:
 
 
 def python_index_checker(cat):
+    """I want the python category in the index file as it needs to be called index for publishing in github"""
     if cat == 'Python':
         cr = 'index'
     else:

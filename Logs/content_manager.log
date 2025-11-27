@@ -413,3 +413,13 @@
 2025-10-14 03:51:52,544 - INFO - Content updated for topic 'Logic Gates and Circuits' in ..\CS.html
 2025-10-14 14:28:31,562 - INFO - Content updated for topic 'Logic Gates and Circuits' in ..\CS.html
 2025-10-14 15:22:19,620 - INFO - Content updated for topic 'hexadecimal' in ..\CS.html
+2025-11-27 14:07:19,498 - INFO - Navigation updated for 8 files.
+2025-11-27 14:07:19,498 - INFO - Category 'dj ORM' saved to PSQL and created HTML file at ..\dj_ORM.html
+2025-11-27 14:08:07,821 - INFO - added auto_now_add vs auto_now to html and PSQL
+2025-11-27 14:08:18,876 - INFO - Content updated for topic 'auto_now_add vs auto_now' in ..\dj_ORM.html
+2025-11-27 14:15:05,157 - INFO - added Relationships access to html and PSQL
+2025-11-27 14:15:12,940 - INFO - Content updated for topic 'Relationships access' in ..\dj_ORM.html
+2025-11-27 14:15:14,990 - INFO - Content updated for topic 'Relationships access' in ..\dj_ORM.html
+2025-11-27 14:15:17,638 - INFO - Content updated for topic 'Relationships access' in ..\dj_ORM.html
+2025-11-27 14:15:19,837 - INFO - Content updated for topic 'Relationships access' in ..\dj_ORM.html
+2025-11-27 14:15:22,358 - INFO - Content updated for topic 'Relationships access' in ..\dj_ORM.html
