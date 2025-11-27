@@ -35,7 +35,7 @@ def safe_id(name: str) -> str:
 
 def build_navigation(categories: list[str]) -> str:
     """Build the navigation bar HTML dynamically from categories."""
-    nav_links = " | ".join(
+    nav_links = "  ".join(
         f'<a href="{safe_id(cat)}.html">{cat}</a>' if cat != "Python" else '<a href="index.html">Python</a>'
         for cat in categories
     )

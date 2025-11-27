@@ -29,6 +29,7 @@ category_template = textwrap.dedent("""\
     
     <script src="scripts/modalColors.js"></script>
     <script src="scripts/magnets.js"></script> 
+    <script src="scripts/gridColors.js"></script>
 
     </body>
 

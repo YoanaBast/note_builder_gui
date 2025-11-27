@@ -19,34 +19,26 @@ main {
   }
 
 nav a {
+  display: inline-block;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 8px;
   font-weight: bold;
   font-family: 'Nunito', sans-serif;
-
-  background: linear-gradient(135deg, #f0f0f0, #dcdcdc, #f7f7f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Deeper shadow, less in the middle, stronger on edges */
-  text-shadow:
-    0 0 1px rgba(0,0,0,0.1),   /* very subtle central */
-    2px 2px 5px rgba(0,0,0,0.25), /* moderate near center */
-    4px 4px 8px rgba(0,0,0,0.4);  /* strong on edges */
-
-  transition: text-shadow 0.1s ease;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 12px;         /* rounded like magnets */
+  background: linear-gradient(145deg, #ffeb99, #ffd94d); /* metallic yellow-ish */
+  color: #4b0082;              /* text color */
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.3); /* lifted effect */
+  transform: rotate(-2deg);    /* slight tilt */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-nav a:hover {
-  text-shadow:
-    2px 2px 4px rgba(0,0,0,0.4),
-    4px 4px 6px rgba(0,0,0,0.3),
-    6px 6px 8px rgba(0,0,0,0.25);
-}
-
+nav a:nth-child(2n) { transform: rotate(2deg); } /* alternate tilt */
 
 nav a:hover {
-    text-decoration: underline;
+  transform: rotate(0deg) scale(1.05);  /* pop-up effect on hover */
+  box-shadow: 4px 6px 10px rgba(0,0,0,0.35);
 }
 
 
@@ -110,13 +102,12 @@ h2 {
 }
 
 /* grid item is the button pop-up note*/
-
 .grid-item button {
     width: 200px;          /* fixed width */
     height: 200px;         /* fixed height */
     padding: 0;            /* padding handled by height/width */
-    background-color: #fff79a;
-    border: 1px solid #f0e68c;
+    background-color: #fff79a;  /* default color */
+    border: 1px solid #fff79a;  /* match inside color */
     color: #4b0082;
     border-radius: 6px;
     cursor: pointer;
@@ -128,14 +119,15 @@ h2 {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    background-image: repeating-linear-gradient(
+    /*background-image: repeating-linear-gradient(
         45deg,
         rgba(255, 255, 255, 0.05),
         rgba(255, 255, 255, 0.05) 1px,
         transparent 1px,
         transparent 5px
-    );
+    );*/
 }
+
 
 .grid-item button::before {
     content: '';
@@ -144,7 +136,7 @@ h2 {
     left: 12px;
     width: 35px;
     height: 6px;
-    background: rgba(244, 232, 66, 0.5);
+    background: #f4e842; /* solid yellow */
     transform: rotate(-2deg);
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
