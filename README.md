@@ -7,9 +7,9 @@ It offers the following option: Add category; Remove Category; Add Topic; Remove
 
 The only HTML I have written here is the templates. My program then reuses them to handle everything. 
 
-![Main Screen](note_builder_gui/GUI_demo/GUI_main.png)
-![Categories](note_builder_gui/GUI_demo/GUI_cat.png)
-![Text Editor](note_builder_gui/GUI_demo/GUI_text.png)
+![Demo Main](GUI_demo/GUI_main.png)
+![Demo Cat](GUI_demo/GUI_cat.png)
+![Demo Text](GUI_demo/GUI_text.png)
 
 
 
