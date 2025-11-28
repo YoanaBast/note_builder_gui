@@ -67,6 +67,7 @@
             <h2>annotate</h2>
             <p><!--START-CONTENT-annotate--></p>
             <p><div class="category-content">Returns a QuerySet with the annotated fields added.<br><br>Each object in the queryset will have the extra field as an attribute.<br><br>Often used with aggregation functions from django.db.models, like Count, Sum, Avg, Max, Min.<br><br>class Author(models.Model):<br>    name = models.CharField(max_length=100)<br><br>class Book(models.Model):<br>    author = models.ForeignKey(Author, on_delete=models.CASCADE)<br>    title = models.CharField(max_length=100)<br><br>authors = Author.objects.annotate(num_books=Count('book'))<br><br>for author in authors:<br>    print(author.name, author.num_books)</div>
+<div class="category-content">___<br> actor = Actor.objects.prefetch_related('starring_movies')<br>.annotate(avg_r=Avg('starring_movies__rating'), stars=Count('starring_movies'))<br>.order_by('-stars', 'full_name').first()<br><br>annotate(avg_r=Avg(...), stars=Count(...))<br><br>Adds per-actor fields:<br>avg_r → average rating of that actor’s movies<br>stars → number of movies that actor starred in<br>These are calculated individually for each actor.<br><br>Why .aggregate() is different<br><br>Actor.objects.aggregate(avg_r=Avg('starring_movies__rating'))<br>Computes one single value for the entire queryset.<br><br>Returns a dictionary: {'avg_r': 7.5}<br><br>You cannot chain .annotate() or .order_by() after it, because it’s no longer a queryset — it’s a single summary.<br><br><br>annotate()&nbsp;&nbsp;&nbsp;&nbsp;- Per object / per row&nbsp;&nbsp;&nbsp;&nbsp;-  QuerySet of objects with extra fields -&nbsp;&nbsp;&nbsp;&nbsp;Average rating of each actor’s movies<br>aggregate()&nbsp;&nbsp;&nbsp;&nbsp;- Whole queryset&nbsp;&nbsp;&nbsp;&nbsp;- Single dict&nbsp;&nbsp;&nbsp;&nbsp;- Average rating across all actors’ movies</div>
 <!--CONTENT-annotate--></p>
         </div>
     </div>
@@ -75,6 +76,134 @@
     </script>
 </div>
 <!-- END OF annotate -->
+
+<!-- Choices -->
+<div class="grid-item">
+    <button id="openBtn-Choices" class="tilt4">Choices</button>
+    <div id="myModal-Choices" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Choices</h2>
+            <p><!--START-CONTENT-Choices--></p>
+            <p><div class="category-content">class Movie(models.Model):<br>    class StoryChoice(models.TextChoices):<br>        AC = 'Action', 'Action'<br>        CO = 'Comedy', 'Comedy'<br>        DR = 'Drama','Drama'<br>        OT = 'Other', 'Other'<br><br>    title = models.CharField(max_length=150, validators=[MinLengthValidator(5)])<br>    release_date = models.DateField()<br>    storyline = models.TextField(blank=True, null=True)<br>    genre = models.CharField(max_length=6, default=StoryChoice.OT, choices=StoryChoice.choices)</div>
+<!--CONTENT-Choices--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Choices", "openBtn-Choices");
+    </script>
+</div>
+<!-- END OF Choices -->
+
+<!-- Admin Site -->
+<div class="grid-item">
+    <button id="openBtn-Admin_Site" class="tilt2">Admin Site</button>
+    <div id="myModal-Admin_Site" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Site</h2>
+            <p><!--START-CONTENT-Admin_Site--></p>
+            <p><div class="category-content">@admin.register(Director)<br>class DirectorAdmin(admin.ModelAdmin):<br>    list_display = ['full_name','birth_date','nationality','years_of_experience']  # columns shown in the list view<br>    list_filter = ['years_of_experience','nationality']  # sidebar filters to quickly narrow results<br>    search_fields = ['full_name','nationality']  # fields searchable via the search box<br>    list_display_links = ['full_name']  # which columns link to the detail/edit page<br>    list_editable = ['years_of_experience']  # columns editable directly in the list view<br>    ordering = ['full_name']  # default sorting of the list view<br>    list_per_page = 25  # number of items displayed per page</div>
+<div class="category-content">readonly_fields = ['birth_date']  # this field cannot be edited in the admin form</div>
+<div class="category-content">search_help_text = "Enter full or partial names to quickly find directors."</div>
+<!--CONTENT-Admin_Site--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Admin_Site", "openBtn-Admin_Site");
+    </script>
+</div>
+<!-- END OF Admin Site -->
+
+<!-- Date format -->
+<div class="grid-item">
+    <button id="openBtn-Date_format" class="tilt2">Date format</button>
+    <div id="myModal-Date_format" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Date format</h2>
+            <p><!--START-CONTENT-Date_format--></p>
+            <p><div class="category-content">Use ISO format: 'YYYY-MM-DD', e.g. '2001-05-25'.</div>
+<!--CONTENT-Date_format--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Date_format", "openBtn-Date_format");
+    </script>
+</div>
+<!-- END OF Date format -->
+
+<!-- Q() -->
+<div class="grid-item">
+    <button id="openBtn-Q__" class="tilt3">Q()</button>
+    <div id="myModal-Q__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Q()</h2>
+            <p><!--START-CONTENT-Q__--></p>
+            <p><div class="category-content">query = Q()<br>    if search_name is not None:<br>        query &= Q(full_name__icontains=search_name)<br>    if search_nationality is not None:<br>        query &= Q(nationality__icontains=search_nationality)<br>    dire = Director.objects.filter(query)</div>
+<!--CONTENT-Q__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-Q__", "openBtn-Q__");
+    </script>
+</div>
+<!-- END OF Q() -->
+
+<!-- aggregate -->
+<div class="grid-item">
+    <button id="openBtn-aggregate" class="tilt5">aggregate</button>
+    <div id="myModal-aggregate" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>aggregate</h2>
+            <p><!--START-CONTENT-aggregate--></p>
+            <p><div class="category-content">aggregate() returns a single dict, not a queryset.<br><br>Use it when you want summary statistics for the whole table (or filtered subset).<br><br>For grouped summaries, use annotate() instead.<br><br>stats = Movie.objects.aggregate(<br>    total_movies=Count('id'),<br>    average_rating=Avg('rating'),<br>    highest_rating=Max('rating'),<br>    lowest_rating=Min('rating'),<br>    sum_rating=Sum('rating')<br>)<br><br>print(stats)<br><br>{<br>    'total_movies': 10,<br>    'average_rating': 7.5,<br>    'highest_rating': 10.0,<br>    'lowest_rating': 5.0,<br>    'sum_rating': 75.0<br>}</div>
+<!--CONTENT-aggregate--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-aggregate", "openBtn-aggregate");
+    </script>
+</div>
+<!-- END OF aggregate -->
+
+<!-- first() -->
+<div class="grid-item">
+    <button id="openBtn-first__" class="tilt2">first()</button>
+    <div id="myModal-first__" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>first()</h2>
+            <p><!--START-CONTENT-first__--></p>
+            <p><div class="category-content">If the filter() matches no movies, then first() returns None instead of raising an error.<br>Normally, if the queryset has results, first() returns the first model instance from the queryset - an object.</div>
+<!--CONTENT-first__--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-first__", "openBtn-first__");
+    </script>
+</div>
+<!-- END OF first() -->
+
+<!-- update -->
+<div class="grid-item">
+    <button id="openBtn-update" class="tilt4">update</button>
+    <div id="myModal-update" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>update</h2>
+            <p><!--START-CONTENT-update--></p>
+            <p><div class="category-content">update() does not return a queryset, it returns the number of rows updated (an integer)<br>    um = Movie.objects.filter(is_classic=True, rating__lt=10.0).update(rating=F('rating') + 0.1)<br>    return f"Rating increased for {um} movies." if um else "No ratings increased."</div>
+<!--CONTENT-update--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-update", "openBtn-update");
+    </script>
+</div>
+<!-- END OF update -->
 
 <!-- INSERT_CATEGORIES_HERE -->
 

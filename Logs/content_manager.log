@@ -457,3 +457,20 @@
 2025-11-27 20:59:53,233 - INFO - Python already exists
 2025-11-27 21:01:34,155 - INFO - added annotate to html and PSQL
 2025-11-27 21:03:23,909 - INFO - Content updated for topic 'annotate' in ..\dj_ORM.html
+2025-11-28 11:39:25,392 - INFO - added Choices to html and PSQL
+2025-11-28 11:42:11,059 - INFO - Content updated for topic 'Choices' in ..\dj_ORM.html
+2025-11-28 12:02:37,914 - INFO - added Admin Site to html and PSQL
+2025-11-28 12:04:01,361 - INFO - Content updated for topic 'Admin Site' in ..\dj_ORM.html
+2025-11-28 12:06:02,289 - INFO - Content updated for topic 'Admin Site' in ..\dj_ORM.html
+2025-11-28 12:08:52,861 - INFO - Content updated for topic 'Admin Site' in ..\dj_ORM.html
+2025-11-28 12:20:18,929 - INFO - added Date format to html and PSQL
+2025-11-28 12:20:38,698 - INFO - Content updated for topic 'Date format' in ..\dj_ORM.html
+2025-11-28 13:30:53,097 - INFO - added Q() to html and PSQL
+2025-11-28 13:31:04,605 - INFO - Content updated for topic 'Q()' in ..\dj_ORM.html
+2025-11-28 13:38:10,732 - INFO - added aggregate to html and PSQL
+2025-11-28 13:39:11,567 - INFO - Content updated for topic 'aggregate' in ..\dj_ORM.html
+2025-11-28 13:57:49,327 - INFO - Content updated for topic 'annotate' in ..\dj_ORM.html
+2025-11-28 14:47:52,773 - INFO - added first() to html and PSQL
+2025-11-28 14:48:37,650 - INFO - Content updated for topic 'first()' in ..\dj_ORM.html
+2025-11-28 14:59:37,721 - INFO - added update to html and PSQL
+2025-11-28 15:00:04,905 - INFO - Content updated for topic 'update' in ..\dj_ORM.html
