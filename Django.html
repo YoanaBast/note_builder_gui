@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=3.0">
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+<title>{CATEGORY_NAME} topics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+    <body>
+    <script src="scripts/modal.js"></script>
+        <h1 class="content">Welcome to my fridge door! </h1>
+        <header>
+            <nav><a href="CS.html">CS</a>  <a href="Django.html">Django</a>  <a href="dj_ORM.html">dj ORM</a>  <a href="JS.html">JS</a>  <a href="Math.html">Math</a>  <a href="numpy.html">numpy</a>  <a href="index.html">Python</a>  <a href="SQL.html">SQL</a>  <a href="SQLAlchemy.html">SQLAlchemy</a></nav>
+        </header>
+
+        <div id="grid">
+
+
+        <!-- setup -->
+<div class="grid-item">
+    <button id="openBtn-setup" class="tilt1">setup</button>
+    <div id="myModal-setup" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>setup</h2>
+            <p><!--START-CONTENT-setup--></p>
+            <p><div class="category-content">pip install django psycopg2<br><br>django-admin startproject MusicProject<br><br>cd MusicProject<br><br>django-admin startapp musicApp</div>
+<div class="category-content">__<br>settings.py<br><br>add 'musicApp' to INSTALLED_APPS<br><br>mask SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')<br><br>mask DATABASES = {<br>    "default": {<br>        "ENGINE": "django.db.backends.postgresql",<br>        "NAME": os.environ.get("DB_NAME"),<br>        "USER": os.environ.get("DB_USER"),<br>        "PASSWORD": os.environ.get("DB_PASSWORD"),<br>        "HOST": os.environ.get("DB_HOST"),<br>        "PORT": os.environ.get("DB_PORT", "5432"),<br>        "OPTIONS": {<br>            "sslmode": "require",<br>        },<br>    }<br>}</div>
+<img src="cat_images/appsdj.png" alt="setup" style="display:block; margin-right:auto;">
+<div class="category-content">__<br>add STATICFILES_DIRS:<br><br>STATIC_URL = 'static/'<br>STATICFILES_DIRS = BASE_DIR / 'static'</div>
+<img src="cat_images/static.png" alt="setup" style="display:block; margin-right:auto;">
+<div class="category-content">__<br>make urls.py in the app that has models (musicApp in this case)<br>add urlpatterns = []<br><br>register in MusicProject.urls.py <br>urlpatterns = [<br>    path('admin/', admin.site.urls),<br>    path('', include('musicApp.urls') )<br>]</div>
+<!--CONTENT-setup--></p>
+        </div>
+    </div>
+    <script>
+        setupModal("myModal-setup", "openBtn-setup");
+    </script>
+</div>
+<!-- END OF setup -->
+
+<!-- INSERT_CATEGORIES_HERE -->
+
+        </div>
+
+    <script src="scripts/modalColors.js"></script>
+    <script src="scripts/magnets.js"></script> 
+    <script src="scripts/gridColors.js"></script>
+    <script src="scripts/navColors.js"></script>
+
+    </body>
+
+</html>

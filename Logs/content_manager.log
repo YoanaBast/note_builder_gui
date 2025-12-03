@@ -474,3 +474,20 @@
 2025-11-28 14:48:37,650 - INFO - Content updated for topic 'first()' in ..\dj_ORM.html
 2025-11-28 14:59:37,721 - INFO - added update to html and PSQL
 2025-11-28 15:00:04,905 - INFO - Content updated for topic 'update' in ..\dj_ORM.html
+2025-12-03 12:45:01,665 - INFO - Navigation updated for 9 files.
+2025-12-03 12:45:01,666 - INFO - Category 'Django' saved to PSQL and created HTML file at ..\Django.html
+2025-12-03 12:45:12,437 - INFO - added setup to html and PSQL
+2025-12-03 12:46:07,536 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 12:48:20,427 - INFO - Navigation updated for 10 files.
+2025-12-03 12:48:20,427 - INFO - Category 'SQLAlchemy' saved to PSQL and created HTML file at ..\SQLAlchemy.html
+2025-12-03 13:04:49,024 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 13:06:34,630 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 13:15:48,112 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 13:17:01,416 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 13:25:26,240 - INFO - Content updated for topic 'setup' in ..\Django.html
+2025-12-03 13:33:35,897 - INFO - added connecting str / database url to html and PSQL
+2025-12-03 13:34:04,046 - INFO - Content updated for topic 'connecting str / database url' in ..\SQLAlchemy.html
+2025-12-03 13:38:44,279 - INFO - added engine and session setup to html and PSQL
+2025-12-03 13:38:49,478 - INFO - Content updated for topic 'engine and session setup' in ..\SQLAlchemy.html
+2025-12-03 13:41:44,997 - INFO - added alembic to html and PSQL
+2025-12-03 13:51:33,703 - INFO - Content updated for topic 'alembic' in ..\SQLAlchemy.html
