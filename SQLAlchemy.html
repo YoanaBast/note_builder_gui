@@ -35,24 +35,6 @@
 </div>
 <!-- END OF connecting str / database url -->
 
-<!-- alembic/env -->
-<div class="grid-item">
-    <button id="openBtn-alembic_env" class="tilt2">alembic/env</button>
-    <div id="myModal-alembic_env" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>alembic/env</h2>
-            <p><!--START-CONTENT-alembic_env--></p>
-            <p><div class="category-content">in env.py:<br><br>import os<br>from logging.config import fileConfig<br><br>from sqlalchemy import create_engine<br>from sqlalchemy.orm import sessionmaker, declarative_base<br>from alembic import context<br><br># Alembic Config object<br>config = context.config<br>fileConfig(config.config_file_name)<br><br># Build URL from environment<br>PASSWORD = os.getenv("DB_PASSWORD")<br>DATABASE_URL = f"postgresql+psycopg2://yoana:{PASSWORD}@localhost:5432/music"<br><br># SQLAlchemy setup<br>engine = create_engine(DATABASE_URL)<br>Session = sessionmaker(bind=engine)<br>session = Session()<br>BaseModel = declarative_base()<br><br># Example model (define your real models here or import them)<br># class User(BaseModel):<br>#     __tablename__ = "user"<br>#     id = Column(Integer, primary_key=True)<br>#     name = Column(String(50))<br><br># Alembic target metadata<br>target_metadata = BaseModel.metadata<br><br>def run_migrations_offline():<br>    context.configure(<br>        url=DATABASE_URL,<br>        target_metadata=target_metadata,<br>        literal_binds=True,<br>        dialect_opts={"paramstyle": "named"},<br>    )<br>    with context.begin_transaction():<br>        context.run_migrations()<br><br><br>def run_migrations_online():<br>    connectable = create_engine(DATABASE_URL)<br>    with connectable.connect() as connection:<br>        context.configure(connection=connection, target_metadata=target_metadata)<br>        with context.begin_transaction():<br>            context.run_migrations()<br><br><br>if context.is_offline_mode():<br>    run_migrations_offline()<br>else:<br>    run_migrations_online()</div>
-<!--CONTENT-alembic_env--></p>
-        </div>
-    </div>
-    <script>
-        setupModal("myModal-alembic_env", "openBtn-alembic_env");
-    </script>
-</div>
-<!-- END OF alembic/env -->
-
 <!-- alemic commands -->
 <div class="grid-item">
     <button id="openBtn-alemic_commands" class="tilt2">alemic commands</button>
